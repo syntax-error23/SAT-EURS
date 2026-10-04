@@ -4,5 +4,5 @@ EURS Challenge project.
 
 ## Team
 - Shubham
-- Teammate 1
-- Teammate 2
+- Tanmay
+- Arin
