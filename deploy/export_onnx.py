@@ -42,7 +42,10 @@ def export_and_validate_onnx(
     # 1. Instantiate model
     model = EURSNetV2(num_classes=5)
     if checkpoint_path and os.path.exists(checkpoint_path):
-        ckpt = torch.load(checkpoint_path, map_location='cpu')
+        try:
+            ckpt = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
+        except TypeError:
+            ckpt = torch.load(checkpoint_path, map_location='cpu')
         state_dict = ckpt.get('model_state_dict', ckpt)
         model.load_state_dict(state_dict)
         if verbose:

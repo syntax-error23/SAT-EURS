@@ -33,7 +33,10 @@ def test_checkpoint_numerical_parity():
 
         # Create fresh model instance
         model2 = EURSNetV2(num_classes=5).eval()
-        ckpt = torch.load(ckpt_path, map_location='cpu')
+        try:
+            ckpt = torch.load(ckpt_path, map_location='cpu', weights_only=False)
+        except TypeError:
+            ckpt = torch.load(ckpt_path, map_location='cpu')
         model2.load_state_dict(ckpt['model_state_dict'])
 
         with torch.no_grad():

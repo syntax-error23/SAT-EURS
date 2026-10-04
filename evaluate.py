@@ -98,7 +98,10 @@ if __name__ == '__main__':
     model = EURSNetV2(num_classes=5)
     if args.checkpoint and os.path.exists(args.checkpoint):
         print(f"Loading checkpoint from {args.checkpoint}...")
-        checkpoint = torch.load(args.checkpoint, map_location='cpu')
+        try:
+            checkpoint = torch.load(args.checkpoint, map_location='cpu', weights_only=False)
+        except TypeError:
+            checkpoint = torch.load(args.checkpoint, map_location='cpu')
         state_dict = checkpoint.get('model_state_dict', checkpoint)
         model.load_state_dict(state_dict)
 
