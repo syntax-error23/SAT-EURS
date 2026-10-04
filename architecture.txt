@@ -1,0 +1,43 @@
+                         Input Degraded Image [3 x 1024 x 1024]
+                                        │
+                                        ▼
+                  ┌───────────────────────────────────────────┐
+                  │ 0. Pre-Net: Fast White-Balance Residual   │ (Param-free / 3 params)
+                  └─────────────────────┬─────────────────────┘
+                                        │
+                                        ▼
+                  ┌───────────────────────────────────────────┐
+                  │ Stem: Conv 3x3 (s=2, 16ch) + HardSwish    │ [16 x 512 x 512]
+                  └─────────────────────┬─────────────────────┘
+                                        │
+  ┌─────────────────────────────────────┴─────────────────────────────────────┐
+  │ SHARED ENCODER (MobileNetV2 MBConv + Coordinate Attention)                │
+  │                                                                           │
+  │  Stage 1: MBConv (exp=1, s=2) ───────────► F256 [24 x 256 x 256]          │
+  │             │                                  │                          │
+  │  Stage 2: MBConv (exp=6, s=2) + CA ──────► F128 [40 x 128 x 128]          │
+  │             │                                  │                          │
+  │  Stage 3: MBConv (exp=6, s=2) + CA ──────► F64  [64 x 64 x 64]            │
+  │             │                                  │                          │
+  │  Stage 4: MBConv (exp=6, s=2) ───────────► F32  [96 x 32 x 32] (Bottleneck│
+  └──────────────────────────────┬─────────────────┬──────────────────────────┘
+                                 │                 │
+                ┌────────────────┘                 └────────────────┐
+                │                                                   │
+                ▼ (F128 Skip)                                       ▼ (F32, F64, F128, F256 Skips)
+┌───────────────────────────────────────┐   ┌─────────────────────────────────────────┐
+│ 1. RESTORATION BRANCH (Lightweight)   │   │ 2. SEGMENTATION BRANCH (FPN + CA)       │
+│                                       │   │                                         │
+│ • Input: F128 [40 x 128 x 128]        │   │ • Step 1: 1x1 Conv on F32 (96 -> 64ch)  │
+│ • 1x1 Conv (40 -> 32ch)               │   │ • Step 2: Upsample & Add F64  (64ch)    │
+│ • Upsample 2x -> [32 x 256 x 256]     │   │ • Step 3: Upsample & Add F128 (40ch)    │
+│ • DW-Conv 3x3 + PW-Conv (32 -> 16ch)  │   │ • Step 4: Upsample & Add F256 (24ch)    │
+│ • 1x1 Conv (16 -> 3ch residual ΔI)    │   │ • Step 5: Small-Object High-Res Neck    │
+│ • Bilinear Upsample to 1024x1024      │   │           (DW-Conv 3x3 + CoordAttn)     │
+│ • Output: Clamp(Input + ΔI, 0, 1)     │   │ • Step 6: 1x1 Head (32 -> 5 classes)    │
+│                                       │   │ • Bilinear Upsample to 1024x1024        │
+└───────────────────┬───────────────────┘   └────────────────────┬────────────────────┘
+                    │                                            │
+                    ▼                                            ▼
+           Restored RGB Image                           5-Class Semantic Mask
+           [3 x 1024 x 1024]                             [1 x 1024 x 1024]

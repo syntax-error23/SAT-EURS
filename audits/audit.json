@@ -1,0 +1,38 @@
+{
+  "architecture": "EURSNetV2",
+  "input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "dtype": "torch.float32",
+  "torch_version": "2.12.0+cpu",
+  "parameters": {
+    "total": 150438,
+    "fast_white_balance": 6,
+    "shared_backbone": 122576,
+    "progressive_restoration_decoder": 4891,
+    "progressive_segmentation_decoder": 22965,
+    "official_hard_limit": 1000000,
+    "internal_engineering_target": 600000,
+    "status": "PASS"
+  },
+  "compute": {
+    "macs": 2235914496,
+    "gmacs": 2.2359,
+    "flops": 4471828992,
+    "gflops": 4.4718,
+    "counting_convention": "1 MAC = 2 FLOPs (ptflops standard)",
+    "official_hard_ceiling_gflops": 12.0,
+    "internal_engineering_target_gflops": 8.0,
+    "status": "PASS"
+  },
+  "environment": {
+    "python_version": "3.10.11",
+    "torch_version": "2.12.0+cpu",
+    "ptflops_version": "0.7.5",
+    "os": "Windows-10-10.0.19045-SP0",
+    "device": "CPU (Development Baseline; RTX 5090 for Production Training)"
+  }
+}

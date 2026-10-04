@@ -1,0 +1,23 @@
+{
+  "dataset_root": "d:\\MACVI\\data\\mini_dev",
+  "total_unique_scenes": 4,
+  "scenes": [
+    "fish1",
+    "fish2",
+    "fish4",
+    "fish5"
+  ],
+  "total_degraded_images": 20,
+  "variants_per_scene": {
+    "min": 5,
+    "max": 5,
+    "mean": 5,
+    "median": 5.0,
+    "distribution": {
+      "fish1": 5,
+      "fish2": 5,
+      "fish4": 5,
+      "fish5": 5
+    }
+  }
+}

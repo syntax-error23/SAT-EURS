@@ -1,0 +1,9 @@
+{
+  "dataset_root": "D:\\MACVI\\data\\mini_dev",
+  "total_valid_scenes": 4,
+  "total_valid_samples": 20,
+  "quarantined_files_count": 0,
+  "quarantined_files": [],
+  "duplicates_count": 0,
+  "duplicates": []
+}

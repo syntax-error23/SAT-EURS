@@ -1,0 +1,106 @@
+{
+  "total_scenes_audited": 4,
+  "class_feasibility": {
+    "0": {
+      "class_name": "Background",
+      "scene_count": 4,
+      "total_pixels": 13685682,
+      "feasible_stratification": true,
+      "constraint_note": "OK"
+    },
+    "1": {
+      "class_name": "Coral",
+      "scene_count": 4,
+      "total_pixels": 32611651,
+      "feasible_stratification": true,
+      "constraint_note": "OK"
+    },
+    "2": {
+      "class_name": "Fish",
+      "scene_count": 4,
+      "total_pixels": 1895435,
+      "feasible_stratification": true,
+      "constraint_note": "OK"
+    },
+    "3": {
+      "class_name": "Elasmobranchii",
+      "scene_count": 0,
+      "total_pixels": 0,
+      "feasible_stratification": false,
+      "constraint_note": "Only appears in 1 scene; must be assigned to Train exclusively to prevent scene leakage."
+    },
+    "4": {
+      "class_name": "Other",
+      "scene_count": 0,
+      "total_pixels": 0,
+      "feasible_stratification": false,
+      "constraint_note": "Only appears in 1 scene; must be assigned to Train exclusively to prevent scene leakage."
+    }
+  },
+  "per_scene_mass": {
+    "fish1": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 8360151,
+        "1": 3073437,
+        "2": 566412,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 3639849,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish2": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 23696,
+        "1": 11747413,
+        "2": 228891,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 11976304,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish4": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 4252027,
+        "1": 7081089,
+        "2": 666884,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 7747973,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish5": {
+      "total_pixels": 12192768,
+      "pixel_counts": {
+        "0": 1049808,
+        "1": 10709712,
+        "2": 433248,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 11142960,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    }
+  }
+}

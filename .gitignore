@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch checkpoints and weights
+checkpoints/
+*.pt
+*.pth
+*.bin
+
+# Dataset and cached image arrays
+data/mini_dev/
+data/cached/
+data/cached_1024/
+data/nvme/
+*.png
+*.jpg
+*.jpeg
+
+# Submission and export binaries
+*.onnx
+*.engine
+*.zip
+
+# Visual artifacts, documentation generation & PDFs
+*.pdf
+generate_tanmay_pdf.py
+*.html
+audits/overfit_preds/
+
+# Logs and environment
+*.log
+.env
+.venv
+env/
+venv/
+.idea/
+.vscode/

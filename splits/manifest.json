@@ -1,0 +1,15 @@
+{
+  "split_policy": "scene_disjoint_persistent",
+  "val_ratio_target": 0.25,
+  "train_scenes": [
+    "fish1",
+    "fish4",
+    "fish5"
+  ],
+  "val_scenes": [
+    "fish2"
+  ],
+  "total_scenes": 4,
+  "train_samples_count": 15,
+  "val_samples_count": 5
+}
