@@ -28,11 +28,14 @@ class EURSDataset(Dataset):
         self,
         data_dir: str,
         split: str = 'train',
-        manifest_path: str = 'd:/MACVI/splits/manifest.json',
+        manifest_path: Optional[str] = None,
         transform: Optional[Callable] = None,
         target_size: Tuple[int, int] = (1024, 1024),
     ):
         super().__init__()
+        if manifest_path is None:
+            from utils.paths import FROZEN_MANIFEST_PATH
+            manifest_path = str(FROZEN_MANIFEST_PATH)
         self.data_dir = os.path.abspath(data_dir)
         self.split = split.lower()
         self.transform = transform

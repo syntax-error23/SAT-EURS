@@ -21,7 +21,8 @@ def test_split_disjointness():
     print("=" * 60)
     print("Test 2.1: Scene-Disjoint Split Invariant Audit")
     print("=" * 60)
-    manifest_path = 'd:/MACVI/splits/manifest.json'
+    from utils.paths import SPLITS_DIR
+    manifest_path = str(SPLITS_DIR / 'manifest.json')
     assert os.path.exists(manifest_path), f"Missing manifest: {manifest_path}"
 
     with open(manifest_path, 'r') as f:
@@ -44,11 +45,15 @@ def test_dataset_pairing_and_contracts():
     print("Test 2.2: Pairing Integrity & Tensor Contracts Audit")
     print("=" * 60)
 
+    from utils.paths import DATA_DIR, SPLITS_DIR
+    data_dir = str(DATA_DIR / 'mini_dev') if (DATA_DIR / 'mini_dev').exists() else str(DATA_DIR)
+    manifest_path = str(SPLITS_DIR / 'manifest.json')
+
     for split in ('train', 'val'):
         dataset = EURSDataset(
-            data_dir='d:/MACVI/data/mini_dev',
+            data_dir=data_dir,
             split=split,
-            manifest_path='d:/MACVI/splits/manifest.json'
+            manifest_path=manifest_path
         )
 
         assert len(dataset) > 0, f"Dataset split '{split}' is empty!"
@@ -90,10 +95,14 @@ def test_dataloader_batch_collation():
     print("Test 2.3: DataLoader Batch Collation Audit")
     print("=" * 60)
 
+    from utils.paths import DATA_DIR, SPLITS_DIR
+    data_dir = str(DATA_DIR / 'mini_dev') if (DATA_DIR / 'mini_dev').exists() else str(DATA_DIR)
+    manifest_path = str(SPLITS_DIR / 'manifest.json')
+
     dataset = EURSDataset(
-        data_dir='d:/MACVI/data/mini_dev',
+        data_dir=data_dir,
         split='train',
-        manifest_path='d:/MACVI/splits/manifest.json'
+        manifest_path=manifest_path
     )
     batch_size = 2
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)

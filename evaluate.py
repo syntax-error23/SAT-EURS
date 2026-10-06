@@ -87,10 +87,11 @@ def evaluate(
 
 
 if __name__ == '__main__':
+    from utils.paths import DATA_DIR, FROZEN_MANIFEST_PATH
     parser = argparse.ArgumentParser(description="Evaluate EURS-Net V2 on validation set")
     parser.add_argument('--checkpoint', type=str, default=None, help='Path to model checkpoint (.pth)')
-    parser.add_argument('--data_dir', type=str, default='d:/MACVI/data/mini_dev')
-    parser.add_argument('--manifest', type=str, default='d:/MACVI/splits/manifest.json')
+    parser.add_argument('--data_dir', type=str, default=str(DATA_DIR))
+    parser.add_argument('--manifest', type=str, default=str(FROZEN_MANIFEST_PATH))
     parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--device', type=str, default='cpu')
     args = parser.parse_args()

@@ -8,6 +8,7 @@ Verifies:
 
 import os
 import sys
+from typing import Optional
 import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
@@ -19,12 +20,17 @@ from evaluate import evaluate
 
 
 def run_debug_training(
-    data_dir: str = 'd:/MACVI/data/mini_dev',
-    manifest_path: str = 'd:/MACVI/splits/manifest.json',
+    data_dir: Optional[str] = None,
+    manifest_path: Optional[str] = None,
     batch_size: int = 2,
     lr: float = 1e-3,
     target_size: tuple = (256, 256)
 ):
+    from utils.paths import DATA_DIR, SPLITS_DIR
+    if data_dir is None:
+        data_dir = str(DATA_DIR / 'mini_dev') if (DATA_DIR / 'mini_dev').exists() else str(DATA_DIR)
+    if manifest_path is None:
+        manifest_path = str(SPLITS_DIR / 'manifest.json')
     print("=" * 60)
     print("Stage 8.1: Minimal FP32 Debug Training Loop & Step Verification")
     print("=" * 60)

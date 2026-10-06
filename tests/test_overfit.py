@@ -32,11 +32,15 @@ def run_overfit_test(num_samples: int = 5, num_iters: int = 50, resolution: int 
     torch.manual_seed(42)
     np.random.seed(42)
 
+    from utils.paths import DATA_DIR, SPLITS_DIR
+    data_dir = str(DATA_DIR / 'mini_dev') if (DATA_DIR / 'mini_dev').exists() else str(DATA_DIR)
+    manifest_path = str(SPLITS_DIR / 'manifest.json')
+
     # 1. Load real data with target resolution (deterministic, no aug)
     dataset = EURSDataset(
-        data_dir='d:/MACVI/data/mini_dev',
+        data_dir=data_dir,
         split='train',
-        manifest_path='d:/MACVI/splits/manifest.json',
+        manifest_path=manifest_path,
         target_size=(resolution, resolution),
         transform=None
     )
@@ -143,7 +147,8 @@ def run_overfit_test(num_samples: int = 5, num_iters: int = 50, resolution: int 
     print("  [PASS] Class presence verified: All GT classes successfully predicted by the network.")
 
     # 5. Save visual comparison artifact for inspection
-    out_dir = 'd:/MACVI/audits/overfit_preds'
+    from utils.paths import AUDITS_DIR
+    out_dir = str(AUDITS_DIR / 'overfit_preds')
     os.makedirs(out_dir, exist_ok=True)
     sample_idx = 0
 

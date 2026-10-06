@@ -1,0 +1,39 @@
+experiment_name: "eurs_net_v2_baseline_v1"
+
+model:
+  name: "EURSNetV2"
+  num_classes: 5
+
+training:
+  total_epochs: 50
+  warmup_epochs: 5
+  base_lr: 5.0e-4          # Authoritative Phase 1 & 2 baseline LR
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  clip_grad_norm: 1.0
+  batch_size: 4
+  grad_accum_steps: 4      # Effective batch size = 16
+  seed: 42
+
+precision:
+  use_amp: true
+  amp_dtype: "bfloat16"    # fallback to "float16" if not supported
+
+losses:
+  weight_seg: 1.0
+  weight_rest: 0.5
+  class_weighting: "sqrt_inv_freq_mean1"
+
+dataloader:
+  num_workers: 4           # Profile against 0, 2, 4, 8 on RTX 5090
+  pin_memory: true
+  persistent_workers: true
+  sampler: "scene_balanced"
+  target_size: [1024, 1024]
+  aspect_ratio_mode: "stretch"
+
+paths:
+  data_dir: "data"
+  cache_dir: "data/cache_1024"
+  manifest_path: "splits/manifest_full.json"
+  checkpoint_dir: "checkpoints"

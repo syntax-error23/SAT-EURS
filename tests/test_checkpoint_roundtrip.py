@@ -25,7 +25,8 @@ def test_checkpoint_numerical_parity():
     with torch.no_grad():
         rest1, seg1 = model1(dummy_input)
 
-    ckpt_path = 'd:/MACVI/audits/temp_checkpoint.pth'
+    from utils.paths import AUDITS_DIR
+    ckpt_path = str(AUDITS_DIR / 'temp_checkpoint.pth')
     os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
     try:
         # Save state dict

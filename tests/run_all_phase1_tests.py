@@ -32,8 +32,9 @@ def run_all_tests():
     results = []
     total_start = time.time()
 
+    from utils.paths import REPO_ROOT
     for stage, name, script in TEST_SUITES:
-        script_path = os.path.join('d:/MACVI', script)
+        script_path = os.path.join(str(REPO_ROOT), script)
         print(f"Running [{stage}] {name} ({script})...")
         t0 = time.time()
         res = subprocess.run([sys.executable, script_path], capture_output=True, text=True)

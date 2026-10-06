@@ -116,10 +116,11 @@ def audit_and_split(data_dir: str, splits_dir: str, audits_dir: str, val_ratio: 
 
 
 if __name__ == '__main__':
+    from utils.paths import DATA_DIR, SPLITS_DIR, AUDITS_DIR
     parser = argparse.ArgumentParser(description="Audit dataset and generate scene-disjoint manifest.")
-    parser.add_argument('--data_dir', type=str, default='d:/MACVI/data/mini_dev', help='Path to dataset directory')
-    parser.add_argument('--splits_dir', type=str, default='d:/MACVI/splits', help='Path to splits directory')
-    parser.add_argument('--audits_dir', type=str, default='d:/MACVI/audits', help='Path to audits directory')
+    parser.add_argument('--data_dir', type=str, default=str(DATA_DIR), help='Path to dataset directory')
+    parser.add_argument('--splits_dir', type=str, default=str(SPLITS_DIR), help='Path to splits directory')
+    parser.add_argument('--audits_dir', type=str, default=str(AUDITS_DIR), help='Path to audits directory')
     parser.add_argument('--val_ratio', type=float, default=0.25, help='Validation fraction (scene-level)')
     args = parser.parse_args()
 
