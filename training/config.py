@@ -16,6 +16,9 @@ from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, Optional, List
 
 
+from utils.paths import get_dataset_root, get_splits_path, get_stats_path
+
+
 @dataclass
 class TrainingConfig:
     """
@@ -23,9 +26,9 @@ class TrainingConfig:
     """
     candidate_id: str = "A"
     experiment_name: str = "A_768_direct"
-    dataset_root: str = "/home/shubk/Datasets/eurs"
-    splits_file: str = "data/splits.json"
-    stats_file: str = "data/dataset_stats.json"
+    dataset_root: str = field(default_factory=get_dataset_root)
+    splits_file: str = field(default_factory=get_splits_path)
+    stats_file: str = field(default_factory=get_stats_path)
     tier: str = "tier1"
     output_dir: str = "experiments/resolution_study"
 

@@ -81,14 +81,31 @@ def ms_ssim(
         elif vm.dim() == 4 and vm.shape[1] == 1:
             vm = vm.squeeze(1)
 
+        # Vectorized fast path: if all images in the batch share identical padding bounds
+        y_indices, x_indices = torch.where(vm[0])
+        if len(y_indices) > 0:
+            ymin, ymax = y_indices.min(), y_indices.max() + 1
+            xmin, xmax = x_indices.min(), x_indices.max() + 1
+            if (vm[:, ymin:ymax, xmin:xmax]).all() and vm.sum(dim=(-2, -1)).unique().numel() == 1:
+                x_crop = x[:, :, ymin:ymax, xmin:xmax]
+                y_crop = y[:, :, ymin:ymax, xmin:xmax]
+                return ms_ssim(
+                    x_crop, y_crop,
+                    data_range=data_range,
+                    weights=weights,
+                    kernel_size=kernel_size,
+                    sigma=sigma,
+                    valid_mask=None
+                )
+
         scores = []
         for i in range(b):
             vm_i = vm[i]
-            y_indices, x_indices = torch.where(vm_i)
-            if len(y_indices) == 0:
+            y_i, x_i = torch.where(vm_i)
+            if len(y_i) == 0:
                 continue
-            ymin, ymax = y_indices.min(), y_indices.max() + 1
-            xmin, xmax = x_indices.min(), x_indices.max() + 1
+            ymin, ymax = y_i.min(), y_i.max() + 1
+            xmin, xmax = x_i.min(), x_i.max() + 1
 
             x_crop = x[i:i+1, :, ymin:ymax, xmin:xmax]
             y_crop = y[i:i+1, :, ymin:ymax, xmin:xmax]
@@ -135,10 +152,12 @@ def ms_ssim(
     mcs_stack = torch.stack(mcs_list, dim=0) # [levels - 1, B]
     weights_cs = weights_tensor[:-1].unsqueeze(1) # [levels - 1, 1]
 
-    # Add small epsilon to prevent NaN in power/grad
-    eps = 1e-8
-    powered = (mcs_stack + eps) ** weights_cs
-    ms_ssim_val = torch.prod(powered, dim=0) * ((final_ssim + eps) ** weights_tensor[-1])
+    # FP16-safe epsilon clamping to prevent NaN gradients under AMP
+    eps = 1e-4 if x.dtype in (torch.float16, torch.bfloat16) else 1e-7
+    mcs_clamped = torch.clamp(mcs_stack, min=eps)
+    final_ssim_clamped = torch.clamp(final_ssim, min=eps)
+    powered = mcs_clamped ** weights_cs
+    ms_ssim_val = torch.prod(powered, dim=0) * (final_ssim_clamped ** weights_tensor[-1])
     return ms_ssim_val.mean()
 
 

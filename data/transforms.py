@@ -262,6 +262,93 @@ class SynchronizedRandomVerticalFlip(SynchronizedTransform):
         return f"SynchronizedRandomVerticalFlip(p={self.p})"
 
 
+class SynchronizedRandomCrop(SynchronizedTransform):
+    """
+    Spatially locked random crop across degraded, clean_gt, and mask.
+    Guarantees that the exact same (top, left, crop_h, crop_w) bounding box
+    is applied simultaneously and synchronously across all three paired inputs.
+
+    Args:
+        size (int or Sequence[int]): Desired output crop size (H, W) or single int for square.
+        pad_if_needed (bool): If True, pad before cropping if input is smaller than crop size.
+        pad_val_image (float): Padding value for degraded and clean images. Default: 0.0.
+        pad_val_mask (int): Padding value for mask. Default: 0.
+    """
+    def __init__(
+        self,
+        size: Union[int, Sequence[int]],
+        pad_if_needed: bool = False,
+        pad_val_image: float = 0.0,
+        pad_val_mask: int = 0
+    ):
+        if isinstance(size, int):
+            if size <= 0:
+                raise ValueError(f"Crop size must be positive, got {size}")
+            self.crop_size: Size2D = (size, size)
+        elif isinstance(size, (tuple, list)):
+            if len(size) != 2:
+                raise ValueError(f"Crop size must be a sequence of 2 (H, W), got {size}")
+            h, w = int(size[0]), int(size[1])
+            if h <= 0 or w <= 0:
+                raise ValueError(f"Crop dimensions must be positive, got {(h, w)}")
+            self.crop_size = (h, w)
+        else:
+            raise TypeError(f"Crop size must be int or Tuple[int, int], got {type(size).__name__}")
+
+        self.pad_if_needed = pad_if_needed
+        self.pad_val_image = float(pad_val_image)
+        self.pad_val_mask = int(pad_val_mask)
+
+    def __call__(
+        self,
+        degraded: torch.Tensor,
+        clean_gt: torch.Tensor,
+        mask: torch.Tensor
+    ) -> Tuple3Tensors:
+        deg_h, deg_w = degraded.shape[-2], degraded.shape[-1]
+        gt_h, gt_w = clean_gt.shape[-2], clean_gt.shape[-1]
+        msk_h, msk_w = mask.shape[-2], mask.shape[-1]
+
+        if not (deg_h == gt_h == msk_h and deg_w == gt_w == msk_w):
+            raise ValueError(
+                f"Spatial dimensions must match before cropping: "
+                f"degraded=({deg_h}, {deg_w}), clean_gt=({gt_h}, {gt_w}), mask=({msk_h}, {msk_w})"
+            )
+
+        crop_h, crop_w = self.crop_size
+
+        if self.pad_if_needed:
+            pad_h = max(0, crop_h - deg_h)
+            pad_w = max(0, crop_w - deg_w)
+            if pad_h > 0 or pad_w > 0:
+                pad_top = pad_h // 2
+                pad_bottom = pad_h - pad_top
+                pad_left = pad_w // 2
+                pad_right = pad_w - pad_left
+                degraded = F.pad(degraded, (pad_left, pad_right, pad_top, pad_bottom), value=self.pad_val_image)
+                clean_gt = F.pad(clean_gt, (pad_left, pad_right, pad_top, pad_bottom), value=self.pad_val_image)
+                mask = F.pad(mask, (pad_left, pad_right, pad_top, pad_bottom), value=self.pad_val_mask)
+                deg_h, deg_w = degraded.shape[-2], degraded.shape[-1]
+
+        if deg_h < crop_h or deg_w < crop_w:
+            raise ValueError(
+                f"Input size ({deg_h}, {deg_w}) is smaller than crop size ({crop_h}, {crop_w}) "
+                f"and pad_if_needed is False."
+            )
+
+        top = random.randint(0, deg_h - crop_h)
+        left = random.randint(0, deg_w - crop_w)
+
+        out_deg = degraded[..., top:top + crop_h, left:left + crop_w]
+        out_gt = clean_gt[..., top:top + crop_h, left:left + crop_w]
+        out_msk = mask[..., top:top + crop_h, left:left + crop_w]
+
+        return out_deg, out_gt, out_msk
+
+    def __repr__(self) -> str:
+        return f"SynchronizedRandomCrop(size={self.crop_size}, pad_if_needed={self.pad_if_needed})"
+
+
 class SynchronizedCompose(SynchronizedTransform):
     """
     Sequentially applies a series of synchronized spatial transforms.
@@ -427,6 +514,32 @@ class SynchronizedLetterbox(SynchronizedTransform):
         )
 
         return deg_padded, gt_padded, msk_padded
+
+    def compute_metadata(self, orig_h: int, orig_w: int, device: Optional[torch.device] = None) -> LetterboxMetadata:
+        """
+        Pure, stateless computation of padding offsets and valid_mask.
+        Safe for use in multi-process PyTorch DataLoaders without instance mutation.
+        """
+        target_h, target_w = self.target_size
+        scale = min(target_h / orig_h, target_w / orig_w)
+        content_h = int(round(orig_h * scale))
+        content_w = int(round(orig_w * scale))
+        pad_top = (target_h - content_h) // 2
+        pad_bottom = target_h - content_h - pad_top
+        pad_left = (target_w - content_w) // 2
+        pad_right = target_w - content_w - pad_left
+        valid_mask = torch.zeros((target_h, target_w), dtype=torch.bool, device=device)
+        valid_mask[pad_top:pad_top + content_h, pad_left:pad_left + content_w] = True
+        return LetterboxMetadata(
+            target_size=(target_h, target_w),
+            orig_size=(orig_h, orig_w),
+            content_size=(content_h, content_w),
+            pad_top=pad_top,
+            pad_bottom=pad_bottom,
+            pad_left=pad_left,
+            pad_right=pad_right,
+            valid_mask=valid_mask
+        )
 
     def __repr__(self) -> str:
         return f"SynchronizedLetterbox(target_size={self.target_size})"

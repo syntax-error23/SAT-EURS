@@ -24,12 +24,10 @@ import torch
 from torch.utils.data import Dataset
 
 
-DEFAULT_DATASET_ROOT = "/home/shubk/Datasets/eurs"
-DEFAULT_SPLITS_FILE = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "data",
-    "splits.json"
-)
+from utils.paths import get_dataset_root, get_splits_path
+
+DEFAULT_DATASET_ROOT = get_dataset_root()
+DEFAULT_SPLITS_FILE = get_splits_path()
 
 
 class EURSDataset(Dataset):
@@ -237,17 +235,24 @@ class EURSDataset(Dataset):
 
         # 3. Apply synchronized spatial transforms
         valid_mask = None
+        orig_h, orig_w = deg_tensor.shape[-2], deg_tensor.shape[-1]
         if self.transform is not None:
             deg_tensor, clean_tensor, mask_tensor = self.transform(
                 deg_tensor, clean_tensor, mask_tensor
             )
-            if hasattr(self.transform, "last_metadata") and self.transform.last_metadata is not None:
-                valid_mask = self.transform.last_metadata.valid_mask
+            # Stateless multiprocessing-safe valid_mask resolution
+            if hasattr(self.transform, "compute_metadata"):
+                valid_mask = self.transform.compute_metadata(orig_h, orig_w).valid_mask
             elif hasattr(self.transform, "transforms"):
                 for t in self.transform.transforms:
-                    if hasattr(t, "last_metadata") and t.last_metadata is not None:
+                    if hasattr(t, "compute_metadata"):
+                        valid_mask = t.compute_metadata(orig_h, orig_w).valid_mask
+                        break
+                    elif hasattr(t, "last_metadata") and t.last_metadata is not None:
                         valid_mask = t.last_metadata.valid_mask
                         break
+            elif hasattr(self.transform, "last_metadata") and self.transform.last_metadata is not None:
+                valid_mask = self.transform.last_metadata.valid_mask
 
         sample = {
             "degraded": deg_tensor,

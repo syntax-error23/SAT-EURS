@@ -24,14 +24,17 @@ class PreprocessingConfig:
             raise ValueError(f"Mode must be 'direct' or 'letterbox', got '{self.mode}'")
 
 
+from utils.paths import get_dataset_root, get_splits_path
+
+
 @dataclass
 class ExperimentConfig:
     """
     Complete configuration for controlled EURS experiments.
     """
     name: str = "exp_baseline"
-    dataset_root: str = "/home/shubk/Datasets/eurs"
-    splits_file: str = "data/splits.json"
+    dataset_root: str = field(default_factory=get_dataset_root)
+    splits_file: str = field(default_factory=get_splits_path)
     tier: str = "tier1"
 
     # Preprocessing variable

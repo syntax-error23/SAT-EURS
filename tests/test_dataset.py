@@ -195,12 +195,15 @@ class TestEURSDatasetMocked(unittest.TestCase):
         self.assertEqual(sample["mask"].dtype, torch.int64)
 
 
+from utils.paths import get_dataset_root, get_splits_path
+
+
 class TestEURSDatasetRealFilesystem(unittest.TestCase):
-    """Tests directly against the verified local EURS dataset at /home/shubk/Datasets/eurs."""
+    """Tests directly against the local EURS dataset resolved via utils.paths."""
 
     def test_real_dataset_tier1_counts_and_pairing(self):
-        dataset_root = "/home/shubk/Datasets/eurs"
-        splits_file = "data/splits.json"
+        dataset_root = get_dataset_root()
+        splits_file = get_splits_path()
 
         if not os.path.isdir(dataset_root):
             self.skipTest(f"Real dataset directory not found at {dataset_root}")

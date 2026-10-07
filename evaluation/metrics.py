@@ -58,14 +58,13 @@ def compute_segmentation_metrics(
     pred_np = pred_labels.detach().cpu().numpy()
     target_np = target.detach().cpu().numpy()
 
-    # Apply valid mask to exclude padding if provided
+    # Filter out-of-bounds labels and apply valid mask to exclude padding if provided
+    valid = (target_np >= 0) & (target_np < num_classes) & (pred_np >= 0) & (pred_np < num_classes)
     if valid_mask is not None:
         vm_np = valid_mask.detach().cpu().numpy().astype(bool)
         if vm_np.ndim == 2 and pred_np.ndim == 3:
             vm_np = np.broadcast_to(vm_np, pred_np.shape)
-        valid = vm_np & (target_np >= 0) & (target_np < num_classes)
-    else:
-        valid = (target_np >= 0) & (target_np < num_classes)
+        valid = valid & vm_np
 
     p_flat = pred_np[valid].astype(int)
     t_flat = target_np[valid].astype(int)
@@ -366,11 +365,12 @@ class MetricAccumulator:
         mean_sharp = float(np.mean(self.sharpness_list)) if self.sharpness_list else 0.0
         q_rest = 0.45 * mean_psnr_norm + 0.45 * mean_ssim + 0.10 * mean_sharp
 
-        # Q_seg
+        # Q_seg with soft coverage ratio (proportional detection rather than all-or-nothing kill switch)
         gt_present = cm.sum(axis=1) > 0
-        missed_classes = np.sum((gt_present) & (tp == 0))
-        coverage_penalty = 0.0 if missed_classes > 0 else 1.0
-        q_seg = macro_f1 * macro_iou * coverage_penalty
+        present_count = int(np.sum(gt_present))
+        detected_count = int(np.sum((gt_present) & (tp > 0)))
+        coverage_ratio = float(detected_count / present_count) if present_count > 0 else 1.0
+        q_seg = macro_f1 * macro_iou * coverage_ratio
 
         return {
             # Core restoration
@@ -384,7 +384,8 @@ class MetricAccumulator:
             "pixel_accuracy": round(pixel_accuracy, 6),
             "macro_iou": round(macro_iou, 6),
             "macro_f1": round(macro_f1, 6),
-            "coverage_penalty": coverage_penalty,
+            "coverage_penalty": round(coverage_ratio, 4),
+            "coverage_ratio": round(coverage_ratio, 4),
             "q_seg": round(q_seg, 4),
 
             # Explicit per-class IoU breakdown

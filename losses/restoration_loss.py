@@ -94,14 +94,28 @@ class LaplacianLoss(nn.Module):
         elif vm.dim() == 4 and vm.shape[1] == 1:
             vm = vm.squeeze(1)
 
+        # Vectorized fast path: if all images in the batch share identical padding bounds
+        y_indices, x_indices = torch.where(vm[0])
+        if len(y_indices) > 0:
+            ymin, ymax = y_indices.min(), y_indices.max() + 1
+            xmin, xmax = x_indices.min(), x_indices.max() + 1
+            if (vm[:, ymin:ymax, xmin:xmax]).all() and vm.sum(dim=(-2, -1)).unique().numel() == 1:
+                p_crop = pred[:, :, ymin:ymax, xmin:xmax]
+                t_crop = target[:, :, ymin:ymax, xmin:xmax]
+                p_padded = F.pad(p_crop, (1, 1, 1, 1), mode='reflect')
+                t_padded = F.pad(t_crop, (1, 1, 1, 1), mode='reflect')
+                lap_pred = F.conv2d(p_padded, k, groups=channels)
+                lap_target = F.conv2d(t_padded, k, groups=channels)
+                return F.l1_loss(lap_pred, lap_target)
+
         losses = []
         for i in range(b):
             vm_i = vm[i]
-            y_indices, x_indices = torch.where(vm_i)
-            if len(y_indices) == 0:
+            y_i, x_i = torch.where(vm_i)
+            if len(y_i) == 0:
                 continue
-            ymin, ymax = y_indices.min(), y_indices.max() + 1
-            xmin, xmax = x_indices.min(), x_indices.max() + 1
+            ymin, ymax = y_i.min(), y_i.max() + 1
+            xmin, xmax = x_i.min(), x_i.max() + 1
 
             p_crop = pred[i:i+1, :, ymin:ymax, xmin:xmax]
             t_crop = target[i:i+1, :, ymin:ymax, xmin:xmax]

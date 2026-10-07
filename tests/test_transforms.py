@@ -214,6 +214,37 @@ class TestSynchronizedTransforms(unittest.TestCase):
         with self.assertRaises(ValueError):
             resizer(deg, gt, mismatched_mask)
 
+    def test_synchronized_random_crop(self):
+        """Verify SynchronizedRandomCrop applies identical crop box to all 3 tensors synchronously."""
+        from data.transforms import SynchronizedRandomCrop
+        h, w = 120, 150
+        deg = torch.randn(3, h, w)
+        gt = torch.randn(3, h, w)
+        mask = torch.randint(0, 5, (h, w), dtype=torch.int64)
+
+        crop_sizes = [(64, 64), (50, 80), 64]
+        for csize in crop_sizes:
+            cropper = SynchronizedRandomCrop(size=csize)
+            expected_h = csize if isinstance(csize, int) else csize[0]
+            expected_w = csize if isinstance(csize, int) else csize[1]
+
+            out_deg, out_gt, out_mask = cropper(deg, gt, mask)
+
+            self.assertEqual(out_deg.shape, (3, expected_h, expected_w))
+            self.assertEqual(out_gt.shape, (3, expected_h, expected_w))
+            self.assertEqual(out_mask.shape, (expected_h, expected_w))
+            self.assertEqual(out_mask.dtype, torch.int64)
+
+        # Test padding if needed
+        small_deg = torch.rand(3, 30, 40)
+        small_gt = torch.rand(3, 30, 40)
+        small_mask = torch.randint(0, 5, (30, 40), dtype=torch.int64)
+
+        cropper_pad = SynchronizedRandomCrop(size=(50, 60), pad_if_needed=True)
+        pad_deg, pad_gt, pad_mask = cropper_pad(small_deg, small_gt, small_mask)
+        self.assertEqual(pad_deg.shape, (3, 50, 60))
+        self.assertEqual(pad_mask.shape, (50, 60))
+
 
 if __name__ == '__main__':
     unittest.main()
