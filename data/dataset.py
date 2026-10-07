@@ -37,6 +37,13 @@ class EURSDataset(Dataset):
             from utils.paths import FROZEN_MANIFEST_PATH
             manifest_path = str(FROZEN_MANIFEST_PATH)
         self.data_dir = os.path.abspath(data_dir)
+        # Fallback to raw data or mini_dev if directory does not have clean/
+        if not os.path.exists(os.path.join(self.data_dir, 'clean')):
+            if os.path.exists(os.path.join(self.data_dir, 'mini_dev', 'clean')):
+                self.data_dir = os.path.join(self.data_dir, 'mini_dev')
+            elif os.path.exists(os.path.join(os.path.dirname(self.data_dir), 'mini_dev', 'clean')):
+                self.data_dir = os.path.join(os.path.dirname(self.data_dir), 'mini_dev')
+
         self.split = split.lower()
         self.transform = transform
         self.target_size = target_size

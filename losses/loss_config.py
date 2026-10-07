@@ -38,8 +38,13 @@ def compute_training_class_weights(
     """
     Computes class weights normalized to mean 1.0 strictly from the training split.
     """
-    if not os.path.exists(os.path.join(data_dir, 'masks')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'masks')):
-        data_dir = os.path.join(data_dir, 'mini_dev')
+    if not os.path.exists(os.path.join(data_dir, 'masks')):
+        if os.path.exists(os.path.join(data_dir, 'mini_dev', 'masks')):
+            data_dir = os.path.join(data_dir, 'mini_dev')
+        elif os.path.exists(os.path.join(os.path.dirname(data_dir), 'masks')):
+            data_dir = os.path.join(os.path.dirname(data_dir))
+        elif os.path.exists(os.path.join(os.path.dirname(data_dir), 'mini_dev', 'masks')):
+            data_dir = os.path.join(os.path.dirname(data_dir), 'mini_dev')
 
     masks_dir = os.path.join(data_dir, 'masks')
     assert os.path.exists(masks_dir), f"Masks dir not found: {masks_dir}"

@@ -8,6 +8,9 @@ import sys
 import subprocess
 import time
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.paths import REPO_ROOT
+
 TEST_SUITES = [
     ("Stage 1", "Core Architecture & Budget Audit", "tests/test_architecture.py"),
     ("Stage 2", "Dataset Integrity & Pairing Invariants", "tests/test_dataset_integrity.py"),
