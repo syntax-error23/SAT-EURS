@@ -21,6 +21,7 @@ import numpy as np
 import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
 from tools.build_cached_dataset import build_cache, resize_image
 
 
@@ -40,8 +41,9 @@ def test_cache_equivalence():
             target_size=(1024, 1024)
         )
 
-        clean_raw_dir = os.path.join(data_dir, 'clean')
-        masks_raw_dir = os.path.join(data_dir, 'masks')
+        c_raw, m_raw, _ = find_dataset_subdirs(data_dir)
+        clean_raw_dir = c_raw or os.path.join(data_dir, 'clean')
+        masks_raw_dir = m_raw or os.path.join(data_dir, 'masks')
         clean_cached_dir = os.path.join(tmp_cached_dir, 'clean')
         masks_cached_dir = os.path.join(tmp_cached_dir, 'masks')
 
@@ -83,6 +85,12 @@ def test_cache_equivalence():
 
             # 2. Mask Preprocessing Exact Equality
             mask_raw_path = os.path.join(masks_raw_dir, fname)
+            if not os.path.exists(mask_raw_path):
+                for ext in ('.png', '.jpg', '.jpeg'):
+                    cand = os.path.join(masks_raw_dir, f"{scene_id}{ext}")
+                    if os.path.exists(cand):
+                        mask_raw_path = cand
+                        break
             mask_cached_path = os.path.join(masks_cached_dir, f"{scene_id}.png")
 
             raw_mask = cv2.imread(mask_raw_path, cv2.IMREAD_UNCHANGED)
