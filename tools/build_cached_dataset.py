@@ -48,18 +48,20 @@ def resize_image(img: np.ndarray, target_size: Tuple[int, int], mode: str, is_ma
         raise ValueError(f"Unknown aspect ratio mode: {mode}")
 
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
+
+
 def build_cache(
     data_dir: str = "data",
     output_dir: str = "data/cached_1024",
     aspect_ratio_mode: str = "stretch",
     target_size: Tuple[int, int] = (1024, 1024)
 ):
-    if not os.path.exists(os.path.join(data_dir, 'clean')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'clean')):
-        data_dir = os.path.join(data_dir, 'mini_dev')
-
-    clean_dir = os.path.join(data_dir, 'clean')
-    masks_dir = os.path.join(data_dir, 'masks')
-    degraded_dir = os.path.join(data_dir, 'degraded')
+    c_dir, m_dir, d_dir = find_dataset_subdirs(data_dir)
+    clean_dir = c_dir or os.path.join(data_dir, 'clean')
+    masks_dir = m_dir or os.path.join(data_dir, 'masks')
+    degraded_dir = d_dir or os.path.join(data_dir, 'degraded')
 
     out_clean = os.path.join(output_dir, 'clean')
     out_masks = os.path.join(output_dir, 'masks')

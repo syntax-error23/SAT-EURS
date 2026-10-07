@@ -22,7 +22,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import EURSDataset, find_dataset_subdirs
 from losses.multi_task_loss import MultiTaskLoss
 
 # Alias for canonical EURS naming
@@ -38,16 +38,11 @@ def compute_training_class_weights(
     """
     Computes class weights normalized to mean 1.0 strictly from the training split.
     """
-    if not os.path.exists(os.path.join(data_dir, 'masks')):
-        if os.path.exists(os.path.join(data_dir, 'mini_dev', 'masks')):
-            data_dir = os.path.join(data_dir, 'mini_dev')
-        elif os.path.exists(os.path.join(os.path.dirname(data_dir), 'masks')):
-            data_dir = os.path.join(os.path.dirname(data_dir))
-        elif os.path.exists(os.path.join(os.path.dirname(data_dir), 'mini_dev', 'masks')):
-            data_dir = os.path.join(os.path.dirname(data_dir), 'mini_dev')
+    _, masks_dir, _ = find_dataset_subdirs(data_dir)
+    if masks_dir is None:
+        masks_dir = os.path.join(data_dir, 'masks')
 
-    masks_dir = os.path.join(data_dir, 'masks')
-    assert os.path.exists(masks_dir), f"Masks dir not found: {masks_dir}"
+    assert os.path.exists(masks_dir), f"Masks dir not found (checked 'masks' and 'gt_masks' under {data_dir}): {masks_dir}"
     assert os.path.exists(manifest_path), f"Manifest not found: {manifest_path}"
 
     with open(manifest_path, 'r') as f:

@@ -26,6 +26,8 @@ from typing import List, Tuple
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
+from utils.paths import REPO_ROOT
+
 TEST_SUITES: List[Tuple[str, str, str]] = [
     ("WP 2A.1", "ONNX Track 2 Contract & Numerical Parity", "tests/test_onnx_contract.py"),
     ("WP 2A.2/3", "Manifest Cryptographic SHA-256 & Scene-Disjointness", "tools/verify_manifest.py"),
@@ -48,10 +50,12 @@ def run_preflight_gatekeeper():
     print("=" * 70 + "\n")
 
     for code, desc, script in TEST_SUITES:
+        script_abs = str(REPO_ROOT / script)
         print(f"--> Executing [{code}] {desc} ({script})...")
         t0 = time.time()
         res = subprocess.run(
-            [sys.executable, script],
+            [sys.executable, script_abs],
+            cwd=str(REPO_ROOT),
             capture_output=True,
             text=True,
             encoding='utf-8',

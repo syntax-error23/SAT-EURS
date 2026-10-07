@@ -25,6 +25,10 @@ import numpy as np
 from PIL import Image
 
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
+
+
 def compute_sha256(filepath: str) -> str:
     h = hashlib.sha256()
     with open(filepath, 'rb') as f:
@@ -34,12 +38,10 @@ def compute_sha256(filepath: str) -> str:
 
 
 def sanitize_dataset(data_dir: str, audits_dir: str = "audits") -> Dict[str, Any]:
-    if not os.path.exists(os.path.join(data_dir, 'clean')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'clean')):
-        data_dir = os.path.join(data_dir, 'mini_dev')
-
-    clean_dir = os.path.join(data_dir, 'clean')
-    masks_dir = os.path.join(data_dir, 'masks')
-    degraded_dir = os.path.join(data_dir, 'degraded')
+    c_dir, m_dir, d_dir = find_dataset_subdirs(data_dir)
+    clean_dir = c_dir or os.path.join(data_dir, 'clean')
+    masks_dir = m_dir or os.path.join(data_dir, 'masks')
+    degraded_dir = d_dir or os.path.join(data_dir, 'degraded')
 
     os.makedirs(audits_dir, exist_ok=True)
     quarantine_log = os.path.join(audits_dir, "dataset_quarantine.json")

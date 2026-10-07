@@ -73,13 +73,23 @@ def train_model(args):
         target_amp_dtype = torch.float32
         use_scaler = False
 
+    # Safety guardrail: Multi-process DataLoader workers on Windows CPU can cause severe RAM exhaustion.
+    # Automatically clamp workers to 0 on CPU to ensure 100% stable execution on developer laptops.
+    eff_workers = 0 if device.type == 'cpu' else args.num_workers
+    eff_persistent = False if eff_workers == 0 else (args.num_workers > 0)
+    eff_pin_memory = (device.type == 'cuda')
+
+    # Safety guardrail: CPU dry-run automatically uses 256x256 to prevent CPU freeze / memory thrashing on laptop
+    if device.type == 'cpu' and args.dry_run and not getattr(args, '_target_size_explicit', False):
+        args.target_size = 256
+
     print("=" * 65)
     print("                  EURS-NET V2 TRAINING ENGINE")
     print("=" * 65)
     print(f"  Target Device:        {device}")
     print(f"  Batch Size:           {args.batch_size} (effective: {args.batch_size * args.grad_accum})")
     print(f"  Grad Accumulation:    {args.grad_accum}")
-    print(f"  DataLoader Workers:   {args.num_workers}")
+    print(f"  DataLoader Workers:   {eff_workers} (configured: {args.num_workers})")
     print(f"  Sampler:              {args.sampler}")
     print(f"  Base Learning Rate:   {args.lr}")
     print(f"  Total Epochs:         {args.epochs}")
@@ -114,19 +124,27 @@ def train_model(args):
     else:
         train_sampler = StandardSampler(train_dataset, shuffle=True, seed=args.seed)
 
+    # Safety guardrail: Multi-process DataLoader workers on Windows CPU can cause severe RAM exhaustion.
+    # Automatically clamp workers to 0 on CPU to ensure 100% stable execution on developer laptops.
+    eff_workers = 0 if device.type == 'cpu' else args.num_workers
+    eff_persistent = False if eff_workers == 0 else (args.num_workers > 0)
+    eff_pin_memory = (device.type == 'cuda')
+
     train_loader = DataLoader(
         train_dataset,
         batch_size=args.batch_size,
         sampler=train_sampler,
-        num_workers=args.num_workers,
-        pin_memory=(device.type == 'cuda'),
-        persistent_workers=(args.num_workers > 0)
+        num_workers=eff_workers,
+        pin_memory=eff_pin_memory,
+        persistent_workers=eff_persistent
     )
     val_loader = DataLoader(
         val_dataset,
         batch_size=args.batch_size,
         shuffle=False,
-        num_workers=args.num_workers
+        num_workers=eff_workers,
+        pin_memory=eff_pin_memory,
+        persistent_workers=eff_persistent
     )
 
     # 2. Model, Loss, Optimizer
@@ -222,12 +240,31 @@ def train_model(args):
                 print(f"  [Epoch {epoch:2d}/{epochs_to_run:2d}] Batch {batch_idx:2d}/{len(train_loader):2d} | "
                       f"LR: {current_lr:.2e} | Loss: {loss.item():.4f} (Seg: {l_dict['loss_seg']:.4f}, Rest: {l_dict['loss_rest']:.4f})")
 
+            if args.dry_run and batch_idx >= 2:
+                if batch_idx % args.grad_accum != 0:
+                    if use_scaler:
+                        scaler.unscale_(optimizer)
+                        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=args.clip_grad)
+                        scaler.step(optimizer)
+                        scaler.update()
+                    else:
+                        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=args.clip_grad)
+                        optimizer.step()
+                    optimizer.zero_grad()
+                print(f"  [DRY RUN] Completed {batch_idx} batches smoke test successfully.")
+                break
+
         scheduler.step()
 
         # Validation & Checkpoint Selection
         if epoch % args.val_interval == 0 or epoch == epochs_to_run:
             print(f"\n  Running validation evaluation for Epoch {epoch}...")
-            val_metrics = evaluate(model, val_loader, device=device.type)
+            val_metrics = evaluate(
+                model=model,
+                val_loader=val_loader,
+                device=device.type,
+                max_batches=1 if args.dry_run else None
+            )
             comp_score = val_metrics['composite']['Composite_Score']
 
             # Save latest checkpoint atomically
@@ -290,30 +327,47 @@ if __name__ == '__main__':
     parser.add_argument('--resume', type=str, default=None)
     args = parser.parse_args()
 
-    # Load YAML config if specified (CLI arguments override YAML settings)
+    # Load YAML config if specified (explicit CLI arguments override YAML settings)
     if args.config and os.path.exists(args.config):
         with open(args.config, 'r') as f:
             cfg = yaml.safe_load(f)
+        cli_args = {a.split('=')[0][2:] for a in sys.argv[1:] if a.startswith('--')}
         if 'training' in cfg:
-            args.epochs = cfg['training'].get('total_epochs', args.epochs)
-            args.warmup_epochs = cfg['training'].get('warmup_epochs', args.warmup_epochs)
-            args.lr = cfg['training'].get('base_lr', args.lr)
-            args.min_lr = cfg['training'].get('min_lr', args.min_lr)
-            args.batch_size = cfg['training'].get('batch_size', args.batch_size)
-            args.grad_accum = cfg['training'].get('grad_accum_steps', args.grad_accum)
-            args.seed = cfg['training'].get('seed', args.seed)
+            if 'epochs' not in cli_args:
+                args.epochs = cfg['training'].get('total_epochs', args.epochs)
+            if 'warmup_epochs' not in cli_args:
+                args.warmup_epochs = cfg['training'].get('warmup_epochs', args.warmup_epochs)
+            if 'lr' not in cli_args:
+                args.lr = cfg['training'].get('base_lr', args.lr)
+            if 'min_lr' not in cli_args:
+                args.min_lr = cfg['training'].get('min_lr', args.min_lr)
+            if 'batch_size' not in cli_args:
+                args.batch_size = cfg['training'].get('batch_size', args.batch_size)
+            if 'grad_accum' not in cli_args:
+                args.grad_accum = cfg['training'].get('grad_accum_steps', args.grad_accum)
+            if 'seed' not in cli_args:
+                args.seed = cfg['training'].get('seed', args.seed)
         if 'precision' in cfg:
-            args.use_amp = cfg['precision'].get('use_amp', args.use_amp)
-            args.amp_dtype = cfg['precision'].get('amp_dtype', args.amp_dtype)
+            if 'use_amp' not in cli_args:
+                args.use_amp = cfg['precision'].get('use_amp', args.use_amp)
+            if 'amp_dtype' not in cli_args:
+                args.amp_dtype = cfg['precision'].get('amp_dtype', args.amp_dtype)
         if 'dataloader' in cfg:
-            args.num_workers = cfg['dataloader'].get('num_workers', args.num_workers)
-            args.sampler = cfg['dataloader'].get('sampler', args.sampler)
-            ts = cfg['dataloader'].get('target_size', [args.target_size, args.target_size])
-            args.target_size = ts[0] if isinstance(ts, list) else ts
+            if 'num_workers' not in cli_args:
+                args.num_workers = cfg['dataloader'].get('num_workers', args.num_workers)
+            if 'sampler' not in cli_args:
+                args.sampler = cfg['dataloader'].get('sampler', args.sampler)
+            if 'target_size' not in cli_args:
+                ts = cfg['dataloader'].get('target_size', [args.target_size, args.target_size])
+                args.target_size = ts[0] if isinstance(ts, list) else ts
         if 'paths' in cfg:
-            args.data_dir = cfg['paths'].get('cache_dir', cfg['paths'].get('data_dir', args.data_dir))
-            args.manifest = cfg['paths'].get('manifest_path', args.manifest)
-            args.checkpoint_dir = cfg['paths'].get('checkpoint_dir', args.checkpoint_dir)
+            if 'data_dir' not in cli_args:
+                args.data_dir = cfg['paths'].get('cache_dir', cfg['paths'].get('data_dir', args.data_dir))
+            if 'manifest' not in cli_args:
+                args.manifest = cfg['paths'].get('manifest_path', args.manifest)
+            if 'checkpoint_dir' not in cli_args:
+                args.checkpoint_dir = cfg['paths'].get('checkpoint_dir', args.checkpoint_dir)
         print(f"[CONFIG] Loaded base configuration from: {args.config}")
 
+    args._target_size_explicit = ('target_size' in cli_args) if 'cli_args' in locals() else any(a.startswith('--target_size') for a in sys.argv)
     train_model(args)

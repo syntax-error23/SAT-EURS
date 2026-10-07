@@ -5,6 +5,7 @@ Computes dataset-level mIoU, per-class IoU, F1, PSNR_norm, SSIM, Sharpness Ratio
 
 import os
 import argparse
+from typing import Optional
 import torch
 from torch.utils.data import DataLoader
 
@@ -21,7 +22,8 @@ from metrics import (
 def evaluate(
     model: torch.nn.Module,
     val_loader: DataLoader,
-    device: str = 'cpu'
+    device: str = 'cpu',
+    max_batches: Optional[int] = None
 ) -> dict:
     model.eval()
     model.to(device)
@@ -31,7 +33,7 @@ def evaluate(
     nr_eval = NonReferenceQualityEvaluator()
 
     with torch.no_grad():
-        for deg, clean, mask, meta in val_loader:
+        for b_idx, (deg, clean, mask, meta) in enumerate(val_loader, 1):
             deg = deg.to(device)
             clean = clean.to(device)
             mask = mask.to(device)
@@ -42,6 +44,9 @@ def evaluate(
             seg_eval.update(seg_logits, mask)
             rest_eval.update(restored_rgb, clean)
             nr_eval.update(restored_rgb)
+
+            if max_batches is not None and b_idx >= max_batches:
+                break
 
     seg_res = seg_eval.compute()
     rest_res = rest_eval.compute()

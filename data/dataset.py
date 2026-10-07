@@ -13,6 +13,45 @@ import torch
 from torch.utils.data import Dataset
 
 
+def find_dataset_subdirs(base_dir: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """
+    Finds clean (or gt_images), masks (or gt_masks), and degraded subdirectories
+    supporting official competition archive conventions, subdirectories, and mini_dev fallbacks.
+    """
+    search_dirs = [
+        base_dir,
+        os.path.join(base_dir, 'train'),
+        os.path.join(base_dir, 'mini_dev'),
+        os.path.join(os.path.dirname(base_dir), 'mini_dev') if os.path.dirname(base_dir) else base_dir,
+    ]
+
+    clean_dir, masks_dir, degraded_dir = None, None, None
+
+    for d in search_dirs:
+        if not os.path.isdir(d):
+            continue
+        if clean_dir is None:
+            for cand in ['clean', 'gt_images']:
+                p = os.path.join(d, cand)
+                if os.path.isdir(p):
+                    clean_dir = p
+                    break
+        if masks_dir is None:
+            for cand in ['masks', 'gt_masks']:
+                p = os.path.join(d, cand)
+                if os.path.isdir(p):
+                    masks_dir = p
+                    break
+        if degraded_dir is None:
+            for cand in ['degraded']:
+                p = os.path.join(d, cand)
+                if os.path.isdir(p):
+                    degraded_dir = p
+                    break
+
+    return clean_dir, masks_dir, degraded_dir
+
+
 class EURSDataset(Dataset):
     """
     EURS PyTorch Dataset:
@@ -37,25 +76,19 @@ class EURSDataset(Dataset):
             from utils.paths import FROZEN_MANIFEST_PATH
             manifest_path = str(FROZEN_MANIFEST_PATH)
         self.data_dir = os.path.abspath(data_dir)
-        # Fallback to raw data or mini_dev if directory does not have clean/
-        if not os.path.exists(os.path.join(self.data_dir, 'clean')):
-            if os.path.exists(os.path.join(self.data_dir, 'mini_dev', 'clean')):
-                self.data_dir = os.path.join(self.data_dir, 'mini_dev')
-            elif os.path.exists(os.path.join(os.path.dirname(self.data_dir), 'mini_dev', 'clean')):
-                self.data_dir = os.path.join(os.path.dirname(self.data_dir), 'mini_dev')
-
         self.split = split.lower()
         self.transform = transform
         self.target_size = target_size
 
         assert self.split in ('train', 'val', 'all'), f"Invalid split: {self.split}"
 
-        self.clean_dir = os.path.join(self.data_dir, 'clean')
-        self.masks_dir = os.path.join(self.data_dir, 'masks')
-        self.degraded_dir = os.path.join(self.data_dir, 'degraded')
+        clean_dir, masks_dir, degraded_dir = find_dataset_subdirs(self.data_dir)
+        self.clean_dir = clean_dir or os.path.join(self.data_dir, 'clean')
+        self.masks_dir = masks_dir or os.path.join(self.data_dir, 'masks')
+        self.degraded_dir = degraded_dir or os.path.join(self.data_dir, 'degraded')
 
-        assert os.path.exists(self.clean_dir), f"Clean directory not found: {self.clean_dir}"
-        assert os.path.exists(self.masks_dir), f"Masks directory not found: {self.masks_dir}"
+        assert os.path.exists(self.clean_dir), f"Clean directory not found (checked 'clean' and 'gt_images' under {self.data_dir}): {self.clean_dir}"
+        assert os.path.exists(self.masks_dir), f"Masks directory not found (checked 'masks' and 'gt_masks' under {self.data_dir}): {self.masks_dir}"
         assert os.path.exists(self.degraded_dir), f"Degraded directory not found: {self.degraded_dir}"
 
         # Load frozen persistent manifest
