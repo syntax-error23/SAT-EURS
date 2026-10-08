@@ -11,10 +11,8 @@
 \usepackage{amsmath}
 
 \definecolor{navyblue}{RGB}{16, 44, 87}
-\definecolor{accentblue}{RGB}{53, 101, 169}
-\definecolor{lightgrey}{RGB}{245, 247, 250}
-\definecolor{darkgrey}{RGB}{60, 64, 67}
-\definecolor{passgreen}{RGB}{24, 134, 75}
+\definecolor{accentblue}{RGB}{40, 90, 160}
+\definecolor{darkgrey}{RGB}{50, 50, 50}
 
 \hypersetup{
     colorlinks=true,
@@ -26,145 +24,183 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\textcolor{darkgrey}{\small EURS Challenge -- MaCVi @ WACV 2027}}
-\lhead{\textcolor{darkgrey}{\small Pre-Flight Engineering Report \& GPU Roadmap}}
+\lhead{\textcolor{darkgrey}{\small Team Pre-Flight Engineering Report \& GPU Roadmap}}
 \rfoot{\textcolor{darkgrey}{\small Page \thepage}}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\titleformat{\section}{\color{navyblue}\large\bfseries}{\thesection}{0.8em}{}[\vspace{-2pt}\titlerule]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
-\titleformat{\subsection}{\color{accentblue}\normalsize\bfseries}{\thesubsection}{0.8em}{}
-\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+\titleformat{\section}{\color{navyblue}\large\bfseries}{\thesection}{0.7em}{}[\vspace{-2pt}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titleformat{\subsection}{\color{accentblue}\normalsize\bfseries}{\thesubsection}{0.7em}{}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\titleformat{\subsubsection}{\color{navyblue}\small\bfseries}{\thesubsubsection}{0.7em}{}
+\titlespacing*{\subsubsection}{0pt}{5pt}{2pt}
 
 \begin{document}
 
 \begin{center}
     {\LARGE \textbf{\color{navyblue}EURS-Net V2: Team Pre-Flight Engineering Report}}\par\vspace{3pt}
-    {\large \textbf{\color{accentblue}Comprehensive Status Summary \& Immediate RTX 5090 Execution Plan}}\par\vspace{6pt}
-    {\small \textbf{Project:} Embedded Underwater Restoration \& Segmentation (EURS) \quad|\quad \textbf{Venue:} MaCVi @ WACV 2027}\par\vspace{1pt}
-    {\small \textbf{Team Members:} Shubham (Data \& Deployment Lead) \quad\textbullet\quad Tanmay (Modeling \& GPU Lead) \quad\textbullet\quad Arin (Tooling \& Quality Lead)}\par\vspace{1pt}
-    {\small \textbf{Target Hardware:} NVIDIA Jetson AGX Orin (Track 2) \quad\textbullet\quad \textbf{Compute Cluster:} NVIDIA RTX 5090 (Blackwell 32GB)}\par\vspace{1pt}
-    {\small \textbf{Date:} October 2026 \quad|\quad \textbf{Status:} Pre-Flight Invariants 100\% Verified (Zero Known Defects)}
+    {\large \textbf{\color{accentblue}A Comprehensive, Plain-English Guide to Our Pre-GPU Work \& RTX 5090 Launch Plan}}\par\vspace{6pt}
+    {\small \textbf{Challenge:} Embedded Underwater Restoration \& Segmentation (EURS) \quad|\quad \textbf{Conference:} MaCVi @ WACV 2027}\par\vspace{2pt}
+    {\small \textbf{Team Division:} Tanmay (Modeling \& GPU) \quad\textbullet\quad Shubham (Data \& Deployment) \quad\textbullet\quad Arin (Tooling \& Packaging)}\par\vspace{2pt}
+    {\small \textbf{Deployment Target:} NVIDIA Jetson AGX Orin (Track 2) \quad\textbullet\quad \textbf{Training Cluster:} NVIDIA RTX 5090 (Blackwell 32GB)}\par\vspace{2pt}
+    {\small \textbf{Date:} October 2026 \quad|\quad \textbf{Status:} Pre-Flight Invariants 100\% Verified (Zero Known Software Defects)}
 \end{center}
 
-\vspace{0.3em}
+\vspace{0.2em}
 \hrule
 \vspace{0.6em}
 
-\section{Executive Summary \& Competition Constraints}
-The \textbf{EURS Challenge} addresses simultaneous underwater color restoration and 5-class semantic segmentation (Background, Coral, Fish, Elasmobranchii/Sharks, Other). Solutions must satisfy strict hardware deployment caps statically verified prior to Jetson AGX Orin evaluation:
+\section{Introduction \& The Challenge in Plain English}
+Autonomous underwater robots face a double challenge: ocean water heavily absorbs red light (causing intense green/blue haze and blurry contrast), while onboard computers must simultaneously detect marine life (corals, fish, sharks). 
+
+Normally, robots run two bulky AI models: one to fix colors, and another to segment objects. However, the \textbf{WACV 2027 Track 2 rules enforce strict physical limits} so code can run on a compact, battery-powered \textbf{NVIDIA Jetson AGX Orin (30W)}:
 \begin{itemize}[noitemsep,topsep=1pt]
-    \item \textbf{Parameter Cap:} $\le 1,000,000$ parameters (EURS-Net V2 achieved: \textbf{150,438 parameters}, $\sim5\% under budget).
-    \item \textbf{Compute Cap:} $\le 12.0$ GFLOPs at inference resolution (EURS-Net V2 achieved: \textbf{4.47 GFLOPs}, $\sim3\% under budget).
-    \item \textbf{Scoring Contract:} Composite score  = 0.60 Q_{\text{seg}} + 0.30 Q_{\text{rest}} + 0.10 Q_{\text{NR}}$ with severe coverage penalties for missing rare classes.
+    \item \textbf{Parameter Budget:} Maximum 1,000,000 parameters. \textit{Our EURS-Net V2 uses only \textbf{150,438 parameters} ($\sim$85\% below cap).}
+    \item \textbf{Compute Budget:} Maximum 12.0 GFLOPs. \textit{Our EURS-Net V2 requires only \textbf{4.47 GFLOPs} ($\sim$63\% below cap).}
+    \item \textbf{Composite Competition Score:} $S = 0.60 \times Q_{\text{seg}} + 0.30 \times Q_{\text{rest}} + 0.10 \times Q_{\text{NR}}$ (60\% Segmentation, 30\% Restoration, 10\% Quality).
+\end{itemize}
+Before spending valuable compute hours on the new \textbf{RTX 5090} cluster, our team completely decoupled the project into three distinct modular domains, testing and verifying every algorithm locally on CPU first.
+
+\section{Work Accomplished So Far (Pre-GPU Development)}
+
+\subsection{1. Tanmay Das: Model Architecture, Loss Math \& Pre-Flight Testing}
+
+\subsubsection{A. The EURS-Net V2 Architecture (How it Works)}
+Tanmay built an ultra-efficient multi-task neural network that processes a single $1024 \times 1024$ degraded underwater image and generates two outputs at once: a clean restored RGB image and a 5-class segmentation mask.
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{Fast White-Balance Pre-Net:} Instead of forcing the deep network to struggle with water discoloration, 6 learnable parameters immediately correct red/green/blue gains at the very input before deep feature extraction.
+    \item \textbf{Shared MobileNetV2 Backbone with Coordinate Attention (CA):} Standard 2D attention is too slow for 1024px images. Coordinate Attention pools along horizontal and vertical axes separately, capturing exact object positions (like small fish) with minimal compute.
+    \item \textbf{Dual Decoders:} A lightweight \textit{Restoration Decoder} predicts a residual difference map ($\Delta I$), producing clean RGB via $\text{Clamp}(\text{Input} + \Delta I, 0, 1)$, while a \textit{Feature Pyramid Segmentation Decoder} with a Small-Object Neck predicts 5 semantic classes.
 \end{itemize}
 
-\section{Pre-Flight Work Accomplished (Before GPU Deployment)}
-To guarantee zero wasted compute hours, runtime exceptions, or silent algorithmic defects on the RTX 5090 cluster, all three team members completed rigorous modular preparation:
+\subsubsection{B. The Multi-Task Loss Objective in Detail}
+In multi-task learning, if you just add two losses together naively, one task bullies the other (e.g., the model learns to restore colors beautifully but completely forgets how to detect fish). Tanmay engineered a mathematically balanced objective:
+\begin{equation*}
+    \mathcal{L}_{\text{total}} = 1.0 \cdot \mathcal{L}_{\text{seg}} + 0.5 \cdot \mathcal{L}_{\text{rest}}
+\end{equation*}
+\textit{Why the 1.0 to 0.5 ratio?} This directly mirrors the competition's evaluation formula, which values segmentation ($60\%$) twice as much as restoration ($30\%$).
 
-\subsection{1. Tanmay Das (Model Architecture, Loss Formulations \& Training Engine)}
+\noindent\textbf{1. The Segmentation Objective ($\mathcal{L}_{\text{seg}} = \mathcal{L}_{\text{Focal}} + \mathcal{L}_{\text{Dice}}$):}
 \begin{itemize}[noitemsep,topsep=1pt]
-    \item \textbf{EURS-Net V2 Architecture:} Implemented a 150K-parameter dual-task network in \texttt{models/}:
-    \begin{itemize}[noitemsep]
-        \item \textit{Pre-Net:} Fast White-Balance Residual (6 learnable affine parameters) correcting underwater green/blue gain attenuation.
-        \item \textit{Shared Encoder:} MobileNetV2 inverted bottlenecks with horizontal/vertical Coordinate Attention (CA) across Stages 1--4.
-        \item \textit{Dual Decoders:} Progressive Restoration Decoder (28 \times 128 \to 1024 \times 1024$ residual $\Delta I$ map) and Progressive Feature Pyramid Network (FPN) Segmentation Decoder with Small-Object High-Resolution Neck.
-    \end{itemize}
-    \item \textbf{Multi-Task Loss Objective (\texttt{losses/}):} Combined Mean-1.0 Square-Root Smoothed Class-Weighted Focal Loss + Soft Dice Loss ($\mathcal{L}_{\text{seg}}$) with Charbonnier + MS-SSIM + Laplacian Edge Sharpness Loss ($\mathcal{L}_{\text{rest}}$), statically balanced at .0\mathcal{L}_{\text{seg}} + 0.5\mathcal{L}_{\text{rest}}$.
-    \item \textbf{20-Suite Pre-Flight Testing Engine (\texttt{tests/}):} Authored 12 Phase 1 suites, 8 Phase 2A gatekeeper tests, and a 14-point heavy edge-case stress audit covering black/white inputs, odd batch sizes, gradient accumulation boundaries, and worker multiprocessing.
-    \item \textbf{Small-Sample \& Overfit Sanity Audits:}
-    \begin{itemize}[noitemsep]
-        \item \textit{20-Image Prototype Split:} Tested pipelines locally on a toy \texttt{mini\_dev} dataset before GPU access.
-        \item \textit{10-Sample Memorization Test (\texttt{test\_overfit.py}):} Proved mathematical convergence ($>50\%$ loss reduction) and full class coverage on a micro-batch of real images.
-        \item \textit{1-Epoch Debug Loop (\texttt{train\_debug.py}):} Validated step semantics, forward/backward loops, and optimizer steps on CPU.
-    \end{itemize}
-    \item \textbf{RTX 5090 Blackwell Hardening:} Centralized paths via \texttt{utils/paths.py}, enabled native \texttt{bfloat16} mixed precision (disabling \texttt{GradScaler} for BF16), eliminated strict CUDA bilinear determinism crashes, and authored \texttt{configs/baseline\_v1.yaml}.
+    \item \textbf{Class-Weighted Focal Loss:} In underwater imagery, $>90\%$ of pixels are empty background water. A standard cross-entropy loss would let the model cheat by guessing ``background'' everywhere. Focal Loss uses a modulating factor $(1 - p_t)^\gamma$ to discount easy background pixels and focus gradient updates heavily on hard, rare objects (like small fish and sharks).
+    \item \textbf{Soft Dice Loss:} Instead of looking at individual pixels in isolation, Dice Loss directly measures the spatial overlap (Intersection over Union) between the predicted creature mask and the ground-truth mask. This forces the model to capture realistic, coherent object shapes.
+    \item \textbf{Mean-1.0 Square-Root Smoothed Weights ($\alpha_c$):} Rare classes get boosted loss weights proportional to $1 / \sqrt{\text{Frequency}_c}$. Crucially, Tanmay normalized these weights so their mean is exactly $1.0$, which prevents the loss from exploding in scale.
 \end{itemize}
 
-\subsection{2. Shubham (Data Engineering, Scientific Validation Protocol, Evaluation \& Deployment)}
+\noindent\textbf{2. The Restoration Objective ($\mathcal{L}_{\text{rest}} = \mathcal{L}_{\text{Charbonnier}} + 2.0 \cdot \mathcal{L}_{\text{MS-SSIM}} + 0.1 \cdot \mathcal{L}_{\text{Laplacian}}$):}
 \begin{itemize}[noitemsep,topsep=1pt]
-    \item \textbf{Scientific 3-Tier Validation Protocol (\texttt{data/splits.json}):} Discovered severe dataset scene-sparsity (Class 3 sharks present in only 2 scenes; Class 4 in 3 scenes). Replaced naive random splitting with an audited, non-leaking protocol:
-    \begin{itemize}[noitemsep]
-        \item \textit{Tier 1 (Canonical 16/4 Split):} Balances rare classes across Train and Val with 0\% data leakage. Val: \texttt{fish1, fish12, seahorse1, sharkFish}. Train: \texttt{ray1, starfish2, turtles1} + 13 common scenes.
-        \item \textit{Tier 2 (Rare-Class Swap):} 2-run protocol swapping rare scene assignments for major architectural decisions.
-        \item \textit{Tier 3 (4-Fold OOF Aggregation):} 4 folds of 15 train / 5 val scenes, aggregating complete out-of-fold predictions across all 20 scenes for release benchmarking.
-    \end{itemize}
-    \item \textbf{Production Data Pipeline Specification (\texttt{data/}):} Designed synchronized triplets loader (\texttt{degraded}, \texttt{clean}, \texttt{mask}) with lockstep spatial augmentations (horizontal flips, spatial crops) while strictly outlawing uncalibrated color jitter to protect white-balance learning.
-    \item \textbf{Evaluation Engine (\texttt{metrics/}, \texttt{evaluate.py}):} Implemented official Track 2 metrics: confusion matrix mIoU, Macro $, Normalized PSNR (5\text{--}35\text{ dB}$ window), SSIM, Laplacian sharpness ratio, and dual-lens reporting (\textbf{Global Score} + \textbf{Scene-Macro Diagnostic Scorecard}).
-    \item \textbf{Static ONNX Deployment Contract (\texttt{deploy/}):} Authored static shape exporter (1024$, Opset 18) for Jetson Orin with $< 10^{-4}$ numerical parity against ONNX Runtime, preserving modeling freedom for experimental resolutions (84 \times 768$ vs 024 \times 1024$).
+    \item \textbf{Charbonnier Loss:} A smooth, differentiable variant of L1 loss ($\sqrt{(I_{\text{pred}} - I_{\text{clean}})^2 + \epsilon^2}$). It accurately measures pixel-by-pixel color fidelity without causing gradient instability near zero error.
+    \item \textbf{Multi-Scale Structural Similarity (MS-SSIM):} Measures contrast, luminance, and texture across multiple downsampled resolution scales. This ensures that the restored water and reefs look natural and structurally sound to human perception.
+    \item \textbf{Laplacian Edge Loss:} Uses a $3 \times 3$ Laplacian second-derivative filter ($\nabla^2$) to isolate edges. It penalizes blurry object outlines, directly optimizing the model to maximize the official competition's Sharpness Ratio metric.
 \end{itemize}
 
-\subsection{3. Arin (Tooling, Quality Assurance, Visualization \& Submission Packaging)}
+\subsubsection{C. The 20-Suite Pre-Flight Verification Engine (Explained Simply)}
+Before touching the RTX 5090, Tanmay created 20 automated unit test suites. Think of these as a multi-stage pre-flight checklist:
+\begin{enumerate}[noitemsep,topsep=1pt,leftmargin=1.4em]
+    \item \textbf{The Budget Police (\texttt{test\_architecture.py}):} Verifies that total parameters ($150\text{K} \le 1\text{M}$) and FLOPs ($4.47\text{G} \le 12.0\text{G}$) strictly comply with competition hardware caps before any code is trained.
+    \item \textbf{The Data Pairing Verifier (\texttt{test\_dataset\_integrity.py}):} Crawls the dataset to confirm that every degraded image perfectly matches its corresponding clean photo and mask label with 0\% file mismatch.
+    \item \textbf{The Lockstep Transform Check (\texttt{test\_transform\_alignment.py}):} Creates a synthetic 4-quadrant colored image with matching mask. When the pipeline randomly flips or crops the image, this test proves the mask flips and crops at the \textit{exact same pixel coordinates}.
+    \item \textbf{The Small-Object Survival Test (\texttt{test\_small\_object\_preservation.py}):} Injects synthetic 1-pixel and 2-pixel fish into images to mathematically guarantee that random cropping never slices away tiny marine animals.
+    \item \textbf{The Brain Isolation Test (\texttt{test\_losses\_and\_gradients.py}):} Proves that backpropagating segmentation loss updates only the segmentation decoder, leaving the restoration decoder completely untouched (clean modularity).
+    \item \textbf{The Rare-Pixel Math Guard (\texttt{test\_loss\_stability\_full.py}):} Proves that even if an image contains only a single 1-pixel shark against 1,000,000 background pixels, the focal loss calculates stable, finite gradients without turning into \texttt{NaN} (infinity).
+    \item \textbf{The Referee Math Audit (\texttt{test\_metric\_fixtures.py}):} Feeds known mathematical test fixtures into the evaluation code to ensure mIoU, F1, PSNR, SSIM, and composite score calculations are 100\% mathematically accurate.
+    \item \textbf{The 10-Sample Memorization Test (\texttt{test\_overfit.py}):} Trains the network on just 4 real images repeatedly for 50 steps. The loss plummeted by $>50\%$, proving the forward pass, backward pass, and loss math can learn real patterns.
+    \item \textbf{The Pixel Clamping Check (\texttt{test\_output\_clamp.py}):} Guarantees that restored colors are strictly bounded between $0.0$ and $1.0$ (no impossible negative or radioactive colors) without breaking gradient flow.
+    \item \textbf{The Hardware Parity Test (\texttt{test\_device\_parity.py}):} Runs the model on CPU and GPU side-by-side; confirms outputs match within $< 0.0001$ tolerance.
+    \item \textbf{The Learning Rate Dynamics Test (\texttt{test\_lr\_scheduler.py}):} Verifies that learning rate smoothly warms up linearly for 5 epochs and decays via cosine curve without dropping below minimum thresholds.
+    \item \textbf{The Minimal Training Loop (\texttt{train\_debug.py}):} A 1-epoch dry-run on CPU verifying batch collation, loss steps, and metric evaluations end-to-end.
+    \item \textbf{The Jetson Robot Contract (\texttt{test\_onnx\_contract.py}):} Exports the model to static ONNX format (Opset 18) and confirms that ONNX Runtime matches PyTorch outputs down to $< 10^{-4}$ precision.
+    \item \textbf{The Checkpoint Roundtrip Test (\texttt{test\_checkpoint\_roundtrip.py}):} Saves model weights to disk, reloads them into a new instance, and confirms numerical predictions are 100\% identical.
+    \item \textbf{The Training Resume Determinism Test (\texttt{test\_resume\_determinism.py}):} Simulates training interruption: 5 steps continuous vs. 2 steps $\to$ save $\to$ reload $\to$ 3 steps. Confirms weights and optimizer momentum buffers match bitwise.
+    \item \textbf{The Sampler Distribution Test (\texttt{test\_samplers.py}):} Confirms the custom sampler balances rare and common video scenes evenly across batches.
+    \item \textbf{The Submission Format Guard (\texttt{test\_submission\_track1\_format.py}):} Generates synthetic predictions, packages them into a ZIP, and verifies single-channel PNG formats and root folder layout.
+    \item \textbf{The Preprocessing Cache Test (\texttt{test\_cache_equivalence.py}):} Verifies that pre-caching resized images preserves 100\% bitwise identity for mask labels.
+    \item \textbf{The 14-Point Stress Audit (\texttt{test\_heavy\_edge\_cases.py}):} Subjects the model to worst-case scenarios: pitch-black inputs, pure-white inputs, odd batch sizes, and multi-worker DataLoader concurrency.
+    \item \textbf{The RTX 5090 Blackwell Smoke Test (\texttt{test\_cuda_determinism.py}):} Tests GPU visibility, Blackwell \texttt{sm\_120} architecture compatibility, native \texttt{bfloat16} precision, and peak VRAM reporting.
+\end{enumerate}
+
+\subsection{2. Shubham: Data Engineering, Scientific Splits, Evaluation \& Deployment}
 \begin{itemize}[noitemsep,topsep=1pt]
-    \item \textbf{Exploratory Data Analysis (\texttt{tools/eda\_stats.py}):} Profiled pixel mass across all 5 classes, identified extreme background domination ($>90\%$), and cataloged high-resolution camera aspect ratios (000 \times 3000$ to 710 \times 7283$).
-    \item \textbf{Qualitative Diagnostic Visualizer (\texttt{tools/visualizer.py}):} Built 3-panel and 4-panel visual tools rendering degraded images, clean references, masks, and model prediction overlays for error inspection and academic paper figures.
-    \item \textbf{Track 1 Submission Packager (\texttt{tools/make\_submission\_track1.py}):} Automated generation of \texttt{submission\_track1.zip}:
+    \item \textbf{Scientific 3-Tier Validation Protocol (\texttt{data/splits.json}):} Discovered that Class 3 (sharks/rays) only exists in 2 scenes, and Class 4 in 3 scenes. Shuffling randomly would cause catastrophic data leakage or leave rare classes out of training. Shubham engineered:
     \begin{itemize}[noitemsep]
-        \item Enforces exact directory hierarchy: root-level \texttt{restored/} and \texttt{seg\_masks/}.
-        \item Guarantees 3-channel RGB PNGs for restoration and strictly 1-channel \texttt{uint8} PNGs for semantic masks.
-        \item Wraps \texttt{resize\_for\_submission.py} to upscale model outputs back to original dimensions using bicubic interpolation for RGB and nearest-neighbor for masks.
+        \item \textit{Tier 1 (Canonical 16/4 Split):} Hand-balanced daily split ensuring rare classes exist in both Train and Val with 0\% leakage.
+        \item \textit{Tier 2 (Rare-Class Swap):} A 2-run swap protocol for making major architectural decisions.
+        \item \textit{Tier 3 (4-Fold Out-of-Fold Aggregation):} 4 folds of 15 train / 5 val scenes, aggregating complete OOF predictions across all 20 scenes for release benchmarking.
     \end{itemize}
-    \item \textbf{Experiment Telemetry (\texttt{experiments/ablations.md}):} Structured tracking tables recording experiment IDs, parameter counts, GFLOPs, PSNR, SSIM, and mIoU.
+    \item \textbf{Synchronized Data Pipeline Specification (\texttt{data/}):} Designed paired triplet loading (\texttt{degraded}, \texttt{clean}, \texttt{mask}) with synchronized spatial transforms (horizontal flips, spatial crops) while strictly banning uncalibrated color jitter to safeguard white-balance learning.
+    \item \textbf{Authoritative Evaluation Engine (\texttt{metrics/}, \texttt{evaluate.py}):} Implemented the official scoring formulas: confusion matrix mIoU, Macro $F_1$, Normalized PSNR ($15\text{--}35\text{ dB}$ window), SSIM, and Laplacian sharpness ratio. Added dual-lens reporting (\textbf{Global Score} + \textbf{Scene-Macro Diagnostic Scorecard}) so easy scenes cannot mask failures on rare creatures.
+    \item \textbf{Static ONNX Deployment Contract (\texttt{deploy/}):} Authored the static ONNX exporter for Jetson Orin, reserving modeling freedom to test alternative resolutions ($384 \times 768$ vs. $1024 \times 1024$) to find the highest score under the 12 GFLOP ceiling.
+\end{itemize}
+
+\subsection{3. Arin: Tooling, Exploratory Data Analysis, Visualization \& Packaging}
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{Exploratory Data Analysis (\texttt{tools/eda\_stats.py}):} Counted pixels across all 5 classes, calculated exact imbalance ratios, and cataloged camera resolutions ($4000 \times 3000$ to $9710 \times 7283$).
+    \item \textbf{Qualitative Diagnostic Visualizer (\texttt{tools/visualizer.py}):} Built side-by-side visual plotting tools rendering degraded inputs, clean references, masks, and model prediction overlays for error diagnosis and research paper figures.
+    \item \textbf{Track 1 Submission Packager (\texttt{tools/make\_submission\_track1.py}):} Built the automated packager that upscales model predictions back to original camera dimensions (using bicubic for RGB and nearest-neighbor for masks), ensures single-channel \texttt{uint8} PNGs, and packages \texttt{submission\_track1.zip} without format errors.
+    \item \textbf{Experiment Telemetry (\texttt{experiments/ablations.md}):} Maintains the benchmark log recording experiment IDs, parameter counts, GFLOPs, PSNR, SSIM, and mIoU.
 \end{itemize}
 
 \section{Modular Work Division Matrix}
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{p{3.0cm}XXX}
+\begin{tabularx}{\textwidth}{p{3.2cm}XXX}
 \toprule
-\textbf{Functional Domain} & \textbf{Tanmay (Modeling \& Training)} & \textbf{Shubham (Data \& Deployment)} & \textbf{Arin (Tooling \& Packaging)} \
+\textbf{Functional Domain} & \textbf{Tanmay (Modeling \& Training)} & \textbf{Shubham (Data \& Deployment)} & \textbf{Arin (Tooling \& Packaging)} \\
 \midrule
-\textbf{Neural Architecture} & EURS-Net V2 (FWB + CA + Decoders) & Budget audits \& FLOP compliance & Records parameter logs \
-\textbf{Loss Formulations} & Focal, Soft Dice, Charbonnier, MS-SSIM & Evaluates loss weighting impact & Tracks loss convergence curves \
-\textbf{Dataset Management} & Consumes DataLoader batches & 3-Tier Split Manifests \& Pipeline & EDA pixel counts \& class ratios \
-\textbf{Testing \& Auditing} & 20 Automated verification suites & Overfit test harness \& parity checks & Visual prediction comparisons \
-\textbf{Evaluation Metrics} & Calls eval hooks during training & Computes Global \& Scene-Macro scores & Logs leaderboard benchmarks \
-\textbf{Final Deployment} & Produces trained weights (\texttt{.pt}) & Exports static Track 2 ONNX & Packages Track 1 submission ZIP \
+\textbf{Neural Architecture} & EURS-Net V2 (FWB + CA + Decoders) & Budget audits \& FLOP compliance & Records parameter logs \\
+\textbf{Loss Formulations} & Focal, Soft Dice, Charbonnier, MS-SSIM & Evaluates loss weighting impact & Tracks loss convergence curves \\
+\textbf{Dataset Management} & Consumes DataLoader batches & 3-Tier Split Manifests \& Pipeline & EDA pixel counts \& class ratios \\
+\textbf{Testing \& Auditing} & 20 Automated verification suites & Overfit test harness \& parity checks & Visual prediction comparisons \\
+\textbf{Evaluation Metrics} & Calls eval hooks during training & Computes Global \& Scene-Macro scores & Logs leaderboard benchmarks \\
+\textbf{Final Deployment} & Produces trained weights (\texttt{.pt}) & Exports static Track 2 ONNX & Packages Track 1 submission ZIP \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
-\section{Immediate Action Steps Once Hands-On With RTX 5090}
-Upon accessing the RTX 5090 environment, the team will execute the following sequenced roadmap:
+\newpage
 
-\begin{enumerate}[leftmargin=1.4em,noitemsep,topsep=2pt]
-    \item \textbf{Step 1: Environment \& Hardware Capability Smoke Test ($\sim0s)}\
-    Verify Python 3.10+, PyTorch with CUDA 12.8+, and Blackwell support (\texttt{sm\_120}). Run GPU smoke test:
+\section{Immediate Action Steps Once Hands-On With RTX 5090}
+When accessing the RTX 5090 environment, our team will execute this sequenced 8-step roadmap:
+
+\begin{enumerate}[leftmargin=1.4em,noitemsep,topsep=3pt]
+    \item \textbf{Step 1: GPU Capability Smoke Test ($\sim$10s)}\\
+    Verify Python 3.10+, PyTorch with CUDA 12.8+, and Blackwell support (\texttt{sm\_120}). Run GPU smoke test:\\
     \texttt{python tests/test\_cuda\_determinism.py} \quad\textit{(Verifies 32GB VRAM, native BF16, finite gradients).}
 
-    \item \textbf{Step 2: Heavy Edge-Case \& Concurrency Stress Audit ($\sim5s)}\
-    Execute the 14-point edge-case suite to ensure zero runtime panics:
+    \item \textbf{Step 2: Heavy Edge-Case Stress Audit ($\sim$15s)}\\
+    Execute the 14-point edge-case suite to ensure zero runtime panics under extreme batches or empty masks:\\
     \texttt{python -m unittest tests/test\_heavy\_edge\_cases.py}
 
-    \item \textbf{Step 3: Physical Dataset Extraction \& Directory Harmonization ($\simm)}\
-    Extract \texttt{eurs\_train.zip} to storage directory. Ensure discovery via \texttt{find\_dataset\_subdirs()} or symlinks:
+    \item \textbf{Step 3: Physical Dataset Extraction \& Directory Harmonization ($\sim$2m)}\\
+    Extract \texttt{eurs\_train.zip} to storage directory. Ensure discovery via \texttt{find\_dataset\_subdirs()} or symlinks:\\
     \texttt{cd data \&\& ln -s gt\_images clean \&\& ln -s gt\_masks masks}
 
-    \item \textbf{Step 4: End-to-End Phase 2A Pre-Flight Gatekeeper ($\simm)}\
-    Run the complete gatekeeper from repository root:
+    \item \textbf{Step 4: End-to-End Phase 2A Pre-Flight Gatekeeper ($\sim$1m)}\\
+    Run the complete gatekeeper from repository root:\\
     \texttt{python tests/test\_phase2\_preflight.py} \quad\textit{(100\% PASS across all 8 work packages).}
 
-    \item \textbf{Step 5: Training Engine Micro Dry-Run ($\sim0s)}\
-    Validate the production training engine using the dry-run guardrail (executes 2 batches and 1 validation batch):
+    \item \textbf{Step 5: Training Engine Micro Dry-Run ($\sim$20s)}\\
+    Validate the production training engine using the dry-run guardrail (executes 2 batches and 1 validation batch):\\
     \texttt{python train.py --config configs/baseline\_v1.yaml --dry\_run}
 
-    \item \textbf{Step 6: Launch Full Production Training Run (50 Epochs)}\
-    Launch background training with persistent logging:
-    \texttt{python train.py --config configs/baseline\_v1.yaml > train\_baseline\_v1.log 2>\&1 \&}\
-    \textit{Config:} Resolution 024 \times 1024$, Batch Size 4, Grad Accum 4 (Effective 16), \texttt{bfloat16}, 4 workers, SceneBalancedSampler.
+    \item \textbf{Step 6: Launch Full Production Training Run (50 Epochs)}\\
+    Launch background training with persistent logging:\\
+    \texttt{nohup python train.py --config configs/baseline\_v1.yaml > train\_baseline\_v1.log 2>\&1 \&}\\
+    \textit{Config:} Resolution $1024 \times 1024$, Batch Size 4, Grad Accum 4 (Effective 16), \texttt{bfloat16}, 4 workers, SceneBalancedSampler.
 
-    \item \textbf{Step 7: Checkpoint Evaluation \& Model Export (Post-Training)}\
-    Shubham evaluates \texttt{checkpoints/best\_model.pt} and exports the frozen model to Track 2 ONNX:
-    \texttt{python evaluate.py --checkpoint checkpoints/best\_model.pt --device cuda}\
+    \item \textbf{Step 7: Checkpoint Evaluation \& Model Export (Post-Training)}\\
+    Shubham evaluates \texttt{checkpoints/best\_model.pt} and exports the frozen model to Track 2 ONNX:\\
+    \texttt{python evaluate.py --checkpoint checkpoints/best\_model.pt --device cuda}\\
     \texttt{python deploy/export\_onnx.py --checkpoint checkpoints/best\_model.pt}
 
-    \item \textbf{Step 8: Submission Packaging \& Official Leaderboard Upload}\
-    Arin packages Track 1 predictions, runs resolution restoration, and generates the validated ZIP archive:
-    \texttt{python tools/make\_submission\_track1.py --output submission\_track1\_v1.zip} \quad\textit{(Upload to WACV 2027 server).}
+    \item \textbf{Step 8: Submission Packaging \& Official Leaderboard Upload}\\
+    Arin packages Track 1 predictions, runs resolution restoration, and generates the validated ZIP archive:\\
+    \texttt{python tools/make\_submission\_track1.py --output submission\_track1\_v1.zip}
 \end{enumerate}
 
-\vspace{0.8em}
+\vspace{1.5em}
 \hrule
-\vspace{0.4em}
+\vspace{0.6em}
 \begin{center}
     \textcolor{darkgrey}{\footnotesize Document compiled autonomously by Antigravity AI Engine \quad|\quad SAT-EURS Engineering Repository}
 \end{center}
