@@ -111,23 +111,27 @@ def analyze_dataset_masks(
     c0: float = 1.02,
     max_files: Optional[int] = None,
     quiet: bool = False,
-) -> Dict:
+) -> Tuple[Dict, List[Dict]]:
     """
     Analyzes segmentation masks in mask_dir, calculating pixel distributions,
     class imbalance weights, and dimension characteristics.
     """
+    if c0 <= 1.0:
+        raise ValueError(f"Parameter c0 must be strictly > 1.0 (got {c0}) to prevent division by zero.")
+
     if not mask_dir.exists():
         raise FileNotFoundError(f"Mask directory does not exist: {mask_dir.resolve()}")
 
     if not mask_dir.is_dir():
         raise NotADirectoryError(f"Mask path is not a directory: {mask_dir.resolve()}")
 
-    # Find all PNG masks (case-insensitive)
+    # Find all PNG/BMP/TIFF masks (case-insensitive)
+    valid_mask_exts = {".png", ".bmp", ".tif", ".tiff"}
     mask_files = sorted(
         [
             p
             for p in mask_dir.rglob("*")
-            if p.is_file() and p.suffix.lower() in [".png", ".bmp"]
+            if p.is_file() and p.suffix.lower() in valid_mask_exts
         ]
     )
 
@@ -278,7 +282,7 @@ def analyze_dataset_masks(
                 "percentage": round(percentage_distribution[c], 4),
                 "image_presence_count": images_with_class[c],
                 "image_presence_percentage": round(
-                    (images_with_class[c] / total_masks) * 100.0, 2
+                    (images_with_class[c] / max(1, len(per_image_records))) * 100.0, 2
                 ),
                 "raw_inv_log_weight": round(inv_log_weights[c], 5),
                 "normalized_loss_weight": round(normalized_weights[c], 5),

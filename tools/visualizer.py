@@ -145,7 +145,14 @@ def render_tri_panel(
 
     # Panel 3: Ground-Truth Segmentation Mask (or overlay)
     if overlay:
-        blended = (0.55 * clean_img + 0.45 * mask_rgb).clip(0.0, 1.0)
+        if mask_rgb.shape[:2] != clean_img.shape[:2]:
+            ch, cw = clean_img.shape[:2]
+            m_pil = Image.fromarray((mask_rgb * 255.0).astype(np.uint8))
+            m_resized = m_pil.resize((cw, ch), resample=Image.Resampling.NEAREST)
+            m_overlay_rgb = np.array(m_resized, dtype=np.float32) / 255.0
+        else:
+            m_overlay_rgb = mask_rgb
+        blended = (0.55 * clean_img + 0.45 * m_overlay_rgb).clip(0.0, 1.0)
         axes[2].imshow(blended)
         axes[2].set_title("[3] GT Mask (Overlay 45%)\nClasses 0..4", fontsize=11, fontweight="bold", color="#fbbf24", pad=8)
     else:
@@ -351,6 +358,9 @@ def main(argv: Optional[List[str]] = None) -> int:
             return 1
         targets = [common_stems[args.index]]
     else:
+        if args.num_samples <= 0:
+            logger.error(f"--num-samples must be greater than 0, got {args.num_samples}")
+            return 1
         num = min(args.num_samples, len(common_stems))
         if args.random:
             rng = random.Random(args.seed)

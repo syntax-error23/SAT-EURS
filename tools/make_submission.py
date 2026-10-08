@@ -166,6 +166,11 @@ def calculate_target_dims(
     """
     Computes aspect-ratio preserved dimensions capping the longest side at max_dim.
     """
+    if max_dim <= 0:
+        raise ValueError(f"max_dim must be positive, got {max_dim}")
+    if orig_w <= 0 or orig_h <= 0:
+        raise ValueError(f"Invalid image dimensions: {orig_w}x{orig_h}")
+
     longest = max(orig_w, orig_h)
     if longest <= max_dim and not force_max_dim:
         return orig_w, orig_h
@@ -283,6 +288,11 @@ def validate_and_stage_files(
     stage_masks = staging_dir / "seg_masks"
     stage_restored.mkdir(parents=True, exist_ok=True)
     stage_masks.mkdir(parents=True, exist_ok=True)
+    # Purge any stale png files from previous staging runs
+    for old_file in stage_restored.glob("*.png"):
+        old_file.unlink()
+    for old_file in stage_masks.glob("*.png"):
+        old_file.unlink()
 
     resized_count = 0
     identical_dim_count = 0
