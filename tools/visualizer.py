@@ -9,6 +9,8 @@ Role & Ownership: Tooling & Logging (Arin)
 Functionality:
 - Generates high-resolution 3-panel comparison figures:
     [Degraded Input Image | Clean Ground-Truth Image | Ground-Truth Segmentation Mask (color-mapped)]
+- Targeted Class Filtering: Supports filtering samples by --class-id (0-4) to easily locate
+  and inspect rare entities (Class 3 Elasmobranchii, Class 2 Fish).
 - Supports single sample inspection (--index or --sample-id) and batch processing (--num-samples).
 - Applies a distinct, high-contrast 5-class underwater color palette with custom legend:
     0: Background (Deep Navy)
@@ -16,8 +18,9 @@ Functionality:
     2: Fish (Golden Yellow)
     3: Elasmobranch / Sharks & Rays (Bright Turquoise/Cyan)
     4: Other (Electric Purple)
+- Auto-resizes masks in --overlay mode to prevent dimension-broadcasting crashes.
 - Supports optional overlay blending (--overlay) and prediction comparison (--pred-restored-dir / --pred-mask-dir).
-- Saves all publication-ready comparison figures into experiments/plots/ for team and faculty review.
+- Exports publication-ready figures with dpi=300 and bbox_inches='tight' into experiments/plots/.
 """
 
 from __future__ import annotations
@@ -92,13 +95,36 @@ def discover_common_stems(
 ) -> List[str]:
     """Discovers file stems present across degraded, clean, and mask directories."""
     extensions = {".png", ".jpg", ".jpeg", ".bmp"}
-    
+
     degraded_stems = {p.stem for p in degraded_dir.glob("*") if p.suffix.lower() in extensions}
     clean_stems = {p.stem for p in clean_dir.glob("*") if p.suffix.lower() in extensions}
     mask_stems = {p.stem for p in mask_dir.glob("*") if p.suffix.lower() in extensions}
 
     common = sorted(list(degraded_stems & clean_stems & mask_stems))
     return common
+
+
+def filter_stems_by_class(
+    stems: List[str],
+    mask_dir: Path,
+    class_id: int,
+) -> List[str]:
+    """Filters sample stems to only those whose mask contains the target class_id."""
+    matched = []
+    for stem in stems:
+        mask_path = find_paired_file(stem, mask_dir)
+        if mask_path is None:
+            continue
+        try:
+            with Image.open(mask_path) as img:
+                arr = np.array(img)
+                if arr.ndim == 3:
+                    arr = arr[:, :, 0]
+                if np.any(arr == class_id):
+                    matched.append(stem)
+        except Exception:
+            continue
+    return matched
 
 
 def render_tri_panel(
@@ -110,11 +136,13 @@ def render_tri_panel(
     overlay: bool = False,
     pred_restored: Optional[np.ndarray] = None,
     pred_mask: Optional[np.ndarray] = None,
+    dpi: int = 300,
 ) -> Path:
     """
     Generates and saves the comparison figure using Matplotlib.
     Defaults to 3 panels: [Degraded Input | Clean Ground-Truth | GT Mask].
     If predictions are passed, renders an extended 5-panel layout.
+    Saves with high-resolution dpi=300 and bbox_inches='tight'.
     """
     mask_rgb = colorize_mask(mask_arr)
     unique_classes = [c for c in range(NUM_CLASSES) if np.any(mask_arr == c)]
@@ -126,7 +154,7 @@ def render_tri_panel(
     # Matplotlib dark styling
     plt.style.use("dark_background")
     fig_width = 6.2 * num_panels
-    fig, axes = plt.subplots(1, num_panels, figsize=(fig_width, 6.5), dpi=150)
+    fig, axes = plt.subplots(1, num_panels, figsize=(fig_width, 6.5), dpi=dpi)
 
     if num_panels == 1:
         axes = [axes]
@@ -210,7 +238,13 @@ def render_tri_panel(
 
     plt.tight_layout(rect=[0.02, 0.08, 0.98, 0.94])
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=150, facecolor="#090d16", edgecolor="none")
+    plt.savefig(
+        output_path,
+        dpi=dpi,
+        bbox_inches="tight",
+        facecolor="#090d16",
+        edgecolor="none",
+    )
     plt.close(fig)
 
     return output_path
@@ -244,6 +278,14 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         type=Path,
         default=Path("experiments/plots"),
         help="Destination directory to save generated comparison plots.",
+    )
+    parser.add_argument(
+        "--class-id",
+        "-c",
+        type=int,
+        choices=list(range(NUM_CLASSES)),
+        default=None,
+        help="Filter samples to only those containing this specific class (0: Bg, 1: Coral, 2: Fish, 3: Elasmobranch, 4: Other).",
     )
     parser.add_argument(
         "--index",
@@ -281,6 +323,12 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         "--overlay",
         action="store_true",
         help="Overlay segmentation mask onto the clean ground-truth image in panel 3.",
+    )
+    parser.add_argument(
+        "--dpi",
+        type=int,
+        default=300,
+        help="Matplotlib figure export resolution (default: 300).",
     )
     parser.add_argument(
         "--pred-restored-dir",
@@ -341,6 +389,21 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 1
 
     logger.info(f"Discovered {len(common_stems)} matching sample triplets.")
+
+    # Apply class filtering if requested
+    if args.class_id is not None:
+        target_name = CLASS_METADATA[args.class_id]["name"]
+        logger.info(f"Filtering dataset for samples containing Class {args.class_id} ({target_name})...")
+        filtered_stems = filter_stems_by_class(common_stems, args.mask_dir, args.class_id)
+        if not filtered_stems:
+            logger.warning(
+                f"No matching samples contain Class {args.class_id} ({target_name}) in {args.mask_dir}."
+            )
+            return 0
+        logger.info(
+            f"Found {len(filtered_stems)}/{len(common_stems)} samples containing Class {args.class_id} ({target_name})."
+        )
+        common_stems = filtered_stems
 
     # Determine targets to visualize
     targets: List[str] = []
@@ -408,6 +471,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             overlay=args.overlay,
             pred_restored=pred_restored,
             pred_mask=pred_mask,
+            dpi=args.dpi,
         )
         generated_plots.append(saved)
         logger.info(f"Generated comparison plot -> {saved.resolve()}")
