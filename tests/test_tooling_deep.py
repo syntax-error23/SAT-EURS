@@ -564,7 +564,7 @@ class TestLeaderboardDoc:
     """Test suite for experiments/leaderboard.md"""
 
     def test_leaderboard_file_structure(self):
-        doc_path = Path(r"c:\Users\ARIN\Documents\Projects\SAT-EURS\experiments\leaderboard.md")
+        doc_path = Path(__file__).resolve().parent.parent / "experiments" / "leaderboard.md"
         assert doc_path.exists()
         content = doc_path.read_text(encoding="utf-8")
         assert "EURS Challenge" in content
