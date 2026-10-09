@@ -22,11 +22,12 @@ data/nvme/
 *.onnx
 *.engine
 *.zip
+*.tar.gz
 
-# Visual artifacts, documentation generation & PDFs
-*.pdf
-generate_tanmay_pdf.py
-*.html
+# Experiment outputs
+experiments/plots/
+
+# Visual artifacts & audits
 audits/overfit_preds/
 
 # Logs and environment
@@ -37,3 +38,5 @@ env/
 venv/
 .idea/
 .vscode/
+.DS_Store
+Thumbs.db
