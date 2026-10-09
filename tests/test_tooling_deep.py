@@ -461,6 +461,104 @@ class TestEdgeCasesAndInit:
         assert hasattr(tools, "validate_mask")
         assert hasattr(tools, "create_submission_zip")
 
+    def test_make_submission_self_test_flag(self):
+        """Verify --self-test flag executes and returns 0."""
+        from tools.make_submission import run_self_test
+        assert run_self_test() == 0
+        assert submission_main(["--self-test"]) == 0
+
+    def test_make_submission_with_degraded_ref_dir(self, tmp_path: Path):
+        """Verify degraded reference dimension matching eliminates rounding discrepancies."""
+        raw_restored = tmp_path / "raw_restored"
+        raw_masks = tmp_path / "raw_masks"
+        raw_degraded = tmp_path / "raw_degraded"
+        out_zip = tmp_path / "ref_test.zip"
+        raw_restored.mkdir()
+        raw_masks.mkdir()
+        raw_degraded.mkdir()
+
+        # Model output generated on fixed 1024x1024 square
+        Image.new("RGB", (1024, 1024), (100, 100, 100)).save(raw_restored / "sample_widescreen.png")
+        Image.fromarray(np.zeros((1024, 1024), dtype=np.uint8), mode="L").save(raw_masks / "sample_widescreen.png")
+
+        # But true degraded reference image is 1600x900
+        Image.new("RGB", (1600, 900), (50, 50, 50)).save(raw_degraded / "sample_widescreen.png")
+
+        ret = submission_main([
+            "--restored-dir", str(raw_restored),
+            "--masks-dir", str(raw_masks),
+            "--degraded-dir", str(raw_degraded),
+            "--output-zip", str(out_zip),
+            "--max-dim", "1024",
+        ])
+        assert ret == 0
+        assert out_zip.exists()
+
+        # Check that submission resized to match the degraded image's aspect ratio (1024x576)
+        with zipfile.ZipFile(out_zip, "r") as zf:
+            with zf.open("restored/sample_widescreen.png") as f:
+                with Image.open(f) as img:
+                    assert img.size == (1024, 576)
+            with zf.open("seg_masks/sample_widescreen.png") as f:
+                with Image.open(f) as m_img:
+                    assert m_img.size == (1024, 576)
+
+    def test_eda_max_weight_clamping_and_snippet(self, tmp_path: Path):
+        """Verify --max-weight clamping guard prevents gradient explosions and formats PyTorch snippet."""
+        masks_dir = tmp_path / "masks"
+        masks_dir.mkdir()
+
+        # Create massive background with 1 pixel of rare shark (class 3)
+        m = np.zeros((1000, 1000), dtype=np.uint8)
+        m[0, 0] = 3
+        Image.fromarray(m, mode="L").save(masks_dir / "imbalanced.png")
+
+        stats, _ = analyze_dataset_masks(mask_dir=masks_dir, c0=1.02, max_weight=5.0)
+
+        weights = stats["pytorch_weight_tensor"]
+        # Weight for class 3 must be clamped to at most 5.0
+        assert weights[3] <= 5.0
+        assert stats["class_statistics"][3]["was_clamped"] is True
+        # Verify snippet format
+        snippet = stats["pytorch_weight_snippet"]
+        assert snippet.startswith("torch.tensor([")
+        assert snippet.endswith("], dtype=torch.float32)")
+
+    def test_visualizer_class_id_filtering(self, tmp_path: Path):
+        """Verify --class-id filter isolates samples with target class."""
+        d_dir = tmp_path / "d"
+        c_dir = tmp_path / "c"
+        m_dir = tmp_path / "m"
+        p_dir = tmp_path / "p"
+        for p in [d_dir, c_dir, m_dir, p_dir]:
+            p.mkdir()
+
+        # Sample 1: only background
+        Image.new("RGB", (40, 40)).save(d_dir / "s1.png")
+        Image.new("RGB", (40, 40)).save(c_dir / "s1.png")
+        Image.fromarray(np.zeros((40, 40), dtype=np.uint8), mode="L").save(m_dir / "s1.png")
+
+        # Sample 2: contains Class 3 (Elasmobranch)
+        Image.new("RGB", (40, 40)).save(d_dir / "s2.png")
+        Image.new("RGB", (40, 40)).save(c_dir / "s2.png")
+        m2 = np.zeros((40, 40), dtype=np.uint8)
+        m2[10:20, 10:20] = 3
+        Image.fromarray(m2, mode="L").save(m_dir / "s2.png")
+
+        # Filter specifically for Class 3
+        ret = visualizer_main([
+            "--degraded-dir", str(d_dir),
+            "--clean-dir", str(c_dir),
+            "--mask-dir", str(m_dir),
+            "--output-dir", str(p_dir),
+            "--class-id", "3",
+            "--num-samples", "10",
+        ])
+        assert ret == 0
+        # Only s2 should be generated, NOT s1
+        assert (p_dir / "compare_s2.png").exists()
+        assert not (p_dir / "compare_s1.png").exists()
+
 
 class TestLeaderboardDoc:
     """Test suite for experiments/leaderboard.md"""
