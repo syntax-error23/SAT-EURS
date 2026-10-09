@@ -24,6 +24,10 @@ import cv2
 import numpy as np
 
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
+
+
 CLASS_NAMES = {
     0: "Background",
     1: "Coral",
@@ -34,10 +38,8 @@ CLASS_NAMES = {
 
 
 def audit_class_feasibility(data_dir: str, audits_dir: str = "audits") -> Dict[str, Any]:
-    if not os.path.exists(os.path.join(data_dir, 'masks')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'masks')):
-        data_dir = os.path.join(data_dir, 'mini_dev')
-
-    masks_dir = os.path.join(data_dir, 'masks')
+    _, m_dir, _ = find_dataset_subdirs(data_dir)
+    masks_dir = m_dir or os.path.join(data_dir, 'masks')
     assert os.path.exists(masks_dir), f"Masks directory not found: {masks_dir}"
 
     mask_files = sorted([f for f in os.listdir(masks_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))])

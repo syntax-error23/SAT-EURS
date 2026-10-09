@@ -1,0 +1,99 @@
+{
+  "dataset_summary": {
+    "total_masks_analyzed": 4,
+    "total_pixels_counted": 48192768,
+    "invalid_pixel_values_encountered": {},
+    "dimension_mismatches_with_images": 0,
+    "common_resolutions": [
+      {
+        "width": 4000,
+        "height": 3000,
+        "count": 2
+      },
+      {
+        "width": 3000,
+        "height": 4000,
+        "count": 1
+      },
+      {
+        "width": 3024,
+        "height": 4032,
+        "count": 1
+      }
+    ],
+    "common_aspect_ratios": [
+      {
+        "aspect_ratio": 1.3333,
+        "count": 2
+      },
+      {
+        "aspect_ratio": 0.75,
+        "count": 2
+      }
+    ]
+  },
+  "class_statistics": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "pixel_count": 13685682,
+      "percentage": 28.3978,
+      "image_presence_count": 4,
+      "image_presence_percentage": 100.0,
+      "raw_inv_log_weight": 3.76762,
+      "normalized_loss_weight": 0.15191,
+      "median_freq_weight": 1.0
+    },
+    {
+      "class_id": 1,
+      "class_name": "Coral",
+      "pixel_count": 32611651,
+      "percentage": 67.6692,
+      "image_presence_count": 4,
+      "image_presence_percentage": 100.0,
+      "raw_inv_log_weight": 1.8915,
+      "normalized_loss_weight": 0.07627,
+      "median_freq_weight": 0.41966
+    },
+    {
+      "class_id": 2,
+      "class_name": "Fish",
+      "pixel_count": 1895435,
+      "percentage": 3.933,
+      "image_presence_count": 4,
+      "image_presence_percentage": 100.0,
+      "raw_inv_log_weight": 17.35,
+      "normalized_loss_weight": 0.69956,
+      "median_freq_weight": 7.22034
+    },
+    {
+      "class_id": 3,
+      "class_name": "Elasmobranch (Sharks/Rays)",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "image_presence_count": 0,
+      "image_presence_percentage": 0.0,
+      "raw_inv_log_weight": 50.49835,
+      "normalized_loss_weight": 2.03613,
+      "median_freq_weight": 0.0
+    },
+    {
+      "class_id": 4,
+      "class_name": "Other",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "image_presence_count": 0,
+      "image_presence_percentage": 0.0,
+      "raw_inv_log_weight": 50.49835,
+      "normalized_loss_weight": 2.03613,
+      "median_freq_weight": 0.0
+    }
+  ],
+  "pytorch_weight_tensor": [
+    0.1519,
+    0.0763,
+    0.6996,
+    2.0361,
+    2.0361
+  ]
+}

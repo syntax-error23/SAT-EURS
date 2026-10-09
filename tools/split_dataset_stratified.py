@@ -21,6 +21,7 @@ import argparse
 from typing import Dict, List, Any
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
 from tools.audit_class_feasibility import audit_class_feasibility
 
 
@@ -39,8 +40,9 @@ def generate_mass_balanced_split(
     val_ratio: float = 0.20,
     seed: int = 42
 ) -> Dict[str, Any]:
-    if not os.path.exists(os.path.join(data_dir, 'clean')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'clean')):
-        data_dir = os.path.join(data_dir, 'mini_dev')
+    c_dir, _, _ = find_dataset_subdirs(data_dir)
+    if c_dir is not None:
+        data_dir = os.path.dirname(c_dir) if os.path.basename(c_dir) in ('clean', 'gt_images') else c_dir
 
     # 1. Run or load feasibility audit
     feasibility_file = os.path.join(audits_dir, "class_feasibility.json")
