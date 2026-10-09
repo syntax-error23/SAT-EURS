@@ -1,42 +1,113 @@
-# Byte-compiled / optimized / DLL files
+# ==============================================================================
+# Python Artifacts & Caches
+# ==============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# PyTorch checkpoints and weights
-checkpoints/
-*.pt
-*.pth
-*.bin
+# ==============================================================================
+# Virtual Environments
+# ==============================================================================
+venv/
+.venv/
+env/
+.env/
+ENV/
 
-# Dataset and cached image arrays
+# ==============================================================================
+# IDEs & Operating Systems
+# ==============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ==============================================================================
+# Datasets, Archives & Raw Imagery
+# ==============================================================================
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+# Raw and extracted EURS dataset directories
 data/mini_dev/
 data/cached/
 data/cached_1024/
 data/nvme/
+datasets/
+dataset/
+data_raw/
+data_cache/
+eurs_train/
+eurs_train*/
+eurs_dev*/
+train/
+dev/
 *.png
 *.jpg
 *.jpeg
 
-# Submission and export binaries
+# ==============================================================================
+# Model Weights & Checkpoints
+# ==============================================================================
+*.pt
+*.pth
+*.ckpt
+*.bin
+checkpoints/
+weights/
+
+# ==============================================================================
+# Deployment Artifacts (ONNX & TensorRT)
+# ==============================================================================
 *.onnx
+*.onnx.data
 *.engine
-*.zip
-*.tar.gz
+*.plan
+*.trt
 
-# Experiment outputs
+# ==============================================================================
+# Experiment Outputs & Generated Predictions
+# ==============================================================================
+runs/
+experiments/logs/
+experiments/runs/
 experiments/plots/
-
-# Visual artifacts & audits
+predictions/
+submissions/
 audits/overfit_preds/
-
-# Logs and environment
 *.log
-.env
-.venv
-env/
-venv/
-.idea/
-.vscode/
-.DS_Store
-Thumbs.db
+
+# ==============================================================================
+# Temporary & Cache Directories
+# ==============================================================================
+.cache/
+tmp/
+temp/
+scratch/

@@ -38,13 +38,15 @@ class MultiTaskLoss(nn.Module):
         restored_rgb: torch.Tensor,
         seg_logits: torch.Tensor,
         clean_target: torch.Tensor,
-        mask_target: torch.Tensor
+        mask_target: torch.Tensor,
+        valid_mask: Optional[torch.Tensor] = None
     ) -> Tuple[torch.Tensor, Dict[str, float]]:
         """
         Forward computation returning scalar total loss and detached dictionary of component losses.
+        Supports optional valid_mask for letterbox training padding exclusion.
         """
-        loss_seg = self.seg_loss_fn(seg_logits, mask_target)
-        loss_rest = self.rest_loss_fn(restored_rgb, clean_target)
+        loss_seg = self.seg_loss_fn(seg_logits, mask_target, valid_mask=valid_mask)
+        loss_rest = self.rest_loss_fn(restored_rgb, clean_target, valid_mask=valid_mask)
 
         loss_total = self.weight_seg * loss_seg + self.weight_rest * loss_rest
 

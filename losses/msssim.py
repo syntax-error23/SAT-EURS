@@ -62,15 +62,68 @@ def ms_ssim(
     data_range: float = 1.0,
     weights: Optional[List[float]] = None,
     kernel_size: int = 11,
-    sigma: float = 1.5
+    sigma: float = 1.5,
+    valid_mask: Optional[torch.Tensor] = None
 ) -> torch.Tensor:
     """
     Computes Multi-Scale Structural Similarity (MS-SSIM) between x and y.
     Args:
         x, y: [B, C, H, W] in [0, 1]
+        valid_mask: Optional boolean mask [H, W], [B, H, W], or [B, 1, H, W] for padding exclusion.
     Returns:
         Scalar MS-SSIM score in [0, 1].
     """
+    if valid_mask is not None:
+        b = x.shape[0]
+        vm = valid_mask.bool()
+        if vm.dim() == 2:
+            vm = vm.unsqueeze(0).expand(b, -1, -1)
+        elif vm.dim() == 4 and vm.shape[1] == 1:
+            vm = vm.squeeze(1)
+
+        # Vectorized fast path: if all images in the batch share identical padding bounds
+        y_indices, x_indices = torch.where(vm[0])
+        if len(y_indices) > 0:
+            ymin, ymax = y_indices.min(), y_indices.max() + 1
+            xmin, xmax = x_indices.min(), x_indices.max() + 1
+            if (vm[:, ymin:ymax, xmin:xmax]).all() and vm.sum(dim=(-2, -1)).unique().numel() == 1:
+                x_crop = x[:, :, ymin:ymax, xmin:xmax]
+                y_crop = y[:, :, ymin:ymax, xmin:xmax]
+                return ms_ssim(
+                    x_crop, y_crop,
+                    data_range=data_range,
+                    weights=weights,
+                    kernel_size=kernel_size,
+                    sigma=sigma,
+                    valid_mask=None
+                )
+
+        scores = []
+        for i in range(b):
+            vm_i = vm[i]
+            y_i, x_i = torch.where(vm_i)
+            if len(y_i) == 0:
+                continue
+            ymin, ymax = y_i.min(), y_i.max() + 1
+            xmin, xmax = x_i.min(), x_i.max() + 1
+
+            x_crop = x[i:i+1, :, ymin:ymax, xmin:xmax]
+            y_crop = y[i:i+1, :, ymin:ymax, xmin:xmax]
+
+            score_i = ms_ssim(
+                x_crop, y_crop,
+                data_range=data_range,
+                weights=weights,
+                kernel_size=kernel_size,
+                sigma=sigma,
+                valid_mask=None
+            )
+            scores.append(score_i)
+
+        if len(scores) == 0:
+            return torch.tensor(1.0, device=x.device, dtype=x.dtype)
+        return torch.stack(scores).mean()
+
     if weights is None:
         weights = [0.0448, 0.2856, 0.3001, 0.2363, 0.1333]
     weights_tensor = torch.tensor(weights, dtype=torch.float32, device=x.device)
@@ -99,10 +152,12 @@ def ms_ssim(
     mcs_stack = torch.stack(mcs_list, dim=0) # [levels - 1, B]
     weights_cs = weights_tensor[:-1].unsqueeze(1) # [levels - 1, 1]
 
-    # Add small epsilon to prevent NaN in power/grad
-    eps = 1e-8
-    powered = (mcs_stack + eps) ** weights_cs
-    ms_ssim_val = torch.prod(powered, dim=0) * ((final_ssim + eps) ** weights_tensor[-1])
+    # FP16-safe epsilon clamping to prevent NaN gradients under AMP
+    eps = 1e-4 if x.dtype in (torch.float16, torch.bfloat16) else 1e-7
+    mcs_clamped = torch.clamp(mcs_stack, min=eps)
+    final_ssim_clamped = torch.clamp(final_ssim, min=eps)
+    powered = mcs_clamped ** weights_cs
+    ms_ssim_val = torch.prod(powered, dim=0) * (final_ssim_clamped ** weights_tensor[-1])
     return ms_ssim_val.mean()
 
 
@@ -114,6 +169,12 @@ class MSSSIMLoss(nn.Module):
         super().__init__()
         self.data_range = data_range
 
-    def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
-        score = ms_ssim(pred, target, data_range=self.data_range)
+    def forward(
+        self,
+        pred: torch.Tensor,
+        target: torch.Tensor,
+        valid_mask: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
+        score = ms_ssim(pred, target, data_range=self.data_range, valid_mask=valid_mask)
         return 1.0 - score
+
