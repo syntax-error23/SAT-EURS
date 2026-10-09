@@ -33,9 +33,34 @@ from training.run_study import (
     compute_relative_differences,
     generate_resolution_study_summary
 )
+from PIL import Image
+from utils.paths import get_dataset_root
 
 
 class TestTrainingHarness(unittest.TestCase):
+
+    def setUp(self):
+        # Create a self-contained mock dataset fixture so tests can run in CI/dev environments
+        # without requiring the full 20-scene competition archive on local disk.
+        self.mock_temp = tempfile.TemporaryDirectory()
+        self.mock_root = self.mock_temp.name
+        train_dir = os.path.join(self.mock_root, "train")
+        os.makedirs(os.path.join(train_dir, "degraded", "mock_s1"), exist_ok=True)
+        os.makedirs(os.path.join(train_dir, "degraded", "mock_s2"), exist_ok=True)
+        os.makedirs(os.path.join(train_dir, "gt_images"), exist_ok=True)
+        os.makedirs(os.path.join(train_dir, "gt_masks"), exist_ok=True)
+
+        for s in ["mock_s1", "mock_s2"]:
+            Image.new("RGB", (64, 64), (100, 100, 100)).save(os.path.join(train_dir, "gt_images", f"{s}.png"))
+            Image.fromarray(np.zeros((64, 64), dtype=np.uint8)).save(os.path.join(train_dir, "gt_masks", f"{s}.png"))
+            Image.new("RGB", (64, 64), (80, 80, 80)).save(os.path.join(train_dir, "degraded", s, f"{s}_1_0.png"))
+
+        self.mock_splits = os.path.join(self.mock_root, "splits.json")
+        with open(self.mock_splits, "w") as f:
+            json.dump({"tier1": {"train": ["mock_s1"], "val": ["mock_s2"]}}, f)
+
+    def tearDown(self):
+        self.mock_temp.cleanup()
 
     def test_candidate_configuration_invariance(self):
         """
@@ -91,6 +116,8 @@ class TestTrainingHarness(unittest.TestCase):
         temp_dir = tempfile.TemporaryDirectory()
         try:
             cfg = get_candidate_training_config("A", output_dir=temp_dir.name, device="cpu", epochs=2)
+            cfg.dataset_root = self.mock_root
+            cfg.splits_file = self.mock_splits
             trainer = EURSTrainer(cfg)
 
             # Perform a synthetic step to change model weights and build optimizer state
@@ -136,6 +163,20 @@ class TestTrainingHarness(unittest.TestCase):
 
     def test_train_val_scene_separation_in_trainer(self):
         """Verify trainer datasets have zero scene overlap."""
+        dataset_root = get_dataset_root()
+        if not os.path.isdir(dataset_root) or not os.path.exists(os.path.join(dataset_root, "gt_images", "fish11.png")) and not os.path.exists(os.path.join(dataset_root, "clean", "fish11.png")):
+            # Test scene separation on mock dataset fixture when full 20-scene dataset is absent
+            cfg = get_candidate_training_config("A", device="cpu")
+            cfg.dataset_root = self.mock_root
+            cfg.splits_file = self.mock_splits
+            trainer = EURSTrainer(cfg)
+            train_scenes = set(s["scene_id"] for s in trainer.train_dataset.samples)
+            val_scenes = set(s["scene_id"] for s in trainer.val_dataset.samples)
+            self.assertEqual(len(train_scenes), 1)
+            self.assertEqual(len(val_scenes), 1)
+            self.assertTrue(train_scenes.isdisjoint(val_scenes))
+            return
+
         cfg = get_candidate_training_config("A", device="cpu")
         trainer = EURSTrainer(cfg)
 
@@ -151,6 +192,8 @@ class TestTrainingHarness(unittest.TestCase):
         temp_dir = tempfile.TemporaryDirectory()
         try:
             cfg = get_candidate_training_config("A", output_dir=temp_dir.name, device="cpu", epochs=1)
+            cfg.dataset_root = self.mock_root
+            cfg.splits_file = self.mock_splits
             trainer = EURSTrainer(cfg)
 
             # Corrupt model weights to produce NaN

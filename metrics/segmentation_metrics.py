@@ -62,11 +62,10 @@ class SegmentationEvaluator:
         miou = float(np.mean(per_class_iou))
         macro_f1 = float(np.mean(per_class_f1))
 
-        # Soft Coverage Ratio: proportion of present classes covered with >0 TP
+        # Coverage Penalty (Provisional): penalizes classes present in GT that received 0 TP
         gt_present = cm.sum(axis=1) > 0
-        present_count = int(np.sum(gt_present))
-        detected_count = int(np.sum((gt_present) & (tp > 0)))
-        coverage_penalty = float(detected_count / present_count) if present_count > 0 else 1.0
+        missed_classes = np.sum((gt_present) & (tp == 0))
+        coverage_penalty = 0.0 if missed_classes > 0 else 1.0
 
         q_seg = macro_f1 * miou * coverage_penalty
 
