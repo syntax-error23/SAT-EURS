@@ -76,8 +76,9 @@ def compute_training_class_weights(
     # Compute frequency strictly from train split
     f_c = pixel_counts / float(total_pixels)
 
-    # Square-root smoothed inverse frequency
-    w_c = 1.0 / np.sqrt(np.maximum(f_c, eps))
+    # Square-root smoothed inverse frequency with rare-class boost to prevent background dominance
+    rare_boost = np.array([1.0, 1.0, 1.5, 2.0, 2.0], dtype=np.float64)
+    w_c = (1.0 / np.sqrt(np.maximum(f_c, eps))) * rare_boost
 
     # Normalize so that (1/C) * sum(alpha) = 1.0 -> mean(alpha) = 1.0
     alpha = w_c / np.mean(w_c)
@@ -95,12 +96,12 @@ def compute_training_class_weights(
 def create_authoritative_criterion(
     alpha: torch.Tensor,
     weight_seg: float = 1.0,
-    weight_rest: float = 0.5
+    weight_rest: float = 0.2
 ) -> MultiTaskLoss:
     """
     Returns the authoritative MultiTaskLoss instance:
       L_total = weight_seg * L_seg + weight_rest * L_rest
-      Default: 1.0 * L_seg + 0.5 * L_rest
+      Default: 1.0 * L_seg + 0.2 * L_rest
     """
     return MultiTaskLoss(
         weight_seg=weight_seg,

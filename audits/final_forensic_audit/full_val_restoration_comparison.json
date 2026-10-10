@@ -1,0 +1,130 @@
+{
+  "Raw": {
+    "fish1": {
+      "count": 200,
+      "psnr_mean": 16.353148267911525,
+      "ssim_mean": 0.5150308253616095,
+      "clip_pct_mean": 12.416412830352783
+    },
+    "fish12": {
+      "count": 200,
+      "psnr_mean": 13.620947220972262,
+      "ssim_mean": 0.5741763163357974,
+      "clip_pct_mean": 14.104697227478027
+    },
+    "seahorse1": {
+      "count": 200,
+      "psnr_mean": 13.164575602358973,
+      "ssim_mean": 0.4829449755884707,
+      "clip_pct_mean": 10.599587599436443
+    },
+    "sharkFish": {
+      "count": 200,
+      "psnr_mean": 17.76889356711076,
+      "ssim_mean": 0.5087741402722895,
+      "clip_pct_mean": 10.672309239705402
+    },
+    "aggregate": {
+      "count": 800,
+      "psnr_mean": 15.226891164588379,
+      "ssim_mean": 0.5202315643895418,
+      "clip_pct_mean": 11.948251724243164
+    }
+  },
+  "FWB": {
+    "fish1": {
+      "count": 200,
+      "psnr_mean": 16.132715293275467,
+      "ssim_mean": 0.47091509323567154,
+      "clip_pct_mean": 6.57115618387858
+    },
+    "fish12": {
+      "count": 200,
+      "psnr_mean": 13.354078283989413,
+      "ssim_mean": 0.49884683571755883,
+      "clip_pct_mean": 5.716264406840006
+    },
+    "seahorse1": {
+      "count": 200,
+      "psnr_mean": 13.29428360687386,
+      "ssim_mean": 0.47992170091718434,
+      "clip_pct_mean": 8.544922669728596
+    },
+    "sharkFish": {
+      "count": 200,
+      "psnr_mean": 17.44965662800761,
+      "ssim_mean": 0.5479406257346272,
+      "clip_pct_mean": 6.427639802296955
+    },
+    "aggregate": {
+      "count": 800,
+      "psnr_mean": 15.057683453036587,
+      "ssim_mean": 0.4994060639012605,
+      "clip_pct_mean": 6.814995765686035
+    }
+  },
+  "ZeroInit": {
+    "fish1": {
+      "count": 200,
+      "psnr_mean": 16.132715293275467,
+      "ssim_mean": 0.47091509323567154,
+      "clip_pct_mean": 6.57115618387858
+    },
+    "fish12": {
+      "count": 200,
+      "psnr_mean": 13.354078283989413,
+      "ssim_mean": 0.49884683571755883,
+      "clip_pct_mean": 5.716264406840006
+    },
+    "seahorse1": {
+      "count": 200,
+      "psnr_mean": 13.29428360687386,
+      "ssim_mean": 0.47992170091718434,
+      "clip_pct_mean": 8.544922669728596
+    },
+    "sharkFish": {
+      "count": 200,
+      "psnr_mean": 17.44965662800761,
+      "ssim_mean": 0.5479406257346272,
+      "clip_pct_mean": 6.427639802296955
+    },
+    "aggregate": {
+      "count": 800,
+      "psnr_mean": 15.057683453036587,
+      "ssim_mean": 0.4994060639012605,
+      "clip_pct_mean": 6.814995765686035
+    }
+  },
+  "Recovered": {
+    "fish1": {
+      "count": 200,
+      "psnr_mean": 18.09889589966552,
+      "ssim_mean": 0.5537218713760376,
+      "clip_pct_mean": 0.012346903483072918
+    },
+    "fish12": {
+      "count": 200,
+      "psnr_mean": 15.263682267397645,
+      "ssim_mean": 0.5991075777262449,
+      "clip_pct_mean": 0.02139425277709961
+    },
+    "seahorse1": {
+      "count": 200,
+      "psnr_mean": 15.461706543806253,
+      "ssim_mean": 0.6436030939221382,
+      "clip_pct_mean": 0.2637340227762858
+    },
+    "sharkFish": {
+      "count": 200,
+      "psnr_mean": 21.381494808531865,
+      "ssim_mean": 0.7554810835421085,
+      "clip_pct_mean": 0.0008101463317871094
+    },
+    "aggregate": {
+      "count": 800,
+      "psnr_mean": 17.551444879850322,
+      "ssim_mean": 0.6379784066416323,
+      "clip_pct_mean": 0.07457133134206137
+    }
+  }
+}

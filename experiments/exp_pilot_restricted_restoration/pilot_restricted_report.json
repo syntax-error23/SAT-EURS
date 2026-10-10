@@ -1,0 +1,252 @@
+{
+  "history": [
+    {
+      "epoch_label": "Epoch 0 (Baseline)",
+      "composite_score": 0.1652,
+      "q_seg": 0.101,
+      "mIoU": 0.2683,
+      "macro_f1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "q_rest": 0.2763,
+      "psnr": 15.06,
+      "psnr_norm": 0.1036,
+      "ssim": 0.4994,
+      "sharpness_ratio": 0.0492,
+      "q_nr_surrogate": 0.2171,
+      "clipping_pct": 6.814995957346184,
+      "per_scene": {
+        "fish1": {
+          "psnr_mean": 16.132715272066065,
+          "ssim_mean": 0.47091509323567154,
+          "clip_pct_mean": 6.57115618387858
+        },
+        "fish12": {
+          "psnr_mean": 13.354078320295248,
+          "ssim_mean": 0.49884683571755883,
+          "clip_pct_mean": 5.716264406840006
+        },
+        "seahorse1": {
+          "psnr_mean": 13.294283551362055,
+          "ssim_mean": 0.47992170091718434,
+          "clip_pct_mean": 8.544922669728596
+        },
+        "sharkFish": {
+          "psnr_mean": 17.449656619986417,
+          "ssim_mean": 0.5479406257346272,
+          "clip_pct_mean": 6.427639802296955
+        }
+      }
+    },
+    {
+      "epoch_label": "Epoch 1",
+      "composite_score": 0.1968,
+      "q_seg": 0.101,
+      "mIoU": 0.2683,
+      "macro_f1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "q_rest": 0.3496,
+      "psnr": 16.95,
+      "psnr_norm": 0.1536,
+      "ssim": 0.6099,
+      "sharpness_ratio": 0.0607,
+      "q_nr_surrogate": 0.3131,
+      "clipping_pct": 0.7192286511792645,
+      "per_scene": {
+        "fish1": {
+          "psnr_mean": 17.869579639852944,
+          "ssim_mean": 0.5749938129633665,
+          "clip_pct_mean": 0.5991435050964355
+        },
+        "fish12": {
+          "psnr_mean": 15.24638325082834,
+          "ssim_mean": 0.5999668350070715,
+          "clip_pct_mean": 0.49720001220703125
+        },
+        "seahorse1": {
+          "psnr_mean": 14.97599353767604,
+          "ssim_mean": 0.5992237163335085,
+          "clip_pct_mean": 1.5063551266988116
+        },
+        "sharkFish": {
+          "psnr_mean": 19.68966805812191,
+          "ssim_mean": 0.6653968528658152,
+          "clip_pct_mean": 0.2742158571879069
+        }
+      },
+      "train_loss": 0.32892686227336526,
+      "avg_head_grad_norm": 0.808506136406213,
+      "avg_dec_grad_norm": 0.024127770088075113
+    },
+    {
+      "epoch_label": "Epoch 2",
+      "composite_score": 0.2038,
+      "q_seg": 0.101,
+      "mIoU": 0.2683,
+      "macro_f1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "q_rest": 0.3729,
+      "psnr": 17.4,
+      "psnr_norm": 0.169,
+      "ssim": 0.6446,
+      "sharpness_ratio": 0.0675,
+      "q_nr_surrogate": 0.3136,
+      "clipping_pct": 2.080107426985414,
+      "per_scene": {
+        "fish1": {
+          "psnr_mean": 18.34919182911412,
+          "ssim_mean": 0.5981273028254509,
+          "clip_pct_mean": 1.3929020563761396
+        },
+        "fish12": {
+          "psnr_mean": 15.721302011353464,
+          "ssim_mean": 0.6615963934361935,
+          "clip_pct_mean": 5.679657300313314
+        },
+        "seahorse1": {
+          "psnr_mean": 15.233794052223185,
+          "ssim_mean": 0.6245056818425655,
+          "clip_pct_mean": 1.0920282999674482
+        },
+        "sharkFish": {
+          "psnr_mean": 20.310251241376157,
+          "ssim_mean": 0.6941043242812157,
+          "clip_pct_mean": 0.15584182739257812
+        }
+      },
+      "train_loss": 0.30540354165248573,
+      "avg_head_grad_norm": 0.49572236043401063,
+      "avg_dec_grad_norm": 0.033985468707562846
+    },
+    {
+      "epoch_label": "Epoch 3",
+      "composite_score": 0.205,
+      "q_seg": 0.101,
+      "mIoU": 0.2683,
+      "macro_f1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "q_rest": 0.3718,
+      "psnr": 17.24,
+      "psnr_norm": 0.1595,
+      "ssim": 0.6503,
+      "sharpness_ratio": 0.0736,
+      "q_nr_surrogate": 0.3287,
+      "clipping_pct": 4.991682602932137,
+      "per_scene": {
+        "fish1": {
+          "psnr_mean": 18.385207598531338,
+          "ssim_mean": 0.6149074476957321,
+          "clip_pct_mean": 4.578237851460775
+        },
+        "fish12": {
+          "psnr_mean": 15.745293432059174,
+          "ssim_mean": 0.6917221391201019,
+          "clip_pct_mean": 10.447016080220543
+        },
+        "seahorse1": {
+          "psnr_mean": 15.166821473042178,
+          "ssim_mean": 0.6265892419219017,
+          "clip_pct_mean": 1.0518930753072104
+        },
+        "sharkFish": {
+          "psnr_mean": 19.673100686470075,
+          "ssim_mean": 0.667964029610157,
+          "clip_pct_mean": 3.8895827929178877
+        }
+      },
+      "train_loss": 0.2970805217605084,
+      "avg_head_grad_norm": 0.46681142373941836,
+      "avg_dec_grad_norm": 0.036132936660586125
+    }
+  ],
+  "total_runtime_seconds": 1018.8549783229828,
+  "best_checkpoint": "experiments/exp_pilot_restricted_restoration\\best_pilot_checkpoint.pt",
+  "best_composite": 0.205
+}

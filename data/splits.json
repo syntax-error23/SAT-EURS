@@ -1,0 +1,194 @@
+{
+  "metadata": {
+    "dataset": "EURS",
+    "protocol_version": 1,
+    "purpose": "Scene-level validation split manifest",
+    "note": "Canonical source of truth for validation splits. Scene IDs must not be hardcoded elsewhere in the codebase."
+  },
+  "tier1": {
+    "train": [
+      "fish11",
+      "fish13",
+      "fish14",
+      "fish15",
+      "fish17",
+      "fish18",
+      "fish2",
+      "fish20",
+      "fish21",
+      "fish4",
+      "fish5",
+      "fish7",
+      "fish9",
+      "ray1",
+      "starfish2",
+      "turtles1"
+    ],
+    "val": [
+      "fish1",
+      "fish12",
+      "seahorse1",
+      "sharkFish"
+    ]
+  },
+  "tier2": {
+    "run1": {
+      "train": [
+        "fish11",
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "starfish2",
+        "turtles1"
+      ],
+      "val": [
+        "fish1",
+        "fish12",
+        "seahorse1",
+        "sharkFish"
+      ]
+    },
+    "run2": {
+      "train": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish5",
+        "fish7",
+        "fish9",
+        "seahorse1",
+        "sharkFish",
+        "starfish2"
+      ],
+      "val": [
+        "fish14",
+        "fish4",
+        "ray1",
+        "turtles1"
+      ]
+    }
+  },
+  "tier3": {
+    "fold1": {
+      "train": [
+        "fish11",
+        "fish13",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "starfish2",
+        "turtles1"
+      ],
+      "val": [
+        "fish1",
+        "fish12",
+        "fish14",
+        "seahorse1",
+        "sharkFish"
+      ]
+    },
+    "fold2": {
+      "train": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish20",
+        "fish21",
+        "fish5",
+        "fish7",
+        "seahorse1",
+        "sharkFish",
+        "starfish2"
+      ],
+      "val": [
+        "fish2",
+        "fish4",
+        "fish9",
+        "ray1",
+        "turtles1"
+      ]
+    },
+    "fold3": {
+      "train": [
+        "fish1",
+        "fish12",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish9",
+        "ray1",
+        "seahorse1",
+        "sharkFish",
+        "turtles1"
+      ],
+      "val": [
+        "fish11",
+        "fish13",
+        "fish5",
+        "fish7",
+        "starfish2"
+      ]
+    },
+    "fold4": {
+      "train": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish14",
+        "fish2",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "seahorse1",
+        "sharkFish",
+        "starfish2",
+        "turtles1"
+      ],
+      "val": [
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish20",
+        "fish21"
+      ]
+    }
+  }
+}

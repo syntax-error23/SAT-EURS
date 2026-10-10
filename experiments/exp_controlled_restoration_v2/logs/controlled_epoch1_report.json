@@ -1,0 +1,210 @@
+{
+  "timestamp": "2026-10-10 17:40:43",
+  "total_epochs_completed": 1,
+  "best_composite_standard": 0.222,
+  "best_checkpoint_path": "experiments/exp_controlled_restoration_v2\\checkpoints\\best_controlled_checkpoint.pt",
+  "history": [
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 15.06,
+      "PSNR_norm": 0.1036,
+      "SSIM": 0.4994,
+      "sharpness_ratio": 0.0492,
+      "Q_rest": 0.2763,
+      "clipping_aggregate_pct": 6.815,
+      "clipping_low_0_pct": 6.815,
+      "clipping_high_1_pct": 0.0,
+      "clipping_channels_pct": {
+        "R": 0.0,
+        "G": 20.445,
+        "B": 0.0
+      },
+      "clipping_pct_max": 33.3333,
+      "clipping_guardrail_pass": false,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 16.132715272066065,
+          "ssim_mean": 0.47091509323567154,
+          "sharp_mean": 0.044358049382845405,
+          "clip_pct_mean": 6.57115618387858,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 19.713468551635742,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 13.354078320295248,
+          "ssim_mean": 0.49884683571755883,
+          "sharp_mean": 0.06314560990913562,
+          "clip_pct_mean": 5.716264406840006,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 17.14879322052002,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 13.294283551362055,
+          "ssim_mean": 0.47992170091718434,
+          "sharp_mean": 0.07048653839776266,
+          "clip_pct_mean": 8.544922669728596,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 25.63476800918579,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 17.449656619986417,
+          "ssim_mean": 0.5479406257346272,
+          "sharp_mean": 0.018900637782441828,
+          "clip_pct_mean": 6.427639802296955,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 19.28291940689087,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        }
+      },
+      "Q_NR_surrogate": 0.2171,
+      "composite_surrogate": 0.1652,
+      "composite_standard_0_50": 0.1935,
+      "epoch": 0
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.66,
+      "PSNR_norm": 0.1715,
+      "SSIM": 0.6409,
+      "sharpness_ratio": 0.0563,
+      "Q_rest": 0.3712,
+      "clipping_aggregate_pct": 0.1694,
+      "clipping_low_0_pct": 0.1624,
+      "clipping_high_1_pct": 0.007,
+      "clipping_channels_pct": {
+        "R": 0.0057,
+        "G": 0.4876,
+        "B": 0.0149
+      },
+      "clipping_pct_max": 3.8922,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.319758075459863,
+          "ssim_mean": 0.561172887980938,
+          "sharp_mean": 0.047990419713528264,
+          "clip_pct_mean": 0.005818367004394531,
+          "clip_pct_max": 0.06395975748697916,
+          "clip_r_mean": 0.0009875297546386719,
+          "clip_g_mean": 0.003974437713623047,
+          "clip_b_mean": 0.012493133544921875,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 15.525753317541707,
+          "ssim_mean": 0.6021415828168393,
+          "sharp_mean": 0.07270904405514819,
+          "clip_pct_mean": 0.00978501637776693,
+          "clip_pct_max": 0.23342768351236978,
+          "clip_r_mean": 0.0060672760009765625,
+          "clip_g_mean": 0.0070095062255859375,
+          "clip_b_mean": 0.01627826690673828,
+          "clip_guardrail_pass": true
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.344762316543171,
+          "ssim_mean": 0.6364006918668746,
+          "sharp_mean": 0.07977694880758865,
+          "clip_pct_mean": 0.6619065602620444,
+          "clip_pct_max": 3.8921991984049478,
+          "clip_r_mean": 0.015480995178222656,
+          "clip_g_mean": 1.9394583702087402,
+          "clip_b_mean": 0.030780315399169922,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.45680832754424,
+          "ssim_mean": 0.76406714245677,
+          "sharp_mean": 0.024783440215345776,
+          "clip_pct_mean": 2.702077229817708e-05,
+          "clip_pct_max": 0.004069010416666666,
+          "clip_r_mean": 8.106231689453125e-05,
+          "clip_g_mean": 0.0,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.2817,
+      "composite_surrogate": 0.2001,
+      "composite_standard_0_50": 0.222,
+      "epoch": 1,
+      "train_loss": 0.34090526891872286,
+      "avg_head_grad_norm": 0.7511203567869962,
+      "lr": 0.0001,
+      "epoch_time_sec": 130.86
+    }
+  ]
+}

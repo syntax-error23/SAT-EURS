@@ -16,26 +16,42 @@ class ProgressiveRestorationDecoder(nn.Module):
     """
     Progressive Multi-Scale Guided Restoration Decoder:
     Starts at 128x128 (F128) -> Fuses F256 (256x256) -> Fuses Stem (512x512).
-    Both tensors in each fusion are projected to the same architecture-defined fusion
-    channel dimension before element-wise addition.
-    Predicts high-frequency & color residual Delta I at 512x512, then gently upsamples 
-    via bilinear interpolation (align_corners=False) to 1024x1024.
+    Projects skips to matching channel dimensions, applies depthwise-separable convs,
+    and predicts high-frequency & radiometric residual Delta I at 512x512.
+    Residual is gently upsampled to 1024x1024 and added to the white-balanced image wb_x.
+    Initializes head weights and bias to strictly zero for safe baseline initialization.
     """
-    def __init__(self):
+    def __init__(self, bounded_residual: bool = True, bound_scale: float = 0.20):
         super().__init__()
-        # Level 1: 128x128 -> Project F128 to 32 ch
+        self.bounded_residual = bounded_residual
+        self.bound_scale = bound_scale
+        # Level 1: 128x128 -> Project F128 to 48 ch
         self.proj_f128 = nn.Sequential(
-            nn.Conv2d(40, 32, kernel_size=1, bias=False),
+            nn.Conv2d(40, 48, kernel_size=1, bias=False),
+            nn.BatchNorm2d(48),
+            nn.ReLU(inplace=True)
+        )
+
+        # Level 2: 256x256 -> Project F256 skip to 48 ch
+        self.proj_f256 = nn.Sequential(
+            nn.Conv2d(24, 48, kernel_size=1, bias=False),
+            nn.BatchNorm2d(48)
+        )
+        self.dw_conv256 = nn.Sequential(
+            nn.Conv2d(48, 48, kernel_size=3, padding=1, groups=48, bias=False),
+            nn.BatchNorm2d(48),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(48, 32, kernel_size=1, bias=False),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True)
         )
 
-        # Level 2: 256x256 -> Project F256 skip to 32 ch
-        self.proj_f256 = nn.Sequential(
-            nn.Conv2d(24, 32, kernel_size=1, bias=False),
+        # Level 3: 512x512 -> Project Stem skip to 32 ch
+        self.proj_stem = nn.Sequential(
+            nn.Conv2d(16, 32, kernel_size=1, bias=False),
             nn.BatchNorm2d(32)
         )
-        self.dw_conv256 = nn.Sequential(
+        self.dw_conv512 = nn.Sequential(
             nn.Conv2d(32, 32, kernel_size=3, padding=1, groups=32, bias=False),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
@@ -44,29 +60,20 @@ class ProgressiveRestorationDecoder(nn.Module):
             nn.ReLU(inplace=True)
         )
 
-        # Level 3: 512x512 -> Project Stem skip to 24 ch
-        self.proj_stem = nn.Sequential(
-            nn.Conv2d(16, 24, kernel_size=1, bias=False),
-            nn.BatchNorm2d(24)
-        )
-        self.dw_conv512 = nn.Sequential(
-            nn.Conv2d(24, 24, kernel_size=3, padding=1, groups=24, bias=False),
-            nn.BatchNorm2d(24),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(24, 16, kernel_size=1, bias=False),
-            nn.BatchNorm2d(16),
-            nn.ReLU(inplace=True)
-        )
-
         # Final residual prediction head at 512x512
-        self.head = nn.Conv2d(16, 3, kernel_size=3, padding=1)
+        self.head = nn.Conv2d(24, 3, kernel_size=3, padding=1)
+
+        # Zero-Init Head Fix: strictly zero out head weights and bias
+        nn.init.zeros_(self.head.weight)
+        nn.init.zeros_(self.head.bias)
 
     def forward(
         self,
         f128: torch.Tensor,
         f256: torch.Tensor,
         stem: torch.Tensor,
-        raw_input: torch.Tensor
+        raw_input: torch.Tensor,
+        wb_input: torch.Tensor = None
     ) -> torch.Tensor:
         # Step 1: 128x128 -> 256x256
         x = self.proj_f128(f128)
@@ -80,11 +87,15 @@ class ProgressiveRestorationDecoder(nn.Module):
         x = self.dw_conv512(x)
 
         # Step 3: Residual map at 512x512 -> 1024x1024
-        delta_512 = self.head(x)
+        if self.bounded_residual:
+            delta_512 = self.bound_scale * torch.tanh(self.head(x))
+        else:
+            delta_512 = self.head(x)
         delta_1024 = F.interpolate(delta_512, size=raw_input.shape[2:], mode='bilinear', align_corners=False)
 
-        # Add residual to original degraded input and clamp to valid range [0, 1]
-        restored = torch.clamp(raw_input + delta_1024, 0.0, 1.0)
+        # Add residual to white-balanced image (or raw_input if wb_input not given)
+        base = wb_input if wb_input is not None else raw_input
+        restored = torch.clamp(base + delta_1024, 0.0, 1.0)
         return restored
 
 

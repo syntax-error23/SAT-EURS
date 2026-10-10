@@ -1,20 +1,36 @@
 {
-  "split_policy": "mass_balanced_scene_disjoint_persistent",
+  "split_policy": "balanced_5class_scene_disjoint_tier1",
   "seed": 42,
   "val_ratio_target": 0.2,
-  "total_scenes": 4,
+  "total_scenes": 20,
   "train_scenes": [
-    "fish1",
+    "fish11",
+    "fish13",
+    "fish14",
+    "fish15",
+    "fish17",
+    "fish18",
+    "fish2",
+    "fish20",
+    "fish21",
     "fish4",
-    "fish5"
+    "fish5",
+    "fish7",
+    "fish9",
+    "ray1",
+    "starfish2",
+    "turtles1"
   ],
   "val_scenes": [
-    "fish2"
+    "fish1",
+    "fish12",
+    "seahorse1",
+    "sharkFish"
   ],
-  "train_samples_count": 15,
-  "val_samples_count": 5,
+  "train_samples_count": 3200,
+  "val_samples_count": 800,
   "foreground_mass": {
-    "train": 22530782,
-    "val": 11976304
+    "train": 135338069,
+    "val": 25947410
   }
 }

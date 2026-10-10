@@ -62,19 +62,23 @@ class SegmentationEvaluator:
         miou = float(np.mean(per_class_iou))
         macro_f1 = float(np.mean(per_class_f1))
 
-        # Coverage Penalty (Provisional): penalizes classes present in GT that received 0 TP
+        # Soft Coverage Penalty: Only penalize missed classes that actually exist in GT of this split
         gt_present = cm.sum(axis=1) > 0
-        missed_classes = np.sum((gt_present) & (tp == 0))
-        coverage_penalty = 0.0 if missed_classes > 0 else 1.0
+        if gt_present.sum() > 0:
+            coverage_penalty = float(np.sum((gt_present) & (tp > 0)) / gt_present.sum())
+        else:
+            coverage_penalty = 1.0
 
-        q_seg = macro_f1 * miou * coverage_penalty
+        official_q_seg = macro_f1 * miou
+        q_seg = official_q_seg * coverage_penalty
 
         return {
             'mIoU': round(miou, 4),
             'macro_F1': round(macro_f1, 4),
             'per_class_IoU': [round(float(v), 4) for v in per_class_iou],
             'per_class_F1': [round(float(v), 4) for v in per_class_f1],
-            'coverage_penalty': coverage_penalty,
+            'coverage_penalty': round(coverage_penalty, 4),
+            'official_Q_seg': round(official_q_seg, 4),
             'Q_seg': round(q_seg, 4),
             'confusion_matrix': cm.tolist()
         }

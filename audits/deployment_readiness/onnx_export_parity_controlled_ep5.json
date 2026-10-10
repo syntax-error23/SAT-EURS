@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-10-10 18:24:44",
+  "checkpoint": {
+    "path": "experiments/exp_controlled_restoration_v2/checkpoints/best_controlled_checkpoint.pt",
+    "sha256": "444675aa4b6c25f686b8f0c30c9456b269b1c56d41c3d15d2bb4dd2e4229bf18",
+    "size_bytes": 1793963,
+    "epoch": 5
+  },
+  "onnx_export": {
+    "path": "deploy/exports/controlled_epoch_5\\eurs_net_v2_controlled_ep5.onnx",
+    "sha256": "da6a49c1242156e0660b2cd345ab87722a9ab74013950707051fe4f8aab6bf7d",
+    "size_bytes": 1682773,
+    "opset_version": 18,
+    "input_contract": {
+      "name": "input",
+      "shape": [
+        1,
+        3,
+        1024,
+        1024
+      ],
+      "dtype": "tensor(float)",
+      "range": [
+        0.0,
+        1.0
+      ]
+    },
+    "output_contracts": {
+      "restored_image": {
+        "shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "dtype": "tensor(float)",
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      "seg_logits": {
+        "shape": [
+          1,
+          5,
+          1024,
+          1024
+        ],
+        "dtype": "tensor(float)",
+        "type": "raw_logits"
+      }
+    },
+    "self_contained_single_file": true
+  },
+  "complexity_budget": {
+    "parameters": 411710,
+    "param_budget": 1000000,
+    "param_pass": true,
+    "gflops_1024": 6.093,
+    "gflops_budget": 12.0,
+    "gflops_pass": true
+  },
+  "numerical_parity": {
+    "tolerance_threshold": 0.0001,
+    "global_max_diff_restored": 8.642673492431641e-07,
+    "global_max_diff_seg_logits": 6.222724914550781e-05,
+    "parity_passed": true,
+    "per_scene_parity": {
+      "fish1": {
+        "max_diff_restored": 6.258487701416016e-07,
+        "mean_diff_restored": 5.036592483520507e-07,
+        "max_diff_seg_logits": 2.2411346435546875e-05,
+        "mean_diff_seg_logits": 1.4436244964599609e-05,
+        "mask_exact_match_pct": 99.99990463256836,
+        "pt_psnr_mean": 15.148574160027227,
+        "ort_psnr_mean": 15.14857454804372,
+        "psnr_discrepancy": 3.8801649360209467e-07,
+        "parity_passed": true
+      },
+      "fish12": {
+        "max_diff_restored": 8.642673492431641e-07,
+        "mean_diff_restored": 5.424022674560547e-07,
+        "max_diff_seg_logits": 2.6702880859375e-05,
+        "mean_diff_seg_logits": 1.8644332885742188e-05,
+        "mask_exact_match_pct": 100.0,
+        "pt_psnr_mean": 11.651408942982698,
+        "ort_psnr_mean": 11.651409181088411,
+        "psnr_discrepancy": 2.381057129241526e-07,
+        "parity_passed": true
+      },
+      "seahorse1": {
+        "max_diff_restored": 8.344650268554688e-07,
+        "mean_diff_restored": 6.109476089477539e-07,
+        "max_diff_seg_logits": 1.8201768398284912e-05,
+        "mean_diff_seg_logits": 1.2211501598358154e-05,
+        "mask_exact_match_pct": 99.99996185302734,
+        "pt_psnr_mean": 13.17001184112662,
+        "ort_psnr_mean": 13.170011502701538,
+        "psnr_discrepancy": 3.3842508173620445e-07,
+        "parity_passed": true
+      },
+      "sharkFish": {
+        "max_diff_restored": 5.513429641723633e-07,
+        "mean_diff_restored": 3.963708877563477e-07,
+        "max_diff_seg_logits": 6.222724914550781e-05,
+        "mean_diff_seg_logits": 3.271102905273437e-05,
+        "mask_exact_match_pct": 99.99992370605469,
+        "pt_psnr_mean": 16.718227406410563,
+        "ort_psnr_mean": 16.71822758935752,
+        "psnr_discrepancy": 1.8294695891540869e-07,
+        "parity_passed": true
+      }
+    }
+  },
+  "re_verified_validation_metrics": {
+    "total_images": 800,
+    "mIoU": 0.2683,
+    "macro_F1": 0.3764,
+    "shark_iou": 0.1472,
+    "per_class": {
+      "Background": {
+        "iou": 0.6097,
+        "f1": 0.7576
+      },
+      "Coral": {
+        "iou": 0.4335,
+        "f1": 0.6048
+      },
+      "Fish": {
+        "iou": 0.1496,
+        "f1": 0.2602
+      },
+      "Shark": {
+        "iou": 0.1472,
+        "f1": 0.2567
+      },
+      "Other": {
+        "iou": 0.0013,
+        "f1": 0.0026
+      }
+    },
+    "coverage_penalty": 1.0,
+    "Q_seg": 0.101,
+    "PSNR_dB": 18.16,
+    "PSNR_norm": 0.1906,
+    "SSIM": 0.6762,
+    "sharpness_ratio": 0.0684,
+    "Q_rest": 0.3969,
+    "clipping_aggregate_pct": 1.3143,
+    "clipping_low_0_pct": 1.305,
+    "clipping_high_1_pct": 0.0092,
+    "clipping_channels_pct": {
+      "R": 3.8898,
+      "G": 0.0332,
+      "B": 0.0199
+    },
+    "clipping_pct_max": 16.7779,
+    "clipping_guardrail_pass": true,
+    "per_scene": {
+      "fish1": {
+        "count": 200,
+        "psnr_mean": 18.91499125962003,
+        "ssim_mean": 0.5954206442832947,
+        "sharp_mean": 0.05532239906612604,
+        "clip_pct_mean": 0.5380131403605142,
+        "clip_pct_max": 3.599707285563151,
+        "clip_r_mean": 1.590353012084961,
+        "clip_g_mean": 0.005995273590087891,
+        "clip_b_mean": 0.01769113540649414,
+        "clip_guardrail_pass": true
+      },
+      "fish12": {
+        "count": 200,
+        "psnr_mean": 16.44361273942411,
+        "ssim_mean": 0.6841712595522403,
+        "sharp_mean": 0.08859234150444548,
+        "clip_pct_mean": 4.529069741566975,
+        "clip_pct_max": 16.777928670247398,
+        "clip_r_mean": 13.56127643585205,
+        "clip_g_mean": 0.007458209991455078,
+        "clip_b_mean": 0.018474578857421875,
+        "clip_guardrail_pass": true
+      },
+      "seahorse1": {
+        "count": 200,
+        "psnr_mean": 15.603523828978924,
+        "ssim_mean": 0.6620869509875774,
+        "sharp_mean": 0.09686581495729105,
+        "clip_pct_mean": 0.10263490676879883,
+        "clip_pct_max": 0.5454381306966145,
+        "clip_r_mean": 0.14521169662475586,
+        "clip_g_mean": 0.11926746368408203,
+        "clip_b_mean": 0.043425559997558594,
+        "clip_guardrail_pass": true
+      },
+      "sharkFish": {
+        "count": 200,
+        "psnr_mean": 21.695049859833418,
+        "ssim_mean": 0.7631662133336067,
+        "sharp_mean": 0.032672866815981,
+        "clip_pct_mean": 0.08742125829060873,
+        "clip_pct_max": 3.5642623901367188,
+        "clip_r_mean": 0.26226377487182617,
+        "clip_g_mean": 0.0,
+        "clip_b_mean": 0.0,
+        "clip_guardrail_pass": true
+      }
+    },
+    "Q_NR_surrogate": 0.3029,
+    "composite_surrogate": 0.21,
+    "composite_standard_0_50": 0.2297
+  },
+  "unresolved_blockers_and_disclaimers": {
+    "official_Q_NR": "PENDING_OFFICIAL_SERVER_EVALUATION (UIQM/UCIQE/CCF not fabricated locally)",
+    "real_jetson_hardware_latency": "PENDING_PHYSICAL_DEVICE_BENCHMARKING (Local machine is Windows RTX 5090; challenge hardware is Jetson AGX Orin 30W)",
+    "track1_resizing_script": "NOT_APPLICABLE_TO_TRACK2 (Track 2 is static ONNX evaluation; Track 1 uses paired PNG masks and image folder)",
+    "submission_upload_status": "STOPPED_AWAITING_USER_APPROVAL (No upload initiated)"
+  },
+  "deployment_verdict": "GO (TRACK 2 ONNX DEPLOYMENT CANDIDATE READY)"
+}

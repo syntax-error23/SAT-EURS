@@ -1,0 +1,68 @@
+# Proposed Isolated Experiment Configuration: EURS-Net V2 Controlled Restoration
+# Target: MaCVi WACV 2027 Track 2 (Embedded, Jetson AGX Orin)
+# Architecture: EURS-Net V2 with Bounded Residual & Frozen Segmentation Backbone
+
+experiment_name: "exp_controlled_restoration_v2"
+version: "2.0.0-controlled"
+created_date: "2026-10-10"
+
+model:
+  name: "EURSNetV2"
+  num_classes: 5
+  bounded_restoration: true
+  bound_scale: 0.20
+  zero_init_head: true
+
+freezing_policy:
+  freeze_fwb: true
+  freeze_backbone: true
+  freeze_segmentation_decoder: true
+  trainable_modules:
+    - "restoration_decoder"
+  source_checkpoint: "checkpoints/run2_50ep/best_model.pt"
+
+training:
+  total_epochs: 10
+  warmup_epochs: 1
+  base_lr: 1.0e-4              # Conservative LR to avoid red-channel overshooting observed in Ep 3
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  clip_grad_norm: 1.0
+  batch_size: 4
+  grad_accum_steps: 4          # Effective batch size = 16
+  seed: 42
+  dry_run_supported: true
+
+precision:
+  use_amp: true
+  amp_dtype: "bfloat16"        # Native support on Blackwell RTX 5090 without GradScaler skips
+
+losses:
+  weight_seg: 1.0
+  weight_rest: 0.2             # Verified authoritative multi-task balancing (down from 0.5)
+  class_weighting: "sqrt_inv_freq_mean1"
+  restoration_weights:
+    weight_charb: 1.0
+    weight_ssim_initial: 0.5   # Prevents MS-SSIM plateau on underwater turbidity
+    weight_color: 0.5          # Color angle loss for radiometric white balance
+    weight_lap: 0.1
+
+guardrails:
+  min_shark_iou: 0.1472        # Hard rollback if segmentation accuracy degrades
+  max_clipping_aggregate_pct: 5.0
+  max_clipping_scene_pct: 10.0  # Alert if fish12 exceeds 6.0%
+
+dataloader:
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  sampler: "scene_balanced"
+  target_size: [1024, 1024]
+  aspect_ratio_mode: "stretch"
+
+paths:
+  data_dir: "data/cached_1024"
+  manifest_path: "splits/manifest_full.json"
+  checkpoint_dir: "experiments/exp_controlled_restoration_v2/checkpoints"
+  plots_dir: "experiments/exp_controlled_restoration_v2/plots"
+  logs_dir: "experiments/exp_controlled_restoration_v2/logs"

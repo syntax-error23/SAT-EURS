@@ -1,0 +1,14 @@
+{
+  "architecture": "EURSNetV3LiteJoint",
+  "total_parameters": 356588,
+  "param_limit": 1000000,
+  "param_headroom": 643412,
+  "encoder_params": 312798,
+  "restoration_params": 15139,
+  "segmentation_params": 28645,
+  "fwb_params": 6,
+  "gflops_1024x1024": 9.114430464,
+  "flop_limit_gflops": 12.0,
+  "flop_headroom_gflops": 2.885569536,
+  "compliant": true
+}

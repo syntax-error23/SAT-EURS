@@ -1,0 +1,54 @@
+{
+  "bounded": {
+    "PSNR_dB": 15.24,
+    "PSNR_norm": 0.1075,
+    "SSIM": 0.5409,
+    "Q_rest": 0.2967,
+    "mIoU": 0.0575,
+    "macro_F1": 0.1016,
+    "per_class_IoU": [
+      0.1888,
+      0.0254,
+      0.0248,
+      0.0,
+      0.0485
+    ],
+    "Q_seg": 0.0058,
+    "Composite_Score": 0.1425,
+    "agg_clipping_pct": 0.6196,
+    "per_scene_clipping_pct": {
+      "fish1": 0.1257,
+      "fish12": 2.3432,
+      "seahorse1": 0.0093,
+      "sharkFish": 0.0
+    },
+    "train_time_sec": 135.17,
+    "final_train_loss": 1.5293
+  },
+  "sigmoid": {
+    "PSNR_dB": 15.09,
+    "PSNR_norm": 0.1034,
+    "SSIM": 0.524,
+    "Q_rest": 0.2872,
+    "mIoU": 0.0585,
+    "macro_F1": 0.1038,
+    "per_class_IoU": [
+      0.1843,
+      0.0243,
+      0.0252,
+      0.0,
+      0.0587
+    ],
+    "Q_seg": 0.0061,
+    "Composite_Score": 0.1398,
+    "agg_clipping_pct": 0.0,
+    "per_scene_clipping_pct": {
+      "fish1": 0.0,
+      "fish12": 0.0,
+      "seahorse1": 0.0,
+      "sharkFish": 0.0
+    },
+    "train_time_sec": 134.72,
+    "final_train_loss": 1.5282
+  }
+}

@@ -24,6 +24,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 import argparse
 import math
 from pathlib import Path
+import cv2
+import numpy as np
 import yaml
 import torch
 import torch.nn as nn
@@ -196,6 +198,8 @@ def train_model(args):
     for epoch in range(start_epoch, epochs_to_run + 1):
         if hasattr(train_sampler, "set_epoch"):
             train_sampler.set_epoch(epoch)
+        if hasattr(loss_fn, "set_epoch"):
+            loss_fn.set_epoch(epoch)
 
         model.train()
         total_loss = 0.0
@@ -255,6 +259,38 @@ def train_model(args):
                 break
 
         scheduler.step()
+
+        # Visual Logging: Save side-by-side tri-panel images [Degraded | Restored | Clean GT] every 5 epochs
+        if (epoch % 5 == 0 or epoch == 1 or epoch == epochs_to_run) and not args.dry_run:
+            plots_dir = os.path.join(args.checkpoint_dir, "plots")
+            os.makedirs(plots_dir, exist_ok=True)
+            model.eval()
+            with torch.no_grad():
+                for v_deg, v_clean, v_mask, v_meta in val_loader:
+                    v_deg = v_deg.to(device)
+                    with torch.amp.autocast(device_type=device.type, dtype=target_amp_dtype, enabled=use_amp):
+                        v_rest, _ = model(v_deg)
+                        if v_rest.shape[2:] != (args.target_size, args.target_size):
+                            v_rest = nn.functional.interpolate(v_rest, size=(args.target_size, args.target_size), mode='bilinear', align_corners=False)
+                    num_vis = min(3, v_deg.size(0))
+                    for i in range(num_vis):
+                        scene_name = v_meta['scene_id'][i] if isinstance(v_meta['scene_id'], list) else v_meta['scene_id']
+                        deg_np = (v_deg[i].permute(1, 2, 0).float().cpu().numpy().clip(0, 1) * 255).astype(np.uint8)
+                        rest_np = (v_rest[i].permute(1, 2, 0).float().cpu().numpy().clip(0, 1) * 255).astype(np.uint8)
+                        clean_np = (v_clean[i].permute(1, 2, 0).float().cpu().numpy().clip(0, 1) * 255).astype(np.uint8)
+
+                        tri_panel = np.hstack([deg_np, rest_np, clean_np])
+                        tri_panel_bgr = cv2.cvtColor(tri_panel, cv2.COLOR_RGB2BGR)
+
+                        h, w = deg_np.shape[:2]
+                        cv2.putText(tri_panel_bgr, "Degraded Input", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 255), 2)
+                        cv2.putText(tri_panel_bgr, f"Restored (Ep {epoch})", (w + 20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+                        cv2.putText(tri_panel_bgr, "Clean Ground Truth", (2 * w + 20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 255), 2)
+
+                        save_path = os.path.join(plots_dir, f"tri_panel_epoch_{epoch:02d}_{scene_name}_{i}.png")
+                        cv2.imwrite(save_path, tri_panel_bgr)
+                    break
+            print(f"  [VISUAL LOG] Generated visual tri-panel comparison plots in {plots_dir}/")
 
         # Validation & Checkpoint Selection
         if epoch % args.val_interval == 0 or epoch == epochs_to_run:
@@ -323,7 +359,7 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--log_interval', type=int, default=5)
     parser.add_argument('--val_interval', type=int, default=1)
-    parser.add_argument('--dry_run', action='store_true', default=False)
+    parser.add_argument('--dry_run', '--dry-run', action='store_true', default=False)
     parser.add_argument('--resume', type=str, default=None)
     args = parser.parse_args()
 

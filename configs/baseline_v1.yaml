@@ -21,7 +21,7 @@ precision:
 
 losses:
   weight_seg: 1.0
-  weight_rest: 0.5
+  weight_rest: 0.2
   class_weighting: "sqrt_inv_freq_mean1"
 
 dataloader:

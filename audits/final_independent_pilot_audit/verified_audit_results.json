@@ -1,0 +1,432 @@
+{
+  "file_hashes": {
+    "Baseline (Authoritative)": {
+      "path": "checkpoints/run2_50ep/best_model.pt",
+      "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+      "size_bytes": 5234119
+    },
+    "Baseline (Preserved Backup)": {
+      "path": "checkpoints/run2_50ep/forensic_backup/best_model_preserved.pt",
+      "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+      "size_bytes": 5234119
+    },
+    "Pilot Epoch 2": {
+      "path": "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep2.pt",
+      "sha256": "be184295d8cb7575977552d6a39c8deb07af0d93fee5c6bb0002bf844170eee3",
+      "size_bytes": 1874082
+    },
+    "Pilot Epoch 3": {
+      "path": "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep3.pt",
+      "sha256": "3fbe6fb385e5c043655b402c2f1da9094c900bdeebe11dbffb3c415e8add9785",
+      "size_bytes": 1874082
+    },
+    "Best Pilot Checkpoint": {
+      "path": "experiments/exp_pilot_restricted_restoration/best_pilot_checkpoint.pt",
+      "sha256": "ca2a292066cbfc518fd8a21d463732f957ae53e8afcc722760e15d23ff9b82db",
+      "size_bytes": 1791627
+    }
+  },
+  "hardware_profile": {
+    "total_params": 411710,
+    "gflops": 6.093
+  },
+  "eval_results": {
+    "Baseline_Raw_Unbounded": {
+      "model_name": "Baseline (Raw Unbounded)",
+      "eval_time_sec": 66.08,
+      "total_images": 800,
+      "segmentation": {
+        "mIoU": 0.2683,
+        "macro_F1": 0.3764,
+        "shark_iou": 0.1472,
+        "per_class": {
+          "Background": {
+            "iou": 0.6097,
+            "f1": 0.7576
+          },
+          "Coral": {
+            "iou": 0.4335,
+            "f1": 0.6048
+          },
+          "Fish": {
+            "iou": 0.1496,
+            "f1": 0.2602
+          },
+          "Shark": {
+            "iou": 0.1472,
+            "f1": 0.2567
+          },
+          "Other": {
+            "iou": 0.0013,
+            "f1": 0.0026
+          }
+        },
+        "coverage_penalty": 1.0,
+        "official_Q_seg": 0.101,
+        "Q_seg": 0.101
+      },
+      "restoration": {
+        "PSNR_dB": 4.15,
+        "PSNR_norm": 0.0,
+        "SSIM": 0.0746,
+        "sharpness_ratio": 0.0444,
+        "Q_rest": 0.038,
+        "clipping_pct_mean": 96.3638,
+        "clipping_pct_max": 100.0,
+        "clipping_guardrail_pass": false,
+        "per_scene": {
+          "fish1": {
+            "count": 200,
+            "psnr_mean": 4.19706002497895,
+            "psnr_std": 0.7017193752871075,
+            "ssim_mean": 0.03300839258357882,
+            "ssim_std": 0.04978473313859203,
+            "sharp_mean": 0.010040010560340769,
+            "clip_pct_mean": 97.33548227945965,
+            "clip_pct_max": 100.0,
+            "clip_guardrail_pass": false
+          },
+          "fish12": {
+            "count": 200,
+            "psnr_mean": 3.6389669714687387,
+            "psnr_std": 0.1978461094551525,
+            "ssim_mean": 0.05241696181707084,
+            "ssim_std": 0.08379679214266335,
+            "sharp_mean": 0.02351002961168458,
+            "clip_pct_mean": 98.32936747868854,
+            "clip_pct_max": 100.0,
+            "clip_guardrail_pass": false
+          },
+          "seahorse1": {
+            "count": 200,
+            "psnr_mean": 4.136326403064865,
+            "psnr_std": 0.7534318472019896,
+            "ssim_mean": 0.12261642456054687,
+            "ssim_std": 0.03673645041033244,
+            "sharp_mean": 0.12677323024841913,
+            "clip_pct_mean": 90.62555408477783,
+            "clip_pct_max": 99.97949600219727,
+            "clip_guardrail_pass": false
+          },
+          "sharkFish": {
+            "count": 200,
+            "psnr_mean": 4.624976183903951,
+            "psnr_std": 0.6514928631844963,
+            "ssim_mean": 0.09036002058535814,
+            "ssim_std": 0.08593920791271911,
+            "sharp_mean": 0.017180650240909253,
+            "clip_pct_mean": 99.16474119822183,
+            "clip_pct_max": 100.0,
+            "clip_guardrail_pass": false
+          }
+        }
+      },
+      "non_reference": {
+        "Q_NR_surrogate": 0.9468,
+        "status": "PROVISIONAL_STUB_LOCAL"
+      },
+      "composite": {
+        "with_surrogate_Q_NR": 0.1667,
+        "with_standard_Q_NR_0_50": 0.122
+      }
+    },
+    "Baseline_ZeroInit_Ep0": {
+      "model_name": "Baseline Zero-Init (Ep 0)",
+      "eval_time_sec": 62.61,
+      "total_images": 800,
+      "segmentation": {
+        "mIoU": 0.2683,
+        "macro_F1": 0.3764,
+        "shark_iou": 0.1472,
+        "per_class": {
+          "Background": {
+            "iou": 0.6097,
+            "f1": 0.7576
+          },
+          "Coral": {
+            "iou": 0.4335,
+            "f1": 0.6048
+          },
+          "Fish": {
+            "iou": 0.1496,
+            "f1": 0.2602
+          },
+          "Shark": {
+            "iou": 0.1472,
+            "f1": 0.2567
+          },
+          "Other": {
+            "iou": 0.0013,
+            "f1": 0.0026
+          }
+        },
+        "coverage_penalty": 1.0,
+        "official_Q_seg": 0.101,
+        "Q_seg": 0.101
+      },
+      "restoration": {
+        "PSNR_dB": 15.06,
+        "PSNR_norm": 0.1036,
+        "SSIM": 0.4994,
+        "sharpness_ratio": 0.0492,
+        "Q_rest": 0.2763,
+        "clipping_pct_mean": 6.815,
+        "clipping_pct_max": 33.3333,
+        "clipping_guardrail_pass": false,
+        "per_scene": {
+          "fish1": {
+            "count": 200,
+            "psnr_mean": 16.132715272066065,
+            "psnr_std": 4.1824836002887045,
+            "ssim_mean": 0.47091509323567154,
+            "ssim_std": 0.22926517431448076,
+            "sharp_mean": 0.044358049382845405,
+            "clip_pct_mean": 6.57115618387858,
+            "clip_pct_max": 33.33333333333333,
+            "clip_guardrail_pass": false
+          },
+          "fish12": {
+            "count": 200,
+            "psnr_mean": 13.354078320295248,
+            "psnr_std": 4.968373103215125,
+            "ssim_mean": 0.49884683571755883,
+            "ssim_std": 0.2547223934041266,
+            "sharp_mean": 0.06314560990913562,
+            "clip_pct_mean": 5.716264406840006,
+            "clip_pct_max": 33.33333333333333,
+            "clip_guardrail_pass": false
+          },
+          "seahorse1": {
+            "count": 200,
+            "psnr_mean": 13.294283551362055,
+            "psnr_std": 3.95213737476311,
+            "ssim_mean": 0.47992170091718434,
+            "ssim_std": 0.2618386642229841,
+            "sharp_mean": 0.07048653839776266,
+            "clip_pct_mean": 8.544922669728596,
+            "clip_pct_max": 33.33333333333333,
+            "clip_guardrail_pass": false
+          },
+          "sharkFish": {
+            "count": 200,
+            "psnr_mean": 17.449656619986417,
+            "psnr_std": 5.388823006152099,
+            "ssim_mean": 0.5479406257346272,
+            "ssim_std": 0.2690880498525048,
+            "sharp_mean": 0.018900637782441828,
+            "clip_pct_mean": 6.427639802296955,
+            "clip_pct_max": 33.33333333333333,
+            "clip_guardrail_pass": false
+          }
+        }
+      },
+      "non_reference": {
+        "Q_NR_surrogate": 0.2171,
+        "status": "PROVISIONAL_STUB_LOCAL"
+      },
+      "composite": {
+        "with_surrogate_Q_NR": 0.1652,
+        "with_standard_Q_NR_0_50": 0.1935
+      }
+    },
+    "Pilot_Epoch_2": {
+      "model_name": "Pilot Epoch 2",
+      "eval_time_sec": 61.68,
+      "total_images": 800,
+      "segmentation": {
+        "mIoU": 0.2683,
+        "macro_F1": 0.3764,
+        "shark_iou": 0.1472,
+        "per_class": {
+          "Background": {
+            "iou": 0.6097,
+            "f1": 0.7576
+          },
+          "Coral": {
+            "iou": 0.4335,
+            "f1": 0.6048
+          },
+          "Fish": {
+            "iou": 0.1496,
+            "f1": 0.2602
+          },
+          "Shark": {
+            "iou": 0.1472,
+            "f1": 0.2567
+          },
+          "Other": {
+            "iou": 0.0013,
+            "f1": 0.0026
+          }
+        },
+        "coverage_penalty": 1.0,
+        "official_Q_seg": 0.101,
+        "Q_seg": 0.101
+      },
+      "restoration": {
+        "PSNR_dB": 17.4,
+        "PSNR_norm": 0.169,
+        "SSIM": 0.6446,
+        "sharpness_ratio": 0.0675,
+        "Q_rest": 0.3729,
+        "clipping_pct_mean": 2.0801,
+        "clipping_pct_max": 17.5263,
+        "clipping_guardrail_pass": true,
+        "per_scene": {
+          "fish1": {
+            "count": 200,
+            "psnr_mean": 18.34919182911412,
+            "psnr_std": 3.6675145776744764,
+            "ssim_mean": 0.5981273028254509,
+            "ssim_std": 0.13980051721946438,
+            "sharp_mean": 0.05562189140112096,
+            "clip_pct_mean": 1.3929020563761396,
+            "clip_pct_max": 5.851046244303385,
+            "clip_guardrail_pass": true
+          },
+          "fish12": {
+            "count": 200,
+            "psnr_mean": 15.721302011353464,
+            "psnr_std": 4.311650541370601,
+            "ssim_mean": 0.6615963934361935,
+            "ssim_std": 0.18635665790069036,
+            "sharp_mean": 0.08840746012743443,
+            "clip_pct_mean": 5.679657300313314,
+            "clip_pct_max": 17.526276906331383,
+            "clip_guardrail_pass": false
+          },
+          "seahorse1": {
+            "count": 200,
+            "psnr_mean": 15.233794052223185,
+            "psnr_std": 4.1521420544688254,
+            "ssim_mean": 0.6245056818425655,
+            "ssim_std": 0.17361200670227575,
+            "sharp_mean": 0.09588715895607486,
+            "clip_pct_mean": 1.0920282999674482,
+            "clip_pct_max": 6.623363494873047,
+            "clip_guardrail_pass": true
+          },
+          "sharkFish": {
+            "count": 200,
+            "psnr_mean": 20.310251241376157,
+            "psnr_std": 5.17658828227819,
+            "ssim_mean": 0.6941043242812157,
+            "ssim_std": 0.16004262632013908,
+            "sharp_mean": 0.030007106287629683,
+            "clip_pct_mean": 0.15584182739257812,
+            "clip_pct_max": 3.727372487386068,
+            "clip_guardrail_pass": true
+          }
+        }
+      },
+      "non_reference": {
+        "Q_NR_surrogate": 0.3136,
+        "status": "PROVISIONAL_STUB_LOCAL"
+      },
+      "composite": {
+        "with_surrogate_Q_NR": 0.2038,
+        "with_standard_Q_NR_0_50": 0.2225
+      }
+    },
+    "Pilot_Epoch_3": {
+      "model_name": "Pilot Epoch 3",
+      "eval_time_sec": 62.88,
+      "total_images": 800,
+      "segmentation": {
+        "mIoU": 0.2683,
+        "macro_F1": 0.3764,
+        "shark_iou": 0.1472,
+        "per_class": {
+          "Background": {
+            "iou": 0.6097,
+            "f1": 0.7576
+          },
+          "Coral": {
+            "iou": 0.4335,
+            "f1": 0.6048
+          },
+          "Fish": {
+            "iou": 0.1496,
+            "f1": 0.2602
+          },
+          "Shark": {
+            "iou": 0.1472,
+            "f1": 0.2567
+          },
+          "Other": {
+            "iou": 0.0013,
+            "f1": 0.0026
+          }
+        },
+        "coverage_penalty": 1.0,
+        "official_Q_seg": 0.101,
+        "Q_seg": 0.101
+      },
+      "restoration": {
+        "PSNR_dB": 17.24,
+        "PSNR_norm": 0.1595,
+        "SSIM": 0.6503,
+        "sharpness_ratio": 0.0736,
+        "Q_rest": 0.3718,
+        "clipping_pct_mean": 4.9917,
+        "clipping_pct_max": 26.6712,
+        "clipping_guardrail_pass": true,
+        "per_scene": {
+          "fish1": {
+            "count": 200,
+            "psnr_mean": 18.385207598531338,
+            "psnr_std": 3.5373375413833044,
+            "ssim_mean": 0.6149074476957321,
+            "ssim_std": 0.146890672656181,
+            "sharp_mean": 0.06058442394209032,
+            "clip_pct_mean": 4.578237851460775,
+            "clip_pct_max": 11.984920501708984,
+            "clip_guardrail_pass": true
+          },
+          "fish12": {
+            "count": 200,
+            "psnr_mean": 15.745293432059174,
+            "psnr_std": 4.255990080021784,
+            "ssim_mean": 0.6917221391201019,
+            "ssim_std": 0.18223101866414015,
+            "sharp_mean": 0.09812267901907702,
+            "clip_pct_mean": 10.447016080220543,
+            "clip_pct_max": 20.51105499267578,
+            "clip_guardrail_pass": false
+          },
+          "seahorse1": {
+            "count": 200,
+            "psnr_mean": 15.166821473042178,
+            "psnr_std": 4.087887680487614,
+            "ssim_mean": 0.6265892419219017,
+            "ssim_std": 0.16536625722057138,
+            "sharp_mean": 0.10322524362853265,
+            "clip_pct_mean": 1.0518930753072104,
+            "clip_pct_max": 7.463614145914714,
+            "clip_guardrail_pass": true
+          },
+          "sharkFish": {
+            "count": 200,
+            "psnr_mean": 19.673100686470075,
+            "psnr_std": 4.464779417620048,
+            "ssim_mean": 0.667964029610157,
+            "ssim_std": 0.14297659357938056,
+            "sharp_mean": 0.03231388691993978,
+            "clip_pct_mean": 3.8895827929178877,
+            "clip_pct_max": 26.671187082926433,
+            "clip_guardrail_pass": true
+          }
+        }
+      },
+      "non_reference": {
+        "Q_NR_surrogate": 0.3287,
+        "status": "PROVISIONAL_STUB_LOCAL"
+      },
+      "composite": {
+        "with_surrogate_Q_NR": 0.205,
+        "with_standard_Q_NR_0_50": 0.2221
+      }
+    }
+  },
+  "audit_timestamp": "2026-10-10 17:00:10"
+}

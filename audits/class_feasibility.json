@@ -1,40 +1,40 @@
 {
-  "total_scenes_audited": 4,
+  "total_scenes_audited": 20,
   "class_feasibility": {
     "0": {
       "class_name": "Background",
-      "scene_count": 4,
-      "total_pixels": 13685682,
+      "scene_count": 18,
+      "total_pixels": 199628984,
       "feasible_stratification": true,
       "constraint_note": "OK"
     },
     "1": {
       "class_name": "Coral",
-      "scene_count": 4,
-      "total_pixels": 32611651,
+      "scene_count": 15,
+      "total_pixels": 121751549,
       "feasible_stratification": true,
       "constraint_note": "OK"
     },
     "2": {
       "class_name": "Fish",
-      "scene_count": 4,
-      "total_pixels": 1895435,
+      "scene_count": 16,
+      "total_pixels": 28166499,
       "feasible_stratification": true,
       "constraint_note": "OK"
     },
     "3": {
       "class_name": "Elasmobranchii",
-      "scene_count": 0,
-      "total_pixels": 0,
-      "feasible_stratification": false,
-      "constraint_note": "Only appears in 1 scene; must be assigned to Train exclusively to prevent scene leakage."
+      "scene_count": 2,
+      "total_pixels": 3389841,
+      "feasible_stratification": true,
+      "constraint_note": "OK"
     },
     "4": {
       "class_name": "Other",
-      "scene_count": 0,
-      "total_pixels": 0,
-      "feasible_stratification": false,
-      "constraint_note": "Only appears in 1 scene; must be assigned to Train exclusively to prevent scene leakage."
+      "scene_count": 3,
+      "total_pixels": 7977590,
+      "feasible_stratification": true,
+      "constraint_note": "OK"
     }
   },
   "per_scene_mass": {
@@ -54,6 +54,116 @@
         2
       ]
     },
+    "fish11": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 49155,
+        "1": 11216870,
+        "2": 733975,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 11950845,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish12": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 6171266,
+        "1": 5083962,
+        "2": 744772,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 5828734,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish13": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 7756834,
+        "1": 3784206,
+        "2": 458960,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 4243166,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish14": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 6062487,
+        "1": 4798862,
+        "2": 1138651,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 5937513,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish15": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 11146990,
+        "1": 0,
+        "2": 853010,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 853010,
+      "present_classes": [
+        0,
+        2
+      ]
+    },
+    "fish17": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 5785101,
+        "1": 5495937,
+        "2": 718962,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 6214899,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fish18": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 0,
+        "1": 11310666,
+        "2": 689334,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 12000000,
+      "present_classes": [
+        1,
+        2
+      ]
+    },
     "fish2": {
       "total_pixels": 12000000,
       "pixel_counts": {
@@ -67,6 +177,36 @@
       "present_classes": [
         0,
         1,
+        2
+      ]
+    },
+    "fish20": {
+      "total_pixels": 31375290,
+      "pixel_counts": {
+        "0": 0,
+        "1": 23649784,
+        "2": 7725506,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 31375290,
+      "present_classes": [
+        1,
+        2
+      ]
+    },
+    "fish21": {
+      "total_pixels": 30105600,
+      "pixel_counts": {
+        "0": 23702076,
+        "1": 0,
+        "2": 6403524,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 6403524,
+      "present_classes": [
+        0,
         2
       ]
     },
@@ -100,6 +240,116 @@
         0,
         1,
         2
+      ]
+    },
+    "fish7": {
+      "total_pixels": 70717930,
+      "pixel_counts": {
+        "0": 64477642,
+        "1": 0,
+        "2": 6240288,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 6240288,
+      "present_classes": [
+        0,
+        2
+      ]
+    },
+    "fish9": {
+      "total_pixels": 12000000,
+      "pixel_counts": {
+        "0": 3395561,
+        "1": 8246878,
+        "2": 357561,
+        "3": 0,
+        "4": 0
+      },
+      "foreground_pixels": 8604439,
+      "present_classes": [
+        0,
+        1,
+        2
+      ]
+    },
+    "ray1": {
+      "total_pixels": 19455744,
+      "pixel_counts": {
+        "0": 13080658,
+        "1": 4275746,
+        "2": 0,
+        "3": 2099340,
+        "4": 0
+      },
+      "foreground_pixels": 6375086,
+      "present_classes": [
+        0,
+        1,
+        3
+      ]
+    },
+    "seahorse1": {
+      "total_pixels": 12192768,
+      "pixel_counts": {
+        "0": 5241292,
+        "1": 3246658,
+        "2": 0,
+        "3": 0,
+        "4": 3704818
+      },
+      "foreground_pixels": 6951476,
+      "present_classes": [
+        0,
+        1,
+        4
+      ]
+    },
+    "sharkFish": {
+      "total_pixels": 28030332,
+      "pixel_counts": {
+        "0": 18502981,
+        "1": 8030329,
+        "2": 206521,
+        "3": 1290501,
+        "4": 0
+      },
+      "foreground_pixels": 9527351,
+      "present_classes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "starfish2": {
+      "total_pixels": 9144576,
+      "pixel_counts": {
+        "0": 9022284,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 122292
+      },
+      "foreground_pixels": 122292,
+      "present_classes": [
+        0,
+        4
+      ]
+    },
+    "turtles1": {
+      "total_pixels": 15699455,
+      "pixel_counts": {
+        "0": 11548975,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 4150480
+      },
+      "foreground_pixels": 4150480,
+      "present_classes": [
+        0,
+        4
       ]
     }
   }

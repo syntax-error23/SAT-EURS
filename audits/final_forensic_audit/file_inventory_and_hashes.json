@@ -1,0 +1,156 @@
+{
+  "checkpoints/run2_50ep/forensic_backup/best_model_preserved.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\run2_50ep\\forensic_backup\\best_model_preserved.pt",
+    "size_bytes": 5234119,
+    "size_mb": 4.9916,
+    "mtime": "2026-10-10 13:35:34",
+    "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba"
+  },
+  "checkpoints/run2_50ep/best_model.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\run2_50ep\\best_model.pt",
+    "size_bytes": 5234119,
+    "size_mb": 4.9916,
+    "mtime": "2026-10-10 13:35:34",
+    "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba"
+  },
+  "checkpoints/run2_50ep/forensic_backup/latest_ep37_preserved.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\run2_50ep\\forensic_backup\\latest_ep37_preserved.pt",
+    "size_bytes": 5230539,
+    "size_mb": 4.9882,
+    "mtime": "2026-10-10 14:49:18",
+    "sha256": "1d39b33c3a490f03aee2c26d1c8f080b56e5059b17d24f5c6d65bc2e7c30fe03"
+  },
+  "checkpoints/run2_50ep/latest.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\run2_50ep\\latest.pt",
+    "size_bytes": 5230539,
+    "size_mb": 4.9882,
+    "mtime": "2026-10-10 15:03:00",
+    "sha256": "cc96f1d24549860232be85e9a1eaa4ae0737a47d04478a9930f41059cf30a508"
+  },
+  "checkpoints/latest_run1.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\latest_run1.pt",
+    "size_bytes": 2021643,
+    "size_mb": 1.928,
+    "mtime": "2026-10-10 10:23:12",
+    "sha256": "13bcbc886e92cbfa68fa079edd48c793c3860eadd75fccb19a176c06afa058a2"
+  },
+  "checkpoints/best_model_run1.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\best_model_run1.pt",
+    "size_bytes": 2023215,
+    "size_mb": 1.9295,
+    "mtime": "2026-10-09 18:36:14",
+    "sha256": "2f872991eee526af7bbb3bd595a86b5f13f19ea83ba1157b9561f1ae2d393921"
+  },
+  "checkpoints/exp_bounded_recovery/bounded_recovery_ep5.pt": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\checkpoints\\exp_bounded_recovery\\bounded_recovery_ep5.pt",
+    "size_bytes": 5224746,
+    "size_mb": 4.9827,
+    "mtime": "2026-10-10 15:27:41",
+    "sha256": "63bffa132e50330acbdc69d101f2ded559327a25efe116447882dfac6c2088db"
+  },
+  "models/eurs_net_v2.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\models\\eurs_net_v2.py",
+    "size_bytes": 2695,
+    "size_mb": 0.0026,
+    "mtime": "2026-10-10 15:13:25",
+    "sha256": "df6b492b555651000c787a568ba0a0dc1599baedff21e1b02a35980497665640"
+  },
+  "models/decoders.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\models\\decoders.py",
+    "size_bytes": 7986,
+    "size_mb": 0.0076,
+    "mtime": "2026-10-10 15:13:12",
+    "sha256": "e3fe8f47c49c56603bf2c248ebaf91016104b44b2b0a249f4f8de8dbfca965d8"
+  },
+  "models/backbone.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\models\\backbone.py",
+    "size_bytes": 4326,
+    "size_mb": 0.0041,
+    "mtime": "2026-10-10 12:11:27",
+    "sha256": "afc04fac441d0a4c4de4ac7f8ab7f4217f65bb1b4729efee8370b4f21612fc12"
+  },
+  "models/common.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\models\\common.py",
+    "size_bytes": 2809,
+    "size_mb": 0.0027,
+    "mtime": "2026-10-09 16:26:45",
+    "sha256": "868d12c1d07a7ca6125484fc273515f545a39f6dc1a3be8829daa8ef2dbce568"
+  },
+  "losses/restoration_loss.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\losses\\restoration_loss.py",
+    "size_bytes": 5000,
+    "size_mb": 0.0048,
+    "mtime": "2026-10-10 15:37:57",
+    "sha256": "71eff7cc1fb58e5dc47f767729a8145f6935f0ace1aaaccb595921bfdb76c193"
+  },
+  "losses/msssim.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\losses\\msssim.py",
+    "size_bytes": 4059,
+    "size_mb": 0.0039,
+    "mtime": "2026-10-09 16:26:45",
+    "sha256": "d15f9abf2f887733616979ab352191a9ee86cc1faf62f782d22d96e2d83e1c18"
+  },
+  "losses/loss_config.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\losses\\loss_config.py",
+    "size_bytes": 3802,
+    "size_mb": 0.0036,
+    "mtime": "2026-10-10 12:13:03",
+    "sha256": "8dd04cef0522db50607b856a1f5e1bd94b667550b643f64be5e01f3efe38859f"
+  },
+  "losses/multi_task_loss.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\losses\\multi_task_loss.py",
+    "size_bytes": 2028,
+    "size_mb": 0.0019,
+    "mtime": "2026-10-10 12:14:07",
+    "sha256": "56142d90d607dff1fae912d5fa2589b878971395a2652ed9b1539972a41c923c"
+  },
+  "evaluate.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\evaluate.py",
+    "size_bytes": 4812,
+    "size_mb": 0.0046,
+    "mtime": "2026-10-10 12:38:02",
+    "sha256": "9c95c5317165164ef01ce951b23ce548540838ce8b06dae36c58b76ccb3d6475"
+  },
+  "metrics/restoration_metrics.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\metrics\\restoration_metrics.py",
+    "size_bytes": 5008,
+    "size_mb": 0.0048,
+    "mtime": "2026-10-09 16:26:45",
+    "sha256": "231cc38b4a7a9519a2acaefccf4139a5db40bd28d38afb0cebe2b001c65f9e26"
+  },
+  "metrics/segmentation_metrics.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\metrics\\segmentation_metrics.py",
+    "size_bytes": 3064,
+    "size_mb": 0.0029,
+    "mtime": "2026-10-10 12:37:53",
+    "sha256": "4ab3d394c3c7840077360163827b907477786a56c9abd8ab4e23effeeb761bdb"
+  },
+  "metrics/composite_score.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\metrics\\composite_score.py",
+    "size_bytes": 883,
+    "size_mb": 0.0008,
+    "mtime": "2026-10-09 16:26:45",
+    "sha256": "0df857ed9a3fa73d454dce824cc0119fe760670188836d5f190d22a8d092ca39"
+  },
+  "metrics/nr_metric.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\metrics\\nr_metric.py",
+    "size_bytes": 1652,
+    "size_mb": 0.0016,
+    "mtime": "2026-10-09 16:26:45",
+    "sha256": "e63146a4557f4786f27d740fb373a33565a8887770cb09b64d6637eaeb26a386"
+  },
+  "configs/baseline_v1.yaml": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\configs\\baseline_v1.yaml",
+    "size_bytes": 919,
+    "size_mb": 0.0009,
+    "mtime": "2026-10-10 12:13:18",
+    "sha256": "c26c45aa0957ae163f548d2bc2d65e455e7d0510ef114faeaa2748d4f865a64c"
+  },
+  "train.py": {
+    "abs_path": "C:\\Projects\\SAT-EURS\\train.py",
+    "size_bytes": 20084,
+    "size_mb": 0.0192,
+    "mtime": "2026-10-10 12:38:27",
+    "sha256": "9efc87bd60c18b563de17cb0a4d9cd8c238c9c6be312e4e48ab0a56145aaef9b"
+  }
+}

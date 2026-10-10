@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-10-10 18:52:40",
+  "scene_disjoint_check": {
+    "train_scenes": [
+      "fish11",
+      "fish13",
+      "fish14",
+      "fish15",
+      "fish17",
+      "fish18",
+      "fish2",
+      "fish20",
+      "fish21",
+      "fish4",
+      "fish5",
+      "fish7",
+      "fish9",
+      "ray1",
+      "starfish2",
+      "turtles1"
+    ],
+    "val_scenes": [
+      "fish1",
+      "fish12",
+      "seahorse1",
+      "sharkFish"
+    ],
+    "overlap_count": 0,
+    "status": "PASSED"
+  },
+  "psnr_discrepancy_resolution": {
+    "mean_psnr_db": 18.164294321327308,
+    "per_image_psnr_norm_mean": 0.19055500045871973,
+    "norm_of_mean_psnr": 0.1582147160663654,
+    "delta": 0.03234028439235434,
+    "explanation": "Official Track 2 evaluator computes PSNR_norm per image then averages; Jensen inequality and right-skewed scene distribution explain the difference."
+  },
+  "baseline_reproduced_metrics": {
+    "mIoU": 0.2683,
+    "macro_F1": 0.3764,
+    "coverage_penalty": 1.0,
+    "Q_seg": 0.101,
+    "per_class_IoU": {
+      "Background": 0.6097,
+      "Coral": 0.4335,
+      "Fish": 0.1496,
+      "Shark/Elasmobranch": 0.1472,
+      "Other": 0.0013
+    },
+    "per_class_precision": {
+      "Background": 0.8012,
+      "Coral": 0.5202,
+      "Fish": 0.2372,
+      "Shark/Elasmobranch": 0.2314,
+      "Other": 0.0164
+    },
+    "per_class_recall": {
+      "Background": 0.7184,
+      "Coral": 0.7223,
+      "Fish": 0.2882,
+      "Shark/Elasmobranch": 0.2882,
+      "Other": 0.0014
+    },
+    "PSNR_dB": 18.16,
+    "PSNR_norm": 0.1906,
+    "SSIM": 0.6762,
+    "sharpness_ratio": 0.0684,
+    "Q_rest": 0.3969,
+    "standard_composite_0_50": 0.2297
+  },
+  "confusion_matrix": [
+    [
+      346837059,
+      118282393,
+      8793981,
+      6232267,
+      2612700
+    ],
+    [
+      58781077,
+      186544029,
+      8566208,
+      2368105,
+      1997181
+    ],
+    [
+      6973138,
+      9335608,
+      7045795,
+      633580,
+      459879
+    ],
+    [
+      3294818,
+      1028024,
+      2114670,
+      2783084,
+      437004
+    ],
+    [
+      17019892,
+      43429836,
+      3186146,
+      12665,
+      91661
+    ]
+  ]
+}

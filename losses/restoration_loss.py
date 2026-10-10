@@ -64,34 +64,75 @@ class LaplacianLoss(nn.Module):
         return F.l1_loss(lap_pred, lap_target)
 
 
+class ColorAngleLoss(nn.Module):
+    """
+    Color Angle / Cosine Loss:
+    Measures the pixel-wise angular cosine deviation between predicted RGB vectors
+    and target RGB vectors:
+        cos_sim = (p · t) / (||p||_2 * ||t||_2 + eps)
+        L_color = 1.0 - mean(cos_sim)
+    Penalizes chromatic color shifts and haze directly, driving rapid radiometric white balance.
+    """
+    def __init__(self, eps: float = 1e-6):
+        super().__init__()
+        self.eps = eps
+
+    def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+        dot = (pred * target).sum(dim=1)  # [B, H, W]
+        norm_p = torch.norm(pred, p=2, dim=1).clamp(min=1e-3)
+        norm_t = torch.norm(target, p=2, dim=1).clamp(min=1e-3)
+        cos_sim = dot / (norm_p * norm_t)
+        cos_sim = torch.clamp(cos_sim, -1.0, 1.0)
+        return (1.0 - cos_sim).mean()
+
+
 class RestorationLoss(nn.Module):
     """
     Unified Restoration Loss:
-        L_rest = L_charbonnier + 2.0 * L_msssim + 0.1 * L_laplacian
+        L_rest = weight_charb * L_charb + weight_ssim * L_msssim + weight_color * L_color + weight_lap * L_lap
+    Default weights:
+        weight_charb = 1.0
+        weight_ssim = 0.5 (reduced from 2.0 to avoid initial MS-SSIM plateau)
+        weight_color = 0.5 (color angle/cosine loss for primary radiometric white balance)
+        weight_lap = 0.1
     """
     def __init__(
         self,
         weight_charb: float = 1.0,
-        weight_ssim: float = 2.0,
+        weight_ssim: float = 0.5,
+        weight_color: float = 0.5,
         weight_lap: float = 0.1,
         charb_eps: float = 1e-3
     ):
         super().__init__()
         self.charb = CharbonnierLoss(eps=charb_eps)
         self.msssim = MSSSIMLoss(data_range=1.0)
+        self.color = ColorAngleLoss()
         self.lap = LaplacianLoss()
 
         self.weight_charb = weight_charb
         self.weight_ssim = weight_ssim
+        self.weight_color = weight_color
         self.weight_lap = weight_lap
+        self.current_epoch = 1
+
+    def set_epoch(self, epoch: int):
+        self.current_epoch = epoch
+        # Keep MS-SSIM weight 0.5 for first 15 epochs, then scale to 1.0
+        if epoch <= 15:
+            self.weight_ssim = 0.5
+        else:
+            self.weight_ssim = 1.0
 
     def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
         l_charb = self.charb(pred, target)
         l_ssim = self.msssim(pred, target)
+        l_color = self.color(pred, target)
         l_lap = self.lap(pred, target)
 
         return (
             self.weight_charb * l_charb +
             self.weight_ssim * l_ssim +
+            self.weight_color * l_color +
             self.weight_lap * l_lap
         )

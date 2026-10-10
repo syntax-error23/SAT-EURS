@@ -1,0 +1,67 @@
+{
+  "best_model_run1.pt": {
+    "path": "checkpoints/best_model_run1.pt",
+    "epoch": 3,
+    "global_step": 2400,
+    "best_score": 0.1311,
+    "has_val_metrics": true,
+    "composite": 0.1311,
+    "psnr": 5.22,
+    "ssim": 0.0452,
+    "miou": 0.2279,
+    "macro_f1": 0.3178,
+    "q_seg": 0.0724
+  },
+  "latest_run1.pt": {
+    "path": "checkpoints/latest_run1.pt",
+    "epoch": 50,
+    "global_step": 40000,
+    "best_score": 0.1311,
+    "has_val_metrics": true,
+    "composite": 0.0634,
+    "psnr": 6.25,
+    "ssim": 0.0206,
+    "miou": 0.232,
+    "macro_f1": 0.3147,
+    "q_seg": 0.0
+  },
+  "run2_best_model.pt": {
+    "path": "checkpoints/run2_50ep/best_model.pt",
+    "epoch": 15,
+    "global_step": 12000,
+    "best_score": 0.1667,
+    "has_val_metrics": true,
+    "composite": 0.1667,
+    "psnr": 4.15,
+    "ssim": 0.0746,
+    "miou": 0.2683,
+    "macro_f1": 0.3764,
+    "q_seg": 0.101
+  },
+  "run2_latest.pt": {
+    "path": "checkpoints/run2_50ep/latest.pt",
+    "epoch": 41,
+    "global_step": 32800,
+    "best_score": 0.1667,
+    "has_val_metrics": true,
+    "composite": 0.1458,
+    "psnr": 3.9,
+    "ssim": 0.0884,
+    "miou": 0.2283,
+    "macro_f1": 0.3211,
+    "q_seg": 0.0733
+  },
+  "bounded_recovery_ep5.pt": {
+    "path": "checkpoints/exp_bounded_recovery/bounded_recovery_ep5.pt",
+    "epoch": 3,
+    "global_step": null,
+    "best_score": null,
+    "has_val_metrics": true,
+    "composite": 0.1901,
+    "psnr": 17.55,
+    "ssim": 0.638,
+    "miou": 0.2485,
+    "macro_f1": 0.3433,
+    "q_seg": 0.0853
+  }
+}

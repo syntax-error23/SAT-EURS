@@ -1,0 +1,105 @@
+{
+  "audit_subject": "EURS-Net V2 Current State & Checkpoint Integrity",
+  "audit_timestamp": "2026-10-10 17:25:00",
+  "hardware_constraints": {
+    "device_target": "NVIDIA Jetson AGX Orin (Track 2)",
+    "parameter_ceiling": 1000000,
+    "computational_ceiling_gflops": 12.0,
+    "measured_parameters": 411710,
+    "measured_gflops_1024": 6.093,
+    "parameter_usage_pct": 41.17,
+    "gflops_usage_pct": 50.78,
+    "constraints_pass": true
+  },
+  "checkpoint_inventory": {
+    "baseline_authoritative": {
+      "path": "checkpoints/run2_50ep/best_model.pt",
+      "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+      "size_bytes": 5234119,
+      "epoch": 15,
+      "global_step": 12000,
+      "best_score": 0.1667,
+      "preserved_identically_at": "checkpoints/run2_50ep/forensic_backup/best_model_preserved.pt"
+    },
+    "pilot_epoch_2": {
+      "path": "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep2.pt",
+      "sha256": "be184295d8cb7575977552d6a39c8deb07af0d93fee5c6bb0002bf844170eee3",
+      "size_bytes": 1874082,
+      "epoch": 2,
+      "composite_score_surrogate": 0.2038,
+      "composite_score_standard_0_50": 0.2225,
+      "status": "RECOMMENDED_RESTORATION_CANDIDATE"
+    },
+    "pilot_epoch_3": {
+      "path": "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep3.pt",
+      "sha256": "3fbe6fb385e5c043655b402c2f1da9094c900bdeebe11dbffb3c415e8add9785",
+      "size_bytes": 1874082,
+      "epoch": 3,
+      "composite_score_surrogate": 0.2050,
+      "composite_score_standard_0_50": 0.2221,
+      "status": "REJECTED_SCENE_CLIPPING_VIOLATION"
+    },
+    "best_pilot_checkpoint": {
+      "path": "experiments/exp_pilot_restricted_restoration/best_pilot_checkpoint.pt",
+      "sha256": "ca2a292066cbfc518fd8a21d463732f957ae53e8afcc722760e15d23ff9b82db",
+      "size_bytes": 1791627,
+      "epoch": 3,
+      "composite_score_surrogate": 0.2050,
+      "resolution_note": "100% bitwise identical in weights to Pilot Epoch 3 (optimizer states omitted)"
+    },
+    "exported_onnx_ep2": {
+      "path": "deploy/exports/pilot_epoch_2/eurs_net_v2_pilot_ep2.onnx",
+      "sha256": "3ebfaff6239f7f8a7ddf6c8a8e5f48cbb7439573a635172d6554589d48c5cfd5",
+      "size_bytes": 1682773,
+      "opset": 18,
+      "static_shapes": {
+        "input": [1, 3, 1024, 1024],
+        "restored_image": [1, 3, 1024, 1024],
+        "seg_logits": [1, 5, 1024, 1024]
+      },
+      "numerical_parity_vs_pytorch": {
+        "max_delta_restored": 6.26e-07,
+        "max_delta_seg_logits": 6.22e-05,
+        "parity_pass": true
+      }
+    }
+  },
+  "frozen_parameter_invariance": {
+    "total_frozen_tensors": 238,
+    "frozen_modules": ["fwb", "backbone", "segmentation_decoder"],
+    "max_delta_vs_baseline_ep2": 0.0,
+    "max_delta_vs_baseline_ep3": 0.0,
+    "max_delta_vs_baseline_best_pilot": 0.0,
+    "leakage_or_drift_detected": false
+  },
+  "verified_candidate_metrics_ep2": {
+    "segmentation": {
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "coverage_penalty": 1.0000,
+      "Q_seg": 0.1010,
+      "per_class_iou": {
+        "Background": 0.6097,
+        "Coral": 0.4335,
+        "Fish": 0.1496,
+        "Shark": 0.1472,
+        "Other": 0.0013
+      }
+    },
+    "restoration": {
+      "PSNR_dB": 17.40,
+      "PSNR_norm": 0.1690,
+      "SSIM": 0.6446,
+      "sharpness_ratio": 0.0675,
+      "Q_rest": 0.3729,
+      "clipping_aggregate_pct": 2.0801,
+      "per_scene_clipping_pct": {
+        "fish1": 1.3929,
+        "fish12": 5.6797,
+        "seahorse1": 1.0920,
+        "sharkFish": 0.1558
+      }
+    }
+  }
+}

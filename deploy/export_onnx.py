@@ -76,7 +76,8 @@ def export_and_validate_onnx(
         do_constant_folding=True,
         input_names=input_names,
         output_names=output_names,
-        dynamic_axes=None  # Strictly static axes for Track 2 Jetson Orin
+        dynamic_axes=None,  # Strictly static axes for Track 2 Jetson Orin
+        dynamo=False
     )
 
     if verbose:

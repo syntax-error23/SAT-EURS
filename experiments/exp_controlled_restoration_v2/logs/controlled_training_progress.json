@@ -1,0 +1,1139 @@
+{
+  "timestamp": "2026-10-10 18:10:42",
+  "current_epoch": 10,
+  "total_epochs_target": 10,
+  "best_composite_standard": 0.2297,
+  "best_epoch": 5,
+  "best_checkpoint_path": "experiments/exp_controlled_restoration_v2\\checkpoints\\best_controlled_checkpoint.pt",
+  "history": [
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 15.06,
+      "PSNR_norm": 0.1036,
+      "SSIM": 0.4994,
+      "sharpness_ratio": 0.0492,
+      "Q_rest": 0.2763,
+      "clipping_aggregate_pct": 6.815,
+      "clipping_low_0_pct": 6.815,
+      "clipping_high_1_pct": 0.0,
+      "clipping_channels_pct": {
+        "R": 0.0,
+        "G": 20.445,
+        "B": 0.0
+      },
+      "clipping_pct_max": 33.3333,
+      "clipping_guardrail_pass": false,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 16.132715272066065,
+          "ssim_mean": 0.47091509323567154,
+          "sharp_mean": 0.044358049382845405,
+          "clip_pct_mean": 6.57115618387858,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 19.713468551635742,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 13.354078320295248,
+          "ssim_mean": 0.49884683571755883,
+          "sharp_mean": 0.06314560990913562,
+          "clip_pct_mean": 5.716264406840006,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 17.14879322052002,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 13.294283551362055,
+          "ssim_mean": 0.47992170091718434,
+          "sharp_mean": 0.07048653839776266,
+          "clip_pct_mean": 8.544922669728596,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 25.63476800918579,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 17.449656619986417,
+          "ssim_mean": 0.5479406257346272,
+          "sharp_mean": 0.018900637782441828,
+          "clip_pct_mean": 6.427639802296955,
+          "clip_pct_max": 33.33333333333333,
+          "clip_r_mean": 0.0,
+          "clip_g_mean": 19.28291940689087,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": false
+        }
+      },
+      "Q_NR_surrogate": 0.2171,
+      "composite_surrogate": 0.1652,
+      "composite_standard_0_50": 0.1935,
+      "epoch": 0
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.66,
+      "PSNR_norm": 0.1715,
+      "SSIM": 0.6409,
+      "sharpness_ratio": 0.0563,
+      "Q_rest": 0.3712,
+      "clipping_aggregate_pct": 0.1694,
+      "clipping_low_0_pct": 0.1624,
+      "clipping_high_1_pct": 0.007,
+      "clipping_channels_pct": {
+        "R": 0.0057,
+        "G": 0.4876,
+        "B": 0.0149
+      },
+      "clipping_pct_max": 3.8922,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.319758075459863,
+          "ssim_mean": 0.561172887980938,
+          "sharp_mean": 0.047990419713528264,
+          "clip_pct_mean": 0.005818367004394531,
+          "clip_pct_max": 0.06395975748697916,
+          "clip_r_mean": 0.0009875297546386719,
+          "clip_g_mean": 0.003974437713623047,
+          "clip_b_mean": 0.012493133544921875,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 15.525753317541707,
+          "ssim_mean": 0.6021415828168393,
+          "sharp_mean": 0.07270904405514819,
+          "clip_pct_mean": 0.00978501637776693,
+          "clip_pct_max": 0.23342768351236978,
+          "clip_r_mean": 0.0060672760009765625,
+          "clip_g_mean": 0.0070095062255859375,
+          "clip_b_mean": 0.01627826690673828,
+          "clip_guardrail_pass": true
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.344762316543171,
+          "ssim_mean": 0.6364006918668746,
+          "sharp_mean": 0.07977694880758865,
+          "clip_pct_mean": 0.6619065602620444,
+          "clip_pct_max": 3.8921991984049478,
+          "clip_r_mean": 0.015480995178222656,
+          "clip_g_mean": 1.9394583702087402,
+          "clip_b_mean": 0.030780315399169922,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.45680832754424,
+          "ssim_mean": 0.76406714245677,
+          "sharp_mean": 0.024783440215345776,
+          "clip_pct_mean": 2.702077229817708e-05,
+          "clip_pct_max": 0.004069010416666666,
+          "clip_r_mean": 8.106231689453125e-05,
+          "clip_g_mean": 0.0,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.2817,
+      "composite_surrogate": 0.2001,
+      "composite_standard_0_50": 0.222,
+      "epoch": 1,
+      "train_loss": 0.34090526891872286,
+      "avg_head_grad_norm": 0.7511203567869962,
+      "lr": 0.0001,
+      "epoch_time_sec": 130.86
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.79,
+      "PSNR_norm": 0.1754,
+      "SSIM": 0.6531,
+      "sharpness_ratio": 0.0603,
+      "Q_rest": 0.3789,
+      "clipping_aggregate_pct": 0.9332,
+      "clipping_low_0_pct": 0.9267,
+      "clipping_high_1_pct": 0.0065,
+      "clipping_channels_pct": {
+        "R": 2.6505,
+        "G": 0.1353,
+        "B": 0.0136
+      },
+      "clipping_pct_max": 16.393,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.700254225346946,
+          "ssim_mean": 0.5817634363472461,
+          "sharp_mean": 0.05035625945831061,
+          "clip_pct_mean": 0.3689436912536621,
+          "clip_pct_max": 3.4316698710123696,
+          "clip_r_mean": 1.0883569717407227,
+          "clip_g_mean": 0.0055637359619140625,
+          "clip_b_mean": 0.01291036605834961,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 15.931740114398936,
+          "ssim_mean": 0.6428405316174031,
+          "sharp_mean": 0.07796379584551769,
+          "clip_pct_mean": 2.851901849110922,
+          "clip_pct_max": 16.392993927001953,
+          "clip_r_mean": 8.534475803375244,
+          "clip_g_mean": 0.005716800689697266,
+          "clip_b_mean": 0.015512943267822266,
+          "clip_guardrail_pass": true
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.328214820423545,
+          "ssim_mean": 0.6356184355914593,
+          "sharp_mean": 0.08557370079636001,
+          "clip_pct_mean": 0.5054105122884115,
+          "clip_pct_max": 4.0380795796712246,
+          "clip_r_mean": 0.9600281715393066,
+          "clip_g_mean": 0.5300979614257812,
+          "clip_b_mean": 0.026105403900146484,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.201351238114334,
+          "ssim_mean": 0.752102988511324,
+          "sharp_mean": 0.027463869118912694,
+          "clip_pct_mean": 0.006379127502441406,
+          "clip_pct_max": 0.30873616536458337,
+          "clip_r_mean": 0.019121170043945312,
+          "clip_g_mean": 1.621246337890625e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.2942,
+      "composite_surrogate": 0.2037,
+      "composite_standard_0_50": 0.2243,
+      "epoch": 2,
+      "train_loss": 0.3118108842894435,
+      "avg_head_grad_norm": 0.4265118602477014,
+      "lr": 9.05463412215599e-05,
+      "epoch_time_sec": 136.46
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.82,
+      "PSNR_norm": 0.1776,
+      "SSIM": 0.6606,
+      "sharpness_ratio": 0.0641,
+      "Q_rest": 0.3836,
+      "clipping_aggregate_pct": 1.4714,
+      "clipping_low_0_pct": 1.4634,
+      "clipping_high_1_pct": 0.008,
+      "clipping_channels_pct": {
+        "R": 4.3562,
+        "G": 0.0408,
+        "B": 0.0173
+      },
+      "clipping_pct_max": 17.0577,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.683210414459825,
+          "ssim_mean": 0.5899070283770561,
+          "sharp_mean": 0.052674718118132,
+          "clip_pct_mean": 0.7708784739176431,
+          "clip_pct_max": 4.849720001220703,
+          "clip_r_mean": 2.2909159660339355,
+          "clip_g_mean": 0.005458354949951172,
+          "clip_b_mean": 0.01626110076904297,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.116098995707706,
+          "ssim_mean": 0.661780366897583,
+          "sharp_mean": 0.08285143570215459,
+          "clip_pct_mean": 4.485663890838624,
+          "clip_pct_max": 17.057673136393227,
+          "clip_r_mean": 13.433514595031738,
+          "clip_g_mean": 0.006611347198486328,
+          "clip_b_mean": 0.01686573028564453,
+          "clip_guardrail_pass": true
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.36990031265692,
+          "ssim_mean": 0.6493229614198208,
+          "sharp_mean": 0.09131019667071434,
+          "clip_pct_mean": 0.15901247660319012,
+          "clip_pct_max": 1.2787183125813804,
+          "clip_r_mean": 0.28989124298095703,
+          "clip_g_mean": 0.1512451171875,
+          "clip_b_mean": 0.03590106964111328,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.101259309326597,
+          "ssim_mean": 0.7412361499667167,
+          "sharp_mean": 0.029611607412114393,
+          "clip_pct_mean": 0.4701646169026693,
+          "clip_pct_max": 9.966691335042317,
+          "clip_r_mean": 1.410475730895996,
+          "clip_g_mean": 1.811981201171875e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3057,
+      "composite_surrogate": 0.2063,
+      "composite_standard_0_50": 0.2257,
+      "epoch": 3,
+      "train_loss": 0.30417015820741655,
+      "avg_head_grad_norm": 0.405345224160701,
+      "lr": 7.959536998847742e-05,
+      "epoch_time_sec": 125.01
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.85,
+      "PSNR_norm": 0.1784,
+      "SSIM": 0.6632,
+      "sharpness_ratio": 0.0673,
+      "Q_rest": 0.3855,
+      "clipping_aggregate_pct": 2.305,
+      "clipping_low_0_pct": 2.296,
+      "clipping_high_1_pct": 0.009,
+      "clipping_channels_pct": {
+        "R": 6.7587,
+        "G": 0.1363,
+        "B": 0.02
+      },
+      "clipping_pct_max": 17.4734,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.752384860135063,
+          "ssim_mean": 0.5969334357976913,
+          "sharp_mean": 0.05457988758730365,
+          "clip_pct_mean": 1.4230205217997232,
+          "clip_pct_max": 5.976835886637369,
+          "clip_r_mean": 4.241519451141357,
+          "clip_g_mean": 0.008951663970947266,
+          "clip_b_mean": 0.018590450286865234,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.242612343532507,
+          "ssim_mean": 0.6806009627878666,
+          "sharp_mean": 0.08695275098510377,
+          "clip_pct_mean": 6.503477096557617,
+          "clip_pct_max": 17.473443349202476,
+          "clip_r_mean": 19.485424518585205,
+          "clip_g_mean": 0.007153511047363281,
+          "clip_b_mean": 0.017853260040283203,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.337912651003773,
+          "ssim_mean": 0.6378664360940456,
+          "sharp_mean": 0.09580259465910775,
+          "clip_pct_mean": 0.5604345003763833,
+          "clip_pct_max": 3.7717819213867188,
+          "clip_r_mean": 1.108630657196045,
+          "clip_g_mean": 0.5291790962219238,
+          "clip_b_mean": 0.04349374771118164,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.080250176071832,
+          "ssim_mean": 0.737472014427185,
+          "sharp_mean": 0.03179670554253596,
+          "clip_pct_mean": 0.733073075612386,
+          "clip_pct_max": 11.995824178059895,
+          "clip_r_mean": 2.1991653442382812,
+          "clip_g_mean": 5.3882598876953125e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3124,
+      "composite_surrogate": 0.2075,
+      "composite_standard_0_50": 0.2263,
+      "epoch": 4,
+      "train_loss": 0.296543205678463,
+      "avg_head_grad_norm": 0.3769995260797441,
+      "lr": 6.57963412215599e-05,
+      "epoch_time_sec": 124.36
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 18.16,
+      "PSNR_norm": 0.1906,
+      "SSIM": 0.6762,
+      "sharpness_ratio": 0.0684,
+      "Q_rest": 0.3969,
+      "clipping_aggregate_pct": 1.3143,
+      "clipping_low_0_pct": 1.305,
+      "clipping_high_1_pct": 0.0092,
+      "clipping_channels_pct": {
+        "R": 3.8898,
+        "G": 0.0332,
+        "B": 0.0199
+      },
+      "clipping_pct_max": 16.7779,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.91499125962003,
+          "ssim_mean": 0.5954206442832947,
+          "sharp_mean": 0.05532239906612604,
+          "clip_pct_mean": 0.5380131403605142,
+          "clip_pct_max": 3.599707285563151,
+          "clip_r_mean": 1.590353012084961,
+          "clip_g_mean": 0.005995273590087891,
+          "clip_b_mean": 0.01769113540649414,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.44361273942411,
+          "ssim_mean": 0.6841712595522403,
+          "sharp_mean": 0.08859234150444548,
+          "clip_pct_mean": 4.529069741566975,
+          "clip_pct_max": 16.777928670247398,
+          "clip_r_mean": 13.56127643585205,
+          "clip_g_mean": 0.007458209991455078,
+          "clip_b_mean": 0.018474578857421875,
+          "clip_guardrail_pass": true
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.603523828978924,
+          "ssim_mean": 0.6620869509875774,
+          "sharp_mean": 0.09686581495729105,
+          "clip_pct_mean": 0.10263490676879883,
+          "clip_pct_max": 0.5454381306966145,
+          "clip_r_mean": 0.14521169662475586,
+          "clip_g_mean": 0.11926746368408203,
+          "clip_b_mean": 0.043425559997558594,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.695049859833418,
+          "ssim_mean": 0.7631662133336067,
+          "sharp_mean": 0.032672866815981,
+          "clip_pct_mean": 0.08742125829060873,
+          "clip_pct_max": 3.5642623901367188,
+          "clip_r_mean": 0.26226377487182617,
+          "clip_g_mean": 0.0,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3029,
+      "composite_surrogate": 0.21,
+      "composite_standard_0_50": 0.2297,
+      "epoch": 5,
+      "train_loss": 0.29560617968440056,
+      "avg_head_grad_norm": 0.37563494383357465,
+      "lr": 5.05e-05,
+      "epoch_time_sec": 123.97
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 18.12,
+      "PSNR_norm": 0.1883,
+      "SSIM": 0.6738,
+      "sharpness_ratio": 0.0697,
+      "Q_rest": 0.3949,
+      "clipping_aggregate_pct": 2.2303,
+      "clipping_low_0_pct": 2.2217,
+      "clipping_high_1_pct": 0.0085,
+      "clipping_channels_pct": {
+        "R": 6.5976,
+        "G": 0.0748,
+        "B": 0.0184
+      },
+      "clipping_pct_max": 17.3138,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.98477213120575,
+          "ssim_mean": 0.6013490208983421,
+          "sharp_mean": 0.05617106227306024,
+          "clip_pct_mean": 1.3543971379597983,
+          "clip_pct_max": 5.944347381591797,
+          "clip_r_mean": 4.037797451019287,
+          "clip_g_mean": 0.007351875305175781,
+          "clip_b_mean": 0.01804208755493164,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.50968286486268,
+          "ssim_mean": 0.691070254445076,
+          "sharp_mean": 0.09019133466829157,
+          "clip_pct_mean": 6.614661057790119,
+          "clip_pct_max": 17.31379826863607,
+          "clip_r_mean": 19.818179607391357,
+          "clip_g_mean": 0.007487773895263672,
+          "clip_b_mean": 0.018315792083740234,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.434715258898398,
+          "ssim_mean": 0.6488859468698501,
+          "sharp_mean": 0.09897076629812425,
+          "clip_pct_mean": 0.3528304100036621,
+          "clip_pct_max": 2.72064208984375,
+          "clip_r_mean": 0.7369179725646973,
+          "clip_g_mean": 0.2844681739807129,
+          "clip_b_mean": 0.03710508346557617,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.55477073698484,
+          "ssim_mean": 0.7537178242206574,
+          "sharp_mean": 0.033524560518722796,
+          "clip_pct_mean": 0.5991385777791342,
+          "clip_pct_max": 11.554431915283203,
+          "clip_r_mean": 1.7973871231079102,
+          "clip_g_mean": 2.86102294921875e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3098,
+      "composite_surrogate": 0.2101,
+      "composite_standard_0_50": 0.2291,
+      "epoch": 6,
+      "train_loss": 0.29227792160585525,
+      "avg_head_grad_norm": 0.36624922350049016,
+      "lr": 3.5203658778440106e-05,
+      "epoch_time_sec": 124.23
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.98,
+      "PSNR_norm": 0.1836,
+      "SSIM": 0.6728,
+      "sharpness_ratio": 0.0705,
+      "Q_rest": 0.3924,
+      "clipping_aggregate_pct": 2.9368,
+      "clipping_low_0_pct": 2.9288,
+      "clipping_high_1_pct": 0.008,
+      "clipping_channels_pct": {
+        "R": 8.7528,
+        "G": 0.0404,
+        "B": 0.017
+      },
+      "clipping_pct_max": 17.369,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.893433370084676,
+          "ssim_mean": 0.6103863283991814,
+          "sharp_mean": 0.05701578221038332,
+          "clip_pct_mean": 2.116429328918457,
+          "clip_pct_max": 6.841246287027995,
+          "clip_r_mean": 6.324643135070801,
+          "clip_g_mean": 0.0069561004638671875,
+          "clip_b_mean": 0.017688751220703125,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.377089660636805,
+          "ssim_mean": 0.6987391205132008,
+          "sharp_mean": 0.09127936492291573,
+          "clip_pct_mean": 8.190907001495361,
+          "clip_pct_max": 17.368952433268227,
+          "clip_r_mean": 24.549082279205322,
+          "clip_g_mean": 0.00693511962890625,
+          "clip_b_mean": 0.01670360565185547,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.376156611576153,
+          "ssim_mean": 0.6477433796226978,
+          "sharp_mean": 0.10057299696184448,
+          "clip_pct_mean": 0.2715024948120117,
+          "clip_pct_max": 3.343613942464193,
+          "clip_r_mean": 0.6331596374511719,
+          "clip_g_mean": 0.1477203369140625,
+          "clip_b_mean": 0.03362751007080078,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.270079450730055,
+          "ssim_mean": 0.734493356347084,
+          "sharp_mean": 0.03312001154290343,
+          "clip_pct_mean": 1.1681944529215498,
+          "clip_pct_max": 15.594037373860678,
+          "clip_r_mean": 3.504456043243408,
+          "clip_g_mean": 0.00012731552124023438,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3176,
+      "composite_surrogate": 0.2101,
+      "composite_standard_0_50": 0.2283,
+      "epoch": 7,
+      "train_loss": 0.29658340502530334,
+      "avg_head_grad_norm": 0.36360406189225614,
+      "lr": 2.1404630011522586e-05,
+      "epoch_time_sec": 123.23
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 17.94,
+      "PSNR_norm": 0.1797,
+      "SSIM": 0.6755,
+      "sharpness_ratio": 0.0697,
+      "Q_rest": 0.3918,
+      "clipping_aggregate_pct": 3.1351,
+      "clipping_low_0_pct": 3.125,
+      "clipping_high_1_pct": 0.01,
+      "clipping_channels_pct": {
+        "R": 9.3448,
+        "G": 0.0381,
+        "B": 0.0223
+      },
+      "clipping_pct_max": 18.3478,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.801215062069353,
+          "ssim_mean": 0.6073370653390885,
+          "sharp_mean": 0.05632175568416043,
+          "clip_pct_mean": 2.32737668355306,
+          "clip_pct_max": 8.064746856689453,
+          "clip_r_mean": 6.955760955810547,
+          "clip_g_mean": 0.006737709045410156,
+          "clip_b_mean": 0.019631385803222656,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.412129839598357,
+          "ssim_mean": 0.699481122493744,
+          "sharp_mean": 0.08996858150229033,
+          "clip_pct_mean": 8.268489360809326,
+          "clip_pct_max": 17.695649464925133,
+          "clip_r_mean": 24.77799129486084,
+          "clip_g_mean": 0.008044719696044922,
+          "clip_b_mean": 0.01943206787109375,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.482232787673833,
+          "ssim_mean": 0.657415876686573,
+          "sharp_mean": 0.09974330876510523,
+          "clip_pct_mean": 0.1890185674031576,
+          "clip_pct_max": 1.8413543701171875,
+          "clip_r_mean": 0.37958621978759766,
+          "clip_g_mean": 0.13747358322143555,
+          "clip_b_mean": 0.04999589920043945,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.069923010555385,
+          "ssim_mean": 0.737633361518383,
+          "sharp_mean": 0.03294216765142892,
+          "clip_pct_mean": 1.7553313573201494,
+          "clip_pct_max": 18.347835540771484,
+          "clip_r_mean": 5.265897274017334,
+          "clip_g_mean": 9.679794311523438e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3207,
+      "composite_surrogate": 0.2102,
+      "composite_standard_0_50": 0.2281,
+      "epoch": 8,
+      "train_loss": 0.2896375375427306,
+      "avg_head_grad_norm": 0.3679605100862682,
+      "lr": 1.0453658778440107e-05,
+      "epoch_time_sec": 123.81
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 18.12,
+      "PSNR_norm": 0.1878,
+      "SSIM": 0.6761,
+      "sharpness_ratio": 0.0693,
+      "Q_rest": 0.3957,
+      "clipping_aggregate_pct": 2.4749,
+      "clipping_low_0_pct": 2.4678,
+      "clipping_high_1_pct": 0.007,
+      "clipping_channels_pct": {
+        "R": 7.3839,
+        "G": 0.0262,
+        "B": 0.0146
+      },
+      "clipping_pct_max": 17.3266,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.944772521073546,
+          "ssim_mean": 0.6054220652580261,
+          "sharp_mean": 0.056249846236334354,
+          "clip_pct_mean": 1.5681867599487305,
+          "clip_pct_max": 6.235408782958984,
+          "clip_r_mean": 4.6843581199646,
+          "clip_g_mean": 0.0053558349609375,
+          "clip_b_mean": 0.014846324920654297,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.51517067543023,
+          "ssim_mean": 0.6946159990131855,
+          "sharp_mean": 0.0896357021096908,
+          "clip_pct_mean": 7.259270509084065,
+          "clip_pct_max": 17.32660929361979,
+          "clip_r_mean": 21.75602960586548,
+          "clip_g_mean": 0.005805492401123047,
+          "clip_b_mean": 0.015976428985595703,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.495938066405978,
+          "ssim_mean": 0.6549353143572807,
+          "sharp_mean": 0.09854981027892659,
+          "clip_pct_mean": 0.17633088429768884,
+          "clip_pct_max": 1.742998758951823,
+          "clip_r_mean": 0.408205509185791,
+          "clip_g_mean": 0.09334468841552734,
+          "clip_b_mean": 0.027442455291748047,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.517391462518127,
+          "ssim_mean": 0.749346094429493,
+          "sharp_mean": 0.03269320970642184,
+          "clip_pct_mean": 0.8956489562988281,
+          "clip_pct_max": 13.862101236979166,
+          "clip_r_mean": 2.686849594116211,
+          "clip_g_mean": 9.72747802734375e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3114,
+      "composite_surrogate": 0.2104,
+      "composite_standard_0_50": 0.2293,
+      "epoch": 9,
+      "train_loss": 0.29266443056985736,
+      "avg_head_grad_norm": 0.36476765183731913,
+      "lr": 3.4227024433899e-06,
+      "epoch_time_sec": 124.2
+    },
+    {
+      "total_images": 800,
+      "mIoU": 0.2683,
+      "macro_F1": 0.3764,
+      "shark_iou": 0.1472,
+      "per_class": {
+        "Background": {
+          "iou": 0.6097,
+          "f1": 0.7576
+        },
+        "Coral": {
+          "iou": 0.4335,
+          "f1": 0.6048
+        },
+        "Fish": {
+          "iou": 0.1496,
+          "f1": 0.2602
+        },
+        "Shark": {
+          "iou": 0.1472,
+          "f1": 0.2567
+        },
+        "Other": {
+          "iou": 0.0013,
+          "f1": 0.0026
+        }
+      },
+      "coverage_penalty": 1.0,
+      "Q_seg": 0.101,
+      "PSNR_dB": 18.08,
+      "PSNR_norm": 0.1874,
+      "SSIM": 0.6753,
+      "sharpness_ratio": 0.0703,
+      "Q_rest": 0.3952,
+      "clipping_aggregate_pct": 2.1559,
+      "clipping_low_0_pct": 2.1477,
+      "clipping_high_1_pct": 0.0082,
+      "clipping_channels_pct": {
+        "R": 6.3847,
+        "G": 0.0657,
+        "B": 0.0173
+      },
+      "clipping_pct_max": 17.1401,
+      "clipping_guardrail_pass": true,
+      "per_scene": {
+        "fish1": {
+          "count": 200,
+          "psnr_mean": 18.91782555626768,
+          "ssim_mean": 0.6009317183494568,
+          "sharp_mean": 0.05700567941014238,
+          "clip_pct_mean": 1.1429648399353025,
+          "clip_pct_max": 5.381329854329428,
+          "clip_r_mean": 3.4036622047424316,
+          "clip_g_mean": 0.007664680480957031,
+          "clip_b_mean": 0.01756763458251953,
+          "clip_guardrail_pass": true
+        },
+        "fish12": {
+          "count": 200,
+          "psnr_mean": 16.425248123099212,
+          "ssim_mean": 0.6898319838941097,
+          "sharp_mean": 0.0910484051704847,
+          "clip_pct_mean": 6.730329195658365,
+          "clip_pct_max": 17.140134175618492,
+          "clip_r_mean": 20.166659355163574,
+          "clip_g_mean": 0.007088661193847656,
+          "clip_b_mean": 0.01723957061767578,
+          "clip_guardrail_pass": false
+        },
+        "seahorse1": {
+          "count": 200,
+          "psnr_mean": 15.5286167211659,
+          "ssim_mean": 0.65742332264781,
+          "sharp_mean": 0.10019945665145397,
+          "clip_pct_mean": 0.1938091913859049,
+          "clip_pct_max": 1.1534690856933594,
+          "clip_r_mean": 0.2990255355834961,
+          "clip_g_mean": 0.24797487258911133,
+          "clip_b_mean": 0.03442716598510742,
+          "clip_guardrail_pass": true
+        },
+        "sharkFish": {
+          "count": 200,
+          "psnr_mean": 21.459500550221666,
+          "ssim_mean": 0.7530713492631912,
+          "sharp_mean": 0.03282720286486181,
+          "clip_pct_mean": 0.5565398534138998,
+          "clip_pct_max": 10.469468434651692,
+          "clip_r_mean": 1.6696009635925293,
+          "clip_g_mean": 1.8596649169921875e-05,
+          "clip_b_mean": 0.0,
+          "clip_guardrail_pass": true
+        }
+      },
+      "Q_NR_surrogate": 0.3034,
+      "composite_surrogate": 0.2095,
+      "composite_standard_0_50": 0.2292,
+      "epoch": 10,
+      "train_loss": 0.2969486095942557,
+      "avg_head_grad_norm": 0.3785585333779454,
+      "lr": 1e-06,
+      "epoch_time_sec": 123.6
+    }
+  ]
+}

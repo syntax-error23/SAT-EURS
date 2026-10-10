@@ -25,7 +25,7 @@ class EURSNetV2(nn.Module):
         restored_rgb: [B, 3, 1024, 1024] clamped in [0.0, 1.0]
         seg_logits:   [B, num_classes, 1024, 1024]
     """
-    def __init__(self, num_classes: int = 5):
+    def __init__(self, num_classes: int = 5, bounded_restoration: bool = True, bound_scale: float = 0.20):
         super().__init__()
         self.num_classes = num_classes
 
@@ -36,7 +36,7 @@ class EURSNetV2(nn.Module):
         self.backbone = SharedBackbone()
 
         # Dual Task Decoders
-        self.restoration_decoder = ProgressiveRestorationDecoder()
+        self.restoration_decoder = ProgressiveRestorationDecoder(bounded_residual=bounded_restoration, bound_scale=bound_scale)
         self.segmentation_decoder = ProgressiveSegmentationDecoder(num_classes=num_classes)
 
     def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
@@ -55,8 +55,8 @@ class EURSNetV2(nn.Module):
         # 2. Shared Multi-Scale Feature Extraction
         stem, f256, f128, f64, f32 = self.backbone(wb_x)
 
-        # 3. Restoration Branch (Guided residual addition to raw input x)
-        restored_rgb = self.restoration_decoder(f128, f256, stem, x)
+        # 3. Restoration Branch (Guided residual addition to white-balanced input wb_x)
+        restored_rgb = self.restoration_decoder(f128, f256, stem, raw_input=x, wb_input=wb_x)
 
         # 4. Segmentation Branch (Top-down FPN with Small-Object & Boundary Refinements)
         seg_logits = self.segmentation_decoder(f32, f64, f128, f256, stem)

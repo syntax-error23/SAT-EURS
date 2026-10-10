@@ -33,6 +33,10 @@ class MultiTaskLoss(nn.Module):
         self.seg_loss_fn = SegmentationLoss(num_classes=num_classes, alpha=alpha_seg)
         self.rest_loss_fn = RestorationLoss()
 
+    def set_epoch(self, epoch: int):
+        if hasattr(self.rest_loss_fn, 'set_epoch'):
+            self.rest_loss_fn.set_epoch(epoch)
+
     def forward(
         self,
         restored_rgb: torch.Tensor,

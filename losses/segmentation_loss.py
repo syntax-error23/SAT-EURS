@@ -67,13 +67,17 @@ class SoftDiceLoss(nn.Module):
     """
     Soft Dice Loss for Multi-Class Semantic Segmentation:
         Dice_c = 2 * sum(P_c * Y_c) / (sum(P_c^2) + sum(Y_c^2) + eps)
-        Loss = 1 - mean(Dice_c)
-    Macro-averaged over all C classes, including background class 0.
+        Loss = 1 - weighted_mean(Dice_c)
+    Weighted over all C classes using alpha class weights to prevent background dominance.
     """
-    def __init__(self, num_classes: int = 5, eps: float = 1e-6):
+    def __init__(self, num_classes: int = 5, eps: float = 1e-6, alpha: Optional[torch.Tensor] = None):
         super().__init__()
         self.num_classes = num_classes
         self.eps = eps
+        if alpha is not None:
+            self.register_buffer('alpha', alpha.view(1, num_classes))
+        else:
+            self.alpha = None
 
     def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
         """
@@ -84,8 +88,8 @@ class SoftDiceLoss(nn.Module):
             torch.Tensor: Scalar soft dice loss.
         """
         probs = F.softmax(logits, dim=1) # [B, C, H, W]
-        # One-hot encode targets
-        targets_one_hot = F.one_hot(targets, num_classes=self.num_classes).permute(0, 3, 1, 2).float() # [B, C, H, W]
+        targets_clamped = targets.clamp(0, self.num_classes - 1)
+        targets_one_hot = F.one_hot(targets_clamped, num_classes=self.num_classes).permute(0, 3, 1, 2).float() # [B, C, H, W]
 
         # Flatten spatial dimensions: [B, C, H*W]
         probs_flat = probs.view(probs.shape[0], self.num_classes, -1)
@@ -95,15 +99,19 @@ class SoftDiceLoss(nn.Module):
         denominator = (probs_flat ** 2).sum(dim=2) + (targets_flat ** 2).sum(dim=2) # [B, C]
 
         dice_per_class = (2.0 * intersection + self.eps) / (denominator + self.eps) # [B, C]
-        # Macro average over classes, then average over batch
-        macro_dice = dice_per_class.mean(dim=1) # [B]
-        return (1.0 - macro_dice).mean()
+        if self.alpha is not None:
+            weighted_dice = (dice_per_class * self.alpha).sum(dim=1) / self.alpha.sum()
+            return (1.0 - weighted_dice).mean()
+        else:
+            macro_dice = dice_per_class.mean(dim=1) # [B]
+            return (1.0 - macro_dice).mean()
 
 
 class SegmentationLoss(nn.Module):
     """
     Unified Segmentation Loss combining Focal Loss and Soft Dice Loss:
         L_seg = L_focal + lambda_dice * L_dice
+    Both losses utilize class weights alpha to prevent background dominance.
     """
     def __init__(
         self,
@@ -114,7 +122,7 @@ class SegmentationLoss(nn.Module):
     ):
         super().__init__()
         self.focal = ClassWeightedFocalLoss(alpha=alpha, gamma=gamma)
-        self.dice = SoftDiceLoss(num_classes=num_classes)
+        self.dice = SoftDiceLoss(num_classes=num_classes, alpha=alpha)
         self.lambda_dice = lambda_dice
 
     def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:

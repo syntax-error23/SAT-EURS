@@ -4,10 +4,12 @@ __pycache__/
 *$py.class
 
 # PyTorch checkpoints and weights
-checkpoints/
+/checkpoints/
 *.pt
 *.pth
 *.bin
+!experiments/exp_controlled_restoration_v2/checkpoints/
+!experiments/exp_controlled_restoration_v2/checkpoints/best_controlled_checkpoint.pt
 
 # Dataset and cached image arrays
 data/mini_dev/

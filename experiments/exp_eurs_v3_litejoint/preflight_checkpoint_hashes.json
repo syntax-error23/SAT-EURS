@@ -1,0 +1,30 @@
+{
+  "checkpoints/run2_50ep/best_model.pt": {
+    "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+    "size_bytes": 5234119
+  },
+  "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep2.pt": {
+    "sha256": "be184295d8cb7575977552d6a39c8deb07af0d93fee5c6bb0002bf844170eee3",
+    "size_bytes": 1874082
+  },
+  "experiments/exp_pilot_restricted_restoration/best_pilot_checkpoint.pt": {
+    "sha256": "ca2a292066cbfc518fd8a21d463732f957ae53e8afcc722760e15d23ff9b82db",
+    "size_bytes": 1791627
+  },
+  "experiments/exp_controlled_restoration_v2/checkpoints/controlled_ep1.pt": {
+    "sha256": "8cf766816ea46afb466c503957cfba0fe887f18cd6a074f117f81f4fd9293b44",
+    "size_bytes": 1872772
+  },
+  "experiments/exp_controlled_restoration_v2/checkpoints/controlled_ep5.pt": {
+    "sha256": "7a86312c76740f8d0f8c72bb550170344905ce4313bc5209863e149f8d83f91a",
+    "size_bytes": 1872772
+  },
+  "experiments/exp_controlled_restoration_v2/checkpoints/best_controlled_checkpoint.pt": {
+    "sha256": "444675aa4b6c25f686b8f0c30c9456b269b1c56d41c3d15d2bb4dd2e4229bf18",
+    "size_bytes": 1793963
+  },
+  "deploy/exports/controlled_epoch_5/eurs_net_v2_controlled_ep5.onnx": {
+    "sha256": "da6a49c1242156e0660b2cd345ab87722a9ab74013950707051fe4f8aab6bf7d",
+    "size_bytes": 1682773
+  }
+}

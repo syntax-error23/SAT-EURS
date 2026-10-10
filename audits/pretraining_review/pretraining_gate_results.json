@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-10-10 17:25:27",
+  "all_gates_passed": true,
+  "gates": {
+    "gate_a": {
+      "name": "Checkpoint Integrity",
+      "passed": true,
+      "details": {
+        "checkpoints/run2_50ep/best_model.pt": {
+          "exists": true,
+          "sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+          "expected_sha256": "ceacd22546aaa4f8fbf0ef15c0641b568a0261c8ba62ca7ef342c40ac27e50ba",
+          "match": true,
+          "size_bytes": 5234119
+        },
+        "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep2.pt": {
+          "exists": true,
+          "sha256": "be184295d8cb7575977552d6a39c8deb07af0d93fee5c6bb0002bf844170eee3",
+          "expected_sha256": "be184295d8cb7575977552d6a39c8deb07af0d93fee5c6bb0002bf844170eee3",
+          "match": true,
+          "size_bytes": 1874082
+        },
+        "experiments/exp_pilot_restricted_restoration/pilot_restricted_ep3.pt": {
+          "exists": true,
+          "sha256": "3fbe6fb385e5c043655b402c2f1da9094c900bdeebe11dbffb3c415e8add9785",
+          "expected_sha256": "3fbe6fb385e5c043655b402c2f1da9094c900bdeebe11dbffb3c415e8add9785",
+          "match": true,
+          "size_bytes": 1874082
+        },
+        "experiments/exp_pilot_restricted_restoration/best_pilot_checkpoint.pt": {
+          "exists": true,
+          "sha256": "ca2a292066cbfc518fd8a21d463732f957ae53e8afcc722760e15d23ff9b82db",
+          "expected_sha256": "ca2a292066cbfc518fd8a21d463732f957ae53e8afcc722760e15d23ff9b82db",
+          "match": true,
+          "size_bytes": 1791627
+        },
+        "deploy/exports/pilot_epoch_2/eurs_net_v2_pilot_ep2.onnx": {
+          "exists": true,
+          "sha256": "3ebfaff6239f7f8a7ddf6c8a8e5f48cbb7439573a635172d6554589d48c5cfd5",
+          "expected_sha256": "3ebfaff6239f7f8a7ddf6c8a8e5f48cbb7439573a635172d6554589d48c5cfd5",
+          "match": true,
+          "size_bytes": 1682773
+        },
+        "isolated_exp_dir": "experiments/exp_controlled_restoration_v2"
+      }
+    },
+    "gate_b": {
+      "name": "Model and Optimizer Correctness",
+      "passed": true,
+      "forward_valid": true,
+      "loss_finite": true,
+      "frozen_grad_leak": false,
+      "trainable_grads_finite": true,
+      "max_frozen_drift": 0.0,
+      "trainable_parameter_count": 7787,
+      "frozen_parameter_count": 403923
+    },
+    "gate_c": {
+      "name": "Data Integrity",
+      "passed": true,
+      "scene_disjoint": true,
+      "train_scenes_count": 16,
+      "val_scenes_count": 4,
+      "train_samples_count": 3200,
+      "val_samples_count": 800,
+      "pairing_valid": true,
+      "range_valid": true,
+      "classes_valid": true,
+      "transform_synchronized": true
+    },
+    "gate_d": {
+      "name": "Small Overfit Test",
+      "passed": true,
+      "initial_loss": 0.5468751192092896,
+      "final_loss": 0.4047272980213165,
+      "loss_reduction_pct": 25.99,
+      "steps": 15,
+      "sample_count": 10
+    },
+    "gate_e": {
+      "name": "Resource Audit",
+      "passed": true,
+      "total_parameters": 411710,
+      "parameter_budget": 1000000,
+      "parameter_budget_pct": 41.17,
+      "gflops": 6.093,
+      "gflops_budget": 12.0,
+      "gflops_budget_pct": 50.78
+    },
+    "gate_f": {
+      "name": "Validation Metric Parity Reproduction",
+      "passed": true,
+      "verified_epoch_2_metrics": {
+        "psnr_dB": 17.4,
+        "ssim": 0.6446,
+        "mIoU": 0.2683,
+        "shark_iou": 0.1472,
+        "aggregate_clipping_pct": 2.0801,
+        "fish12_clipping_pct": 5.679657300313314
+      }
+    }
+  }
+}

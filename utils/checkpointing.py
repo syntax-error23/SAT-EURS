@@ -105,12 +105,23 @@ def load_checkpoint(
     if restore_rng and "rng_states" in checkpoint:
         rngs = checkpoint["rng_states"]
         if "torch_cpu" in rngs:
-            torch.set_rng_state(rngs["torch_cpu"])
+            cpu_state = rngs["torch_cpu"]
+            if isinstance(cpu_state, torch.Tensor):
+                cpu_state = cpu_state.cpu()
+            torch.set_rng_state(cpu_state)
         if "numpy" in rngs:
             np.random.set_state(rngs["numpy"])
         if "python" in rngs:
             random.setstate(rngs["python"])
         if torch.cuda.is_available() and "torch_cuda" in rngs and rngs["torch_cuda"] is not None:
-            torch.cuda.set_rng_state_all(rngs["torch_cuda"])
+            cuda_states = rngs["torch_cuda"]
+            if isinstance(cuda_states, (list, tuple)):
+                cuda_states = [x.cpu() if isinstance(x, torch.Tensor) else x for x in cuda_states]
+            elif isinstance(cuda_states, torch.Tensor):
+                cuda_states = cuda_states.cpu()
+            try:
+                torch.cuda.set_rng_state_all(cuda_states)
+            except Exception:
+                pass
 
     return checkpoint

@@ -96,20 +96,23 @@ class SharedBackbone(nn.Module):
         # Stage 1: 512 -> 256
         self.stage1 = MBConvBlock(16, 24, stride=2, expansion=1, use_ca=False)
 
-        # Stage 2: 256 -> 128 + Coordinate Attention
-        self.stage2 = MBConvBlock(24, 40, stride=2, expansion=6, use_ca=True)
+        # Stage 2: 256 -> 128 + Coordinate Attention (2 blocks)
+        self.stage2a = MBConvBlock(24, 40, stride=2, expansion=6, use_ca=True)
+        self.stage2b = MBConvBlock(40, 40, stride=1, expansion=6, use_ca=False)
 
-        # Stage 3: 128 -> 64 + Coordinate Attention
-        self.stage3 = MBConvBlock(40, 64, stride=2, expansion=6, use_ca=True)
+        # Stage 3: 128 -> 64 + Coordinate Attention (2 blocks)
+        self.stage3a = MBConvBlock(40, 64, stride=2, expansion=6, use_ca=True)
+        self.stage3b = MBConvBlock(64, 64, stride=1, expansion=6, use_ca=False)
 
-        # Stage 4: 64 -> 32 (Semantic Bottleneck)
-        self.stage4 = MBConvBlock(64, 96, stride=2, expansion=6, use_ca=False)
+        # Stage 4: 64 -> 32 (Semantic Bottleneck, 2 blocks)
+        self.stage4a = MBConvBlock(64, 96, stride=2, expansion=6, use_ca=False)
+        self.stage4b = MBConvBlock(96, 96, stride=1, expansion=6, use_ca=True)
 
     def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
-        stem = self.stem(x)      # [B, 16, 512, 512]
-        f256 = self.stage1(stem) # [B, 24, 256, 256]
-        f128 = self.stage2(f256) # [B, 40, 128, 128]
-        f64  = self.stage3(f128) # [B, 64, 64, 64]
-        f32  = self.stage4(f64)  # [B, 96, 32, 32]
+        stem = self.stem(x)        # [B, 16, 512, 512]
+        f256 = self.stage1(stem)   # [B, 24, 256, 256]
+        f128 = self.stage2b(self.stage2a(f256)) # [B, 40, 128, 128]
+        f64  = self.stage3b(self.stage3a(f128)) # [B, 64, 64, 64]
+        f32  = self.stage4b(self.stage4a(f64))  # [B, 96, 32, 32]
 
         return stem, f256, f128, f64, f32
