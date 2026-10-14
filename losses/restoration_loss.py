@@ -23,7 +23,7 @@ class CharbonnierLoss(nn.Module):
         self.eps = eps
 
     def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
-        diff = pred - target
+        diff = pred.float() - target.float()
         loss = torch.sqrt(diff * diff + self.eps * self.eps)
         return loss.mean()
 
@@ -51,12 +51,14 @@ class LaplacianLoss(nn.Module):
         Args:
             pred, target: [B, 3, H, W] in [0, 1]
         """
-        channels = pred.shape[1]
-        k = self.kernel if channels == 3 else self.kernel[:channels]
+        pred_f = pred.float()
+        target_f = target.float()
+        channels = pred_f.shape[1]
+        k = (self.kernel if channels == 3 else self.kernel[:channels]).float()
 
         # Use reflection padding for natural boundary gradients
-        p_padded = F.pad(pred, (1, 1, 1, 1), mode='reflect')
-        t_padded = F.pad(target, (1, 1, 1, 1), mode='reflect')
+        p_padded = F.pad(pred_f, (1, 1, 1, 1), mode='reflect')
+        t_padded = F.pad(target_f, (1, 1, 1, 1), mode='reflect')
 
         lap_pred = F.conv2d(p_padded, k, groups=channels)
         lap_target = F.conv2d(t_padded, k, groups=channels)
@@ -66,24 +68,31 @@ class LaplacianLoss(nn.Module):
 
 class ColorAngleLoss(nn.Module):
     """
-    Color Angle / Cosine Loss:
-    Measures the pixel-wise angular cosine deviation between predicted RGB vectors
-    and target RGB vectors:
-        cos_sim = (p · t) / (||p||_2 * ||t||_2 + eps)
-        L_color = 1.0 - mean(cos_sim)
-    Penalizes chromatic color shifts and haze directly, driving rapid radiometric white balance.
+    Luminance-Gated Color Angle / Cosine Loss (FP32):
+    Measures pixel-wise angular cosine deviation between predicted RGB vectors
+    and target RGB vectors on pixels with sufficient luminance (||target||_2 > min_lum),
+    avoiding false penalties and gradient singularities on dark/black pixels.
     """
-    def __init__(self, eps: float = 1e-6):
+    def __init__(self, eps: float = 1e-6, min_lum: float = 0.02):
         super().__init__()
         self.eps = eps
+        self.min_lum = min_lum
 
     def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
-        dot = (pred * target).sum(dim=1)  # [B, H, W]
-        norm_p = torch.norm(pred, p=2, dim=1).clamp(min=1e-3)
-        norm_t = torch.norm(target, p=2, dim=1).clamp(min=1e-3)
-        cos_sim = dot / (norm_p * norm_t)
-        cos_sim = torch.clamp(cos_sim, -1.0, 1.0)
-        return (1.0 - cos_sim).mean()
+        pred_f = pred.float()
+        target_f = target.float()
+        norm_p = torch.norm(pred_f, p=2, dim=1)
+        norm_t = torch.norm(target_f, p=2, dim=1)
+        valid_mask = (norm_t > self.min_lum).float()
+        if valid_mask.sum() < 1.0:
+            # Fallback to zero angular error when entire target image is dark
+            return (pred_f * 0.0).sum()
+        dot = (pred_f * target_f).sum(dim=1)
+        cos_sim = dot / (norm_p.clamp(min=self.min_lum) * norm_t.clamp(min=self.min_lum) + self.eps)
+        cos_sim = torch.clamp(cos_sim, -1.0 + 1e-6, 1.0 - 1e-6)
+        ang_err = (1.0 - cos_sim) * valid_mask
+        return ang_err.sum() / (valid_mask.sum() + self.eps)
+
 
 
 class RestorationLoss(nn.Module):

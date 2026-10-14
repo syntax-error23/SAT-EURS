@@ -34,7 +34,7 @@ This document formally defines the mathematical evaluation formulas, aggregation
 1. **Normalized PSNR:**
    $$\text{MSE} = \frac{1}{3 \cdot H \cdot W}\sum_{c, h, w} (I_{\text{rest}} - I_{\text{clean}})^2$$
    $$\text{PSNR} = \begin{cases} 100.0 & \text{if } \text{MSE} < 10^{-10} \\ 10 \log_{10}\left(\frac{1.0}{\text{MSE}}\right) & \text{otherwise} \end{cases}$$
-   $$\text{PSNR}_{\text{norm}} = \min\left(1.0, \frac{\text{PSNR}}{40.0}\right)$$
+   $$\text{PSNR}_{\text{norm}} = \text{clip}\left(\frac{\overline{\text{PSNR}} - 15.0}{35.0 - 15.0},\, 0.0,\, 1.0\right)$$
 2. **SSIM:** Evaluated using Gaussian window ($11 \times 11, \sigma = 1.5$) across channels.
 3. **Sharpness Ratio with Zero-Denominator Protection:**
    $$\Delta I_{\text{rest}} = \nabla^2(I_{\text{rest}}), \quad \Delta I_{\text{clean}} = \nabla^2(I_{\text{clean}})$$

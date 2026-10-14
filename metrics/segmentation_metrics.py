@@ -59,26 +59,38 @@ class SegmentationEvaluator:
         denominator_f1 = 2 * tp + fp + fn
         per_class_f1 = np.where(denominator_f1 > 0, (2 * tp) / (denominator_f1 + eps), 1.0)
 
+        # Per-class Precision and Recall
+        denom_prec = tp + fp
+        per_class_precision = np.where(denom_prec > 0, tp / (denom_prec + eps), 1.0)
+        denom_rec = tp + fn
+        per_class_recall = np.where(denom_rec > 0, tp / (denom_rec + eps), 1.0)
+
         miou = float(np.mean(per_class_iou))
         macro_f1 = float(np.mean(per_class_f1))
 
-        # Soft Coverage Penalty: Only penalize missed classes that actually exist in GT of this split
+        # Official MaCVi Coverage Penalty: drives Q_seg to 0 if any present GT class is ignored (TP == 0)
         gt_present = cm.sum(axis=1) > 0
         if gt_present.sum() > 0:
-            coverage_penalty = float(np.sum((gt_present) & (tp > 0)) / gt_present.sum())
+            soft_coverage_penalty = float(np.sum((gt_present) & (tp > 0)) / gt_present.sum())
+            hard_coverage_penalty = 1.0 if bool(np.all(tp[gt_present] > 0)) else 0.0
         else:
-            coverage_penalty = 1.0
+            soft_coverage_penalty = 1.0
+            hard_coverage_penalty = 1.0
 
         official_q_seg = macro_f1 * miou
-        q_seg = official_q_seg * coverage_penalty
+        q_seg = official_q_seg * hard_coverage_penalty
 
         return {
             'mIoU': round(miou, 4),
             'macro_F1': round(macro_f1, 4),
             'per_class_IoU': [round(float(v), 4) for v in per_class_iou],
             'per_class_F1': [round(float(v), 4) for v in per_class_f1],
-            'coverage_penalty': round(coverage_penalty, 4),
+            'per_class_precision': [round(float(v), 4) for v in per_class_precision],
+            'per_class_recall': [round(float(v), 4) for v in per_class_recall],
+            'coverage_penalty': round(hard_coverage_penalty, 4),
+            'soft_coverage_penalty': round(soft_coverage_penalty, 4),
             'official_Q_seg': round(official_q_seg, 4),
             'Q_seg': round(q_seg, 4),
             'confusion_matrix': cm.tolist()
         }
+

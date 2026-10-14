@@ -123,22 +123,37 @@ class RestorationEvaluator:
             self.sharpness_list.append(sharp_ratio)
 
     def compute(self) -> Dict[str, Any]:
-        """Compute arithmetic mean across all evaluation images."""
+        """Compute arithmetic mean across all evaluation images and official MaCVi Q_rest."""
         if not self.psnr_list:
-            return {'PSNR': 0.0, 'PSNR_norm': 0.0, 'SSIM': 0.0, 'sharpness_ratio': 0.0, 'Q_rest': 0.0}
+            return {
+                'PSNR_dB': 0.0,
+                'PSNR_norm': 0.0,
+                'PSNR_norm_per_image': 0.0,
+                'SSIM': 0.0,
+                'sharpness_ratio': 0.0,
+                'Q_rest': 0.0,
+                'Q_rest_per_image': 0.0,
+                'num_samples': 0
+            }
 
         mean_psnr = float(np.mean(self.psnr_list))
-        mean_psnr_norm = float(np.mean(self.psnr_norm_list))
+        # Official MaCVi server normalizes dataset-mean PSNR over [15, 35] dB
+        psnr_norm_official = min(1.0, max(0.0, (mean_psnr - 15.0) / 20.0))
+        mean_psnr_norm_per_image = float(np.mean(self.psnr_norm_list))
         mean_ssim = float(np.mean(self.ssim_list))
         mean_sharp = float(np.mean(self.sharpness_list))
 
-        q_rest = 0.45 * mean_psnr_norm + 0.45 * mean_ssim + 0.10 * mean_sharp
+        q_rest_official = 0.45 * psnr_norm_official + 0.45 * mean_ssim + 0.10 * mean_sharp
+        q_rest_per_image = 0.45 * mean_psnr_norm_per_image + 0.45 * mean_ssim + 0.10 * mean_sharp
 
         return {
-            'PSNR_dB': round(mean_psnr, 2),
-            'PSNR_norm': round(mean_psnr_norm, 4),
+            'PSNR_dB': round(mean_psnr, 4),
+            'PSNR_norm': round(psnr_norm_official, 4),
+            'PSNR_norm_per_image': round(mean_psnr_norm_per_image, 4),
             'SSIM': round(mean_ssim, 4),
             'sharpness_ratio': round(mean_sharp, 4),
-            'Q_rest': round(q_rest, 4),
+            'Q_rest': round(q_rest_official, 4),
+            'Q_rest_per_image': round(q_rest_per_image, 4),
             'num_samples': len(self.psnr_list)
         }
+

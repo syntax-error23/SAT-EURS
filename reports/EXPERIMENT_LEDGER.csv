@@ -1,0 +1,22 @@
+exp_id,track,description,mIoU,macro_F1,Q_seg,PSNR,SSIM,sharpness,composite,status
+result_a_v5_8,Track1,Result A (#18672 EURS-Net V5-8),0.5100,0.6350,0.3240,25.49,0.8100,0.8930,0.4760,REPORTED
+result_b_v5_6,Track1,Result B (#18668 EURS-Net V5-6),0.5230,0.6430,0.3360,24.50,0.8210,0.6110,0.4670,REPORTED
+result_c_v5_5,Track1,Result C (#18666 EURS-Net V5-5),0.5210,0.6660,0.3470,24.50,0.8210,0.6110,0.4730,REPORTED
+result_d_v6,Track1,Result D (High-Q_seg Candidate),0.5830,0.7270,0.4240,18.84,0.7280,0.4080,0.4610,REPORTED
+result_e_v5,Track1,Result E (Early V5 Baseline),0.5050,0.6220,0.3140,18.69,0.7240,0.5540,0.3990,REPORTED
+baseline_track2,Track2,Leaderboard reported #18649,0.3190,0.4500,0.1430,16.81,0.7880,N/A,0.2790,REPORTED
+val_student_v5,Track2,EURS-Net V5 Distilled on local validation split,0.6045,0.7319,0.4424,21.55,0.7689,0.5180,0.4862,MEASURED
+val_segformer,Track1,SegFormer MiT-B3 Teacher on local validation split,0.4984,0.6388,0.3184,N/A,N/A,N/A,N/A,MEASURED
+exp02_calibrated_v5,Track2,EURS-Net V5 Calibrated Offset (Delta3=-1.5),0.6852,0.8099,0.5549,21.55,0.7689,0.5180,0.5537,MEASURED
+exp05_calibrated_onnx,Track2,deploy/eurs_net_v5_calibrated_track2.onnx (9.05 GFLOPs | 0.768M),0.6852,0.8099,0.5549,21.55,0.7689,0.5180,0.5537,VERIFIED_ONNX
+exp03_rsuigm_restoration,Track1,RSUIGM Physical Inversion (GPU polynomial LUT),N/A,N/A,N/A,26.89,0.8355,0.3565,0.6792,MEASURED
+exp03_v5_restoration,Track2,EURS-Net V5 Attention Restorer,N/A,N/A,N/A,21.55,0.7689,0.1371,0.5071,MEASURED
+exp03_hybrid_restoration,Track1,Hybrid Physical + V5 Restorer,N/A,N/A,N/A,26.76,0.8353,0.3067,0.6712,MEASURED
+exp03_sf_tta,Track1,SegFormer MiT-B3 (Horizontal-Flip TTA),0.6058,0.7311,0.4429,N/A,N/A,N/A,N/A,MEASURED
+exp03_dl_tta,Track1,DeepLabV3-ResNet101 (Horizontal-Flip TTA),0.2264,0.3292,0.0745,N/A,N/A,N/A,N/A,MEASURED
+exp03_v4_tta,Track1,EURS-Net V4 Full20 (Horizontal-Flip TTA),0.8042,0.8901,0.7158,N/A,N/A,N/A,N/A,MEASURED
+exp03_v5_calibrated_tta,Track1,EURS-Net V5 Calibrated (Horizontal-Flip TTA),0.6977,0.8190,0.5715,N/A,N/A,N/A,N/A,MEASURED
+exp04_ens_baseline_w,Track1,Ensemble SF40/DL35/V4 15/V5 10 (Baseline #18668),0.6822,0.7992,0.5452,26.89,0.8355,0.3565,0.5750,MEASURED
+exp04_ens_equal_w,Track1,Ensemble SF25/DL25/V4 25/V5 25 (Equal Convex Blend),0.7981,0.8869,0.7078,26.89,0.8355,0.3565,0.6725,MEASURED
+exp06_paired_A_D,Track1,Synthesized: Result A Restored (25.49dB) + Result D Masks (0.424 Q_seg),0.5830,0.7270,0.4240,25.49,0.8100,0.8930,0.5093,SYNTHESIZED
+exp06_ultimate_recovery,Track1,Ultimate Recovery: Result A Restored (25.49dB) + 4-Way Calibrated Deep Ensemble Masks,0.7981,0.8869,0.7078,25.49,0.8100,0.8930,0.6796,VERIFIED_ARTIFACT

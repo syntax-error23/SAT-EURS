@@ -70,6 +70,7 @@ class EURSDataset(Dataset):
         manifest_path: Optional[str] = None,
         transform: Optional[Callable] = None,
         target_size: Tuple[int, int] = (1024, 1024),
+        base_seed: int = 42,
     ):
         super().__init__()
         if manifest_path is None:
@@ -79,6 +80,10 @@ class EURSDataset(Dataset):
         self.split = split.lower()
         self.transform = transform
         self.target_size = target_size
+        self.base_seed = base_seed
+        self.epoch = 0
+        if self.transform is not None and hasattr(self.transform, 'base_seed'):
+            self.transform.base_seed = base_seed
 
         assert self.split in ('train', 'val', 'all'), f"Invalid split: {self.split}"
 
@@ -155,6 +160,11 @@ class EURSDataset(Dataset):
 
         print(f"[EURSDataset] Initialized '{self.split}' split: {len(self.samples)} samples across {len(active_scenes)} scenes.")
 
+    def set_epoch(self, epoch: int) -> None:
+        self.epoch = int(epoch)
+        if self.transform is not None and hasattr(self.transform, 'set_epoch'):
+            self.transform.set_epoch(self.epoch)
+
     def __len__(self) -> int:
         return len(self.samples)
 
@@ -200,9 +210,13 @@ class EURSDataset(Dataset):
         if (mask.shape[1], mask.shape[0]) != (target_w, target_h):
             mask = cv2.resize(mask, (target_w, target_h), interpolation=cv2.INTER_NEAREST)
 
-        # Apply synchronized spatial transformations if provided
+        # Apply synchronized spatial transformations if provided (with epoch-varying seed)
         if self.transform is not None:
-            degraded, clean, mask = self.transform(degraded, clean, mask, seed=idx)
+            try:
+                degraded, clean, mask = self.transform(degraded, clean, mask, seed=idx, epoch=self.epoch)
+            except TypeError:
+                degraded, clean, mask = self.transform(degraded, clean, mask, seed=idx + self.epoch * 100003)
+
 
         # Validate mask values
         unique_classes = np.unique(mask)
