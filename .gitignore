@@ -24,6 +24,7 @@ data/nvme/
 *.onnx
 *.engine
 *.zip
+!submissions/**/*.zip
 
 # Visual artifacts, documentation generation & PDFs
 *.pdf
