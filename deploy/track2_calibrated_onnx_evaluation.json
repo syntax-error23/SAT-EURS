@@ -1,0 +1,38 @@
+{
+  "onnx_path": "deploy/eurs_edgesota_v2_final.onnx",
+  "onnx_size_mb": 5.69,
+  "total_evaluated": 160,
+  "mean_latency_ms": 37.83,
+  "fps_cpu": 26.4,
+  "segmentation": {
+    "mIoU": 0.5389,
+    "macro_F1": 0.615,
+    "coverage_penalty": 1.0,
+    "Q_seg": 0.3314,
+    "per_class_IoU": [
+      0.7123,
+      0.7571,
+      0.2019,
+      1.0,
+      0.0231
+    ],
+    "per_class_F1": [
+      0.832,
+      0.8617,
+      0.336,
+      1.0,
+      0.0452
+    ]
+  },
+  "restoration": {
+    "psnr_dB": 18.55,
+    "psnr_norm": 0.1775,
+    "ssim": 0.7278,
+    "sharpness_ratio": 0.4866,
+    "Q_FR": 0.456
+  },
+  "composite": {
+    "measured_local": 0.3856,
+    "projected_server": 0.4074
+  }
+}

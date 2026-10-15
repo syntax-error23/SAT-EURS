@@ -1,0 +1,33 @@
+{
+  "exp_id": "EXP-PRETRAINED-30EP",
+  "mode": "combined",
+  "epochs": 30,
+  "composite_score_local": 0.3856,
+  "composite_score_projected": 0.4074,
+  "Q_seg": 0.3314,
+  "mIoU": 0.5389,
+  "macro_F1": 0.615,
+  "coverage_penalty": 1.0,
+  "boundary_accuracy": 0.4818,
+  "per_class_IoU": [
+    0.7123,
+    0.7571,
+    0.2019,
+    1.0,
+    0.0231
+  ],
+  "per_class_F1": [
+    0.832,
+    0.8617,
+    0.336,
+    1.0,
+    0.0452
+  ],
+  "PSNR": 18.55,
+  "SSIM": 0.7278,
+  "Sharpness": 0.4866,
+  "Q_FR": 0.456,
+  "mean_latency_ms": 43.61,
+  "fps_cpu": 22.9,
+  "baked_offset_c3": -3.0
+}

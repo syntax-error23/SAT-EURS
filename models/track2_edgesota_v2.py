@@ -22,6 +22,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from models.eurs_net_v4 import ImageNetMobileNetV3Encoder, _replace_hardswish_with_onnx_safe
+
 
 class InvertedBottleneckBlock(nn.Module):
     """
@@ -82,6 +84,90 @@ class InvertedBottleneckBlock(nn.Module):
         return out
 
 
+class ProgressivePyramidDecoder(nn.Module):
+    """
+    Progressive Multi-Scale Pyramid Fusion Decoder.
+    Takes 4-stage ImageNet MobileNetV3 semantic feature pyramid:
+      mb_32:  [B, 96, H/32, W/32]
+      mb_64:  [B, 48, H/16, W/16]
+      mb_128: [B, 24, H/8,  W/8]
+      mb_256: [B, 16, H/4,  W/4]
+    Progressively fuses semantic context down to Stride-4 resolution with depthwise-separable convs,
+    retaining sharp object contours for fish (Class 2) and rare marine species (Class 3/4).
+    """
+    def __init__(self, num_classes: int = 5):
+        super().__init__()
+        # Deep context gating at 32x32 (in_ch=96)
+        self.ctx_conv = nn.Sequential(
+            nn.Conv2d(96, 64, kernel_size=1, bias=False),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, padding=2, dilation=2, groups=64, bias=False),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+        )
+        self.ctx_gate = nn.Sequential(
+            nn.AdaptiveAvgPool2d(1),
+            nn.Conv2d(96, 64, kernel_size=1, bias=True),
+            nn.Sigmoid()
+        )
+        # Stride 16 lateral & fusion (in_ch=48)
+        self.lat_16 = nn.Sequential(
+            nn.Conv2d(48, 48, kernel_size=1, bias=False),
+            nn.BatchNorm2d(48),
+            nn.ReLU(inplace=True),
+        )
+        self.fuse_16 = nn.Sequential(
+            nn.Conv2d(64 + 48, 48, kernel_size=1, bias=False),
+            nn.BatchNorm2d(48),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(48, 48, kernel_size=3, padding=1, groups=48, bias=False),
+            nn.BatchNorm2d(48),
+            nn.ReLU(inplace=True),
+        )
+        # Stride 8 lateral & fusion (in_ch=24)
+        self.lat_8 = nn.Sequential(
+            nn.Conv2d(24, 32, kernel_size=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+        )
+        self.fuse_8 = nn.Sequential(
+            nn.Conv2d(48 + 32, 32, kernel_size=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(32, 32, kernel_size=3, padding=1, groups=32, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+        )
+        # Stride 4 lateral & fusion (in_ch=16)
+        self.lat_4 = nn.Sequential(
+            nn.Conv2d(16, 24, kernel_size=1, bias=False),
+            nn.BatchNorm2d(24),
+            nn.ReLU(inplace=True),
+        )
+        self.fuse_4 = nn.Sequential(
+            nn.Conv2d(32 + 24, 32, kernel_size=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(32, 32, kernel_size=3, padding=1, groups=32, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+        )
+        # Final classifier
+        self.cls_head = nn.Conv2d(32, num_classes, kernel_size=1, bias=True)
+
+    def forward(self, mb_256: torch.Tensor, mb_128: torch.Tensor, mb_64: torch.Tensor, mb_32: torch.Tensor, target_size: Tuple[int, int]) -> torch.Tensor:
+        c = self.ctx_conv(mb_32) * self.ctx_gate(mb_32)
+        c_up16 = F.interpolate(c, size=mb_64.shape[2:], mode="bilinear", align_corners=False)
+        f16 = self.fuse_16(torch.cat([c_up16, self.lat_16(mb_64)], dim=1))
+        f_up8 = F.interpolate(f16, size=mb_128.shape[2:], mode="bilinear", align_corners=False)
+        f8 = self.fuse_8(torch.cat([f_up8, self.lat_8(mb_128)], dim=1))
+        f_up4 = F.interpolate(f8, size=mb_256.shape[2:], mode="bilinear", align_corners=False)
+        f4 = self.fuse_4(torch.cat([f_up4, self.lat_4(mb_256)], dim=1))
+        logits_stride4 = self.cls_head(f4)
+        return F.interpolate(logits_stride4, size=target_size, mode="bilinear", align_corners=False)
+
+
 class LRASPPContextDecoder(nn.Module):
     """
     Lightweight Reduced Atrous Spatial Pyramid Pooling (LR-ASPP) Context Decoder
@@ -92,8 +178,7 @@ class LRASPPContextDecoder(nn.Module):
         # Global context branch
         self.global_branch = nn.Sequential(
             nn.AdaptiveAvgPool2d((1, 1)),
-            nn.Conv2d(in_ch, out_ch, kernel_size=1, bias=False),
-            nn.BatchNorm2d(out_ch),
+            nn.Conv2d(in_ch, out_ch, kernel_size=1, bias=True),
             nn.Sigmoid()
         )
         # Deep semantic context branch
@@ -151,10 +236,11 @@ class EURSEdgeSOTAV2(nn.Module):
     Output: 'restored_image' [1, 3, 1024, 1024] in [0, 1]
     Output: 'seg_logits'     [1, 5, 1024, 1024] raw logits
     """
-    def __init__(self, num_classes: int = 5, unsharp_factor: float = 1.25):
+    def __init__(self, num_classes: int = 5, unsharp_factor: float = 1.25, pretrained_backbone: bool = True):
         super().__init__()
         self.num_classes = num_classes
         self.unsharp_factor = unsharp_factor
+        self.pretrained_backbone = pretrained_backbone
 
         # --- SUBNET 1: Optical Inversion Head ---
         # Condition router: takes 128x128 downsampled image -> predicts (wt, dp)
@@ -187,37 +273,35 @@ class EURSEdgeSOTAV2(nn.Module):
         blur_weight = blur_k.repeat(3, 1, 1, 1) # [3, 1, 3, 3]
         self.register_buffer("unsharp_blur_kernel", blur_weight)
 
-        # --- SUBNET 2: High-Capacity Inverted Bottleneck Segmentation Student ---
-        # Stage 0: Shallow spatial stem (Stride 4 output)
-        self.stem = nn.Sequential(
-            nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1, bias=False), # Stride 2: 512x512
-            nn.BatchNorm2d(16),
-            nn.ReLU(inplace=True),
-            InvertedBottleneckBlock(16, 24, stride=2, expand_ratio=2, use_se=False), # Stride 4: 256x256
-        )
-
-        # Stage 1: Stride 8 (128x128)
-        self.stage1 = nn.Sequential(
-            InvertedBottleneckBlock(24, 32, stride=2, expand_ratio=3, use_se=True),
-            InvertedBottleneckBlock(32, 32, stride=1, expand_ratio=3, use_se=True),
-        )
-
-        # Stage 2: Stride 16 (64x64)
-        self.stage2 = nn.Sequential(
-            InvertedBottleneckBlock(32, 64, stride=2, expand_ratio=4, use_se=True),
-            InvertedBottleneckBlock(64, 64, stride=1, expand_ratio=4, use_se=True),
-            InvertedBottleneckBlock(64, 64, stride=1, expand_ratio=4, use_se=True),
-        )
-
-        # Stage 3: Stride 32 (32x32)
-        self.stage3 = nn.Sequential(
-            InvertedBottleneckBlock(64, 112, stride=2, expand_ratio=4, use_se=True),
-            InvertedBottleneckBlock(112, 112, stride=1, expand_ratio=4, use_se=True),
-            InvertedBottleneckBlock(112, 160, stride=1, expand_ratio=6, dilation=2, use_se=True),
-        )
-
-        # Decoder: LR-ASPP with boundary skip connection
-        self.decoder = LRASPPContextDecoder(in_ch=160, skip_ch=24, out_ch=64, num_classes=num_classes)
+        # --- SUBNET 2: Segmentation Student ---
+        if pretrained_backbone:
+            # Pretrained ImageNet MobileNetV3 Semantic Feature Pyramid + Progressive Multi-Scale Decoder
+            self.encoder = ImageNetMobileNetV3Encoder(pretrained=True)
+            _replace_hardswish_with_onnx_safe(self.encoder)
+            self.decoder = ProgressivePyramidDecoder(num_classes=num_classes)
+        else:
+            # Scratch stem and stages
+            self.stem = nn.Sequential(
+                nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1, bias=False), # Stride 2: 512x512
+                nn.BatchNorm2d(16),
+                nn.ReLU(inplace=True),
+                InvertedBottleneckBlock(16, 24, stride=2, expand_ratio=2, use_se=False), # Stride 4: 256x256
+            )
+            self.stage1 = nn.Sequential(
+                InvertedBottleneckBlock(24, 32, stride=2, expand_ratio=3, use_se=True),
+                InvertedBottleneckBlock(32, 32, stride=1, expand_ratio=3, use_se=True),
+            )
+            self.stage2 = nn.Sequential(
+                InvertedBottleneckBlock(32, 64, stride=2, expand_ratio=4, use_se=True),
+                InvertedBottleneckBlock(64, 64, stride=1, expand_ratio=4, use_se=True),
+                InvertedBottleneckBlock(64, 64, stride=1, expand_ratio=4, use_se=True),
+            )
+            self.stage3 = nn.Sequential(
+                InvertedBottleneckBlock(64, 112, stride=2, expand_ratio=4, use_se=True),
+                InvertedBottleneckBlock(112, 112, stride=1, expand_ratio=4, use_se=True),
+                InvertedBottleneckBlock(112, 160, stride=1, expand_ratio=6, dilation=2, use_se=True),
+            )
+            self.decoder = LRASPPContextDecoder(in_ch=160, skip_ch=24, out_ch=64, num_classes=num_classes)
 
         # ImageNet normalization parameters for segmentation branch
         mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
@@ -273,23 +357,24 @@ class EURSEdgeSOTAV2(nn.Module):
         restored_image = torch.clamp(factor * res_raw + (1.0 - factor) * blur, 0.0, 1.0)
 
         # --- 2. SEGMENTATION SUBNET ---
-        # Cascaded: takes the physically restored image (contrast recovered)
-        x_norm = (restored_image - self.norm_mean) / self.norm_std
-
-        # Encoder forward
-        f_skip = self.stem(x_norm)       # [B, 24, 256, 256] (Stride 4)
-        f1 = self.stage1(f_skip)         # [B, 32, 128, 128] (Stride 8)
-        f2 = self.stage2(f1)             # [B, 64, 64, 64]   (Stride 16)
-        f3 = self.stage3(f2)             # [B, 160, 32, 32]  (Stride 32)
-
-        # Decoder forward with high-res boundary skip
-        seg_logits = self.decoder(f3, f_skip, (h, w))
+        if self.pretrained_backbone:
+            # Pretrained ImageNet MobileNetV3 multi-scale pyramid
+            mb_256, mb_128, mb_64, mb_32 = self.encoder(restored_image)
+            seg_logits = self.decoder(mb_256, mb_128, mb_64, mb_32, (h, w))
+        else:
+            # Scratch stem and inverted bottleneck stages
+            x_norm = (restored_image - self.norm_mean) / self.norm_std
+            f_skip = self.stem(x_norm)       # [B, 24, 256, 256] (Stride 4)
+            f1 = self.stage1(f_skip)         # [B, 32, 128, 128] (Stride 8)
+            f2 = self.stage2(f1)             # [B, 64, 64, 64]   (Stride 16)
+            f3 = self.stage3(f2)             # [B, 160, 32, 32]  (Stride 32)
+            seg_logits = self.decoder(f3, f_skip, (h, w))
 
         return restored_image, seg_logits
 
 
-def build_track2_model() -> EURSEdgeSOTAV2:
-    model = EURSEdgeSOTAV2(num_classes=5, unsharp_factor=1.25)
+def build_track2_model(pretrained_backbone: bool = True) -> EURSEdgeSOTAV2:
+    model = EURSEdgeSOTAV2(num_classes=5, unsharp_factor=1.25, pretrained_backbone=pretrained_backbone)
     # Load 20-scene pre-fitted table into table_bank buffer
     tbl_path = "checkpoints/track1_screening/tbl19_20sc_clean.pt"
     table = torch.load(tbl_path, map_location="cpu", weights_only=False)
