@@ -1,0 +1,28 @@
+{
+  "exp_id": "EXP-STANDARD-KD",
+  "mode": "standard_kd",
+  "epochs": 8,
+  "composite_score": 0.1753,
+  "Q_seg": 0.0,
+  "mIoU": 0.4361,
+  "macro_F1": 0.518,
+  "coverage_penalty": 0.0,
+  "per_class_IoU": [
+    0.4635,
+    0.6036,
+    0.1135,
+    1.0,
+    0.0
+  ],
+  "per_class_F1": [
+    0.6335,
+    0.7528,
+    0.2039,
+    1.0,
+    0.0
+  ],
+  "PSNR": 17.22,
+  "SSIM": 0.7179,
+  "Sharpness": 0.446,
+  "Q_FR": 0.4177
+}

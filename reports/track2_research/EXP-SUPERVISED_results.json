@@ -1,0 +1,28 @@
+{
+  "exp_id": "EXP-SUPERVISED",
+  "mode": "supervised",
+  "epochs": 8,
+  "composite_score": 0.2167,
+  "Q_seg": 0.0793,
+  "mIoU": 0.2449,
+  "macro_F1": 0.3238,
+  "coverage_penalty": 1.0,
+  "per_class_IoU": [
+    0.5003,
+    0.6224,
+    0.1016,
+    0.0,
+    0.0001
+  ],
+  "per_class_F1": [
+    0.6669,
+    0.7673,
+    0.1845,
+    0.0,
+    0.0002
+  ],
+  "PSNR": 16.1,
+  "SSIM": 0.7025,
+  "Sharpness": 0.5635,
+  "Q_FR": 0.3972
+}

@@ -1,0 +1,29 @@
+{
+  "exp_id": "EXP-CLASS-AWARE-KD",
+  "mode": "class_aware",
+  "epochs": 8,
+  "composite_score": 0.2157,
+  "Q_seg": 0.0783,
+  "mIoU": 0.2442,
+  "macro_F1": 0.3205,
+  "coverage_penalty": 1.0,
+  "boundary_accuracy": 0.4319,
+  "per_class_IoU": [
+    0.499,
+    0.6374,
+    0.076,
+    0.0,
+    0.0086
+  ],
+  "per_class_F1": [
+    0.6657,
+    0.7785,
+    0.1413,
+    0.0,
+    0.0171
+  ],
+  "PSNR": 16.18,
+  "SSIM": 0.7069,
+  "Sharpness": 0.5116,
+  "Q_FR": 0.3958
+}

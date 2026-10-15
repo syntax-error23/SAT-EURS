@@ -1,0 +1,29 @@
+{
+  "exp_id": "EXP-COMBINED-BEST",
+  "mode": "combined",
+  "epochs": 10,
+  "composite_score": 0.2448,
+  "Q_seg": 0.0865,
+  "mIoU": 0.2592,
+  "macro_F1": 0.3338,
+  "coverage_penalty": 1.0,
+  "boundary_accuracy": 0.4489,
+  "per_class_IoU": [
+    0.5628,
+    0.6454,
+    0.0782,
+    0.0,
+    0.0097
+  ],
+  "per_class_F1": [
+    0.7202,
+    0.7845,
+    0.145,
+    0.0,
+    0.0192
+  ],
+  "PSNR": 19.27,
+  "SSIM": 0.7322,
+  "Sharpness": 0.5077,
+  "Q_FR": 0.4763
+}

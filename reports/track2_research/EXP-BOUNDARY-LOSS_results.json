@@ -1,0 +1,29 @@
+{
+  "exp_id": "EXP-BOUNDARY-LOSS",
+  "mode": "boundary",
+  "epochs": 8,
+  "composite_score": 0.2017,
+  "Q_seg": 0.0793,
+  "mIoU": 0.2446,
+  "macro_F1": 0.3242,
+  "coverage_penalty": 1.0,
+  "boundary_accuracy": 0.4432,
+  "per_class_IoU": [
+    0.4924,
+    0.6268,
+    0.0968,
+    0.0,
+    0.0071
+  ],
+  "per_class_F1": [
+    0.6599,
+    0.7706,
+    0.1765,
+    0.0,
+    0.0141
+  ],
+  "PSNR": 13.79,
+  "SSIM": 0.6442,
+  "Sharpness": 0.5709,
+  "Q_FR": 0.347
+}
