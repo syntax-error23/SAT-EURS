@@ -1,0 +1,102 @@
+{
+  "experiment": "3.1_highres_detail_stem_pilot",
+  "evaluation_set": "pooled_screening_folds_0_1 (1,600 images)",
+  "locked_floors": {
+    "Q_seg": 0.3838,
+    "mIoU": 0.5461,
+    "macro_F1": 0.7028,
+    "per_class_IoU": [
+      0.6184,
+      0.5884,
+      0.5666,
+      0.3915,
+      0.5658
+    ],
+    "per_class_F1": [
+      0.7642,
+      0.7409,
+      0.7233,
+      0.5627,
+      0.7227
+    ],
+    "Sharpness_OOF_Base": 0.5122
+  },
+  "pilot_metrics": {
+    "mIoU": 0.4433,
+    "macro_F1": 0.5951,
+    "per_class_IoU": [
+      0.6413,
+      0.6056,
+      0.3742,
+      0.408,
+      0.1872
+    ],
+    "per_class_F1": [
+      0.7815,
+      0.7544,
+      0.5446,
+      0.5795,
+      0.3153
+    ],
+    "per_class_precision": [
+      0.9565,
+      0.6442,
+      0.4048,
+      0.9728,
+      0.6594
+    ],
+    "per_class_recall": [
+      0.6606,
+      0.91,
+      0.832,
+      0.4127,
+      0.2072
+    ],
+    "coverage_penalty": 1.0,
+    "soft_coverage_penalty": 1.0,
+    "official_Q_seg": 0.2638,
+    "Q_seg": 0.2638,
+    "confusion_matrix": [
+      [
+        607781477,
+        280942995,
+        24588628,
+        108746,
+        6575954
+      ],
+      [
+        20638218,
+        549858841,
+        33496244,
+        0,
+        245297
+      ],
+      [
+        4320331,
+        9130855,
+        66633493,
+        2721,
+        0
+      ],
+      [
+        294744,
+        338016,
+        5039264,
+        3985576,
+        0
+      ],
+      [
+        2417894,
+        13273240,
+        34841873,
+        0,
+        13207193
+      ]
+    ]
+  },
+  "verdict": "FAIL",
+  "passed_q_seg": false,
+  "passed_miou": false,
+  "passed_f1": false,
+  "passed_per_class": false
+}

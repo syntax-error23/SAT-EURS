@@ -1,0 +1,57 @@
+{
+  "experiment": "2.2_edge_gated_denoising_and_unsharp_filtering",
+  "evaluation_set": "pooled_screening_folds_0_1 (1,600 images)",
+  "locked_baseline_screening": {
+    "PSNR_dB": 24.2931,
+    "PSNR_norm": 0.4647,
+    "PSNR_norm_per_image": 0.4697,
+    "SSIM": 0.7614,
+    "sharpness_ratio": 0.5122,
+    "Q_rest": 0.603,
+    "Q_rest_per_image": 0.6052,
+    "num_samples": 1600
+  },
+  "grid_results": {
+    "cfg1_unsharp_1.34": {
+      "PSNR_dB": 24.4257,
+      "PSNR_norm": 0.4713,
+      "PSNR_norm_per_image": 0.4748,
+      "SSIM": 0.7678,
+      "sharpness_ratio": 0.5164,
+      "Q_rest": 0.6092,
+      "Q_rest_per_image": 0.6108,
+      "num_samples": 1600
+    },
+    "cfg2_unsharp_1.38": {
+      "PSNR_dB": 24.3339,
+      "PSNR_norm": 0.4667,
+      "PSNR_norm_per_image": 0.4703,
+      "SSIM": 0.7661,
+      "sharpness_ratio": 0.5417,
+      "Q_rest": 0.6089,
+      "Q_rest_per_image": 0.6106,
+      "num_samples": 1600
+    },
+    "cfg3_edge_gated_1.35": {
+      "PSNR_dB": 24.5372,
+      "PSNR_norm": 0.4769,
+      "PSNR_norm_per_image": 0.4801,
+      "SSIM": 0.7717,
+      "sharpness_ratio": 0.4845,
+      "Q_rest": 0.6103,
+      "Q_rest_per_image": 0.6117,
+      "num_samples": 1600
+    },
+    "cfg4_edge_gated_1.38": {
+      "PSNR_dB": 24.4816,
+      "PSNR_norm": 0.4741,
+      "PSNR_norm_per_image": 0.4775,
+      "SSIM": 0.7698,
+      "sharpness_ratio": 0.4959,
+      "Q_rest": 0.6093,
+      "Q_rest_per_image": 0.6109,
+      "num_samples": 1600
+    }
+  },
+  "best_promotable_config": "cfg1_unsharp_1.34"
+}

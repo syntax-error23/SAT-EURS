@@ -1,0 +1,29 @@
+{
+  "frozen_config": "16scene_19term_unsharp_1.34",
+  "screening_folds_0_1": {
+    "PSNR_dB": 24.4257,
+    "PSNR_norm": 0.4713,
+    "PSNR_norm_per_image": 0.4748,
+    "SSIM": 0.7678,
+    "sharpness_ratio": 0.5164,
+    "Q_rest": 0.6092,
+    "Q_rest_per_image": 0.6108,
+    "num_samples": 1600
+  },
+  "confirmation_folds_2_4": {
+    "PSNR_dB": 23.807,
+    "PSNR_norm": 0.4403,
+    "PSNR_norm_per_image": 0.4455,
+    "SSIM": 0.7339,
+    "sharpness_ratio": 0.5029,
+    "Q_rest": 0.5787,
+    "Q_rest_per_image": 0.581,
+    "num_samples": 2400
+  },
+  "deltas_vs_baseline_confirm": {
+    "psnr_delta": 0.3722,
+    "ssim_delta": 0.0284,
+    "sharp_delta": -0.0123,
+    "qfr_delta": 0.0199
+  }
+}

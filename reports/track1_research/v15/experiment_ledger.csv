@@ -1,0 +1,2 @@
+experiment_id,phase,arm,fold,architecture,loss,epochs,steps,input_size,best_val_qseg,val_miou,val_macro_f1,val_cov_penalty,val_f1_c3,val_f1_c4,boundary_miou,promotion_status,checkpoint_path,notes
+EXP3_Control_M_base_F0,Phase 3 Matched Architecture,Control_M_base,0,DINOv2-L Base,"WCE [0.8, 1.0, 1.2, 2.0, 2.0]",5,2000,518x518,0.3891,0.5823,0.6682,1.0000,1.0000,0.0485,0.0710,PENDING_POOLING,checkpoints/track1_screening\V15_CONTROL_M_BASE_F0\best_model.pt,Matched control training completed.

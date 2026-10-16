@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-14",
+  "eval_count": 200,
+  "raw_degraded": {
+    "PSNR_dB": 14.6062,
+    "PSNR_norm": 0.0,
+    "PSNR_norm_per_image": 0.0843,
+    "SSIM": 0.5284,
+    "sharpness_ratio": 0.0647,
+    "Q_rest": 0.2442,
+    "Q_rest_per_image": 0.2822,
+    "num_samples": 200
+  },
+  "leak_free_rsuigm": {
+    "PSNR_dB": 24.8478,
+    "PSNR_norm": 0.4924,
+    "PSNR_norm_per_image": 0.4946,
+    "SSIM": 0.7967,
+    "sharpness_ratio": 0.4128,
+    "Q_rest": 0.6214,
+    "Q_rest_per_image": 0.6224,
+    "num_samples": 200
+  },
+  "rsuigm_unsharp": {
+    "PSNR_dB": 24.4537,
+    "PSNR_norm": 0.4727,
+    "PSNR_norm_per_image": 0.4758,
+    "SSIM": 0.79,
+    "sharpness_ratio": 0.6301,
+    "Q_rest": 0.6312,
+    "Q_rest_per_image": 0.6326,
+    "num_samples": 200
+  }
+}

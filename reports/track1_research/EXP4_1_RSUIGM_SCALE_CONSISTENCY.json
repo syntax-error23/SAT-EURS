@@ -1,0 +1,848 @@
+{
+  "experiment": "EXP4_1_RSUIGM_SCALE_CONSISTENCY",
+  "timestamp": "2026-10-16 17:21:02",
+  "hardware": {
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "vram_gb": 31.84234619140625
+  },
+  "duration_seconds": 3712.55,
+  "promotion_criteria": {
+    "criterion_1_improves_pooled_qfr": {
+      "pass": true,
+      "delta_qfr": 0.0036
+    },
+    "criterion_2_improves_4_of_5_folds": {
+      "pass": true,
+      "folds_improved": 5,
+      "total_folds": 5
+    },
+    "criterion_3_no_material_psnr_ssim_loss": {
+      "pass": true,
+      "delta_psnr": 0.14,
+      "delta_ssim": 0.0055
+    },
+    "criterion_4_no_severe_regression_or_clipping": {
+      "pass": true,
+      "min_fold_dqfr": 0.0006,
+      "clipping_A": 0.04402,
+      "clipping_B": 0.0399
+    },
+    "overall_promotion": "PROMOTE_CANDIDATE_B"
+  },
+  "pooled_metrics": {
+    "control_A": {
+      "PSNR_dB": 24.0545,
+      "PSNR_norm": 0.4527,
+      "SSIM": 0.7475,
+      "sharpness_ratio": 0.5083,
+      "Q_FR": 0.5909,
+      "clipping_fraction": 0.04402,
+      "num_samples": 4000
+    },
+    "candidate_B": {
+      "PSNR_dB": 24.1945,
+      "PSNR_norm": 0.4597,
+      "SSIM": 0.753,
+      "sharpness_ratio": 0.4882,
+      "Q_FR": 0.5945,
+      "clipping_fraction": 0.0399,
+      "num_samples": 4000
+    },
+    "deltas": {
+      "psnr_delta": 0.14,
+      "psnr_norm_delta": 0.007,
+      "ssim_delta": 0.0055,
+      "sharp_delta": -0.0201,
+      "qfr_delta": 0.0036,
+      "clip_delta": -0.00412
+    }
+  },
+  "folds": {
+    "fold_0": {
+      "control_A": {
+        "PSNR_dB": 24.3527,
+        "PSNR_norm": 0.4676,
+        "PSNR_norm_per_image": 0.4703,
+        "SSIM": 0.7866,
+        "sharpness_ratio": 0.6386,
+        "Q_rest": 0.6283,
+        "Q_rest_per_image": 0.6295,
+        "num_samples": 800,
+        "clipping_fraction": 0.048688307603200275
+      },
+      "candidate_B": {
+        "PSNR_dB": 24.5612,
+        "PSNR_norm": 0.4781,
+        "PSNR_norm_per_image": 0.4805,
+        "SSIM": 0.7932,
+        "sharpness_ratio": 0.6205,
+        "Q_rest": 0.6341,
+        "Q_rest_per_image": 0.6352,
+        "num_samples": 800,
+        "clipping_fraction": 0.038219607671101885
+      },
+      "deltas": {
+        "psnr_delta": 0.2085000000000008,
+        "ssim_delta": 0.00660000000000005,
+        "sharp_delta": -0.018099999999999894,
+        "qfr_delta": 0.005800000000000027,
+        "clip_delta": -0.01046869993209839
+      },
+      "per_scene": {
+        "fish1": {
+          "control_A": {
+            "PSNR_dB": 24.7979,
+            "PSNR_norm": 0.4899,
+            "PSNR_norm_per_image": 0.4902,
+            "SSIM": 0.7575,
+            "sharpness_ratio": 0.5122,
+            "Q_rest": 0.6126,
+            "Q_rest_per_image": 0.6127,
+            "num_samples": 200,
+            "clipping_fraction": 0.03426902135213216
+          },
+          "candidate_B": {
+            "PSNR_dB": 25.0671,
+            "PSNR_norm": 0.5034,
+            "PSNR_norm_per_image": 0.5036,
+            "SSIM": 0.7688,
+            "sharpness_ratio": 0.4866,
+            "Q_rest": 0.6211,
+            "Q_rest_per_image": 0.6212,
+            "num_samples": 200,
+            "clipping_fraction": 0.032921484311421716
+          },
+          "deltas": {
+            "psnr_delta": 0.26920000000000144,
+            "ssim_delta": 0.011300000000000088,
+            "sharp_delta": -0.02560000000000001,
+            "qfr_delta": 0.008499999999999952,
+            "clip_delta": -0.0013475370407104491
+          }
+        },
+        "fish11": {
+          "control_A": {
+            "PSNR_dB": 22.122,
+            "PSNR_norm": 0.3561,
+            "PSNR_norm_per_image": 0.3603,
+            "SSIM": 0.7588,
+            "sharpness_ratio": 0.5387,
+            "Q_rest": 0.5556,
+            "Q_rest_per_image": 0.5575,
+            "num_samples": 200,
+            "clipping_fraction": 0.016807214419047038
+          },
+          "candidate_B": {
+            "PSNR_dB": 22.3841,
+            "PSNR_norm": 0.3692,
+            "PSNR_norm_per_image": 0.3732,
+            "SSIM": 0.7721,
+            "sharpness_ratio": 0.5088,
+            "Q_rest": 0.5645,
+            "Q_rest_per_image": 0.5663,
+            "num_samples": 200,
+            "clipping_fraction": 0.017675902048746747
+          },
+          "deltas": {
+            "psnr_delta": 0.2621000000000002,
+            "ssim_delta": 0.013299999999999979,
+            "sharp_delta": -0.029899999999999927,
+            "qfr_delta": 0.008900000000000019,
+            "clip_delta": 0.000868687629699707
+          }
+        },
+        "fish12": {
+          "control_A": {
+            "PSNR_dB": 27.274,
+            "PSNR_norm": 0.6137,
+            "PSNR_norm_per_image": 0.6157,
+            "SSIM": 0.8617,
+            "sharpness_ratio": 0.712,
+            "Q_rest": 0.7351,
+            "Q_rest_per_image": 0.736,
+            "num_samples": 200,
+            "clipping_fraction": 0.12661697228749594
+          },
+          "candidate_B": {
+            "PSNR_dB": 27.5373,
+            "PSNR_norm": 0.6269,
+            "PSNR_norm_per_image": 0.6288,
+            "SSIM": 0.8626,
+            "sharpness_ratio": 0.7023,
+            "Q_rest": 0.7405,
+            "Q_rest_per_image": 0.7414,
+            "num_samples": 200,
+            "clipping_fraction": 0.07820746898651124
+          },
+          "deltas": {
+            "psnr_delta": 0.2632999999999974,
+            "ssim_delta": 0.0009000000000000119,
+            "sharp_delta": -0.009699999999999931,
+            "qfr_delta": 0.005400000000000071,
+            "clip_delta": -0.0484095033009847
+          }
+        },
+        "seahorse1": {
+          "control_A": {
+            "PSNR_dB": 23.217,
+            "PSNR_norm": 0.4109,
+            "PSNR_norm_per_image": 0.415,
+            "SSIM": 0.7685,
+            "sharpness_ratio": 0.7917,
+            "Q_rest": 0.6099,
+            "Q_rest_per_image": 0.6117,
+            "num_samples": 200,
+            "clipping_fraction": 0.017060022354125976
+          },
+          "candidate_B": {
+            "PSNR_dB": 23.2564,
+            "PSNR_norm": 0.4128,
+            "PSNR_norm_per_image": 0.4165,
+            "SSIM": 0.7691,
+            "sharpness_ratio": 0.7841,
+            "Q_rest": 0.6103,
+            "Q_rest_per_image": 0.6119,
+            "num_samples": 200,
+            "clipping_fraction": 0.024073575337727863
+          },
+          "deltas": {
+            "psnr_delta": 0.039400000000000546,
+            "ssim_delta": 0.0006000000000000449,
+            "sharp_delta": -0.00759999999999994,
+            "qfr_delta": 0.00039999999999995595,
+            "clip_delta": 0.007013552983601888
+          }
+        }
+      }
+    },
+    "fold_1": {
+      "control_A": {
+        "PSNR_dB": 24.4988,
+        "PSNR_norm": 0.4749,
+        "PSNR_norm_per_image": 0.4794,
+        "SSIM": 0.7489,
+        "sharpness_ratio": 0.3942,
+        "Q_rest": 0.5902,
+        "Q_rest_per_image": 0.5921,
+        "num_samples": 800,
+        "clipping_fraction": 0.063118789990743
+      },
+      "candidate_B": {
+        "PSNR_dB": 24.584,
+        "PSNR_norm": 0.4792,
+        "PSNR_norm_per_image": 0.4834,
+        "SSIM": 0.7509,
+        "sharpness_ratio": 0.3727,
+        "Q_rest": 0.5908,
+        "Q_rest_per_image": 0.5927,
+        "num_samples": 800,
+        "clipping_fraction": 0.054480375051498414
+      },
+      "deltas": {
+        "psnr_delta": 0.08520000000000039,
+        "ssim_delta": 0.0020000000000000018,
+        "sharp_delta": -0.02150000000000002,
+        "qfr_delta": 0.0006000000000000449,
+        "clip_delta": -0.008638414939244589
+      },
+      "per_scene": {
+        "fish13": {
+          "control_A": {
+            "PSNR_dB": 26.5469,
+            "PSNR_norm": 0.5773,
+            "PSNR_norm_per_image": 0.5821,
+            "SSIM": 0.8435,
+            "sharpness_ratio": 0.5291,
+            "Q_rest": 0.6923,
+            "Q_rest_per_image": 0.6944,
+            "num_samples": 200,
+            "clipping_fraction": 0.14164432684580486
+          },
+          "candidate_B": {
+            "PSNR_dB": 26.6573,
+            "PSNR_norm": 0.5829,
+            "PSNR_norm_per_image": 0.5875,
+            "SSIM": 0.84,
+            "sharpness_ratio": 0.4989,
+            "Q_rest": 0.6902,
+            "Q_rest_per_image": 0.6923,
+            "num_samples": 200,
+            "clipping_fraction": 0.10988730430603028
+          },
+          "deltas": {
+            "psnr_delta": 0.1103999999999985,
+            "ssim_delta": -0.0035000000000000586,
+            "sharp_delta": -0.030200000000000005,
+            "qfr_delta": -0.0020999999999999908,
+            "clip_delta": -0.031757022539774575
+          }
+        },
+        "fish14": {
+          "control_A": {
+            "PSNR_dB": 22.6967,
+            "PSNR_norm": 0.3848,
+            "PSNR_norm_per_image": 0.3934,
+            "SSIM": 0.73,
+            "sharpness_ratio": 0.4679,
+            "Q_rest": 0.5485,
+            "Q_rest_per_image": 0.5523,
+            "num_samples": 200,
+            "clipping_fraction": 0.10428625583648682
+          },
+          "candidate_B": {
+            "PSNR_dB": 22.8425,
+            "PSNR_norm": 0.3921,
+            "PSNR_norm_per_image": 0.401,
+            "SSIM": 0.7319,
+            "sharpness_ratio": 0.4479,
+            "Q_rest": 0.5506,
+            "Q_rest_per_image": 0.5546,
+            "num_samples": 200,
+            "clipping_fraction": 0.10004573027292887
+          },
+          "deltas": {
+            "psnr_delta": 0.14580000000000126,
+            "ssim_delta": 0.0019000000000000128,
+            "sharp_delta": -0.019999999999999962,
+            "qfr_delta": 0.0020999999999999908,
+            "clip_delta": -0.004240525563557943
+          }
+        },
+        "fish15": {
+          "control_A": {
+            "PSNR_dB": 20.5993,
+            "PSNR_norm": 0.28,
+            "PSNR_norm_per_image": 0.3,
+            "SSIM": 0.6234,
+            "sharpness_ratio": 0.2411,
+            "Q_rest": 0.4306,
+            "Q_rest_per_image": 0.4396,
+            "num_samples": 200,
+            "clipping_fraction": 0.0003210274378458659
+          },
+          "candidate_B": {
+            "PSNR_dB": 20.8219,
+            "PSNR_norm": 0.2911,
+            "PSNR_norm_per_image": 0.3092,
+            "SSIM": 0.6307,
+            "sharpness_ratio": 0.2218,
+            "Q_rest": 0.437,
+            "Q_rest_per_image": 0.4451,
+            "num_samples": 200,
+            "clipping_fraction": 0.0003209638595581055
+          },
+          "deltas": {
+            "psnr_delta": 0.2225999999999999,
+            "ssim_delta": 0.007300000000000084,
+            "sharp_delta": -0.01930000000000001,
+            "qfr_delta": 0.006400000000000017,
+            "clip_delta": -6.357828776041667e-08
+          }
+        },
+        "sharkFish": {
+          "control_A": {
+            "PSNR_dB": 28.1521,
+            "PSNR_norm": 0.6576,
+            "PSNR_norm_per_image": 0.642,
+            "SSIM": 0.7987,
+            "sharpness_ratio": 0.3388,
+            "Q_rest": 0.6892,
+            "Q_rest_per_image": 0.6822,
+            "num_samples": 200,
+            "clipping_fraction": 0.0062235498428344724
+          },
+          "candidate_B": {
+            "PSNR_dB": 28.0141,
+            "PSNR_norm": 0.6507,
+            "PSNR_norm_per_image": 0.6357,
+            "SSIM": 0.8009,
+            "sharpness_ratio": 0.3223,
+            "Q_rest": 0.6855,
+            "Q_rest_per_image": 0.6787,
+            "num_samples": 200,
+            "clipping_fraction": 0.0076675017674763995
+          },
+          "deltas": {
+            "psnr_delta": -0.13800000000000168,
+            "ssim_delta": 0.0021999999999999797,
+            "sharp_delta": -0.016500000000000015,
+            "qfr_delta": -0.0037000000000000366,
+            "clip_delta": 0.001443951924641927
+          }
+        }
+      }
+    },
+    "fold_2": {
+      "control_A": {
+        "PSNR_dB": 23.7993,
+        "PSNR_norm": 0.44,
+        "PSNR_norm_per_image": 0.4463,
+        "SSIM": 0.7908,
+        "sharpness_ratio": 0.6339,
+        "Q_rest": 0.6172,
+        "Q_rest_per_image": 0.6201,
+        "num_samples": 800,
+        "clipping_fraction": 0.032584778865178424
+      },
+      "candidate_B": {
+        "PSNR_dB": 24.0035,
+        "PSNR_norm": 0.4502,
+        "PSNR_norm_per_image": 0.4558,
+        "SSIM": 0.7996,
+        "sharpness_ratio": 0.6132,
+        "Q_rest": 0.6237,
+        "Q_rest_per_image": 0.6262,
+        "num_samples": 800,
+        "clipping_fraction": 0.029822049538294475
+      },
+      "deltas": {
+        "psnr_delta": 0.20420000000000016,
+        "ssim_delta": 0.00880000000000003,
+        "sharp_delta": -0.02070000000000005,
+        "qfr_delta": 0.006500000000000061,
+        "clip_delta": -0.002762729326883952
+      },
+      "per_scene": {
+        "fish17": {
+          "control_A": {
+            "PSNR_dB": 23.9343,
+            "PSNR_norm": 0.4467,
+            "PSNR_norm_per_image": 0.4517,
+            "SSIM": 0.8066,
+            "sharpness_ratio": 0.4938,
+            "Q_rest": 0.6134,
+            "Q_rest_per_image": 0.6156,
+            "num_samples": 200,
+            "clipping_fraction": 0.09186415036519369
+          },
+          "candidate_B": {
+            "PSNR_dB": 24.0533,
+            "PSNR_norm": 0.4527,
+            "PSNR_norm_per_image": 0.4572,
+            "SSIM": 0.8081,
+            "sharpness_ratio": 0.4569,
+            "Q_rest": 0.6131,
+            "Q_rest_per_image": 0.6151,
+            "num_samples": 200,
+            "clipping_fraction": 0.07983771800994872
+          },
+          "deltas": {
+            "psnr_delta": 0.11899999999999977,
+            "ssim_delta": 0.0015000000000000568,
+            "sharp_delta": -0.036900000000000044,
+            "qfr_delta": -0.00029999999999996696,
+            "clip_delta": -0.012026432355244955
+          }
+        },
+        "fish18": {
+          "control_A": {
+            "PSNR_dB": 23.1696,
+            "PSNR_norm": 0.4085,
+            "PSNR_norm_per_image": 0.4142,
+            "SSIM": 0.8051,
+            "sharpness_ratio": 0.8525,
+            "Q_rest": 0.6314,
+            "Q_rest_per_image": 0.6339,
+            "num_samples": 200,
+            "clipping_fraction": 0.0020905033747355144
+          },
+          "candidate_B": {
+            "PSNR_dB": 23.3245,
+            "PSNR_norm": 0.4162,
+            "PSNR_norm_per_image": 0.4207,
+            "SSIM": 0.8154,
+            "sharpness_ratio": 0.8501,
+            "Q_rest": 0.6393,
+            "Q_rest_per_image": 0.6413,
+            "num_samples": 200,
+            "clipping_fraction": 0.0020864582061767578
+          },
+          "deltas": {
+            "psnr_delta": 0.15490000000000137,
+            "ssim_delta": 0.010299999999999976,
+            "sharp_delta": -0.0024000000000000687,
+            "qfr_delta": 0.007900000000000018,
+            "clip_delta": -4.04516855875651e-06
+          }
+        },
+        "fish2": {
+          "control_A": {
+            "PSNR_dB": 22.6417,
+            "PSNR_norm": 0.3821,
+            "PSNR_norm_per_image": 0.3899,
+            "SSIM": 0.7212,
+            "sharpness_ratio": 0.4736,
+            "Q_rest": 0.5438,
+            "Q_rest_per_image": 0.5474,
+            "num_samples": 200,
+            "clipping_fraction": 0.016273903846740722
+          },
+          "candidate_B": {
+            "PSNR_dB": 22.9163,
+            "PSNR_norm": 0.3958,
+            "PSNR_norm_per_image": 0.4029,
+            "SSIM": 0.7344,
+            "sharpness_ratio": 0.4375,
+            "Q_rest": 0.5524,
+            "Q_rest_per_image": 0.5555,
+            "num_samples": 200,
+            "clipping_fraction": 0.018835600217183432
+          },
+          "deltas": {
+            "psnr_delta": 0.2745999999999995,
+            "ssim_delta": 0.0132000000000001,
+            "sharp_delta": -0.03610000000000002,
+            "qfr_delta": 0.008600000000000052,
+            "clip_delta": 0.0025616963704427082
+          }
+        },
+        "ray1": {
+          "control_A": {
+            "PSNR_dB": 25.4518,
+            "PSNR_norm": 0.5226,
+            "PSNR_norm_per_image": 0.5292,
+            "SSIM": 0.8303,
+            "sharpness_ratio": 0.7157,
+            "Q_rest": 0.6804,
+            "Q_rest_per_image": 0.6834,
+            "num_samples": 200,
+            "clipping_fraction": 0.020110557874043783
+          },
+          "candidate_B": {
+            "PSNR_dB": 25.7198,
+            "PSNR_norm": 0.536,
+            "PSNR_norm_per_image": 0.5423,
+            "SSIM": 0.8403,
+            "sharpness_ratio": 0.7082,
+            "Q_rest": 0.6901,
+            "Q_rest_per_image": 0.693,
+            "num_samples": 200,
+            "clipping_fraction": 0.018528421719868977
+          },
+          "deltas": {
+            "psnr_delta": 0.2680000000000007,
+            "ssim_delta": 0.010000000000000009,
+            "sharp_delta": -0.007499999999999951,
+            "qfr_delta": 0.009700000000000042,
+            "clip_delta": -0.0015821361541748047
+          }
+        }
+      }
+    },
+    "fold_3": {
+      "control_A": {
+        "PSNR_dB": 23.3406,
+        "PSNR_norm": 0.417,
+        "PSNR_norm_per_image": 0.4222,
+        "SSIM": 0.6671,
+        "sharpness_ratio": 0.3852,
+        "Q_rest": 0.5264,
+        "Q_rest_per_image": 0.5287,
+        "num_samples": 800,
+        "clipping_fraction": 0.030364871422449747
+      },
+      "candidate_B": {
+        "PSNR_dB": 23.3687,
+        "PSNR_norm": 0.4184,
+        "PSNR_norm_per_image": 0.4233,
+        "SSIM": 0.6725,
+        "sharpness_ratio": 0.3651,
+        "Q_rest": 0.5274,
+        "Q_rest_per_image": 0.5296,
+        "num_samples": 800,
+        "clipping_fraction": 0.03091166337331136
+      },
+      "deltas": {
+        "psnr_delta": 0.028100000000002012,
+        "ssim_delta": 0.00539999999999996,
+        "sharp_delta": -0.020100000000000007,
+        "qfr_delta": 0.0010000000000000009,
+        "clip_delta": 0.000546791950861613
+      },
+      "per_scene": {
+        "fish20": {
+          "control_A": {
+            "PSNR_dB": 23.4076,
+            "PSNR_norm": 0.4204,
+            "PSNR_norm_per_image": 0.428,
+            "SSIM": 0.6848,
+            "sharpness_ratio": 0.3819,
+            "Q_rest": 0.5355,
+            "Q_rest_per_image": 0.5389,
+            "num_samples": 200,
+            "clipping_fraction": 0.011536839803059896
+          },
+          "candidate_B": {
+            "PSNR_dB": 23.2374,
+            "PSNR_norm": 0.4119,
+            "PSNR_norm_per_image": 0.4191,
+            "SSIM": 0.6854,
+            "sharpness_ratio": 0.3587,
+            "Q_rest": 0.5296,
+            "Q_rest_per_image": 0.5329,
+            "num_samples": 200,
+            "clipping_fraction": 0.017141491572062174
+          },
+          "deltas": {
+            "psnr_delta": -0.1701999999999977,
+            "ssim_delta": 0.0006000000000000449,
+            "sharp_delta": -0.0232,
+            "qfr_delta": -0.005900000000000016,
+            "clip_delta": 0.005604651769002279
+          }
+        },
+        "fish21": {
+          "control_A": {
+            "PSNR_dB": 24.2146,
+            "PSNR_norm": 0.4607,
+            "PSNR_norm_per_image": 0.4653,
+            "SSIM": 0.5064,
+            "sharpness_ratio": 0.1245,
+            "Q_rest": 0.4477,
+            "Q_rest_per_image": 0.4497,
+            "num_samples": 200,
+            "clipping_fraction": 0.041179687182108564
+          },
+          "candidate_B": {
+            "PSNR_dB": 24.1585,
+            "PSNR_norm": 0.4579,
+            "PSNR_norm_per_image": 0.4625,
+            "SSIM": 0.5074,
+            "sharpness_ratio": 0.1075,
+            "Q_rest": 0.4451,
+            "Q_rest_per_image": 0.4472,
+            "num_samples": 200,
+            "clipping_fraction": 0.04742832501729329
+          },
+          "deltas": {
+            "psnr_delta": -0.056100000000000705,
+            "ssim_delta": 0.0010000000000000009,
+            "sharp_delta": -0.017,
+            "qfr_delta": -0.002599999999999991,
+            "clip_delta": 0.0062486378351847335
+          }
+        },
+        "fish4": {
+          "control_A": {
+            "PSNR_dB": 24.0631,
+            "PSNR_norm": 0.4532,
+            "PSNR_norm_per_image": 0.459,
+            "SSIM": 0.7724,
+            "sharpness_ratio": 0.676,
+            "Q_rest": 0.6191,
+            "Q_rest_per_image": 0.6217,
+            "num_samples": 200,
+            "clipping_fraction": 0.06413546085357666
+          },
+          "candidate_B": {
+            "PSNR_dB": 24.2944,
+            "PSNR_norm": 0.4647,
+            "PSNR_norm_per_image": 0.4702,
+            "SSIM": 0.783,
+            "sharpness_ratio": 0.6585,
+            "Q_rest": 0.6273,
+            "Q_rest_per_image": 0.6298,
+            "num_samples": 200,
+            "clipping_fraction": 0.05309167385101318
+          },
+          "deltas": {
+            "psnr_delta": 0.23130000000000095,
+            "ssim_delta": 0.010600000000000054,
+            "sharp_delta": -0.01750000000000007,
+            "qfr_delta": 0.008199999999999985,
+            "clip_delta": -0.011043787002563477
+          }
+        },
+        "starfish2": {
+          "control_A": {
+            "PSNR_dB": 21.677,
+            "PSNR_norm": 0.3338,
+            "PSNR_norm_per_image": 0.3366,
+            "SSIM": 0.7047,
+            "sharpness_ratio": 0.3585,
+            "Q_rest": 0.5032,
+            "Q_rest_per_image": 0.5044,
+            "num_samples": 200,
+            "clipping_fraction": 0.0046074978510538735
+          },
+          "candidate_B": {
+            "PSNR_dB": 21.7846,
+            "PSNR_norm": 0.3392,
+            "PSNR_norm_per_image": 0.3414,
+            "SSIM": 0.714,
+            "sharpness_ratio": 0.3357,
+            "Q_rest": 0.5075,
+            "Q_rest_per_image": 0.5085,
+            "num_samples": 200,
+            "clipping_fraction": 0.0059851630528767906
+          },
+          "deltas": {
+            "psnr_delta": 0.10760000000000147,
+            "ssim_delta": 0.009299999999999975,
+            "sharp_delta": -0.022799999999999987,
+            "qfr_delta": 0.0042999999999999705,
+            "clip_delta": 0.0013776652018229166
+          }
+        }
+      }
+    },
+    "fold_4": {
+      "control_A": {
+        "PSNR_dB": 24.281,
+        "PSNR_norm": 0.464,
+        "PSNR_norm_per_image": 0.4681,
+        "SSIM": 0.7439,
+        "sharpness_ratio": 0.4895,
+        "Q_rest": 0.5925,
+        "Q_rest_per_image": 0.5943,
+        "num_samples": 800,
+        "clipping_fraction": 0.0453571617603302
+      },
+      "candidate_B": {
+        "PSNR_dB": 24.4553,
+        "PSNR_norm": 0.4728,
+        "PSNR_norm_per_image": 0.4766,
+        "SSIM": 0.7487,
+        "sharpness_ratio": 0.4694,
+        "Q_rest": 0.5966,
+        "Q_rest_per_image": 0.5983,
+        "num_samples": 800,
+        "clipping_fraction": 0.04607789039611816
+      },
+      "deltas": {
+        "psnr_delta": 0.17430000000000234,
+        "ssim_delta": 0.0048000000000000265,
+        "sharp_delta": -0.020100000000000007,
+        "qfr_delta": 0.0040999999999999925,
+        "clip_delta": 0.0007207286357879638
+      },
+      "per_scene": {
+        "fish5": {
+          "control_A": {
+            "PSNR_dB": 21.5296,
+            "PSNR_norm": 0.3265,
+            "PSNR_norm_per_image": 0.3353,
+            "SSIM": 0.7152,
+            "sharpness_ratio": 0.4606,
+            "Q_rest": 0.5148,
+            "Q_rest_per_image": 0.5188,
+            "num_samples": 200,
+            "clipping_fraction": 0.03596776803334554
+          },
+          "candidate_B": {
+            "PSNR_dB": 21.6744,
+            "PSNR_norm": 0.3337,
+            "PSNR_norm_per_image": 0.3415,
+            "SSIM": 0.7223,
+            "sharpness_ratio": 0.4435,
+            "Q_rest": 0.5195,
+            "Q_rest_per_image": 0.523,
+            "num_samples": 200,
+            "clipping_fraction": 0.039466876983642575
+          },
+          "deltas": {
+            "psnr_delta": 0.14480000000000004,
+            "ssim_delta": 0.007100000000000106,
+            "sharp_delta": -0.017100000000000004,
+            "qfr_delta": 0.0046999999999999265,
+            "clip_delta": 0.0034991089502970376
+          }
+        },
+        "fish7": {
+          "control_A": {
+            "PSNR_dB": 24.9176,
+            "PSNR_norm": 0.4959,
+            "PSNR_norm_per_image": 0.5025,
+            "SSIM": 0.6453,
+            "sharpness_ratio": 0.3166,
+            "Q_rest": 0.5452,
+            "Q_rest_per_image": 0.5481,
+            "num_samples": 200,
+            "clipping_fraction": 0.07447770913441976
+          },
+          "candidate_B": {
+            "PSNR_dB": 24.9899,
+            "PSNR_norm": 0.4995,
+            "PSNR_norm_per_image": 0.506,
+            "SSIM": 0.6444,
+            "sharpness_ratio": 0.2783,
+            "Q_rest": 0.5426,
+            "Q_rest_per_image": 0.5455,
+            "num_samples": 200,
+            "clipping_fraction": 0.09649977366129557
+          },
+          "deltas": {
+            "psnr_delta": 0.07229999999999848,
+            "ssim_delta": -0.0009000000000000119,
+            "sharp_delta": -0.0383,
+            "qfr_delta": -0.0026000000000000467,
+            "clip_delta": 0.022022064526875815
+          }
+        },
+        "fish9": {
+          "control_A": {
+            "PSNR_dB": 24.8735,
+            "PSNR_norm": 0.4937,
+            "PSNR_norm_per_image": 0.4952,
+            "SSIM": 0.8208,
+            "sharpness_ratio": 0.6266,
+            "Q_rest": 0.6542,
+            "Q_rest_per_image": 0.6549,
+            "num_samples": 200,
+            "clipping_fraction": 0.07048064231872558
+          },
+          "candidate_B": {
+            "PSNR_dB": 25.1835,
+            "PSNR_norm": 0.5092,
+            "PSNR_norm_per_image": 0.5107,
+            "SSIM": 0.825,
+            "sharpness_ratio": 0.6106,
+            "Q_rest": 0.6614,
+            "Q_rest_per_image": 0.6621,
+            "num_samples": 200,
+            "clipping_fraction": 0.04823324998219808
+          },
+          "deltas": {
+            "psnr_delta": 0.3099999999999987,
+            "ssim_delta": 0.0041999999999999815,
+            "sharp_delta": -0.016000000000000014,
+            "qfr_delta": 0.007199999999999984,
+            "clip_delta": -0.022247392336527505
+          }
+        },
+        "turtles1": {
+          "control_A": {
+            "PSNR_dB": 25.8032,
+            "PSNR_norm": 0.5402,
+            "PSNR_norm_per_image": 0.5393,
+            "SSIM": 0.7943,
+            "sharpness_ratio": 0.5542,
+            "Q_rest": 0.6559,
+            "Q_rest_per_image": 0.6555,
+            "num_samples": 200,
+            "clipping_fraction": 0.0005025275548299154
+          },
+          "candidate_B": {
+            "PSNR_dB": 25.9736,
+            "PSNR_norm": 0.5487,
+            "PSNR_norm_per_image": 0.5481,
+            "SSIM": 0.803,
+            "sharpness_ratio": 0.5452,
+            "Q_rest": 0.6628,
+            "Q_rest_per_image": 0.6625,
+            "num_samples": 200,
+            "clipping_fraction": 0.00011166095733642578
+          },
+          "deltas": {
+            "psnr_delta": 0.17040000000000077,
+            "ssim_delta": 0.008700000000000041,
+            "sharp_delta": -0.009000000000000008,
+            "qfr_delta": 0.006899999999999906,
+            "clip_delta": -0.0003908665974934896
+          }
+        }
+      }
+    }
+  }
+}

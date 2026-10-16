@@ -1,0 +1,796 @@
+{
+  "metadata": {
+    "baseline_description": "Exact reproduced #18700 MultiScale OOF baseline",
+    "pipeline": "DINOv2-L + Exact-(wt, depth) CP + Multi-Scale TTA [448, 518, 588] + RSUIGM 19-term unsharp",
+    "total_images_evaluated": 4000,
+    "total_elapsed_sec": 2772.3,
+    "date": "2026-10-15",
+    "commit": "9a17437"
+  },
+  "pooled_screening_folds_0_1": {
+    "description": "Pooled Folds 0 & 1 (1,600 images)",
+    "composite_provisional_est": 0.4612,
+    "Q_FR": 0.603,
+    "segmentation": {
+      "mIoU": 0.5461,
+      "macro_F1": 0.7028,
+      "per_class_IoU": [
+        0.6184,
+        0.5884,
+        0.5666,
+        0.3915,
+        0.5658
+      ],
+      "per_class_F1": [
+        0.7642,
+        0.7409,
+        0.7233,
+        0.5627,
+        0.7227
+      ],
+      "per_class_precision": [
+        0.8948,
+        0.6482,
+        0.6494,
+        0.9938,
+        0.6434
+      ],
+      "per_class_recall": [
+        0.6669,
+        0.8645,
+        0.8162,
+        0.3925,
+        0.8242
+      ],
+      "coverage_penalty": 1.0,
+      "soft_coverage_penalty": 1.0,
+      "official_Q_seg": 0.3838,
+      "Q_seg": 0.3838,
+      "confusion_matrix": [
+        [
+          613539831,
+          268838753,
+          16922915,
+          23541,
+          20672760
+        ],
+        [
+          62896867,
+          522384400,
+          10513383,
+          0,
+          8443950
+        ],
+        [
+          4980874,
+          9737778,
+          65366836,
+          0,
+          1912
+        ],
+        [
+          502993,
+          445310,
+          4918685,
+          3790612,
+          0
+        ],
+        [
+          3748802,
+          4525301,
+          2929543,
+          0,
+          52536554
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 24.2931,
+      "PSNR_norm": 0.4647,
+      "PSNR_norm_per_image": 0.4697,
+      "SSIM": 0.7614,
+      "sharpness_ratio": 0.5122,
+      "Q_rest": 0.603,
+      "Q_rest_per_image": 0.6052,
+      "num_samples": 1600
+    },
+    "hard_floors": {
+      "Q_seg": 0.3838,
+      "mIoU": 0.5461,
+      "macro_F1": 0.7028,
+      "per_class_IoU": [
+        0.6184,
+        0.5884,
+        0.5666,
+        0.3915,
+        0.5658
+      ],
+      "per_class_F1": [
+        0.7642,
+        0.7409,
+        0.7233,
+        0.5627,
+        0.7227
+      ],
+      "Sharpness_OOF_Base": 0.5122
+    }
+  },
+  "pooled_confirmation_folds_2_4": {
+    "description": "Pooled Folds 2, 3, & 4 (2,400 images)",
+    "composite_provisional_est": 0.3401,
+    "Q_FR": 0.5588,
+    "segmentation": {
+      "mIoU": 0.3946,
+      "macro_F1": 0.5173,
+      "per_class_IoU": [
+        0.5514,
+        0.6828,
+        0.5302,
+        0.1513,
+        0.0573
+      ],
+      "per_class_F1": [
+        0.7108,
+        0.8115,
+        0.693,
+        0.2628,
+        0.1083
+      ],
+      "per_class_precision": [
+        0.9226,
+        0.7124,
+        0.6114,
+        0.2805,
+        0.1162
+      ],
+      "per_class_recall": [
+        0.5781,
+        0.9426,
+        0.7998,
+        0.2473,
+        0.1014
+      ],
+      "coverage_penalty": 1.0,
+      "soft_coverage_penalty": 1.0,
+      "official_Q_seg": 0.2041,
+      "Q_seg": 0.2041,
+      "confusion_matrix": [
+        [
+          642829618,
+          411250033,
+          30706717,
+          7479844,
+          19615188
+        ],
+        [
+          41770009,
+          1088778222,
+          9455070,
+          282,
+          15085217
+        ],
+        [
+          6982826,
+          14487322,
+          134965698,
+          6878036,
+          5438718
+        ],
+        [
+          1662219,
+          440860,
+          10165614,
+          5596544,
+          4764763
+        ],
+        [
+          3523803,
+          13339863,
+          35460572,
+          0,
+          5905362
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 23.4348,
+      "PSNR_norm": 0.4217,
+      "PSNR_norm_per_image": 0.4287,
+      "SSIM": 0.7055,
+      "sharpness_ratio": 0.5152,
+      "Q_rest": 0.5588,
+      "Q_rest_per_image": 0.5619,
+      "num_samples": 2400
+    },
+    "hard_floors": {
+      "Q_seg": 0.2041,
+      "mIoU": 0.3946,
+      "macro_F1": 0.5173,
+      "per_class_IoU": [
+        0.5514,
+        0.6828,
+        0.5302,
+        0.1513,
+        0.0573
+      ],
+      "per_class_F1": [
+        0.7108,
+        0.8115,
+        0.693,
+        0.2628,
+        0.1083
+      ],
+      "Sharpness_OOF_Base": 0.5152
+    }
+  },
+  "pooled_all_5_folds_0_4": {
+    "description": "Pooled All 5 Folds (4,000 images across all 20 scenes)",
+    "composite_provisional_est": 0.3876,
+    "Q_FR": 0.5765,
+    "segmentation": {
+      "mIoU": 0.4544,
+      "macro_F1": 0.604,
+      "per_class_IoU": [
+        0.5822,
+        0.649,
+        0.5416,
+        0.2011,
+        0.2982
+      ],
+      "per_class_F1": [
+        0.7359,
+        0.7872,
+        0.7026,
+        0.3349,
+        0.4594
+      ],
+      "per_class_precision": [
+        0.9088,
+        0.6902,
+        0.6233,
+        0.3949,
+        0.4412
+      ],
+      "per_class_recall": [
+        0.6183,
+        0.9158,
+        0.8051,
+        0.2907,
+        0.4792
+      ],
+      "coverage_penalty": 1.0,
+      "soft_coverage_penalty": 1.0,
+      "official_Q_seg": 0.2745,
+      "Q_seg": 0.2745,
+      "confusion_matrix": [
+        [
+          1256369449,
+          680088786,
+          47629632,
+          7503385,
+          40287948
+        ],
+        [
+          104666876,
+          1611162622,
+          19968453,
+          282,
+          23529167
+        ],
+        [
+          11963700,
+          24225100,
+          200332534,
+          6878036,
+          5440630
+        ],
+        [
+          2165212,
+          886170,
+          15084299,
+          9387156,
+          4764763
+        ],
+        [
+          7272605,
+          17865164,
+          38390115,
+          0,
+          58441916
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 23.7781,
+      "PSNR_norm": 0.4389,
+      "PSNR_norm_per_image": 0.4451,
+      "SSIM": 0.7279,
+      "sharpness_ratio": 0.514,
+      "Q_rest": 0.5764,
+      "Q_rest_per_image": 0.5792,
+      "num_samples": 4000
+    },
+    "hard_floors": {
+      "Q_seg": 0.2745,
+      "mIoU": 0.4544,
+      "macro_F1": 0.604,
+      "per_class_IoU": [
+        0.5822,
+        0.649,
+        0.5416,
+        0.2011,
+        0.2982
+      ],
+      "per_class_F1": [
+        0.7359,
+        0.7872,
+        0.7026,
+        0.3349,
+        0.4594
+      ],
+      "Sharpness_OOF_Base": 0.514
+    }
+  },
+  "per_fold_breakdown": {
+    "fold_0": {
+      "val_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "seahorse1"
+      ],
+      "segmentation": {
+        "mIoU": 0.6976,
+        "macro_F1": 0.8109,
+        "per_class_IoU": [
+          0.6692,
+          0.733,
+          0.52,
+          1.0,
+          0.5658
+        ],
+        "per_class_F1": [
+          0.8018,
+          0.8459,
+          0.6842,
+          1.0,
+          0.7227
+        ],
+        "per_class_precision": [
+          0.8663,
+          0.8241,
+          0.6185,
+          1.0,
+          0.6434
+        ],
+        "per_class_recall": [
+          0.7462,
+          0.8689,
+          0.7655,
+          1.0,
+          0.8242
+        ],
+        "coverage_penalty": 1.0,
+        "soft_coverage_penalty": 1.0,
+        "official_Q_seg": 0.5657,
+        "Q_seg": 0.5657,
+        "confusion_matrix": [
+          [
+            257502078,
+            62912521,
+            3984441,
+            0,
+            20672760
+          ],
+          [
+            33284216,
+            342624410,
+            9960024,
+            0,
+            8443950
+          ],
+          [
+            2692068,
+            5684442,
+            27357778,
+            0,
+            1912
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3748802,
+            4525301,
+            2929543,
+            0,
+            52536554
+          ]
+        ]
+      },
+      "restoration": {
+        "PSNR_dB": 24.2316,
+        "PSNR_norm": 0.4616,
+        "PSNR_norm_per_image": 0.4659,
+        "SSIM": 0.778,
+        "sharpness_ratio": 0.6351,
+        "Q_rest": 0.6213,
+        "Q_rest_per_image": 0.6233,
+        "num_samples": 800
+      },
+      "elapsed_sec": 519.3
+    },
+    "fold_1": {
+      "val_scenes": [
+        "fish13",
+        "fish14",
+        "fish15",
+        "sharkFish"
+      ],
+      "segmentation": {
+        "mIoU": 0.6022,
+        "macro_F1": 0.7311,
+        "per_class_IoU": [
+          0.5862,
+          0.4276,
+          0.6056,
+          0.3915,
+          1.0
+        ],
+        "per_class_F1": [
+          0.7392,
+          0.5991,
+          0.7544,
+          0.5627,
+          1.0
+        ],
+        "per_class_precision": [
+          0.9166,
+          0.4607,
+          0.6737,
+          0.9938,
+          1.0
+        ],
+        "per_class_recall": [
+          0.6193,
+          0.8563,
+          0.857,
+          0.3925,
+          1.0
+        ],
+        "coverage_penalty": 1.0,
+        "soft_coverage_penalty": 1.0,
+        "official_Q_seg": 0.4403,
+        "Q_seg": 0.4403,
+        "confusion_matrix": [
+          [
+            356037753,
+            205926232,
+            12938474,
+            23541,
+            0
+          ],
+          [
+            29612651,
+            179759990,
+            553359,
+            0,
+            0
+          ],
+          [
+            2288806,
+            4053336,
+            38009058,
+            0,
+            0
+          ],
+          [
+            502993,
+            445310,
+            4918685,
+            3790612,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "restoration": {
+        "PSNR_dB": 24.3546,
+        "PSNR_norm": 0.4677,
+        "PSNR_norm_per_image": 0.4734,
+        "SSIM": 0.7449,
+        "sharpness_ratio": 0.3893,
+        "Q_rest": 0.5846,
+        "Q_rest_per_image": 0.5872,
+        "num_samples": 800
+      },
+      "elapsed_sec": 516.5
+    },
+    "fold_2": {
+      "val_scenes": [
+        "fish17",
+        "fish18",
+        "fish2",
+        "ray1"
+      ],
+      "segmentation": {
+        "mIoU": 0.4973,
+        "macro_F1": 0.579,
+        "per_class_IoU": [
+          0.8729,
+          0.9277,
+          0.4569,
+          0.2293,
+          0.0
+        ],
+        "per_class_F1": [
+          0.9321,
+          0.9625,
+          0.6272,
+          0.373,
+          0.0
+        ],
+        "per_class_precision": [
+          0.9343,
+          0.9789,
+          0.5186,
+          0.7585,
+          0.0
+        ],
+        "per_class_recall": [
+          0.93,
+          0.9466,
+          0.7934,
+          0.2473,
+          1.0
+        ],
+        "coverage_penalty": 1.0,
+        "soft_coverage_penalty": 1.0,
+        "official_Q_seg": 0.2879,
+        "Q_seg": 0.2879,
+        "confusion_matrix": [
+          [
+            225567402,
+            6176405,
+            6356029,
+            1781770,
+            2665794
+          ],
+          [
+            12897789,
+            515967852,
+            4559190,
+            282,
+            11640087
+          ],
+          [
+            1314261,
+            4491717,
+            22706687,
+            0,
+            105535
+          ],
+          [
+            1662219,
+            440860,
+            10165614,
+            5596544,
+            4764763
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "restoration": {
+        "PSNR_dB": 23.8028,
+        "PSNR_norm": 0.4401,
+        "PSNR_norm_per_image": 0.4473,
+        "SSIM": 0.7874,
+        "sharpness_ratio": 0.6338,
+        "Q_rest": 0.6158,
+        "Q_rest_per_image": 0.619,
+        "num_samples": 800
+      },
+      "elapsed_sec": 517.5
+    },
+    "fold_3": {
+      "val_scenes": [
+        "fish20",
+        "fish21",
+        "fish4",
+        "starfish2"
+      ],
+      "segmentation": {
+        "mIoU": 0.3441,
+        "macro_F1": 0.4341,
+        "per_class_IoU": [
+          0.4628,
+          0.529,
+          0.7264,
+          0.0,
+          0.0022
+        ],
+        "per_class_F1": [
+          0.6327,
+          0.692,
+          0.8415,
+          0.0,
+          0.0045
+        ],
+        "per_class_precision": [
+          0.9227,
+          0.5529,
+          0.8778,
+          0.0,
+          0.0025
+        ],
+        "per_class_recall": [
+          0.4814,
+          0.9244,
+          0.8081,
+          1.0,
+          0.0207
+        ],
+        "coverage_penalty": 1.0,
+        "soft_coverage_penalty": 1.0,
+        "official_Q_seg": 0.1494,
+        "Q_seg": 0.1494,
+        "confusion_matrix": [
+          [
+            214948957,
+            202693425,
+            8348703,
+            5698074,
+            14774441
+          ],
+          [
+            14535813,
+            260358900,
+            3790895,
+            0,
+            2970992
+          ],
+          [
+            3471426,
+            5064523,
+            87216244,
+            6878036,
+            5300171
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2752077,
+            0,
+            0,
+            58123
+          ]
+        ]
+      },
+      "restoration": {
+        "PSNR_dB": 22.7301,
+        "PSNR_norm": 0.3865,
+        "PSNR_norm_per_image": 0.3937,
+        "SSIM": 0.6264,
+        "sharpness_ratio": 0.4086,
+        "Q_rest": 0.4966,
+        "Q_rest_per_image": 0.4999,
+        "num_samples": 800
+      },
+      "elapsed_sec": 516.9
+    },
+    "fold_4": {
+      "val_scenes": [
+        "fish5",
+        "fish7",
+        "fish9",
+        "turtles1"
+      ],
+      "segmentation": {
+        "mIoU": 0.485,
+        "macro_F1": 0.5988,
+        "per_class_IoU": [
+          0.4568,
+          0.572,
+          0.2954,
+          1.0,
+          0.1006
+        ],
+        "per_class_F1": [
+          0.6271,
+          0.7277,
+          0.4561,
+          1.0,
+          0.1829
+        ],
+        "per_class_precision": [
+          0.9098,
+          0.5891,
+          0.3227,
+          1.0,
+          0.6855
+        ],
+        "per_class_recall": [
+          0.4784,
+          0.9515,
+          0.7776,
+          1.0,
+          0.1055
+        ],
+        "coverage_penalty": 1.0,
+        "soft_coverage_penalty": 1.0,
+        "official_Q_seg": 0.2904,
+        "Q_seg": 0.2904,
+        "confusion_matrix": [
+          [
+            202313259,
+            202380203,
+            16001985,
+            0,
+            2174953
+          ],
+          [
+            14336407,
+            312451470,
+            1104985,
+            0,
+            474138
+          ],
+          [
+            2197139,
+            4931082,
+            25042767,
+            0,
+            33012
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3523803,
+            10587786,
+            35460572,
+            0,
+            5847239
+          ]
+        ]
+      },
+      "restoration": {
+        "PSNR_dB": 23.7716,
+        "PSNR_norm": 0.4386,
+        "PSNR_norm_per_image": 0.445,
+        "SSIM": 0.7026,
+        "sharpness_ratio": 0.5032,
+        "Q_rest": 0.5639,
+        "Q_rest_per_image": 0.5668,
+        "num_samples": 800
+      },
+      "elapsed_sec": 516.9
+    }
+  }
+}

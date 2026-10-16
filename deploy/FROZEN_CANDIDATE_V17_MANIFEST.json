@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-10-16 19:40:49",
+  "version": "v17_unified_sota",
+  "track1": {
+    "Primary_DualBackbone_SOTA_v17": {
+      "path": "deploy/submission_v17_dual_backbone_sota.zip",
+      "size_mb": 589.5,
+      "sha256": "50f85ec2111ad6d62a03d718fb8fe09fe4e75201d7cdf359c9a81baac138cc4e",
+      "restored_count": 1200,
+      "masks_count": 1200,
+      "status": "VALIDATED_COMPLIANT"
+    },
+    "Historical_SOTA_Fallback_18713": {
+      "path": "deploy/eurs_track1_dryrun_compact_candidate.zip",
+      "size_mb": 564.9055528640747,
+      "sha256": "d6f4b9dfae2a084154d4820722fea48276fe1d5ae8a115557ea36417c3f7d2d6",
+      "restored_count": 1200,
+      "masks_count": 1200,
+      "status": "VALIDATED_COMPLIANT"
+    },
+    "Apex_DualBackbone_SOTA_v16": {
+      "path": "deploy/submission_v16_apex_sota.zip",
+      "size_mb": 588.6381311416626,
+      "sha256": "943369fcdff398c1c18c9b43d4aa792baa1e343914a3dc6f186ca52bb8ced6df",
+      "restored_count": 1200,
+      "masks_count": 1200,
+      "status": "VALIDATED_COMPLIANT"
+    },
+    "Unified_SOTA_v17_Breakthrough": {
+      "path": "deploy/submission_v17_breakthrough_sota_unified.zip",
+      "size_mb": 581.85,
+      "sha256": "1617f38ee886f3329456e8495b0c93fb859687dcdfa2b687b160ec6c7c37e6e1",
+      "restored_count": 1200,
+      "masks_count": 1200,
+      "restoration_model": "Scale-Consistent 20-Scene RSUIGM Operator + 1.34 Unsharp",
+      "segmentation_model": "Top-K Entropy Pooled 5-Fold DINOv2-L + Full-20 DINOv2-L + Full-20 ConvNeXt-Base FPN",
+      "tta_scales": [
+        448,
+        518,
+        588,
+        672
+      ],
+      "offsets": [
+        0.15,
+        0.15
+      ],
+      "speck_filter_min_area": 250,
+      "status": "VALIDATED_COMPLIANT_SOTA"
+    }
+  },
+  "track2": {
+    "Official_Reference_18699": {
+      "path": "deploy/eurs_net_v5_calibrated_track2.onnx",
+      "size_mb": 3.135578155517578,
+      "sha256": "ad7bb1b1083083aee9fbbe44ce8974089d6b93077d892c20df84a267dd5fd135",
+      "total_gflops": 9.049998911999996,
+      "total_params_m": 0.768309,
+      "latency_cpu_ms": 138.7862999981735,
+      "status": "VALIDATED_COMPLIANT"
+    },
+    "EURSEdgeSOTA_V2_Candidate": {
+      "path": "deploy/eurs_edgesota_v2_final.onnx",
+      "size_mb": 5.424678802490234,
+      "sha256": "f547d0e1478311514c7f09f97b97d0c1e6f45087c85083342a154da45eba5f18",
+      "total_gflops": 2.249592832,
+      "total_params_m": 0.353654,
+      "latency_cpu_ms": 61.83729999611387,
+      "status": "VALIDATED_COMPLIANT"
+    },
+    "EXP_COMBINED_BEST_Candidate": {
+      "path": "deploy/EXP-COMBINED-BEST.onnx",
+      "size_mb": 7.694112777709961,
+      "sha256": "645eb785ba2bfb07a9ce4349b19b79151af627a88c58b466035395e48cbbcd52",
+      "total_gflops": 3.566648384000001,
+      "total_params_m": 0.958904,
+      "latency_cpu_ms": 62.15420000080485,
+      "status": "VALIDATED_COMPLIANT"
+    }
+  },
+  "checkpoints": {
+    "rsuigm_20sc_table": {
+      "path": "checkpoints/track1_screening/tbl19_20sc_clean.pt",
+      "size_mb": 0.09403705596923828,
+      "sha256": "2c35df3b0f5d3317c3672b2867e0059b893acecd8699c5a2271383a1179d9562"
+    },
+    "rsuigm_f0_table": {
+      "path": "checkpoints/track1_screening/tbl19_16sc_fold0.pt",
+      "size_mb": 0.09403705596923828,
+      "sha256": "d609740e3a6e80593ffc2684458bcf747fc7edaa90fe8f87801c6e367356d6a1"
+    },
+    "dinov2_l_fold0": {
+      "path": "checkpoints/v16_dinov2/fold_0/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "3bbe037c421f14ed8e961d2535b00e404ea45f4f8344484c09767e020196acf8"
+    },
+    "dinov2_l_fold1": {
+      "path": "checkpoints/v16_dinov2/fold_1/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "2cfa306d39e4b55d51900da073fea9bd504ed27469a002c707c71b4d6b7dc59f"
+    },
+    "dinov2_l_fold2": {
+      "path": "checkpoints/v16_dinov2/fold_2/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "e68b1317fdf2a5892e153208d7369fa5b2c8c69669f8a26b0cffe8db8b8514be"
+    },
+    "dinov2_l_fold3": {
+      "path": "checkpoints/v16_dinov2/fold_3/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "1e4bc8053e04bf80ab28fa928174a80470b55886f58c19a67603e7d4b5c98b2b"
+    },
+    "dinov2_l_fold4": {
+      "path": "checkpoints/v16_dinov2/fold_4/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "8398d538d0fe092bc23d852cda4027d2bb784d29ba7d8fd36d365574e53a162f"
+    },
+    "convnext_b_fold0": {
+      "path": "checkpoints/v16_convnext/fold_0/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "ed36e5d39fcddfbf2d64e0e9aa6b959f4972bcdee9f493dcf90f770a8b8accbd"
+    },
+    "convnext_b_fold1": {
+      "path": "checkpoints/v16_convnext/fold_1/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "4ec49c010213f3a6ffdd03a9a237f1428e7c3bf3fb48173b5a6b2492cbbb7c4e"
+    },
+    "convnext_b_fold2": {
+      "path": "checkpoints/v16_convnext/fold_2/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "c5b2aabcf614cc42e2aad627f0fb8d01beb711ac6d211cb851f535f3b8a90f97"
+    },
+    "convnext_b_fold3": {
+      "path": "checkpoints/v16_convnext/fold_3/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "bcdf6ddca9599667ebc71f810ff4a3eefa07c1b9772313188ccb0c0528cb05d0"
+    },
+    "convnext_b_fold4": {
+      "path": "checkpoints/v16_convnext/fold_4/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "e6bf76698d4857f49c31c44710ce61f8a5aa49849b864f7f85e6c7c289266519"
+    }
+  }
+}
