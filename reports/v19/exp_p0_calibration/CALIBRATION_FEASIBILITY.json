@@ -1,0 +1,196 @@
+{
+  "experiment_id": "EXP-V19-P0-CALIBRATION-FEASIBILITY",
+  "title": "V18 to V19 Experiment P0: Class-4 Calibration Feasibility and Offline OOF Sweep",
+  "timestamp": "2026-10-17T22:45:00Z",
+  "verdict": "BLOCKED",
+  "verdict_summary": "Prerequisite per-pixel OOF logits/probability maps were not serialized to disk during prior runs. The existing artifacts contain only aggregate scalar confusion matrices, which are mathematically insufficient to evaluate a logit offset shift offline. GPU inference is strictly paused awaiting user approval.",
+  "baseline_provenance": {
+    "archive_path": "deploy/v18/submission_v18_dual_encoder_sota.zip",
+    "size_bytes": 566498879,
+    "sha256_before": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "sha256_after": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "integrity_status": "VERIFIED_PRESERVED_IDENTICAL"
+  },
+  "searched_artifact_inventory": {
+    "existing_artifacts": [
+      {
+        "path": "checkpoints/v18/fold_0/segmenter_best.pt",
+        "size_bytes": 1606766957,
+        "content_type": "PyTorch Checkpoint (state_dict + provenance)",
+        "fold": 0,
+        "held_out_val_scenes": ["fish1", "fish11", "fish12", "seahorse1"],
+        "stored_metrics": {
+          "Q_seg": 0.35079,
+          "mIoU": 0.52662,
+          "Macro_F1": 0.66612,
+          "confusion_matrix_total_pixels": 209715200,
+          "crop_size": 512,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      },
+      {
+        "path": "checkpoints/v18/fold_1/segmenter_best.pt",
+        "size_bytes": 1606766957,
+        "content_type": "PyTorch Checkpoint (state_dict + provenance)",
+        "fold": 1,
+        "held_out_val_scenes": ["fish13", "fish14", "fish15", "sharkFish"],
+        "stored_metrics": {
+          "Q_seg": 0.55269,
+          "mIoU": 0.68412,
+          "Macro_F1": 0.80789,
+          "confusion_matrix_total_pixels": 209715200,
+          "crop_size": 512,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      },
+      {
+        "path": "checkpoints/v18/fold_2/segmenter_best.pt",
+        "size_bytes": 1606766957,
+        "content_type": "PyTorch Checkpoint (state_dict + provenance)",
+        "fold": 2,
+        "held_out_val_scenes": ["fish17", "fish18", "fish2", "ray1"],
+        "stored_metrics": {
+          "Q_seg": 0.52992,
+          "mIoU": 0.67721,
+          "Macro_F1": 0.78251,
+          "confusion_matrix_total_pixels": 209715200,
+          "crop_size": 512,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      },
+      {
+        "path": "checkpoints/v18/fold_3/segmenter_best.pt",
+        "size_bytes": 1606766957,
+        "content_type": "PyTorch Checkpoint (state_dict + provenance)",
+        "fold": 3,
+        "held_out_val_scenes": ["fish20", "fish21", "fish4", "starfish2"],
+        "stored_metrics": {
+          "Q_seg": 0.34654,
+          "mIoU": 0.52670,
+          "Macro_F1": 0.65794,
+          "confusion_matrix_total_pixels": 209715200,
+          "crop_size": 512,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      },
+      {
+        "path": "checkpoints/v18/fold_4/segmenter_best.pt",
+        "size_bytes": 1606766957,
+        "content_type": "PyTorch Checkpoint (state_dict + provenance)",
+        "fold": 4,
+        "held_out_val_scenes": ["fish5", "fish7", "fish9", "turtles1"],
+        "stored_metrics": {
+          "Q_seg": 0.30245,
+          "mIoU": 0.47742,
+          "Macro_F1": 0.63352,
+          "confusion_matrix_total_pixels": 209715200,
+          "crop_size": 512,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      },
+      {
+        "path": "reports/v18/OOF_EVALUATION_REPORT.json",
+        "size_bytes": 5301,
+        "content_type": "Global 20-Scene Aggregate OOF Report",
+        "dataset_coverage": "20 scenes (4,000 images, 4,194,304,000 pixels)",
+        "stored_metrics": {
+          "Q_seg": 0.43645,
+          "mIoU": 0.59441,
+          "Macro_F1": 0.73425,
+          "class_ious": [0.75045, 0.71847, 0.60831, 0.55467, 0.34016],
+          "class_f1s": [0.85743, 0.83617, 0.75646, 0.71355, 0.50765],
+          "class_recalls": [0.87664, 0.80774, 0.85862, 0.78987, 0.41297],
+          "class_precisions": [0.83905, 0.86668, 0.67602, 0.65068, 0.65865],
+          "crop_size": 1024,
+          "tta_applied": false,
+          "offsets_applied": [0.0, 0.0, 0.0, 0.0, 0.0],
+          "confusion_matrix": [
+            [1781227677, 203841594, 30795106, 1918587, 14096236],
+            [292693872, 1421073498, 38923924, 209922, 6426184],
+            [17773009, 10828342, 213658230, 1147629, 5432790],
+            [1513209, 336827, 4785310, 25503101, 149153],
+            [29702069, 3592374, 27890531, 10415241, 50369585]
+          ]
+        }
+      },
+      {
+        "path": "deploy/v18/track1_dev_outputs/seg_masks/",
+        "size_bytes": 48200000,
+        "content_type": "1,200 Discrete PNG Masks for Dev Test Set (Not OOF)",
+        "ground_truth_available_locally": false,
+        "offsets_applied": [0.0, 0.0, 0.0, 0.15, 0.15],
+        "tta_applied": true,
+        "ensemble_applied": "5-fold arithmetic mean"
+      }
+    ],
+    "missing_artifacts": [
+      {
+        "name": "Cached OOF Logit Tensors",
+        "description": "Continuous float tensors of shape [5, H, W] for held-out validation images",
+        "status": "NOT_ON_DISK",
+        "impact": "Prevents offline argmax recomputation with altered class offsets"
+      },
+      {
+        "name": "Cached OOF Probability Maps",
+        "description": "Softmax probability maps of shape [5, H, W] for held-out validation images",
+        "status": "NOT_ON_DISK",
+        "impact": "Prevents threshold or probability calibration sweeps"
+      },
+      {
+        "name": "Per-Image OOF Discrete Mask Files",
+        "description": "Individual predicted masks for the 4,000 held-out images",
+        "status": "NOT_ON_DISK",
+        "impact": "Only global 20-scene aggregate confusion matrix was persisted"
+      }
+    ]
+  },
+  "mathematical_impossibility_analysis": {
+    "formulation": "y_pred(h, w) = argmax_{c in {0..4}} (z_c(h, w) + b_c)",
+    "explanation": "Applying a logit offset b_4 alters the decision boundary between Class 4 and all competing classes at the pixel level based on the margin (z_4(h, w) - z_c(h, w)). In an aggregate scalar confusion matrix C in R^{5x5}, all spatial and margin information has already been collapsed into discrete counts. It is mathematically impossible to determine which pixels in row 0, 1, 2, or 3 would flip to Class 4 under b_4 = 0.28 without the underlying continuous logits.",
+    "conclusion": "Any reported sweep numbers generated solely from existing scalar confusion matrix files without forward passes would be an invented fabrication. In strict compliance with user instructions, the sweep is stopped and marked BLOCKED."
+  },
+  "pipeline_compatibility_mismatches": {
+    "mismatch_1_tta": {
+      "oof_evaluation": "Single forward pass (No TTA)",
+      "dev_inference": "Horizontal-Flip TTA (2 passes per model x 5 models = 10 passes total)",
+      "impact": "OOF evaluation under-reports edge sharpness and small-object detection compared to Dev inference"
+    },
+    "mismatch_2_offsets": {
+      "oof_evaluation": "[0.0, 0.0, 0.0, 0.0, 0.0] (Raw argmax)",
+      "dev_inference": "[0.0, 0.0, 0.0, 0.15, 0.15] (Calibrated offsets)",
+      "impact": "OOF evaluation suffers from Class 4 false-negative suppression"
+    },
+    "mismatch_3_ensembling": {
+      "oof_evaluation": "Single fold checkpoint evaluated only on its 4 held-out scenes",
+      "dev_inference": "5-Fold Arithmetic Mean Ensemble across all 5 checkpoints",
+      "impact": "OOF evaluation suffers from singleton rare-class blindness (scenes with seahorse or shark had never been seen by that fold's single model)"
+    },
+    "mismatch_4_resolution": {
+      "oof_evaluation": "1024x1024 square crop with edge padding",
+      "dev_inference": "Aspect-preserving unpadded native aspect ratio (768x1024 / 1024x768) scaled to max side 1024",
+      "impact": "Slight aspect ratio distortion in OOF vs aspect-preserving Dev inference"
+    }
+  },
+  "minimum_additional_computation_required": {
+    "proposed_action": "Execute isolated, non-training GPU inference to stream or cache OOF logits across the 20 scenes",
+    "option_a_full_20_scene_streaming_sweep": {
+      "description": "Stream the 4 held-out validation scenes per fold through its verified segmenter checkpoint on RTX 5090. For each image, compute logits with Flip TTA, apply offsets b_4 in [0.15, 0.17, ..., 0.35], and accumulate confusion matrices in memory across the 11 candidate offsets simultaneously.",
+      "num_images": 4000,
+      "num_forward_passes": 8000,
+      "estimated_runtime": "3.8 to 4.2 minutes on RTX 5090",
+      "disk_storage_needed": "0 MB (all confusion matrices accumulated directly in RAM)",
+      "risk": "Zero weight modification, zero data download, zero production interference"
+    },
+    "option_b_stratified_rare_scene_sweep": {
+      "description": "Evaluate only the 5 scenes containing rare classes (Fold 0 seahorse1, Fold 1 sharkFish, Fold 2 ray1, Fold 3 starfish2, Fold 4 turtles1).",
+      "num_images": 1000,
+      "estimated_runtime": "55 to 65 seconds on RTX 5090",
+      "risk": "Zero weight modification"
+    }
+  }
+}
