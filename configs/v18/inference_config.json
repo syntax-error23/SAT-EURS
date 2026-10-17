@@ -1,0 +1,36 @@
+{
+  "version": "v18",
+  "task": "track1_inference_and_packaging",
+  "geometry": {
+    "max_side": 1024,
+    "pad_multiple": 32,
+    "interpolation_restored": "INTER_LINEAR",
+    "interpolation_masks": "INTER_NEAREST"
+  },
+  "restoration_pipeline": {
+    "base_table": "checkpoints/exp4_1_scale_consistent/tbl19_20sc_scale_consistent.pt",
+    "neural_refiner_checkpoint": "checkpoints/v18/refiner_best.pt",
+    "fallback_to_table_only_if_unpromoted": true,
+    "unsharp_alpha": 1.34,
+    "unsharp_beta": -0.34,
+    "unsharp_sigma": 2.0,
+    "jpeg_quality": 98
+  },
+  "segmentation_pipeline": {
+    "checkpoint": "checkpoints/v18/segmenter_best.pt",
+    "tta": {
+      "horizontal_flip": true,
+      "multi_scale": false,
+      "scales": [448, 518, 588, 672],
+      "scale_weights": [0.12, 0.38, 0.25, 0.25]
+    },
+    "calibration_offsets": [0.0, 0.0, 0.0, 0.15, 0.15],
+    "cc_speckle_filter_px": 250
+  },
+  "output_paths": {
+    "dev_source": "data/dev/degraded",
+    "out_restored_dir": "deploy/v18/track1_dev_outputs/restored",
+    "out_masks_dir": "deploy/v18/track1_dev_outputs/seg_masks",
+    "out_zip": "deploy/v18/submission_v18_dual_encoder_sota.zip"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "audit_name": "V18 Pre-Training Discrepancy-Only Audit",
+  "audit_timestamp": "2026-10-17T04:22:00Z",
+  "gate_verdict": "PASS",
+  "blockers": [],
+  "item_1_fold_specific_restoration_tables": {
+    "status": "PASS",
+    "tables_present_count": 5,
+    "missing_tables_count": 0,
+    "tables": [
+      {
+        "fold": 0,
+        "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_0.pt",
+        "file_size_bytes": 100935,
+        "sha256": "BF74A414A5CA5F3FF969E7FD5AC71F0A59D34AA681CB879676832C0EC6F7C269",
+        "train_scenes_count": 16,
+        "train_scenes": ["fish13", "fish14", "fish15", "fish17", "fish18", "fish2", "fish20", "fish21", "fish4", "fish5", "fish7", "fish9", "ray1", "sharkFish", "starfish2", "turtles1"],
+        "val_scenes_count": 4,
+        "val_scenes_excluded": ["fish1", "fish11", "fish12", "seahorse1"],
+        "contamination_status": "CLEAN_EXCLUDED"
+      },
+      {
+        "fold": 1,
+        "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_1.pt",
+        "file_size_bytes": 100935,
+        "sha256": "AEA0DA723D6EE588B78D5333E5BE3F29F66EB27FD9F4D4AD742B46A1DC4A8DCB",
+        "train_scenes_count": 16,
+        "train_scenes": ["fish1", "fish11", "fish12", "fish17", "fish18", "fish2", "fish20", "fish21", "fish4", "fish5", "fish7", "fish9", "ray1", "seahorse1", "starfish2", "turtles1"],
+        "val_scenes_count": 4,
+        "val_scenes_excluded": ["fish13", "fish14", "fish15", "sharkFish"],
+        "contamination_status": "CLEAN_EXCLUDED"
+      },
+      {
+        "fold": 2,
+        "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_2.pt",
+        "file_size_bytes": 100935,
+        "sha256": "5765C89CD1817F9FB4643216A030D003C55A5F184ACFC3928544066A103A146E",
+        "train_scenes_count": 16,
+        "train_scenes": ["fish1", "fish11", "fish12", "fish13", "fish14", "fish15", "fish20", "fish21", "fish4", "fish5", "fish7", "fish9", "seahorse1", "sharkFish", "starfish2", "turtles1"],
+        "val_scenes_count": 4,
+        "val_scenes_excluded": ["fish17", "fish18", "fish2", "ray1"],
+        "contamination_status": "CLEAN_EXCLUDED"
+      },
+      {
+        "fold": 3,
+        "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_3.pt",
+        "file_size_bytes": 100935,
+        "sha256": "FD8A4759CBA0ACBC2506BF26BD77E4E9E4FD4F63C5D93960F05418718F6F2403",
+        "train_scenes_count": 16,
+        "train_scenes": ["fish1", "fish11", "fish12", "fish13", "fish14", "fish15", "fish17", "fish18", "fish2", "fish5", "fish7", "fish9", "ray1", "seahorse1", "sharkFish", "turtles1"],
+        "val_scenes_count": 4,
+        "val_scenes_excluded": ["fish20", "fish21", "fish4", "starfish2"],
+        "contamination_status": "CLEAN_EXCLUDED"
+      },
+      {
+        "fold": 4,
+        "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_4.pt",
+        "file_size_bytes": 100935,
+        "sha256": "22D2FFD88F6F01DD123EE912BC288CD30BD941148B8537655451C5BC64E06037",
+        "train_scenes_count": 16,
+        "train_scenes": ["fish1", "fish11", "fish12", "fish13", "fish14", "fish15", "fish17", "fish18", "fish2", "fish20", "fish21", "fish4", "ray1", "seahorse1", "sharkFish", "starfish2"],
+        "val_scenes_count": 4,
+        "val_scenes_excluded": ["fish5", "fish7", "fish9", "turtles1"],
+        "contamination_status": "CLEAN_EXCLUDED"
+      }
+    ],
+    "pipeline_loading_verification": {
+      "stage_1_refiner": "Verified: loads table_candidate_B_fold_{fold}.pt and passes into ConditionedRestorationRefinerV18",
+      "stage_2_segmenter": "Verified: loads table_candidate_B_fold_{fold}.pt to drive refiner forward prior to segmentation",
+      "stage_3_oof": "Verified: loads table_candidate_B_fold_{fold}.pt to evaluate held-out validation scenes with fold-isolated prior",
+      "stage_4_dev": "Verified: loads tbl19_20sc_scale_consistent.pt (all 20 scenes) only for final 5-fold ensemble Dev inference"
+    },
+    "tables_mutated_or_created_during_audit": false
+  },
+  "item_2_refiner_parameter_count": {
+    "status": "PASS",
+    "checkpoint_path": "checkpoints/v18/pilot/fold_0/refiner_best.pt",
+    "checkpoint_file_size_bytes": 4931836,
+    "checkpoint_file_size_mb_binary": 4.7034,
+    "checkpoint_file_size_mb_decimal": 4.9318,
+    "state_dict_entries": 181,
+    "parameter_tensors_count": 181,
+    "buffer_tensors_count": 0,
+    "total_scalar_parameters": 1217199,
+    "trainable_scalar_parameters": 1217199,
+    "optimizer_state_included": false,
+    "reconciliation_note": "The previous report labeled '181 params', which confused the count of state_dict parameter tensor entries (181) with the scalar parameter count. The actual scalar parameter count of ConditionedRestorationRefinerV18 is 1,217,199 (1.2172M) scalar parameters, all of which are trainable."
+  },
+  "item_3_training_steps_and_runtime": {
+    "status": "PASS",
+    "stage_1_refiner_pilot": {
+      "training_samples": 3200,
+      "batch_size": 4,
+      "minibatches": 800,
+      "backward_passes": 800,
+      "actual_optimizer_updates": 800,
+      "gradient_accumulation_steps_in_pilot": 1,
+      "measured_train_sec": 178.02,
+      "measured_val_sec": 32.87,
+      "measured_epoch_total_sec": 210.88,
+      "measured_throughput_img_per_sec": 17.98
+    },
+    "stage_2_segmenter_pilot": {
+      "training_samples": 3200,
+      "batch_size": 4,
+      "minibatches": 800,
+      "backward_passes": 800,
+      "actual_optimizer_updates": 800,
+      "gradient_accumulation_steps_in_pilot": 1,
+      "configured_accum_steps_in_json": 4,
+      "target_optimizer_updates_with_accum_4": 200,
+      "effective_batch_size_with_accum_4": 16,
+      "measured_train_sec": 423.50,
+      "measured_val_sec": 62.57,
+      "measured_epoch_total_sec": 486.07,
+      "measured_throughput_img_per_sec": 7.56
+    },
+    "reconciliation_note": "Previous reports stated '800 train steps', conflating minibatches with optimizer steps. In the pilot execution, both refiner and segmenter processed 800 minibatches and executed 800 optimizer steps because accum_steps was not active. Gradient accumulation support has now been explicitly wired into tools/v18/run_v18_pipeline.py based on config accum_steps. When accum_steps=4 is used, minibatches remain 800, backward passes remain 800, and optimizer updates will be 200 per epoch.",
+    "runtime_projection": {
+      "measured_pilot_epoch_sec": 696.95,
+      "measured_pilot_epoch_min": 11.62,
+      "extrapolation_basis": "15 epochs across 5 folds = 75 fold-epochs",
+      "extrapolated_refiner_hours": 4.39,
+      "extrapolated_segmenter_hours": 10.13,
+      "extrapolated_total_hours": 14.52,
+      "vram_measured_peak_gb": 16.70,
+      "vram_headroom_gb": 15.14
+    }
+  },
+  "item_4_regression_checks": {
+    "status": "PASS",
+    "cpu_unit_tests": {
+      "test_script": "tests/v18/test_v18_synthetic.py",
+      "tests_total": 13,
+      "tests_passed": 13,
+      "status": "ALL_PASSED"
+    },
+    "v18_dry_run": {
+      "command": "python tools/v18/run_v18_pipeline.py --dry_run",
+      "exit_code": 0,
+      "duration_sec": 0.21,
+      "status": "ALL_PASSED"
+    },
+    "baseline_preservation_hashes": {
+      "deploy/submission_v16_apex_sota.zip": {
+        "status": "MATCH",
+        "expected": "943369FCDFF398C1C18C9B43D4AA792BAA1E343914A3DC6F186CA52BB8CED6DF",
+        "measured": "943369FCDFF398C1C18C9B43D4AA792BAA1E343914A3DC6F186CA52BB8CED6DF"
+      },
+      "deploy/submission_v17_dual_backbone_sota.zip": {
+        "status": "MATCH",
+        "expected": "50F85EC2111AD6D62A03D718FB8FE09FE4E75201D7CDF359C9A81BAAC138CC4E",
+        "measured": "50F85EC2111AD6D62A03D718FB8FE09FE4E75201D7CDF359C9A81BAAC138CC4E"
+      },
+      "splits/manifest_5fold.json": {
+        "status": "MATCH",
+        "expected": "CFBA12CAAABC79BB092F7DFA88405482E2C62C0AF2F4ED296B33F766EAEBD179",
+        "measured": "CFBA12CAAABC79BB092F7DFA88405482E2C62C0AF2F4ED296B33F766EAEBD179"
+      },
+      "checkpoints/track1_screening/tbl19_20sc_clean.pt": {
+        "status": "MATCH",
+        "expected": "2C35DF3B0F5D3317C3672B2867E0059B893ACECD8699C5A2271383A1179D9562",
+        "measured": "2C35DF3B0F5D3317C3672B2867E0059B893ACECD8699C5A2271383A1179D9562"
+      },
+      "checkpoints/exp4_1_scale_consistent/tbl19_20sc_scale_consistent.pt": {
+        "status": "MATCH",
+        "expected": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4",
+        "measured": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4"
+      }
+    }
+  }
+}

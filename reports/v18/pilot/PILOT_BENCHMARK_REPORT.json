@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-10-17T03:04:54.144306Z",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5090",
+  "fold": 0,
+  "use_mock": false,
+  "restoration_refiner": {
+    "train_samples": 3200,
+    "val_samples": 800,
+    "train_time_sec": 178.02,
+    "val_time_sec": 32.87,
+    "epoch_total_sec": 210.88,
+    "total_wall_sec": 211.53,
+    "throughput_samples_per_sec": 17.98,
+    "peak_vram_gb": 8.23,
+    "train_loss": 0.0917,
+    "best_val_psnr": 26.7098,
+    "checkpoint": "checkpoints/v18/pilot\\fold_0\\refiner_best.pt"
+  },
+  "dinov3_segmenter": {
+    "train_samples": 3200,
+    "val_samples": 800,
+    "train_time_sec": 423.5,
+    "val_time_sec": 62.57,
+    "epoch_total_sec": 486.07,
+    "total_wall_sec": 490.58,
+    "throughput_samples_per_sec": 7.56,
+    "peak_vram_gb": 16.7,
+    "train_loss": 0.0,
+    "best_val_qseg": 0.0,
+    "best_metrics": {
+      "Q_seg": 0.0,
+      "mIoU": 0.57852,
+      "Macro_F1": 0.66243,
+      "coverage_penalty": 0.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "min_class_iou": 0.0,
+      "classes_below_0_05_iou": [
+        4
+      ],
+      "classes_below_0_10_iou": [
+        4
+      ],
+      "class_ious": [
+        0.66876,
+        0.7023,
+        0.52152,
+        1.0,
+        0.0
+      ],
+      "class_f1s": [
+        0.8015,
+        0.82512,
+        0.68553,
+        1.0,
+        0.0
+      ],
+      "class_recalls": [
+        0.69444,
+        0.98061,
+        0.75557,
+        1.0,
+        0.0
+      ],
+      "class_precisions": [
+        0.94759,
+        0.71219,
+        0.62737,
+        1.0,
+        0.0
+      ],
+      "confusion_matrix": [
+        [
+          59925495,
+          25913259,
+          428828,
+          0,
+          25218
+        ],
+        [
+          1531967,
+          96630115,
+          378318,
+          0,
+          0
+        ],
+        [
+          831957,
+          1353831,
+          6756612,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          950793,
+          11782749,
+          3206058,
+          0,
+          0
+        ]
+      ]
+    },
+    "checkpoint": "checkpoints/v18/pilot\\fold_0\\segmenter_best.pt"
+  },
+  "projections": {
+    "accounting_note": "Projections explicitly account for measured training time + validation evaluation overhead per epoch across 5 folds x 15 epochs",
+    "refiner_epoch_sec": 210.88,
+    "segmenter_epoch_sec": 486.07,
+    "full_5fold_15epoch_refiner_hours": 4.39,
+    "full_5fold_15epoch_segmenter_hours": 10.13,
+    "total_projected_training_hours": 14.52,
+    "peak_vram_overall_gb": 16.7,
+    "rtx_5090_vram_headroom_gb": 15.14
+  }
+}

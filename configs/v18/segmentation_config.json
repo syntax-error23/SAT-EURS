@@ -1,0 +1,60 @@
+{
+  "version": "v18",
+  "task": "dinov3_dual_encoder_semantic_segmentation",
+  "models": {
+    "vit_encoder": {
+      "name": "vit_large_patch16_dinov3",
+      "pretrained_tag": "lvd1689m",
+      "hf_hub_id": "timm/vit_large_patch16_dinov3.lvd1689m",
+      "license": "dinov3-license",
+      "tapped_blocks": [5, 11, 17, 23],
+      "freeze_blocks_until": 18,
+      "lr_multiplier": 0.10
+    },
+    "convnext_encoder": {
+      "name": "convnext_base",
+      "pretrained_tag": "dinov3_lvd1689m",
+      "hf_hub_id": "timm/convnext_base.dinov3_lvd1689m",
+      "license": "dinov3-license",
+      "freeze_stages_until": 2,
+      "lr_multiplier": 0.20
+    },
+    "neck": {
+      "type": "upernet_fpn",
+      "channels": 256,
+      "cond_embed_dim": 64,
+      "learned_spatial_gating": true,
+      "detail_stem": true
+    }
+  },
+  "loss_weights": {
+    "w_ce": 0.40,
+    "w_lovasz": 0.30,
+    "w_dice": 0.20,
+    "w_boundary": 0.05,
+    "w_objectness": 0.05,
+    "ignore_index": 255
+  },
+  "class_weight_clamping": {
+    "min_weight": 0.50,
+    "max_weight": 4.00
+  },
+  "sampling": {
+    "rare_class_crop_prob": 0.60,
+    "rare_classes": [3, 4],
+    "crop_size": 512,
+    "scene_balanced": true
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "base_lr": 1e-4,
+    "min_lr": 1e-6,
+    "weight_decay": 1e-4,
+    "batch_size": 4,
+    "accum_steps": 4,
+    "effective_batch_size": 16,
+    "precision": "bf16",
+    "gradient_checkpointing": true,
+    "epochs": 9
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gate_audit_version": "v18_final_training_loop_gate",
+  "audit_timestamp": "2026-10-17T04:27:00Z",
+  "gate_status": "PASS",
+  "summary": "Training-loop verification passed. Gradient accumulation (accum_steps=4) verified in both train_refiner_fold and train_segmenter_fold. Forward/backward count (800 minibatches), gradient scaling (loss / 4), step/zero_grad boundaries, gradient clipping, and per-epoch scheduler advancing confirmed. Deterministic CPU test passed verifying mathematical gradient equivalence to combined-batch calculation, partial window handling, and production stage loop contracts. Baseline files intact.",
+  "stage_1_refiner_accumulation": {
+    "status": "VERIFIED",
+    "batch_size": 4,
+    "accum_steps": 4,
+    "effective_batch_size": 16,
+    "total_samples_per_fold": 3200,
+    "minibatches_per_epoch": 800,
+    "forward_iterations_per_epoch": 800,
+    "backward_iterations_per_epoch": 800,
+    "optimizer_updates_per_epoch": 200,
+    "loss_scaling": "loss = l_dict['loss'] / accum_steps before backward()",
+    "gradient_clipping": "torch.nn.utils.clip_grad_norm_(refiner.parameters(), max_norm=1.0) applied after accumulation and before optimizer.step()",
+    "zero_grad_placement": "optimizer.zero_grad() called before loop and immediately after optimizer.step()",
+    "scheduler_step_cadence": "scheduler.step() called once per epoch after all batches finish (CosineAnnealingLR, T_max=epochs)"
+  },
+  "stage_2_segmenter_accumulation": {
+    "status": "VERIFIED",
+    "batch_size": 4,
+    "accum_steps": 4,
+    "effective_batch_size": 16,
+    "total_samples_per_fold": 3200,
+    "minibatches_per_epoch": 800,
+    "forward_iterations_per_epoch": 800,
+    "backward_iterations_per_epoch": 800,
+    "optimizer_updates_per_epoch": 200,
+    "loss_scaling": "loss = l_dict['loss'] / accum_steps before backward()",
+    "gradient_clipping": "torch.nn.utils.clip_grad_norm_(segmenter.parameters(), max_norm=1.0) applied after accumulation and before optimizer.step()",
+    "zero_grad_placement": "optimizer.zero_grad() called before loop and immediately after optimizer.step()",
+    "scheduler_step_cadence": "scheduler.step() called once per epoch after all batches finish (CosineAnnealingLR, T_max=epochs)"
+  },
+  "divisibility_and_partial_window_handling": {
+    "dataset_divisibility": "800 minibatches is exactly divisible by accum_steps=4 (800 % 4 == 0). Every accumulation window has exactly 4 minibatches.",
+    "partial_window_guard": "if (batch_idx + 1) % accum_steps == 0 or (batch_idx + 1) == len(train_loader): ensures no trailing minibatches are discarded in non-divisible test or custom splits."
+  },
+  "deterministic_cpu_regression_tests": {
+    "test_name": "test_gradient_accumulation_and_stage_contracts",
+    "script": "tests/v18/test_v18_synthetic.py",
+    "gradient_equivalence": "PASS (torch.allclose atol=1e-6 between 4 accumulated minibatches and 1 combined batch)",
+    "partial_window_test": "PASS (7 batches with accum=4 triggered exactly at batch indices 3 and 6)",
+    "production_contract_verification": "PASS (AST/source inspection confirms accum_steps, loss scaling, and update boundaries in both stages)",
+    "all_tests_passed": "14/14"
+  },
+  "changes_since_completed_pilot": [
+    {
+      "file": "tools/v18/evaluator.py",
+      "nature": "Metrics calculation",
+      "description": "Added per-class pixel statistics (N_gt, N_pred, TP, FP, FN) and dual macro averages (present-class mean vs 5-class zero mean). Eliminates artificial 1.0 on absent classes. Zero effect on model weights, optimization, fold isolation, or packaging."
+    },
+    {
+      "file": "tools/v18/run_v18_pipeline.py",
+      "nature": "Optimization control flow and report formatting",
+      "description": "Wired accum_steps from configs (accum_steps=4, effective batch size 16) in train_refiner_fold and train_segmenter_fold; updated OOF report to print per-class pixel stats table and dual means. Preserves 800 minibatches and forward/backward passes while updating optimizer 200 times per epoch."
+    },
+    {
+      "file": "tests/v18/test_v18_synthetic.py",
+      "nature": "Test suite extension",
+      "description": "Added test_absent_class_metric_handling and test_gradient_accumulation_and_stage_contracts. All 14 tests pass on CPU."
+    }
+  ],
+  "baseline_preservation_hashes": {
+    "deploy/submission_v16_apex_sota.zip": "943369FCDFF398C1C18C9B43D4AA792BAA1E343914A3DC6F186CA52BB8CED6DF",
+    "deploy/submission_v17_dual_backbone_sota.zip": "50F85EC2111AD6D62A03D718FB8FE09FE4E75201D7CDF359C9A81BAAC138CC4E",
+    "splits/manifest_5fold.json": "CFBA12CAAABC79BB092F7DFA88405482E2C62C0AF2F4ED296B33F766EAEBD179",
+    "checkpoints/track1_screening/tbl19_20sc_clean.pt": "2C35DF3B0F5D3317C3672B2867E0059B893ACECD8699C5A2271383A1179D9562",
+    "checkpoints/exp4_1_scale_consistent/tbl19_20sc_scale_consistent.pt": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4"
+  },
+  "readiness_declaration": {
+    "ready_for_full_training": true,
+    "caveats": [
+      "Final model score and generalization on test set remain unknown until full training completes.",
+      "Exact challenge server evaluation behavior for coverage penalty IoU-floor and Q_NR remains unverified locally due to closed-source evaluation server code."
+    ]
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "protocol": "strict_5fold_scene_disjoint_v1",
+  "total_scenes": 20,
+  "folds_count": 5,
+  "samples_per_scene": 200,
+  "folds": {
+    "fold_0": {
+      "val_rare_scene": "seahorse1",
+      "val_fish_hosts": [
+        "fish1",
+        "fish11",
+        "fish12"
+      ],
+      "val_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "seahorse1"
+      ],
+      "train_scenes": [
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "sharkFish",
+        "starfish2",
+        "turtles1"
+      ],
+      "train_samples_count": 3200,
+      "val_samples_count": 800
+    },
+    "fold_1": {
+      "val_rare_scene": "sharkFish",
+      "val_fish_hosts": [
+        "fish13",
+        "fish14",
+        "fish15"
+      ],
+      "val_scenes": [
+        "fish13",
+        "fish14",
+        "fish15",
+        "sharkFish"
+      ],
+      "train_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "seahorse1",
+        "starfish2",
+        "turtles1"
+      ],
+      "train_samples_count": 3200,
+      "val_samples_count": 800
+    },
+    "fold_2": {
+      "val_rare_scene": "ray1",
+      "val_fish_hosts": [
+        "fish17",
+        "fish18",
+        "fish2"
+      ],
+      "val_scenes": [
+        "fish17",
+        "fish18",
+        "fish2",
+        "ray1"
+      ],
+      "train_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish20",
+        "fish21",
+        "fish4",
+        "fish5",
+        "fish7",
+        "fish9",
+        "seahorse1",
+        "sharkFish",
+        "starfish2",
+        "turtles1"
+      ],
+      "train_samples_count": 3200,
+      "val_samples_count": 800
+    },
+    "fold_3": {
+      "val_rare_scene": "starfish2",
+      "val_fish_hosts": [
+        "fish20",
+        "fish21",
+        "fish4"
+      ],
+      "val_scenes": [
+        "fish20",
+        "fish21",
+        "fish4",
+        "starfish2"
+      ],
+      "train_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish5",
+        "fish7",
+        "fish9",
+        "ray1",
+        "seahorse1",
+        "sharkFish",
+        "turtles1"
+      ],
+      "train_samples_count": 3200,
+      "val_samples_count": 800
+    },
+    "fold_4": {
+      "val_rare_scene": "turtles1",
+      "val_fish_hosts": [
+        "fish5",
+        "fish7",
+        "fish9"
+      ],
+      "val_scenes": [
+        "fish5",
+        "fish7",
+        "fish9",
+        "turtles1"
+      ],
+      "train_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "fish13",
+        "fish14",
+        "fish15",
+        "fish17",
+        "fish18",
+        "fish2",
+        "fish20",
+        "fish21",
+        "fish4",
+        "ray1",
+        "seahorse1",
+        "sharkFish",
+        "starfish2"
+      ],
+      "train_samples_count": 3200,
+      "val_samples_count": 800
+    }
+  }
+}

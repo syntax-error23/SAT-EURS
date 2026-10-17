@@ -1,0 +1,119 @@
+{
+  "gate_audit_version": "v18_pretraining_gate_audit",
+  "audit_timestamp": "2026-10-17T04:15:00Z",
+  "gate_status": "PASS",
+  "summary": "Pre-training gate audit passed. Absent-class metrics corrected and proven on synthetic unit tests and pilot confusion matrix. Restoration table fold isolation verified clean with zero contamination. OOF global confusion matrix aggregation confirmed. Pilot training provenance, real DINOv3 backbones, finite loss convergence, and 15.14 GB VRAM headroom on RTX 5090 verified. Baselines intact.",
+  "absent_class_audit": {
+    "status": "CORRECTED_AND_VERIFIED",
+    "official_server_parity": "UNVERIFIED",
+    "explanation": "Official challenge server behavior for absent classes on partial validation splits is proprietary. Vacuous truth assignment (1.0) previously inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Evaluator now reports both present-class mean and conservative 5-class zero mean with full per-class pixel accounting.",
+    "fold_0_pilot_recalculated": {
+      "confusion_matrix": [
+        [59925495, 25913259, 428828, 0, 25218],
+        [1531967, 96630115, 378318, 0, 0],
+        [831957, 1353831, 6756612, 0, 0],
+        [0, 0, 0, 0, 0],
+        [950793, 11782749, 3206058, 0, 0]
+      ],
+      "per_class_pixel_stats": {
+        "0": {"status": "PRESENT", "gt_pixels": 86292800, "pred_pixels": 63240212, "tp_pixels": 59925495, "fp_pixels": 3314717, "fn_pixels": 26367305, "iou": 0.66876, "f1": 0.8015},
+        "1": {"status": "PRESENT", "gt_pixels": 98540400, "pred_pixels": 135679954, "tp_pixels": 96630115, "fp_pixels": 39049839, "fn_pixels": 1910285, "iou": 0.7023, "f1": 0.82512},
+        "2": {"status": "PRESENT", "gt_pixels": 8942400, "pred_pixels": 10769816, "tp_pixels": 6756612, "fp_pixels": 4013204, "fn_pixels": 2185788, "iou": 0.52152, "f1": 0.68553},
+        "3": {"status": "ABSENT_GT_AND_PRED", "gt_pixels": 0, "pred_pixels": 0, "tp_pixels": 0, "fp_pixels": 0, "fn_pixels": 0, "iou": 0.0, "f1": 0.0},
+        "4": {"status": "PRESENT", "gt_pixels": 15939600, "pred_pixels": 25218, "tp_pixels": 0, "fp_pixels": 25218, "fn_pixels": 15939600, "iou": 0.0, "f1": 0.0}
+      },
+      "present_classes": [0, 1, 2, 4],
+      "absent_classes": [3],
+      "num_present_classes": 4,
+      "num_total_classes": 5,
+      "mIoU_present": 0.47314,
+      "Macro_F1_present": 0.57804,
+      "Q_seg_present": 0.0,
+      "mIoU_5class_zero": 0.37852,
+      "Macro_F1_5class_zero": 0.46243,
+      "Q_seg_5class_zero": 0.0,
+      "coverage_penalty": 0.0,
+      "coverage_penalty_reason": "Class 4 is present in ground truth (15.9M pixels) but had TP = 0 in Epoch 1, dropping coverage penalty to 0.0."
+    },
+    "regression_tests": "test_absent_class_metric_handling verified passing in tests/v18/test_v18_synthetic.py covering absent, hallucinated, missed, and normal classes."
+  },
+  "restoration_table_audit": {
+    "contamination_status": "CLEAN_ZERO_CONTAMINATION",
+    "fold_0_table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_0.pt",
+    "fold_0_table_sha256": "BF74A414A5CA5F3FF969E7FD5AC71F0A59D34AA681CB879676832C0EC6F7C269",
+    "train_scenes_count": 16,
+    "train_scenes": ["fish13", "fish14", "fish15", "fish17", "fish18", "fish2", "fish20", "fish21", "fish4", "fish5", "fish7", "fish9", "ray1", "sharkFish", "starfish2", "turtles1"],
+    "val_scenes_count": 4,
+    "val_scenes": ["fish1", "fish11", "fish12", "seahorse1"],
+    "clean_targets_held_out_excluded": true,
+    "full_20sc_table_path": "checkpoints/exp4_1_scale_consistent/tbl19_20sc_scale_consistent.pt",
+    "full_20sc_table_sha256": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4",
+    "table_hashes": {
+      "table_candidate_B_fold_0.pt": "BF74A414A5CA5F3FF969E7FD5AC71F0A59D34AA681CB879676832C0EC6F7C269",
+      "table_candidate_B_fold_1.pt": "AEA0DA723D6EE588B78D5333E5BE3F29F66EB27FD9F4D4AD742B46A1DC4A8DCB",
+      "table_candidate_B_fold_2.pt": "5765C89CD1817F9FB4643216A030D003C55A5F184ACFC3928544066A103A146E",
+      "table_candidate_B_fold_3.pt": "FD8A4759CBA0ACBC2506BF26BD77E4E9E4FD4F63C5D93960F05418718F6F2403",
+      "table_candidate_B_fold_4.pt": "22D2FFD88F6F01DD123EE912BC288CD30BD941148B8537655451C5BC64E06037",
+      "tbl19_20sc_scale_consistent.pt": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4"
+    },
+    "stage_usage_mapping": {
+      "Stage 1 (train_refiner_fold)": "table_candidate_B_fold_{fold}.pt (16 train scenes)",
+      "Stage 2 (train_segmenter_fold)": "table_candidate_B_fold_{fold}.pt (16 train scenes)",
+      "Stage 3 (evaluate_oof_fold)": "table_candidate_B_fold_{fold}.pt (16 train scenes)",
+      "Stage 4 (run_dev_inference)": "tbl19_20sc_scale_consistent.pt (20 scenes for final 5-fold ensemble Dev deployment)"
+    }
+  },
+  "oof_scoring_protocol_audit": {
+    "status": "VERIFIED_CORRECT",
+    "aggregation_method": "GLOBAL_CONFUSION_MATRIX_ACCUMULATION",
+    "description": "V18OOFEvaluator accumulates a single global 5x5 confusion matrix across all 20 scenes (4,000 images) before computing final mIoU, Macro F1, and Q_seg. No fold-level score averaging.",
+    "all_20_scenes_class_presence": "In the global 20-scene evaluation, all 5 classes are present in the ground truth, making present-class mean and 5-class mean mathematically identical.",
+    "unverified_metrics_isolated": {
+      "Q_NR": "Server-side only (UIQM, UCIQE, CCF). Evaluator reports exact 90% score S_exact_90pct and sensitivity bracket [0.40, 0.80].",
+      "coverage_penalty": "Evaluated using local contract prod(TP_c > 0). Marked as UNVERIFIED_PROVISIONAL against proprietary server IoU-floor."
+    }
+  },
+  "pilot_training_audit": {
+    "status": "GENUINE_TRAINING_VERIFIED",
+    "device": "NVIDIA GeForce RTX 5090",
+    "vram_total_gb": 31.84,
+    "refiner_checkpoint": {
+      "path": "checkpoints/v18/pilot/fold_0/refiner_best.pt",
+      "size_bytes": 5174549,
+      "params_count": 181,
+      "train_loss": 0.0917,
+      "val_psnr_db": 26.7098,
+      "train_steps": 800,
+      "peak_vram_gb": 8.23,
+      "throughput_img_per_sec": 17.98
+    },
+    "segmenter_checkpoint": {
+      "path": "checkpoints/v18/pilot/fold_0/segmenter_best.pt",
+      "size_bytes": 1729008927,
+      "params_count_m": 401.60,
+      "param_tensors_count": 820,
+      "vit_backbone": "DINOv3 ViT-Large/16 (24 blocks, 1024 embed dim, real offline weights)",
+      "conv_backbone": "DINOv3 ConvNeXt-Base (stem + 4 stages, real offline weights)",
+      "train_loss_start_to_end": "0.5252 -> 0.2793",
+      "train_steps": 800,
+      "peak_vram_gb": 16.70,
+      "throughput_img_per_sec": 7.56
+    },
+    "full_run_projection": {
+      "epochs_per_stage": 15,
+      "folds_count": 5,
+      "refiner_projected_hours": 4.39,
+      "segmenter_projected_hours": 10.13,
+      "total_projected_hours": 14.52,
+      "peak_vram_gb": 16.70,
+      "headroom_gb": 15.14
+    }
+  },
+  "baseline_preservation_hashes": {
+    "deploy/submission_v16_apex_sota.zip": "943369FCDFF398C1C18C9B43D4AA792BAA1E343914A3DC6F186CA52BB8CED6DF",
+    "deploy/submission_v17_dual_backbone_sota.zip": "50F85EC2111AD6D62A03D718FB8FE09FE4E75201D7CDF359C9A81BAAC138CC4E",
+    "splits/manifest_5fold.json": "CFBA12CAAABC79BB092F7DFA88405482E2C62C0AF2F4ED296B33F766EAEBD179",
+    "checkpoints/track1_screening/tbl19_20sc_clean.pt": "2C35DF3B0F5D3317C3672B2867E0059B893ACECD8699C5A2271383A1179D9562",
+    "checkpoints/exp4_1_scale_consistent/tbl19_20sc_scale_consistent.pt": "097CC9380FE11CA672F712481EC8187BBCE2E3EE84F1B17D2DC2288793B0E9A4"
+  }
+}

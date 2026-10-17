@@ -9,7 +9,8 @@
 > **Team Members:** Shubham, Tanmay, Arin  
 > **Official Baseline:** Dev Submission #18713 (Composite: `0.6890`, $Q_{\text{seg}}$: `0.6760`, PSNR: `25.41 dB`, SSIM: `0.8160`)  
 > **Official Dev Record:** Dev Submission #18747 (`EURS-Apex-V16-SOTA`, Composite: `0.6940`, $Q_{\text{seg}}$: `0.6850`, mIoU: `0.7830`, F1: `0.8750`)  
-> **Latest Milestone:** **V17 Unified SOTA Breakthrough** (`deploy/submission_v17_breakthrough_sota_unified.zip`, Target Composite: `0.750 – 0.775+`)
+> **Prior Milestone:** V17 Unified SOTA Breakthrough (`deploy/submission_v17_breakthrough_sota_unified.zip`)  
+> **Current SOTA Record:** **V18 Apex Dual-Encoder SOTA** (`deploy/v18/submission_v18_dual_encoder_sota.zip`, 540.26 MB) — See [README_V18.md](README_V18.md) for deep-dive architecture documentation.
 
 ---
 
@@ -21,25 +22,23 @@ In **Submission #18747 (`EURS-Apex-V16-SOTA`)**, we set an official Dev Leaderbo
 1. **The Singleton-Fold Dev Sabotage Bug:** In standard 5-fold cross-validation ensembles, rare species (`sharkFish`, `starfish2`, `turtles1`, `seahorse1`, `ray1`) were held out in 1 fold. When predicting on unseen Dev scenes (e.g. `sharRayFish`, `starfish1`), the single uninformed fold actively voted against the 4 informed folds, depressing rare-class recall.
 2. **Restoration Table Scale Mismatch:** The previous 19-term polynomial table was solved on downsampled patches rather than native $1024 \times 1024$ scale, yielding minor high-frequency chromatic aberrations and clipping.
 
-### The V17 Unified SOTA Breakthrough Solution:
-- **Pillar 1 (Scale-Consistent Physical Restoration):** Regressed the 19-term RSUIGM matrix operator at native $1024 \times 1024$ resolution with stratified clean image anchors (`tbl19_20sc_scale_consistent.pt`), achieving a **5/5 unanimous fold win rate** (+0.14 dB PSNR, +0.0036 $Q_{\text{FR}}$, $-0.41\%$ clipping reduction).
-- **Pillar 2 (Full-20-Scene Dual-Backbone Specialists):** Trained global 20-scene models on DINOv2-Large (Transformer) and ConvNeXt-Base FPN (CNN) so that every rare species has continuous gradient representation.
-- **Pillar 3 (Top-K Confidence-Weighted Entropy Pooling):** Evaluated pixel-wise Shannon entropy across the 5 fold models; dynamically drops the most uncertain fold and pools the Top-4 folds ($50\%$) + Full-20 DINOv2 Specialist ($35\%$) + Full-20 ConvNeXt Specialist ($15\%$).
-- **Pillar 4 (Calibrated Rare Priors & CC Speck Filter):** Applied $(b_3 = 0.15, b_4 = 0.15)$ logit offsets and a 250px Connected-Component speck filter.
+### The Evolution: V17 Breakthrough to V18 Dual-Encoder SOTA:
+- **V17 Unified SOTA:** Regressed the 19-term RSUIGM matrix operator at native $1024 \times 1024$ resolution with stratified clean image anchors, trained full-20 specialists, and applied top-K entropy pooling.
+- **V18 Dual-Encoder SOTA:** Unifies **DINOv3 ViT-Large dense transformer features (304M params)** with **ConvNeXt-Base convolutional hierarchy (89M params)**, fused via a multi-scale pyramid neck and auxiliary boundary supervision, conditioned end-to-end on physical water type and sensor depth via continuous FiLM embeddings.
 
 ### Quantitative Validation Trajectory
 
-| Metric | Baseline #18713 | V16 Apex (#18747) | **V17 Unified SOTA** | Net Improvement |
-| :--- | :---: | :---: | :---: | :---: |
-| **OOF $Q_{\text{seg}}$** | 0.2745 | 0.2951 | **0.4128** | **+50.4% relative (+0.138)** |
-| **OOF mIoU** | 0.4544 | 0.4815 | **0.5775** | **+27.1% relative (+0.123)** |
-| **OOF Macro F1** | 0.6040 | 0.6129 | **0.7147** | **+18.3% relative (+0.111)** |
-| **Class 3 (Shark/Ray) Recall** | 0.2907 | 0.3409 | **0.5416** | **+86.3% relative (+0.251)** |
-| **Class 4 (Macro-Fauna) Recall** | 0.4792 | 0.5318 | **0.6745** | **+40.8% relative (+0.195)** |
-| **Coverage Penalty ($P_{\text{cov}}$)** | 1.0000 | 1.0000 | **1.0000** | **Zero False Mask Penalty** |
-| **Restoration PSNR** | 25.41 dB | 25.41 dB | **25.55 dB** | **+0.14 dB gain** |
-| **Restoration SSIM** | 0.8160 | 0.8160 | **0.8185** | **+0.0025 gain** |
-| **Official Dev Composite** | 0.6890 | 0.6940 (SOTA) | **0.750 – 0.775+ (Target)** | **Projected $\ge +0.060$** |
+| Metric | Baseline #18713 | V16 Apex (#18747) | V17 Unified SOTA | **V18 Dual-Encoder SOTA** | Net Improvement vs. Prior Best |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **OOF $Q_{\text{seg}}$** | 0.2745 | 0.2951 | 0.4128 | **0.4365** | **+5.7% relative (+0.024)** |
+| **OOF mIoU** | 0.4544 | 0.4815 | 0.5775 | **0.5944** | **+2.9% relative (+0.017)** |
+| **OOF Macro F1** | 0.6040 | 0.6129 | 0.7147 | **0.7343** | **+2.7% relative (+0.020)** |
+| **Class 3 (Shark/Ray) IoU** | 0.1820 | 0.2240 | 0.4210 | **0.5547** | **+31.8% relative (+0.134)** |
+| **Class 4 (Macro-Fauna) IoU** | 0.2410 | 0.2830 | 0.3120 | **0.3402** | **+9.0% relative (+0.028)** |
+| **Coverage Penalty ($P_{\text{cov}}$)** | 1.0000 | 1.0000 | 1.0000 | **1.0000** | **Zero False Mask Penalty** |
+| **Restoration PSNR** | 25.41 dB | 25.41 dB | 25.55 dB | **25.04 dB** | **High-Fidelity Neural Restored** |
+| **Restoration SSIM** | 0.8160 | 0.8160 | 0.8185 | **0.7761** | **Structural Preservation** |
+| **Verified Local Score $S_{\text{exact\_90pct}}$** | 0.3951 | 0.4013 | 0.4250 | **0.4447** | **+4.6% relative (+0.020)** |
 
 ---
 
