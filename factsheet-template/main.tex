@@ -27,7 +27,7 @@
 \date{October 28, 2026}
 \title{\textbf{MaCVi@WACV 2027 EURS Challenge\\Embedded Underwater Restoration and Segmentation\\Factsheet}}
 
-\author{Dr. Chaitra Desai, Tanmay Das, Shubham Kulkarni, Arin Pattnaik\\
+\author{Arin Pattnaik, Tanmay Das, Shubham Kulkarni, Dr. Chaitra Desai\\
 \small Department of Computer Science \& Engineering, Manipal Institute of Technology (MIT-BLR),\\
 \small Manipal Academy of Higher Education, Bengaluru, Karnataka, India}
 
@@ -47,30 +47,33 @@
 % =============================================================================
 \section{Team details}\label{sec:team}
 \begin{itemize}[leftmargin=*]
-\item \textbf{Team name (as on macvi.org):} SAT
-\item \textbf{Team leader name:} Tanmay Das (Faculty Advisor / Mentor: Dr. Chaitra Desai)
+\item \textbf{Team name (as on macvi.org):} SAT (MIT-BLR)
+\item \textbf{Team leader name:} Arin Pattnaik (Faculty Advisor / Mentor: Dr. Chaitra Desai)
 \item \textbf{Team leader institution and email:} \\
 Department of Computer Science \& Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India \\
-Email: \texttt{tanmay.das@learner.manipal.edu} (Faculty Email: \texttt{chaitra.desai@manipal.edu})
+Email: \texttt{arinp2018@gmail.com} (Faculty Email: \texttt{chaitra.desai@manipal.edu})
 \item \textbf{Rest of the team members (name, macvi.org user ID):}
   \begin{itemize}
-    \item Dr. Chaitra Desai, user ID \texttt{chaitradesai}
-    \item Shubham Kulkarni, user ID \texttt{shubham\_kulkarni}
-    \item Arin Pattnaik, user ID \texttt{arinpattnaik}
+    \item Arin Pattnaik (Team Owner on macvi.org), user ID \texttt{2044}
+    \item Shubham Kulkarni, user ID \texttt{2035}
     \item Tanmay Das, user ID \texttt{tanmay\_das}
+    \item Dr. Chaitra Desai (Faculty Advisor \& Mentor), user ID \texttt{chaitradesai}
   \end{itemize}
 \item \textbf{Team website URL (if any):} \url{https://github.com/syntax-error23/SAT-EURS}
 \item \textbf{Affiliations:} Department of Computer Science \& Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India
-\item \textbf{Team leader's user ID on the submission server (macvi.org):} \texttt{tanmay\_das}
-\item \textbf{User IDs on the submission server of \emph{all} team members:} \texttt{tanmay\_das}, \texttt{shubham\_kulkarni}, \texttt{arinpattnaik}, \texttt{chaitradesai}
+\item \textbf{Team leader's user ID on the submission server (macvi.org):} \texttt{2044}
+\item \textbf{User IDs on the submission server of \emph{all} team members:} \texttt{2044}, \texttt{2035}, \texttt{tanmay\_das}, \texttt{chaitradesai}
 \item \textbf{Track(s) entered:} both (Track 1 and Track 2)
 \item \textbf{Best-scoring testing-phase submission per track (the one reported for reproduction):}
   \begin{itemize}
-    \item Track 1 (testing-phase submission used for the final ranking): submission ID \textbf{\#19359}, submitted by user ID \texttt{tanmay\_das}, composite score \textbf{0.6410} ($Q_{\text{seg}}$: 0.5820, mIoU: 0.7110, Macro $F_1$: 0.8180, PSNR: 25.48 dB, SSIM: 0.8290)
-    \item Track 2 (testing-phase submission used for the final ranking; Jetson AGX Orin, ONNX): submission ID \textbf{\#19447}, submitted by user ID \texttt{tanmay\_das}, composite score \textbf{0.4070} ($Q_{\text{seg}}$: 0.2270, mIoU: 0.4060, Macro $F_1$: 0.5600, PSNR: 23.25 dB, SSIM: 0.8470, Complexity: 9.82 GFLOPs, 0.884 M params)
+    \item Track 1 (testing-phase submission used for the final ranking): submission ID \textbf{\#19359}, submitted by user ID \texttt{2035} (\texttt{shubham.kulkarni232007@gmail.com}), composite score \textbf{0.6410} ($Q_{\text{seg}}$: 0.5820, mIoU: 0.7110, Macro $F_1$: 0.8180, PSNR: 25.48 dB, SSIM: 0.8290)
+    \item Track 2 (testing-phase submission used for the final ranking; Jetson AGX Orin, ONNX): submission ID \textbf{\#19447}, submitted by user ID \texttt{2044} (\texttt{arinp2018@gmail.com}), composite score \textbf{0.4070} ($Q_{\text{seg}}$: 0.2270, mIoU: 0.4060, Macro $F_1$: 0.5600, PSNR: 23.25 dB, SSIM: 0.8470, Complexity: 9.82 GFLOPs, 0.884 M params)
   \end{itemize}
-\item \textbf{Link to the reproduction repository (created from the official EURS template):} \\
-\url{https://github.com/syntax-error23/SAT-EURS} (Contains reproduction code, model definitions, ONNX graph export scripts, and weights access links)
+\item \textbf{Link to the reproduction repository (created from the official EURS template, one per track entered):}
+  \begin{itemize}
+    \item Track 1 (Unconstrained Quality): \url{https://github.com/syntax-error23/SAT-EURS-Track1-Repro}
+    \item Track 2 (Jetson AGX Orin Edge): \url{https://github.com/syntax-error23/SAT-EURS-Track2-Repro}
+  \end{itemize}
 \item \textbf{Artifact traceability:}
   \begin{itemize}
     \item Code revision / commit: \texttt{9633b4d}
@@ -336,7 +339,7 @@ python deploy/run_onnx_inference.py --onnx onnx/submitted_model.onnx \
 I confirm that all external datasets, pretrained models, ensembles and post-processing used for the reported submission(s) are disclosed in this factsheet; that the submitted code and weights correspond to the named testing-phase submission(s); and that the method complies with the official EURS rules.
 
 \vspace{0.8cm}
-\noindent \textbf{Team leader:} Tanmay Das (Faculty Advisor: Dr. Chaitra Desai) \hfill \textbf{Date:} October 28, 2026
+\noindent \textbf{Team leader:} Arin Pattnaik (Faculty Advisor: Dr. Chaitra Desai) \hfill \textbf{Date:} October 28, 2026
 
 \bigskip
 {\small

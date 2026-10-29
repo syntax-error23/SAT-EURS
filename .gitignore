@@ -109,3 +109,8 @@ audits/overfit_preds/
 tmp/
 temp/
 scratch/
+
+# Standalone Reproduction Repositories
+repro-track1/
+repro-track2/
+temp_repro_template/

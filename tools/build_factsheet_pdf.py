@@ -82,8 +82,8 @@ def build_factsheet_pdf(output_path: str):
     p_h1 = ParagraphStyle('FH1', fontName='Times-Bold', fontSize=11, leading=14, textColor=PRIMARY, spaceBefore=8, spaceAfter=4, keepWithNext=True)
     p_h2 = ParagraphStyle('FH2', fontName='Times-Bold', fontSize=9.5, leading=12.5, textColor=ACCENT, spaceBefore=6, spaceAfter=3, keepWithNext=True)
     
-    p_body = ParagraphStyle('FBody', fontName='Times-Roman', fontSize=8.2, leading=11.2, textColor=TEXT, spaceAfter=3.5)
-    p_bullet = ParagraphStyle('FBullet', fontName='Times-Roman', fontSize=8.2, leading=11.2, textColor=TEXT, leftIndent=12, firstLineIndent=-8, spaceAfter=2.5)
+    p_body = ParagraphStyle('FBody', fontName='Times-Roman', fontSize=8.0, leading=10.6, textColor=TEXT, spaceAfter=2.5)
+    p_bullet = ParagraphStyle('FBullet', fontName='Times-Roman', fontSize=8.0, leading=10.6, textColor=TEXT, leftIndent=12, firstLineIndent=-8, spaceAfter=2.0)
     p_caption = ParagraphStyle('FCap', fontName='Times-Italic', fontSize=7.4, leading=10, textColor=TEXT_MUTED, alignment=1, spaceBefore=3, spaceAfter=5)
     p_code = ParagraphStyle('FCode', fontName='Courier', fontSize=7.2, leading=9.5, textColor=colors.HexColor("#0F172A"), leftIndent=10, spaceAfter=3)
     
@@ -100,7 +100,7 @@ def build_factsheet_pdf(output_path: str):
     # =========================================================================
     story.append(Paragraph("MaCVi@WACV 2027 EURS Challenge", p_title))
     story.append(Paragraph("Embedded Underwater Restoration and Segmentation — Official Factsheet", p_sub))
-    story.append(Paragraph("<b>Dr. Chaitra Desai, Tanmay Das, Shubham Kulkarni, Arin Pattnaik</b>", p_author))
+    story.append(Paragraph("<b>Arin Pattnaik, Tanmay Das, Shubham Kulkarni, Dr. Chaitra Desai</b>", p_author))
     story.append(Paragraph("Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR),<br/>Manipal Academy of Higher Education, Bengaluru, Karnataka, India", p_affil))
     story.append(Paragraph("Challenge Submission Date: October 28, 2026", p_date))
     story.append(HRFlowable(width="100%", thickness=1.0, color=BORDER, spaceBefore=0, spaceAfter=8))
@@ -111,19 +111,19 @@ def build_factsheet_pdf(output_path: str):
     story.append(Paragraph("1. Team Details", p_h1))
     
     t1_details = [
-        "<b>Team name (as on macvi.org):</b> SAT",
-        "<b>Team leader name:</b> Tanmay Das (Faculty Advisor & Mentor: Dr. Chaitra Desai)",
-        "<b>Team leader institution and email:</b> Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India. Email: <code>tanmay.das@learner.manipal.edu</code> (Faculty: <code>chaitra.desai@manipal.edu</code>)",
-        "<b>Rest of the team members (name, macvi.org user ID):</b> Dr. Chaitra Desai (<code>chaitradesai</code>), Shubham Kulkarni (<code>shubham_kulkarni</code>), Arin Pattnaik (<code>arinpattnaik</code>), Tanmay Das (<code>tanmay_das</code>)",
+        "<b>Team name (as on macvi.org):</b> SAT (MIT-BLR)",
+        "<b>Team leader name:</b> Arin Pattnaik (Faculty Advisor & Mentor: Dr. Chaitra Desai)",
+        "<b>Team leader institution and email:</b> Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India. Email: <code>arinp2018@gmail.com</code> (Faculty: <code>chaitra.desai@manipal.edu</code>)",
+        "<b>Rest of the team members (name, macvi.org user ID):</b> Arin Pattnaik (Team Owner, User ID <code>2044</code>), Shubham Kulkarni (User ID <code>2035</code>), Tanmay Das (User ID <code>tanmay_das</code>), Dr. Chaitra Desai (Faculty Advisor & Mentor, User ID <code>chaitradesai</code>)",
         "<b>Team website URL:</b> <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS</u></font>",
         "<b>Affiliations:</b> Department of Computer Science & Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India",
-        "<b>Team leader's user ID on the submission server (macvi.org):</b> <code>tanmay_das</code>",
-        "<b>User IDs on the submission server of all team members:</b> <code>tanmay_das</code>, <code>shubham_kulkarni</code>, <code>arinpattnaik</code>, <code>chaitradesai</code>",
+        "<b>Team leader's user ID on the submission server (macvi.org):</b> <code>2044</code>",
+        "<b>User IDs on the submission server of all team members:</b> <code>2044</code>, <code>2035</code>, <code>tanmay_das</code>, <code>chaitradesai</code>",
         "<b>Track(s) entered:</b> Both (Track 1 and Track 2)",
         "<b>Best-scoring testing-phase submission per track (reported for reproduction):</b><br/>"
-        "&bull; <b>Track 1 (Quality / Unconstrained):</b> Submission ID <b>#19359</b>, submitted by user ID <code>tanmay_das</code>, <b>Composite Score: 0.6410</b> (<i>Q</i><sub>seg</sub>: 0.5820, mIoU: 0.7110, Macro <i>F</i><sub>1</sub>: 0.8180, PSNR: 25.48 dB, SSIM: 0.8290)<br/>"
-        "&bull; <b>Track 2 (Jetson AGX Orin Edge):</b> Submission ID <b>#19447</b>, submitted by user ID <code>tanmay_das</code>, <b>Composite Score: 0.4070</b> (<i>Q</i><sub>seg</sub>: 0.2270, mIoU: 0.4060, Macro <i>F</i><sub>1</sub>: 0.5600, PSNR: 23.25 dB, SSIM: 0.8470, Complexity: 9.82 GFLOPs, 0.884 M params)",
-        "<b>Link to reproduction repository:</b> <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS</u></font>",
+        "&bull; <b>Track 1 (Quality / Unconstrained):</b> Submission ID <b>#19359</b>, submitted by user ID <code>2035</code> (<code>shubham.kulkarni232007@gmail.com</code>), <b>Composite Score: 0.6410</b> (<i>Q</i><sub>seg</sub>: 0.5820, mIoU: 0.7110, Macro <i>F</i><sub>1</sub>: 0.8180, PSNR: 25.48 dB, SSIM: 0.8290)<br/>"
+        "&bull; <b>Track 2 (Jetson AGX Orin Edge):</b> Submission ID <b>#19447</b>, submitted by user ID <code>2044</code> (<code>arinp2018@gmail.com</code>), <b>Composite Score: 0.4070</b> (<i>Q</i><sub>seg</sub>: 0.2270, mIoU: 0.4060, Macro <i>F</i><sub>1</sub>: 0.5600, PSNR: 23.25 dB, SSIM: 0.8470, Complexity: 9.82 GFLOPs, 0.884 M params)",
+        "<b>Link to reproduction repository (one per track entered, official EURS template):</b><br/>&bull; Track 1 (Quality): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track1-Repro</u></font><br/>&bull; Track 2 (Jetson AGX Orin): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track2-Repro</u></font>",
         "<b>Artifact traceability:</b> Code revision / commit: <code>9633b4d</code>. Track 1 final archive: <code>deploy/v33/submission_v33_ensemble_f3upgrade.zip</code> (SHA-256: <code>de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d</code>). Track 2 ONNX binary: <code>deploy/track2_apex_orin_v3.onnx</code> (SHA-256: <code>addf76f170a0c09e0a3af50ebabb530b3f542080d2f3921c171ea3ae3cd80247</code>). Link access: Public GitHub repository, permanent access."
     ]
     for d in t1_details:
@@ -138,14 +138,14 @@ def build_factsheet_pdf(output_path: str):
     # Figure 1: Track 1 Overview
     diag1 = "factsheet-template/images/method_overview.png"
     if os.path.exists(diag1):
-        story.append(RLImage(diag1, width=504, height=224))
+        story.append(RLImage(diag1, width=504, height=210))
         story.append(Paragraph("<b>Figure 1:</b> Overview of Team SAT's Track 1 champion perception architecture (<code>V33-Ensemble-F3Upgrade</code>, Submission #19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\\times512$) and DetailStem. Streams are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.", p_caption))
     story.append(Spacer(1, 4))
 
     # Figure 2: Track 2 Overview
     diag2 = "factsheet-template/images/track2_pipeline.png"
     if os.path.exists(diag2):
-        story.append(RLImage(diag2, width=504, height=224))
+        story.append(RLImage(diag2, width=504, height=210))
         story.append(Paragraph("<b>Figure 2:</b> Overview of Team SAT's Track 2 embedded edge architecture (<code>track2-apex-orin-v3</code>, Submission #19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0M parameter and 12.0 GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in &lt;0.30 GFLOPs, paired with a $256\\times256$ FiLM spatial refiner (+6.15 dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.", p_caption))
     story.append(Spacer(1, 4))
 
@@ -318,7 +318,7 @@ def build_factsheet_pdf(output_path: str):
     story.append(Spacer(1, 8))
     
     decl_data = [
-        [Paragraph("<b>Team Leader:</b> Tanmay Das (Faculty Advisor: Dr. Chaitra Desai)", p_body), Paragraph("<b>Date:</b> October 28, 2026", td_bold_center)]
+        [Paragraph("<b>Team Leader:</b> Arin Pattnaik (Faculty Advisor: Dr. Chaitra Desai)", p_body), Paragraph("<b>Date:</b> October 28, 2026", td_bold_center)]
     ]
     t_decl = Table(decl_data, colWidths=[350, 154])
     t_decl.setStyle(TableStyle([
