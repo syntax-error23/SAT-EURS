@@ -2,28 +2,76 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# PyTorch checkpoints and weights
-/checkpoints/
-*.pt
-*.pth
-*.bin
-!experiments/exp_controlled_restoration_v2/checkpoints/
-!experiments/exp_controlled_restoration_v2/checkpoints/best_controlled_checkpoint.pt
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+ENV/
 
-# Dataset and cached image arrays
+# IDEs & Operating Systems
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Datasets, Archives & Raw Imagery
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
 data/mini_dev/
 data/cached/
 data/cached_1024/
 data/nvme/
+data/raw/
 *.png
 *.jpg
 *.jpeg
 
-# Submission and export binaries
+# Model Weights & Checkpoints
+*.pt
+*.pth
+*.ckpt
+*.bin
+checkpoints/
+weights/
+!experiments/exp_controlled_restoration_v2/checkpoints/
+!experiments/exp_controlled_restoration_v2/checkpoints/best_controlled_checkpoint.pt
+
+# Deployment Artifacts (ONNX & TensorRT)
 *.onnx
+*.onnx.data
 *.engine
-*.zip
+*.plan
+*.trt
 
 # Visual artifacts, documentation generation & PDFs
 *.pdf
@@ -32,19 +80,20 @@ data/nvme/
 !reports/*.pdf
 generate_tanmay_pdf.py
 *.html
-audits/overfit_preds/
 
-# Temporary run outputs, scratch, and logs
-tmp/
+# Experiment Outputs & Generated Predictions
 runs/
 logs/
-scratch/
-
-# Logs and environment
+experiments/logs/
+experiments/runs/
+experiments/plots/
+predictions/
+submissions/
+audits/overfit_preds/
 *.log
-.env
-.venv
-env/
-venv/
-.idea/
-.vscode/
+
+# Temporary & Cache Directories
+.cache/
+tmp/
+temp/
+scratch/

@@ -22,7 +22,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from data.dataset import EURSDataset, find_dataset_subdirs
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data.dataset import find_dataset_subdirs
 from losses.multi_task_loss import MultiTaskLoss
 
 # Alias for canonical EURS naming
@@ -40,7 +41,10 @@ def compute_training_class_weights(
     """
     _, masks_dir, _ = find_dataset_subdirs(data_dir)
     if masks_dir is None:
-        masks_dir = os.path.join(data_dir, 'masks')
+        if not os.path.exists(os.path.join(data_dir, 'masks')) and os.path.exists(os.path.join(data_dir, 'mini_dev', 'masks')):
+            masks_dir = os.path.join(data_dir, 'mini_dev', 'masks')
+        else:
+            masks_dir = os.path.join(data_dir, 'masks')
 
     assert os.path.exists(masks_dir), f"Masks dir not found (checked 'masks' and 'gt_masks' under {data_dir}): {masks_dir}"
     assert os.path.exists(manifest_path), f"Manifest not found: {manifest_path}"
@@ -48,7 +52,14 @@ def compute_training_class_weights(
     with open(manifest_path, 'r') as f:
         manifest = json.load(f)
 
-    train_scenes = manifest.get("train_scenes", [])
+    # Support both manifest_full.json and splits.json
+    if "train_scenes" in manifest:
+        train_scenes = manifest.get("train_scenes", [])
+    elif "tier1" in manifest:
+        train_scenes = manifest.get("tier1", {}).get("train", [])
+    else:
+        train_scenes = []
+
     assert len(train_scenes) > 0, "No train scenes found in manifest!"
 
     pixel_counts = np.zeros(num_classes, dtype=np.int64)

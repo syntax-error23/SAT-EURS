@@ -34,7 +34,7 @@ class SegmentationEvaluator:
         pred_np = pred.detach().cpu().numpy().flatten()
         target_np = target_mask.detach().cpu().numpy().flatten()
 
-        mask = (target_np >= 0) & (target_np < self.num_classes)
+        mask = (target_np >= 0) & (target_np < self.num_classes) & (pred_np >= 0) & (pred_np < self.num_classes)
         hist = np.bincount(
             self.num_classes * target_np[mask].astype(int) + pred_np[mask].astype(int),
             minlength=self.num_classes ** 2

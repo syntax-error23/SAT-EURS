@@ -37,28 +37,48 @@ class ClassWeightedFocalLoss(nn.Module):
         else:
             self.alpha = None
 
-    def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
+    def forward(
+        self,
+        logits: torch.Tensor,
+        targets: torch.Tensor,
+        valid_mask: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
         """
         Args:
             logits (torch.Tensor): [B, C, H, W] unnormalized class predictions.
             targets (torch.Tensor): [B, H, W] integer class labels in {0, ..., C-1}.
+            valid_mask (torch.Tensor, optional): [H, W] or [B, H, W] boolean mask.
         Returns:
             torch.Tensor: Scalar focal loss in FP32.
         """
+        num_classes = logits.shape[1]
         logits_f = logits.float()
-        targets_long = targets.long()
-        # Cross entropy loss with log-softmax in FP32
-        ce_loss = F.cross_entropy(logits_f, targets_long, reduction='none')  # [B, H, W]
-        p = torch.exp(-ce_loss)  # p_t in [0, 1]
+        targets_clamped = targets.long().clamp(0, num_classes - 1)
+        ce_loss = F.cross_entropy(logits_f, targets_clamped, reduction='none')
+        p = torch.exp(-ce_loss)
 
         focal_loss = ((1.0 - p) ** self.gamma) * ce_loss
 
         if self.alpha is not None:
-            alpha_t = self.alpha.to(logits_f.device)[targets_long]  # [B, H, W]
+            alpha_t = self.alpha.to(logits_f.device)[targets_clamped]
             focal_loss = alpha_t * focal_loss
 
+        if valid_mask is None:
+            if self.reduction == 'mean':
+                return focal_loss.mean()
+            elif self.reduction == 'sum':
+                return focal_loss.sum()
+            return focal_loss
+
+        vm = valid_mask.bool()
+        if vm.dim() == 2:
+            vm = vm.unsqueeze(0).expand_as(targets)
+        elif vm.dim() == 4 and vm.shape[1] == 1:
+            vm = vm.squeeze(1)
+
+        focal_loss = torch.where(vm, focal_loss, torch.zeros_like(focal_loss))
         if self.reduction == 'mean':
-            return focal_loss.mean()
+            return focal_loss.sum() / (vm.sum().float() + self.eps)
         elif self.reduction == 'sum':
             return focal_loss.sum()
         return focal_loss
@@ -68,9 +88,7 @@ class SoftDiceLoss(nn.Module):
     """
     Batch-Accumulated Present-Class Soft Dice Loss (FP32):
         Dice_c = 2 * sum_{b,h,w}(P_c * Y_c) / (sum_{b,h,w}(P_c^2) + sum_{b,h,w}(Y_c^2) + eps)
-    Computes intersection and union across the mini-batch [B, H, W] and averages
-    ONLY over classes c that are present in the batch ground truth (sum(Y_c) > 0),
-    preventing false penalties on images/batches where rare classes are absent.
+    Supports optional valid_mask for letterbox padding exclusion.
     """
     def __init__(
         self,
@@ -88,18 +106,34 @@ class SoftDiceLoss(nn.Module):
         else:
             self.alpha = None
 
-    def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
+    def forward(
+        self,
+        logits: torch.Tensor,
+        targets: torch.Tensor,
+        valid_mask: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
         """
         Args:
             logits (torch.Tensor): [B, C, H, W] unnormalized class predictions.
             targets (torch.Tensor): [B, H, W] integer class labels.
+            valid_mask (torch.Tensor, optional): [H, W] or [B, H, W] boolean mask.
         Returns:
             torch.Tensor: Scalar soft dice loss in FP32.
         """
         logits_f = logits.float()
-        probs = F.softmax(logits_f, dim=1)  # [B, C, H, W]
+        probs = F.softmax(logits_f, dim=1)
         targets_clamped = targets.long().clamp(0, self.num_classes - 1)
         targets_one_hot = F.one_hot(targets_clamped, num_classes=self.num_classes).permute(0, 3, 1, 2).float()
+
+        if valid_mask is not None:
+            vm = valid_mask.bool()
+            if vm.dim() == 2:
+                vm = vm.unsqueeze(0).expand(probs.shape[0], -1, -1)
+            elif vm.dim() == 4 and vm.shape[1] == 1:
+                vm = vm.squeeze(1)
+            vm_c = vm.unsqueeze(1).expand_as(probs).float()
+            probs = probs * vm_c
+            targets_one_hot = targets_one_hot * vm_c
 
         probs_flat = probs.reshape(probs.shape[0], self.num_classes, -1)
         targets_flat = targets_one_hot.reshape(targets_one_hot.shape[0], self.num_classes, -1)
@@ -137,9 +171,8 @@ class SoftDiceLoss(nn.Module):
 class SegmentationLoss(nn.Module):
     """
     Unified Segmentation Loss combining ClassWeightedFocalLoss and Present-Class Batch SoftDiceLoss:
-        L_seg = L_focal(alpha) + lambda_dice * L_dice(unweighted over present classes)
-    Applies class weights alpha ONLY ONCE (in Focal Loss) by default to prevent compounded
-    over-weighting and Background/Coral precision collapse.
+        L_seg = L_focal(alpha) + lambda_dice * L_dice
+    Supports optional valid_mask for letterbox padding exclusion.
     """
     def __init__(
         self,
@@ -158,8 +191,13 @@ class SegmentationLoss(nn.Module):
         )
         self.lambda_dice = lambda_dice
 
-    def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
-        loss_f = self.focal(logits, targets)
-        loss_d = self.dice(logits, targets)
+    def forward(
+        self,
+        logits: torch.Tensor,
+        targets: torch.Tensor,
+        valid_mask: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
+        loss_f = self.focal(logits, targets, valid_mask=valid_mask)
+        loss_d = self.dice(logits, targets, valid_mask=valid_mask)
         return loss_f + self.lambda_dice * loss_d
 
