@@ -269,7 +269,7 @@ def generate_track1_pipeline():
         "• SSIM: 0.8290   |  5-Class Compliant"
     ], f_box_p, fill="#7F1D1D", line_spacing=6.5)
     draw_pill(draw, (1938, 885), "OFFICIAL HEAD 2 (5-CLASS MASKS)", bg_color="#991B1B", font_size=12.5)
-    draw_pill(draw, (1938, 925), "CHAMPION SUBMISSION #19359", bg_color="#1E293B", font_size=12.5)
+    draw_pill(draw, (1938, 925), "SUBMISSION #19359 (0.6410)", bg_color="#1E293B", font_size=12.5)
 
     # -------------------------------------------------------------------------
     # ARROWS & ROUTING (PRISTINE, NON-OVERLAPPING)
@@ -468,7 +468,7 @@ def generate_track2_pipeline():
         "  {Background, Substrate, Fish,",
         "   Elasmobranch, Macro-Fauna}",
         "",
-        "NVIDIA Jetson AGX Orin Edge SOTA:",
+        "NVIDIA Jetson AGX Orin Edge Benchmarks:",
         "• Complexity: 9.82 GFLOPs",
         "  (Official cap: 12.0 GFLOPs, 18.2% headroom)",
         "• Model Parameters: 0.884 M",
