@@ -1,0 +1,119 @@
+{
+  "metrics": {
+    "best_w0_config": "w0_40",
+    "baseline_margin": 0.89828,
+    "best_margin": 0.91289,
+    "margin_gain": 0.01461,
+    "agreement_pct_at_w0_25": 99.729,
+    "agreement_pct_at_w0_30": 99.465
+  },
+  "configurations": {
+    "w0_20": {
+      "w0": 0.2,
+      "mean_confidence_margin": 0.89828,
+      "mean_entropy": 0.15966,
+      "agreement_pct_with_baseline": 100.0,
+      "agreement_miou": 1.0,
+      "class_pixel_counts": {
+        "Background": 47933876,
+        "Coral": 33115016,
+        "Fish": 1434302,
+        "Ray": 2582042,
+        "MacroFauna": 1892844
+      },
+      "pixel_deltas_vs_w0_20": {
+        "Background": 0,
+        "Coral": 0,
+        "Fish": 0,
+        "Ray": 0,
+        "MacroFauna": 0
+      }
+    },
+    "w0_25": {
+      "w0": 0.25,
+      "mean_confidence_margin": 0.90135,
+      "mean_entropy": 0.15489,
+      "agreement_pct_with_baseline": 99.729,
+      "agreement_miou": 0.98824,
+      "class_pixel_counts": {
+        "Background": 47867179,
+        "Coral": 33204905,
+        "Fish": 1433441,
+        "Ray": 2563097,
+        "MacroFauna": 1889458
+      },
+      "pixel_deltas_vs_w0_20": {
+        "Background": -66697,
+        "Coral": 89889,
+        "Fish": -861,
+        "Ray": -18945,
+        "MacroFauna": -3386
+      }
+    },
+    "w0_30": {
+      "w0": 0.3,
+      "mean_confidence_margin": 0.90475,
+      "mean_entropy": 0.1498,
+      "agreement_pct_with_baseline": 99.465,
+      "agreement_miou": 0.97499,
+      "class_pixel_counts": {
+        "Background": 47829863,
+        "Coral": 33269179,
+        "Fish": 1436771,
+        "Ray": 2535923,
+        "MacroFauna": 1886344
+      },
+      "pixel_deltas_vs_w0_20": {
+        "Background": -104013,
+        "Coral": 154163,
+        "Fish": 2469,
+        "Ray": -46119,
+        "MacroFauna": -6500
+      }
+    },
+    "w0_35": {
+      "w0": 0.35,
+      "mean_confidence_margin": 0.90859,
+      "mean_entropy": 0.14439,
+      "agreement_pct_with_baseline": 99.069,
+      "agreement_miou": 0.95774,
+      "class_pixel_counts": {
+        "Background": 47889903,
+        "Coral": 33245147,
+        "Fish": 1443200,
+        "Ray": 2496763,
+        "MacroFauna": 1883067
+      },
+      "pixel_deltas_vs_w0_20": {
+        "Background": -43973,
+        "Coral": 130131,
+        "Fish": 8898,
+        "Ray": -85279,
+        "MacroFauna": -9777
+      }
+    },
+    "w0_40": {
+      "w0": 0.4,
+      "mean_confidence_margin": 0.91289,
+      "mean_entropy": 0.13865,
+      "agreement_pct_with_baseline": 98.822,
+      "agreement_miou": 0.93874,
+      "class_pixel_counts": {
+        "Background": 47873898,
+        "Coral": 33296285,
+        "Fish": 1473949,
+        "Ray": 2434395,
+        "MacroFauna": 1879553
+      },
+      "pixel_deltas_vs_w0_20": {
+        "Background": -59978,
+        "Coral": 181269,
+        "Fish": 39647,
+        "Ray": -147647,
+        "MacroFauna": -13291
+      }
+    }
+  },
+  "runtime_s": 172.57,
+  "verdict": "CONFIRMED"
+}

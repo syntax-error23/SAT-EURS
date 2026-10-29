@@ -1,0 +1,18 @@
+{
+  "v18_refiner_ensemble": {
+    "psnr_db": 25.399,
+    "psnr_norm": 0.5215,
+    "ssim": 0.793,
+    "sharpness": 0.4094,
+    "Q_FR": 0.63247,
+    "delta_vs_v18": 0.0
+  },
+  "v26_deep_bilateral": {
+    "psnr_db": 7.949,
+    "psnr_norm": 0.0,
+    "ssim": 0.3602,
+    "sharpness": 0.0128,
+    "Q_FR": 0.16339,
+    "delta_vs_v18": -0.46909
+  }
+}

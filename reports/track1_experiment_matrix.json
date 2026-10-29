@@ -1,0 +1,183 @@
+{
+  "campaign_metadata": {
+    "campaign_name": "SAT-EURS Track 1 SOTA Breakthrough Sprint",
+    "target_score": 0.7,
+    "hardware": "NVIDIA GeForce RTX 5090 (32GB VRAM), Intel Core Ultra 9",
+    "timestamp": "2026-10-27T14:35:00+05:30",
+    "active_testing_deadline": "October 28, 2026, 17:29 IST",
+    "protected_baseline": {
+      "candidate_id": "T1-V28A-CHAMPION",
+      "artifact_path": "deploy/protected_reference/submission_v28a_fivefold_ablation.zip",
+      "sha256": "471bf9b9710e2922805ac09746943f318f2d140de074c917a34f5ded6468ab39",
+      "official_testing_score": 0.634,
+      "status": "PROTECTED_IMMUTABLE"
+    }
+  },
+  "experiment_matrix": [
+    {
+      "experiment_id": "EXP-T1-BASE-V28A",
+      "engine": "Segmentation + Restoration Dual-Engine",
+      "architecture": "EURSAPEXV18Segmenter (DINOv3 ViT-L + ConvNeXt-B + FiLM Neck) + NAFNet FiLM Refiner",
+      "fold_configuration": "Fold 0: v27_fold0, Folds 1..4: v18 baseline",
+      "status": "COMPLETED",
+      "held_out_validation_mIoU": 0.9531,
+      "official_testing_score": 0.634,
+      "metrics": {
+        "Q_seg": 0.5702,
+        "mIoU": 0.704,
+        "Macro_F1": 0.81,
+        "PSNR_dB": 25.48,
+        "SSIM": 0.829,
+        "Sharpness": 0.973
+      },
+      "verdict": "CHAMPION_BASELINE"
+    },
+    {
+      "experiment_id": "EXP-T1-F0-FINETUNE-REGRESSION",
+      "engine": "Segmentation",
+      "architecture": "EURSAPEXV18Segmenter Fold 0 fine-tuned (5 steps unconstrained CE)",
+      "fold_configuration": "Fold 0 evaluated on fish1, fish11, fish12, seahorse1",
+      "status": "COMPLETED",
+      "held_out_validation_mIoU": 0.5152,
+      "metrics": {
+        "Q_seg": 0.3173,
+        "mIoU": 0.5152,
+        "Macro_F1": 0.6159,
+        "Ray_IoU": 0.0
+      },
+      "delta_vs_baseline": -0.2895,
+      "verdict": "REJECTED_ABSENT_CLASS_COLLAPSE"
+    },
+    {
+      "experiment_id": "EXP-T1-F1-V28-AUDIT",
+      "engine": "Segmentation",
+      "architecture": "EURSAPEXV18Segmenter v28_fold1 vs v18_fold1",
+      "fold_configuration": "Fold 1 evaluated on fish13, fish14, fish15, sharkFish",
+      "status": "COMPLETED",
+      "baseline_Q_seg": 0.758,
+      "experimental_Q_seg": 0.3945,
+      "delta_vs_baseline": -0.3635,
+      "verdict": "REJECTED_CORAL_MACROFAUNA_COLLAPSE"
+    },
+    {
+      "experiment_id": "EXP-T1-F2-V28-AUDIT",
+      "engine": "Segmentation",
+      "architecture": "EURSAPEXV18Segmenter v28_fold2 vs v18_fold2",
+      "fold_configuration": "Fold 2 evaluated on fish17, fish18, fish2, ray1",
+      "status": "COMPLETED",
+      "baseline_Q_seg": 0.4498,
+      "experimental_Q_seg": 0.3024,
+      "delta_vs_baseline": -0.1474,
+      "verdict": "REJECTED_RAY_RECALL_EROSION"
+    },
+    {
+      "experiment_id": "EXP-T1-F3-OVERNIGHT-PILOT",
+      "engine": "Segmentation",
+      "architecture": "EURSAPEXV18Segmenter overnight_pilots_fold3 vs v18_fold3",
+      "fold_configuration": "Fold 3 evaluated on fish20, fish21, fish4, starfish2",
+      "status": "COMPLETED",
+      "baseline_Q_seg": 0.2437,
+      "experimental_Q_seg": 0.4113,
+      "delta_vs_baseline": 0.1676,
+      "verdict": "PROMOTED_VALID_TRUE_NEGATIVE_PRESERVATION"
+    },
+    {
+      "experiment_id": "EXP-T1-ENS-B-VALIDATION",
+      "engine": "Segmentation Ensemble",
+      "architecture": "5-Fold Ensemble with overnight_pilots_fold3 replacement",
+      "fold_configuration": "Evaluated across representative validation scenes (fish1, sharkFish, ray1, starfish2, turtles1)",
+      "status": "COMPLETED",
+      "baseline_mIoU": 0.9531,
+      "experimental_mIoU": 0.9626,
+      "delta_vs_baseline": 0.0095,
+      "per_class_deltas": {
+        "Background": 0.0017,
+        "Coral": 0.004,
+        "Fish": 0.0366,
+        "Ray": 0.0033,
+        "MacroFauna": 0.0021
+      },
+      "verdict": "PROMOTED_TO_PRODUCTION_CANDIDATE_V33"
+    },
+    {
+      "experiment_id": "EXP-T1-CANDIDATE-V33-FULL1200",
+      "engine": "Dual-Engine Submission Pipeline",
+      "architecture": "V33-Ensemble-F3Upgrade (5-Fold Dual-Encoder + Locked V27 Restorations)",
+      "fold_configuration": "Full 1,200 Official Test Images",
+      "status": "COMPLETED",
+      "output_zip": "deploy/v33/submission_v33_ensemble_f3upgrade.zip",
+      "verdict": "PACKAGED_AND_VERIFIED_FOR_SUBMISSION",
+      "sha256": "de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d",
+      "archive_size_mb": 498.01,
+      "total_pixels": 869580800
+    },
+    {
+      "experiment_id": "EXP-T1-CORALSCAPES-SEGFORMER-RESEARCH",
+      "engine": "External Marine Pretrained Segmentation",
+      "architecture": "EPFL-ECEO/segformer-b5-finetuned-coralscapesv2-1024-1024",
+      "status": "COMPLETED",
+      "metrics": {
+        "raw_alone_mIoU": 0.1064,
+        "raw_alone_Q_seg": 0.0,
+        "fine_tuned_v29_official_test": 0.597
+      },
+      "verdict": "REJECTED_INFERIOR_TO_DINOV3_DUAL_ENCODER"
+    },
+    {
+      "experiment_id": "EXP-T1-UNANCHORED-NAFNET-RESEARCH",
+      "engine": "Restoration Engine",
+      "architecture": "Unconditioned Deep NAFNet (phase3_nafnet_f0)",
+      "status": "COMPLETED",
+      "metrics": {
+        "val_psnr_dB": 9.06,
+        "val_ssim": 0.0737,
+        "val_q_fr": 0.0332
+      },
+      "baseline_metrics": {
+        "val_psnr_dB": 25.48,
+        "val_ssim": 0.829,
+        "val_q_fr": 0.7727
+      },
+      "verdict": "REJECTED_UNSTABLE_WITHOUT_PHYSICAL_ANCHOR"
+    },
+    {
+      "experiment_id": "EXP-T1-F4-PILOT",
+      "engine": "Segmentation",
+      "architecture": "EURSAPEXV18Segmenter overnight_pilots_fold4 vs v18_fold4",
+      "fold_configuration": "Fold 4 evaluated on held-out scenes (fish5, fish7, fish9, turtles1)",
+      "status": "COMPLETED",
+      "baseline_metrics": {
+        "Q_seg": 0.3296,
+        "mIoU": 0.5223,
+        "Macro_F1": 0.631,
+        "class_ious": [
+          0.645,
+          0.7017,
+          0.6949,
+          0.0,
+          0.5701
+        ]
+      },
+      "experimental_metrics": {
+        "Q_seg": 0.1707,
+        "mIoU": 0.3734,
+        "Macro_F1": 0.4573,
+        "class_ious": [
+          0.7067,
+          0.7265,
+          0.4218,
+          0.0,
+          0.0119
+        ]
+      },
+      "delta_vs_baseline": -0.1588,
+      "per_scene_deltas": {
+        "fish5": "+0.2235 (Q_seg: 0.3317 -> 0.5552)",
+        "fish7": "+0.2673 (Q_seg: 0.2090 -> 0.4763)",
+        "fish9": "+0.3694 (Q_seg: 0.5431 -> 0.9125)",
+        "turtles1": "-0.0683 (Q_seg: 0.1020 -> 0.0337, MacroFauna recall collapsed to 0.0119)"
+      },
+      "verdict": "REJECTED_MACROFAUNA_RECALL_REGRESSION_PRESERVE_V18_WEIGHTS"
+    }
+  ]
+}

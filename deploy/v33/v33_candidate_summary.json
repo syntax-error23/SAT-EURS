@@ -1,0 +1,30 @@
+{
+  "candidate": "V33-Ensemble-F3Upgrade",
+  "archive_path": "deploy/v33/submission_v33_ensemble_f3upgrade.zip",
+  "archive_size_mb": 498.01,
+  "sha256": "de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d",
+  "total_pixels": 869580800,
+  "census": {
+    "Background": {
+      "pixels": 481386194,
+      "percentage": 55.358
+    },
+    "Coral": {
+      "pixels": 331028538,
+      "percentage": 38.068
+    },
+    "Fish": {
+      "pixels": 13378430,
+      "percentage": 1.538
+    },
+    "Ray": {
+      "pixels": 25008376,
+      "percentage": 2.876
+    },
+    "MacroFauna": {
+      "pixels": 18779262,
+      "percentage": 2.16
+    }
+  },
+  "runtime_s": 1235.4
+}

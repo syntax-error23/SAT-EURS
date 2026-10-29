@@ -1,0 +1,77 @@
+{
+  "raw_degraded": {
+    "psnr": 16.8814,
+    "psnr_norm": 0.2007,
+    "ssim": 0.5369,
+    "sharpness": 0.0766,
+    "q_fr": 0.3396
+  },
+  "alpha_sweep": {
+    "alpha_0.00": {
+      "alpha": 0.0,
+      "psnr_dB": 27.2546,
+      "psnr_norm": 0.6105,
+      "ssim": 0.8091,
+      "sharpness_ratio": 0.3443,
+      "q_fr": 0.6732,
+      "clip_low_pct": 0.0,
+      "clip_high_pct": 0.0,
+      "total_clipping_pct": 0.0
+    },
+    "alpha_0.05": {
+      "alpha": 0.05,
+      "psnr_dB": 27.2043,
+      "psnr_norm": 0.6081,
+      "ssim": 0.8087,
+      "sharpness_ratio": 0.3775,
+      "q_fr": 0.6753,
+      "clip_low_pct": 0.166,
+      "clip_high_pct": 0.001,
+      "total_clipping_pct": 0.167
+    },
+    "alpha_0.10": {
+      "alpha": 0.1,
+      "psnr_dB": 27.1253,
+      "psnr_norm": 0.6043,
+      "ssim": 0.8081,
+      "sharpness_ratio": 0.4119,
+      "q_fr": 0.6767,
+      "clip_low_pct": 0.261,
+      "clip_high_pct": 0.005,
+      "total_clipping_pct": 0.266
+    },
+    "alpha_0.15": {
+      "alpha": 0.15,
+      "psnr_dB": 27.0218,
+      "psnr_norm": 0.5993,
+      "ssim": 0.8071,
+      "sharpness_ratio": 0.4477,
+      "q_fr": 0.6776,
+      "clip_low_pct": 0.377,
+      "clip_high_pct": 0.012,
+      "total_clipping_pct": 0.39
+    },
+    "alpha_0.20": {
+      "alpha": 0.2,
+      "psnr_dB": 26.8991,
+      "psnr_norm": 0.5934,
+      "ssim": 0.806,
+      "sharpness_ratio": 0.4846,
+      "q_fr": 0.6782,
+      "clip_low_pct": 0.509,
+      "clip_high_pct": 0.024,
+      "total_clipping_pct": 0.533
+    },
+    "alpha_0.25": {
+      "alpha": 0.25,
+      "psnr_dB": 26.7611,
+      "psnr_norm": 0.5868,
+      "ssim": 0.8045,
+      "sharpness_ratio": 0.5225,
+      "q_fr": 0.6783,
+      "clip_low_pct": 0.644,
+      "clip_high_pct": 0.039,
+      "total_clipping_pct": 0.683
+    }
+  }
+}

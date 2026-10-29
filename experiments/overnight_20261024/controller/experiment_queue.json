@@ -1,0 +1,1444 @@
+{
+  "campaign_id": "overnight_20261024_continuation",
+  "created_at": "2026-10-24T19:15:00Z",
+  "active_device": "cuda:0 (NVIDIA GeForce RTX 5090)",
+  "experiments": [
+    {
+      "exp_id": "EXP-08-REPRODUCE",
+      "track": "TRACK-A",
+      "name": "Reproduce Fold 0 Checkpoint Improvement",
+      "description": "Reproduce exact head-to-head evaluation of V27 Fold 0 vs V28-SWA Fold 0 on 160 held-out images",
+      "command": "python -u experiments/overnight_20261024/scripts/test_fold0_v28.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp08_reproduce.json",
+      "start_time": "2026-10-24T19:18:32Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-08-REPRODUCE.log",
+      "runtime_s": 130.76,
+      "exit_code": 0,
+      "metrics": {
+        "v27_fold0_q_seg": 0.56847,
+        "v28_swa_fold0_q_seg": 0.58646,
+        "delta_q_seg": 0.01799,
+        "delta_miou": 0.01216,
+        "delta_macro_f1": 0.01139,
+        "delta_fish_iou": 0.02587,
+        "delta_macro_iou": 0.03661,
+        "delta_ray_iou": 0.0
+      }
+    },
+    {
+      "exp_id": "EXP-10-NESTED-CALIB",
+      "track": "TRACK-A",
+      "name": "Nested Cross-Fitted Class-Logit Calibration",
+      "description": "True 5-fold cross-fitted calibration: fit offsets on 16 scenes, evaluate on 4 outer-held-out scenes per fold",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp10_nested_calibration.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp10_nested_calibration.json",
+      "start_time": "2026-10-24T19:21:41Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-10-NESTED-CALIB.log",
+      "runtime_s": 346.77,
+      "exit_code": 0,
+      "metrics": {
+        "nested_q_seg": 0.51732,
+        "baseline_q_seg": 0.5176,
+        "delta_q_seg": -0.00028,
+        "delta_miou": -0.00014,
+        "delta_macro_f1": -0.00025,
+        "nested_miou": 0.65706,
+        "nested_f1": 0.78733,
+        "class_ious": [
+          0.76853,
+          0.74166,
+          0.71134,
+          0.59413,
+          0.46965
+        ]
+      }
+    },
+    {
+      "exp_id": "EXP-09-ENSEMBLE-WEIGHTS",
+      "track": "TRACK-A",
+      "name": "Ensemble Weight Optimization Benchmark",
+      "description": "Evaluate non-uniform ensemble weighting w0 in [0.20, 0.25, 0.30, 0.35] on held-out fold predictions",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp09_ensemble_weights.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp09_ensemble_weights.json",
+      "start_time": "2026-10-24T19:28:03Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-09-ENSEMBLE-WEIGHTS.log",
+      "runtime_s": 188.77,
+      "exit_code": 0,
+      "metrics": {
+        "best_w0_config": "w0_40",
+        "baseline_margin": 0.89828,
+        "best_margin": 0.91289,
+        "margin_gain": 0.01461,
+        "agreement_pct_at_w0_25": 99.729,
+        "agreement_pct_at_w0_30": 99.465
+      }
+    },
+    {
+      "exp_id": "EXP-11-TTA-MATRIX",
+      "track": "TRACK-A",
+      "name": "Test-Time Augmentation Matrix Benchmark",
+      "description": "Measure exact latency and metric trade-offs: No-TTA vs Horizontal Flip vs Multi-Scale",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp11_tta_matrix.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp11_tta_matrix.json",
+      "start_time": "2026-10-24T19:32:04Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-11-TTA-MATRIX.log",
+      "runtime_s": 320.3,
+      "exit_code": 0,
+      "metrics": {
+        "no_tta": {
+          "metrics": {
+            "Q_seg": 0.49966,
+            "mIoU": 0.64378,
+            "Macro_F1": 0.77614,
+            "coverage": 1.0,
+            "class_ious": [
+              0.76665,
+              0.73863,
+              0.69923,
+              0.5785,
+              0.43588
+            ],
+            "class_f1s": [
+              0.86791,
+              0.84967,
+              0.823,
+              0.73298,
+              0.60713
+            ],
+            "class_precisions": [
+              0.85201,
+              0.87246,
+              0.78454,
+              0.675,
+              0.66473
+            ],
+            "class_recalls": [
+              0.88442,
+              0.82804,
+              0.86542,
+              0.80184,
+              0.55871
+            ],
+            "confusion_matrix": [
+              [
+                359408873,
+                38751761,
+                3851037,
+                403831,
+                3960338
+              ],
+              [
+                55488277,
+                291359482,
+                3199824,
+                17214,
+                1800683
+              ],
+              [
+                3344666,
+                2037713,
+                43070255,
+                236018,
+                1079348
+              ],
+              [
+                266342,
+                47054,
+                932545,
+                5177900,
+                33679
+              ],
+              [
+                3328384,
+                1755178,
+                3845286,
+                1835952,
+                13629160
+              ]
+            ]
+          },
+          "mean_latency_ms": 198.11,
+          "delta_vs_no_tta": 0.0
+        },
+        "hflip_tta": {
+          "metrics": {
+            "Q_seg": 0.51937,
+            "mIoU": 0.65859,
+            "Macro_F1": 0.78861,
+            "coverage": 1.0,
+            "class_ious": [
+              0.7685,
+              0.74171,
+              0.71067,
+              0.59981,
+              0.47225
+            ],
+            "class_f1s": [
+              0.8691,
+              0.8517,
+              0.83087,
+              0.74985,
+              0.64153
+            ],
+            "class_precisions": [
+              0.85506,
+              0.87291,
+              0.79781,
+              0.69275,
+              0.67553
+            ],
+            "class_recalls": [
+              0.8836,
+              0.8315,
+              0.86679,
+              0.81721,
+              0.61079
+            ],
+            "confusion_matrix": [
+              [
+                359075503,
+                39069354,
+                3697486,
+                381957,
+                4151540
+              ],
+              [
+                54536838,
+                292575592,
+                2881394,
+                13595,
+                1858061
+              ],
+              [
+                3198090,
+                2085883,
+                43138160,
+                216699,
+                1129168
+              ],
+              [
+                275723,
+                29001,
+                857934,
+                5277128,
+                17734
+              ],
+              [
+                2856924,
+                1413465,
+                3495670,
+                1728276,
+                14899625
+              ]
+            ]
+          },
+          "mean_latency_ms": 365.43,
+          "delta_vs_no_tta": 0.01971
+        }
+      }
+    },
+    {
+      "exp_id": "EXP-14-RESTORATION-RECONCILE",
+      "track": "TRACK-B",
+      "name": "Comprehensive Restoration Evaluation Benchmark",
+      "description": "Reconcile degraded inputs vs RSUIGM table vs neural refiner vs clean GT on all 20 scenes",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp14_restoration_reconciliation.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp14_restoration_reconcile.json",
+      "start_time": "2026-10-24T19:38:15Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-14-RESTORATION-RECONCILE.log",
+      "runtime_s": 504.89,
+      "exit_code": 0,
+      "metrics": {
+        "1_raw_degraded": {
+          "psnr_db": 14.063,
+          "psnr_norm": 0.0776,
+          "ssim": 0.5055,
+          "sharpness": 0.0514,
+          "Q_FR": 0.26752,
+          "composite_pts": 0.08026
+        },
+        "2_physical_prior": {
+          "psnr_db": 25.105,
+          "psnr_norm": 0.5045,
+          "ssim": 0.7786,
+          "sharpness": 0.2885,
+          "Q_FR": 0.60625,
+          "composite_pts": 0.18187
+        },
+        "3_refiner_no_unsharp": {
+          "psnr_db": 25.503,
+          "psnr_norm": 0.5262,
+          "ssim": 0.7935,
+          "sharpness": 0.3441,
+          "Q_FR": 0.62827,
+          "composite_pts": 0.18848
+        },
+        "4_refiner_locked_a10": {
+          "psnr_db": 25.399,
+          "psnr_norm": 0.5215,
+          "ssim": 0.793,
+          "sharpness": 0.4094,
+          "Q_FR": 0.63247,
+          "composite_pts": 0.18974
+        }
+      }
+    },
+    {
+      "exp_id": "EXP-16-NEURAL-RESTORATION",
+      "track": "TRACK-B",
+      "name": "Benchmark Existing Neural Restorers (NAFNet vs Refiner)",
+      "description": "Evaluate NAFNet (checkpoints/v7_restoration/NAFNET_F0/best_model.pt) and V26 Bilateral Restorer on held-out validation scenes",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp16_neural_restoration.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp16_neural_restoration.json",
+      "start_time": "2026-10-24T19:47:32Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-16-NEURAL-RESTORATION.log",
+      "runtime_s": 859.27,
+      "exit_code": 0,
+      "metrics": {
+        "v18_refiner_ensemble": {
+          "psnr_db": 25.399,
+          "psnr_norm": 0.5215,
+          "ssim": 0.793,
+          "sharpness": 0.4094,
+          "Q_FR": 0.63247,
+          "delta_vs_v18": 0.0
+        },
+        "v26_deep_bilateral": {
+          "psnr_db": 7.949,
+          "psnr_norm": 0.0,
+          "ssim": 0.3602,
+          "sharpness": 0.0128,
+          "Q_FR": 0.16339,
+          "delta_vs_v18": -0.46909
+        }
+      }
+    },
+    {
+      "exp_id": "EXP-13-SPECIALIST-PROBE",
+      "track": "TRACK-C",
+      "name": "Evaluate Existing DINOv2 / ConvNeXt Specialist Checkpoints",
+      "description": "Probe checkpoints/v16_dinov2/ and checkpoints/v17_specialists/ on held-out scenes to measure feature diversity",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp13_specialist_probe.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp13_specialist_probe.json",
+      "start_time": "2026-10-24T20:03:38Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-13-SPECIALIST-PROBE.log",
+      "runtime_s": 3.59,
+      "exit_code": 0,
+      "metrics": {
+        "segformer_params_m": 401.6,
+        "dinov2_params_m": 308.08,
+        "convnext_params_m": 89.68,
+        "audit_verdict": "REJECTED_FOR_RELEASE"
+      }
+    },
+    {
+      "exp_id": "EXP-18-CROP-CONTEXT-ABLATION",
+      "track": "TRACK-A",
+      "name": "Object Cropping and Spatial Context Ablation",
+      "description": "Audit how targeted small-object cropping (object_crop_prob=0.70 vs 0.0) affects large ray representation and causes ray regression",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp18_crop_context_ablation.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp18_crop_context_ablation.json",
+      "start_time": "2026-10-24T20:04:56Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-18-CROP-CONTEXT-ABLATION.log",
+      "runtime_s": 44.64,
+      "exit_code": 0,
+      "metrics": {
+        "configurations": {
+          "prob_0": {
+            "object_crop_prob": 0.0,
+            "ray_pixels": 722993,
+            "fish_pixels": 12378173,
+            "macro_pixels": 5788306,
+            "samples_with_ray": 24,
+            "ray_exposure_pct": 6.0
+          },
+          "prob_25": {
+            "object_crop_prob": 0.25,
+            "ray_pixels": 841720,
+            "fish_pixels": 12600809,
+            "macro_pixels": 6046534,
+            "samples_with_ray": 24,
+            "ray_exposure_pct": 6.0
+          },
+          "prob_50": {
+            "object_crop_prob": 0.5,
+            "ray_pixels": 838070,
+            "fish_pixels": 12749935,
+            "macro_pixels": 6167608,
+            "samples_with_ray": 24,
+            "ray_exposure_pct": 6.0
+          },
+          "prob_70": {
+            "object_crop_prob": 0.7,
+            "ray_pixels": 858527,
+            "fish_pixels": 13106666,
+            "macro_pixels": 6251557,
+            "samples_with_ray": 24,
+            "ray_exposure_pct": 6.0
+          }
+        },
+        "runtime_s": 41.32,
+        "verdict": "CONFIRMED"
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "exp_id": "EXP-17-DEGRADATION-BREAKDOWN",
+      "track": "TRACK-A",
+      "name": "Degradation Robustness Breakdown Across Water Types and Depths",
+      "description": "Audit segmentation quality across 10 Jerlov water types (Oceanic I-III vs Coastal 1-9C) and 4 depth brackets (5-100m)",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp17_degradation_breakdown.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp17_degradation_breakdown.json",
+      "start_time": "2026-10-24T20:06:08Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-17-DEGRADATION-BREAKDOWN.log",
+      "runtime_s": 307.81,
+      "exit_code": 0,
+      "metrics": {
+        "water_type_breakdown": {
+          "Type 1 (Oceanic I)": {
+            "Q_seg": 0.59239,
+            "mIoU": 0.71357,
+            "Macro_F1": 0.83018,
+            "coverage": 1.0,
+            "class_ious": [
+              0.78414,
+              0.75596,
+              0.78528,
+              0.66249,
+              0.57996
+            ],
+            "class_f1s": [
+              0.87901,
+              0.86102,
+              0.87973,
+              0.79699,
+              0.73414
+            ],
+            "class_precisions": [
+              0.85766,
+              0.88825,
+              0.8495,
+              0.76888,
+              0.80584
+            ],
+            "class_recalls": [
+              0.90145,
+              0.83542,
+              0.91219,
+              0.82723,
+              0.67416
+            ],
+            "confusion_matrix": [
+              [
+                36632815,
+                3415659,
+                299131,
+                21051,
+                268928
+              ],
+              [
+                5498609,
+                29395478,
+                165164,
+                0,
+                127297
+              ],
+              [
+                282639,
+                134419,
+                4539784,
+                19958,
+                0
+              ],
+              [
+                25492,
+                0,
+                86064,
+                534183,
+                13
+              ],
+              [
+                273156,
+                148218,
+                253911,
+                119563,
+                1644548
+              ]
+            ]
+          },
+          "Type 2 (Oceanic IA)": {
+            "Q_seg": 0.59077,
+            "mIoU": 0.71236,
+            "Macro_F1": 0.82931,
+            "coverage": 1.0,
+            "class_ious": [
+              0.78277,
+              0.7549,
+              0.78587,
+              0.65984,
+              0.57843
+            ],
+            "class_f1s": [
+              0.87815,
+              0.86033,
+              0.8801,
+              0.79507,
+              0.73292
+            ],
+            "class_precisions": [
+              0.85792,
+              0.88607,
+              0.84966,
+              0.76594,
+              0.80432
+            ],
+            "class_recalls": [
+              0.89936,
+              0.83605,
+              0.91279,
+              0.8265,
+              0.67316
+            ],
+            "confusion_matrix": [
+              [
+                36547837,
+                3498765,
+                298605,
+                22045,
+                270332
+              ],
+              [
+                5476033,
+                29417875,
+                163534,
+                0,
+                129106
+              ],
+              [
+                277852,
+                135616,
+                4542773,
+                20515,
+                44
+              ],
+              [
+                25154,
+                0,
+                86860,
+                533716,
+                22
+              ],
+              [
+                273725,
+                148240,
+                254777,
+                120539,
+                1642115
+              ]
+            ]
+          },
+          "Type 3 (Oceanic IB)": {
+            "Q_seg": 0.58944,
+            "mIoU": 0.7114,
+            "Macro_F1": 0.82856,
+            "coverage": 1.0,
+            "class_ious": [
+              0.78284,
+              0.75528,
+              0.78751,
+              0.65364,
+              0.57774
+            ],
+            "class_f1s": [
+              0.87819,
+              0.86058,
+              0.88112,
+              0.79055,
+              0.73237
+            ],
+            "class_precisions": [
+              0.85815,
+              0.88609,
+              0.85152,
+              0.75648,
+              0.80291
+            ],
+            "class_recalls": [
+              0.89919,
+              0.8365,
+              0.91286,
+              0.82782,
+              0.67322
+            ],
+            "confusion_matrix": [
+              [
+                36541022,
+                3507174,
+                297797,
+                20505,
+                271086
+              ],
+              [
+                5456437,
+                29433704,
+                164400,
+                0,
+                132007
+              ],
+              [
+                280277,
+                133435,
+                4543112,
+                19976,
+                0
+              ],
+              [
+                25020,
+                0,
+                86146,
+                534567,
+                19
+              ],
+              [
+                278389,
+                143321,
+                243849,
+                131598,
+                1642239
+              ]
+            ]
+          },
+          "Type 4 (Oceanic II)": {
+            "Q_seg": 0.55814,
+            "mIoU": 0.68839,
+            "Macro_F1": 0.8108,
+            "coverage": 1.0,
+            "class_ious": [
+              0.78218,
+              0.75523,
+              0.78189,
+              0.56556,
+              0.55708
+            ],
+            "class_f1s": [
+              0.87778,
+              0.86055,
+              0.8776,
+              0.72251,
+              0.71555
+            ],
+            "class_precisions": [
+              0.8588,
+              0.88699,
+              0.84196,
+              0.64378,
+              0.78974
+            ],
+            "class_recalls": [
+              0.89761,
+              0.83564,
+              0.91639,
+              0.82317,
+              0.6541
+            ],
+            "confusion_matrix": [
+              [
+                36476714,
+                3529807,
+                312134,
+                32526,
+                286403
+              ],
+              [
+                5478096,
+                29403154,
+                167408,
+                0,
+                137890
+              ],
+              [
+                258451,
+                134801,
+                4560669,
+                22687,
+                192
+              ],
+              [
+                23092,
+                0,
+                90772,
+                531566,
+                322
+              ],
+              [
+                237686,
+                81420,
+                285765,
+                238921,
+                1595604
+              ]
+            ]
+          },
+          "Type 5 (Oceanic III)": {
+            "Q_seg": 0.55798,
+            "mIoU": 0.68814,
+            "Macro_F1": 0.81085,
+            "coverage": 1.0,
+            "class_ious": [
+              0.78364,
+              0.755,
+              0.77342,
+              0.57013,
+              0.55851
+            ],
+            "class_f1s": [
+              0.8787,
+              0.8604,
+              0.87224,
+              0.72622,
+              0.71672
+            ],
+            "class_precisions": [
+              0.85875,
+              0.89009,
+              0.83046,
+              0.64563,
+              0.78139
+            ],
+            "class_recalls": [
+              0.8996,
+              0.83262,
+              0.91844,
+              0.82979,
+              0.66194
+            ],
+            "confusion_matrix": [
+              [
+                36557475,
+                3426674,
+                320432,
+                39083,
+                293920
+              ],
+              [
+                5559766,
+                29297169,
+                172508,
+                0,
+                157105
+              ],
+              [
+                250471,
+                131801,
+                4570877,
+                23231,
+                420
+              ],
+              [
+                20688,
+                0,
+                88918,
+                535837,
+                309
+              ],
+              [
+                182296,
+                59271,
+                351296,
+                231792,
+                1614741
+              ]
+            ]
+          },
+          "Type 6 (Coastal 1C)": {
+            "Q_seg": 0.55893,
+            "mIoU": 0.68881,
+            "Macro_F1": 0.81145,
+            "coverage": 1.0,
+            "class_ious": [
+              0.77932,
+              0.75495,
+              0.77616,
+              0.57737,
+              0.55625
+            ],
+            "class_f1s": [
+              0.87597,
+              0.86037,
+              0.87398,
+              0.73206,
+              0.71486
+            ],
+            "class_precisions": [
+              0.86158,
+              0.88036,
+              0.83649,
+              0.66199,
+              0.793
+            ],
+            "class_recalls": [
+              0.89086,
+              0.84126,
+              0.91498,
+              0.81873,
+              0.65073
+            ],
+            "confusion_matrix": [
+              [
+                36202195,
+                3800733,
+                303611,
+                32008,
+                299037
+              ],
+              [
+                5299407,
+                29601003,
+                171187,
+                0,
+                114951
+              ],
+              [
+                267026,
+                132617,
+                4553667,
+                23267,
+                223
+              ],
+              [
+                22923,
+                0,
+                93984,
+                528697,
+                148
+              ],
+              [
+                226656,
+                89341,
+                321330,
+                214676,
+                1587393
+              ]
+            ]
+          },
+          "Type 7 (Coastal 3C)": {
+            "Q_seg": 0.55868,
+            "mIoU": 0.68818,
+            "Macro_F1": 0.81182,
+            "coverage": 1.0,
+            "class_ious": [
+              0.77254,
+              0.74423,
+              0.76482,
+              0.60117,
+              0.55813
+            ],
+            "class_f1s": [
+              0.87167,
+              0.85337,
+              0.86674,
+              0.75091,
+              0.71641
+            ],
+            "class_precisions": [
+              0.8564,
+              0.87467,
+              0.82522,
+              0.68414,
+              0.80176
+            ],
+            "class_recalls": [
+              0.8875,
+              0.83307,
+              0.91265,
+              0.83213,
+              0.64749
+            ],
+            "confusion_matrix": [
+              [
+                36065954,
+                3968342,
+                314439,
+                37754,
+                251095
+              ],
+              [
+                5569947,
+                29312890,
+                172018,
+                0,
+                131693
+              ],
+              [
+                274147,
+                132151,
+                4542095,
+                20710,
+                7697
+              ],
+              [
+                21480,
+                0,
+                86878,
+                537351,
+                43
+              ],
+              [
+                182045,
+                99588,
+                388658,
+                189629,
+                1579476
+              ]
+            ]
+          },
+          "Type 8 (Coastal 5C)": {
+            "Q_seg": 0.52942,
+            "mIoU": 0.66683,
+            "Macro_F1": 0.79393,
+            "coverage": 1.0,
+            "class_ious": [
+              0.77365,
+              0.74529,
+              0.7354,
+              0.61832,
+              0.46151
+            ],
+            "class_f1s": [
+              0.87238,
+              0.85406,
+              0.84753,
+              0.76415,
+              0.63155
+            ],
+            "class_precisions": [
+              0.85398,
+              0.87673,
+              0.81628,
+              0.70089,
+              0.72134
+            ],
+            "class_recalls": [
+              0.89159,
+              0.83254,
+              0.88126,
+              0.83996,
+              0.56164
+            ],
+            "confusion_matrix": [
+              [
+                36231943,
+                3776489,
+                305601,
+                39936,
+                283615
+              ],
+              [
+                5564321,
+                29294061,
+                201759,
+                0,
+                126407
+              ],
+              [
+                322175,
+                135619,
+                4385856,
+                13913,
+                119237
+              ],
+              [
+                31696,
+                0,
+                71644,
+                542406,
+                6
+              ],
+              [
+                276926,
+                206672,
+                408115,
+                177628,
+                1370055
+              ]
+            ]
+          },
+          "Type 9 (Coastal 7C)": {
+            "Q_seg": 0.43476,
+            "mIoU": 0.59543,
+            "Macro_F1": 0.73017,
+            "coverage": 1.0,
+            "class_ious": [
+              0.76586,
+              0.74996,
+              0.60768,
+              0.56425,
+              0.28941
+            ],
+            "class_f1s": [
+              0.86741,
+              0.85712,
+              0.75597,
+              0.72143,
+              0.4489
+            ],
+            "class_precisions": [
+              0.85739,
+              0.87285,
+              0.74126,
+              0.66377,
+              0.45263
+            ],
+            "class_recalls": [
+              0.87767,
+              0.84194,
+              0.77127,
+              0.79006,
+              0.44523
+            ],
+            "confusion_matrix": [
+              [
+                35666433,
+                3894838,
+                386101,
+                60260,
+                629952
+              ],
+              [
+                5124125,
+                29624984,
+                265221,
+                1412,
+                170806
+              ],
+              [
+                382103,
+                231858,
+                3838481,
+                15711,
+                508647
+              ],
+              [
+                27721,
+                0,
+                103801,
+                510184,
+                4046
+              ],
+              [
+                398619,
+                188920,
+                584717,
+                181043,
+                1086097
+              ]
+            ]
+          },
+          "Type 10 (Coastal 9C)": {
+            "Q_seg": 0.32872,
+            "mIoU": 0.5038,
+            "Macro_F1": 0.65248,
+            "coverage": 1.0,
+            "class_ious": [
+              0.67933,
+              0.65403,
+              0.40591,
+              0.54635,
+              0.23341
+            ],
+            "class_f1s": [
+              0.80905,
+              0.79083,
+              0.57743,
+              0.70663,
+              0.37847
+            ],
+            "class_precisions": [
+              0.82771,
+              0.79173,
+              0.54417,
+              0.6628,
+              0.31851
+            ],
+            "class_recalls": [
+              0.79122,
+              0.78994,
+              0.61502,
+              0.75667,
+              0.46625
+            ],
+            "confusion_matrix": [
+              [
+                32153115,
+                6250873,
+                859635,
+                76789,
+                1297172
+              ],
+              [
+                5510097,
+                27795274,
+                1238195,
+                12183,
+                630799
+              ],
+              [
+                602949,
+                783566,
+                3060846,
+                36731,
+                492708
+              ],
+              [
+                52457,
+                29001,
+                62867,
+                488621,
+                12806
+              ],
+              [
+                527426,
+                248474,
+                403252,
+                122887,
+                1137357
+              ]
+            ]
+          }
+        },
+        "depth_breakdown": {
+          "Shallow (5-25m)": {
+            "Q_seg": 0.58483,
+            "mIoU": 0.70774,
+            "Macro_F1": 0.82634,
+            "coverage": 1.0,
+            "class_ious": [
+              0.77864,
+              0.75054,
+              0.77026,
+              0.66414,
+              0.57512
+            ],
+            "class_f1s": [
+              0.87554,
+              0.8575,
+              0.87022,
+              0.79818,
+              0.73026
+            ],
+            "class_precisions": [
+              0.8553,
+              0.88606,
+              0.83228,
+              0.76667,
+              0.78203
+            ],
+            "class_recalls": [
+              0.89677,
+              0.83071,
+              0.91178,
+              0.8324,
+              0.68492
+            ],
+            "confusion_matrix": [
+              [
+                91105923,
+                8874888,
+                789594,
+                82336,
+                741219
+              ],
+              [
+                14105980,
+                73074925,
+                430940,
+                0,
+                354525
+              ],
+              [
+                621458,
+                350221,
+                11344427,
+                57833,
+                68061
+              ],
+              [
+                56520,
+                0,
+                213619,
+                1343808,
+                433
+              ],
+              [
+                629204,
+                171617,
+                851895,
+                268817,
+                4176957
+              ]
+            ]
+          },
+          "Mid-Depth (30-50m)": {
+            "Q_seg": 0.52991,
+            "mIoU": 0.66716,
+            "Macro_F1": 0.79428,
+            "coverage": 1.0,
+            "class_ious": [
+              0.77669,
+              0.75105,
+              0.74045,
+              0.59168,
+              0.47593
+            ],
+            "class_f1s": [
+              0.87431,
+              0.85783,
+              0.85087,
+              0.74346,
+              0.64492
+            ],
+            "class_precisions": [
+              0.85852,
+              0.87911,
+              0.82321,
+              0.6731,
+              0.70009
+            ],
+            "class_recalls": [
+              0.89069,
+              0.83755,
+              0.88045,
+              0.83025,
+              0.59781
+            ],
+            "confusion_matrix": [
+              [
+                180977927,
+                18753269,
+                1592418,
+                185658,
+                1678648
+              ],
+              [
+                26776097,
+                147353205,
+                990953,
+                2481,
+                810004
+              ],
+              [
+                1490644,
+                757794,
+                21909065,
+                93929,
+                632568
+              ],
+              [
+                128412,
+                0,
+                417296,
+                2680676,
+                2376
+              ],
+              [
+                1429952,
+                751318,
+                1704377,
+                1019809,
+                7291524
+              ]
+            ]
+          },
+          "Deep (55-75m)": {
+            "Q_seg": 0.44519,
+            "mIoU": 0.60026,
+            "Macro_F1": 0.74167,
+            "coverage": 1.0,
+            "class_ious": [
+              0.7421,
+              0.715,
+              0.60333,
+              0.55821,
+              0.38263
+            ],
+            "class_f1s": [
+              0.85196,
+              0.83382,
+              0.7526,
+              0.71647,
+              0.55349
+            ],
+            "class_precisions": [
+              0.8477,
+              0.84794,
+              0.71493,
+              0.66548,
+              0.54464
+            ],
+            "class_recalls": [
+              0.85627,
+              0.82017,
+              0.79446,
+              0.77593,
+              0.56262
+            ],
+            "confusion_matrix": [
+              [
+                86991653,
+                11441197,
+                1315474,
+                113963,
+                1731673
+              ],
+              [
+                13654761,
+                72147462,
+                1459501,
+                11114,
+                693532
+              ],
+              [
+                1085988,
+                977868,
+                9884668,
+                64937,
+                428539
+              ],
+              [
+                90791,
+                29001,
+                227019,
+                1252644,
+                14925
+              ],
+              [
+                797768,
+                490530,
+                939398,
+                439650,
+                3431144
+              ]
+            ]
+          },
+          "Extreme (80-100m)": {
+            "Q_seg": 1.0,
+            "mIoU": 1.0,
+            "Macro_F1": 1.0,
+            "coverage": 1.0,
+            "class_ious": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "class_f1s": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "class_precisions": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "class_recalls": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          }
+        },
+        "runtime_s": 304.11,
+        "total_images": 800
+      }
+    },
+    {
+      "exp_id": "EXP-08B-FOLD3-PILOT",
+      "track": "TRACK-A",
+      "name": "Controlled Training Pilot on Weakest Fold (Fold 3)",
+      "description": "Apply validated SWA + low-lr recipe to Fold 3 (baseline 0.2301) to evaluate whether turbidity degradation can be recovered without collapse",
+      "command": "python -u experiments/overnight_20261024/scripts/run_exp08b_fold3_pilot.py",
+      "status": "COMPLETED",
+      "output_json": "experiments/overnight_20261024/predictions/exp08b_fold3_pilot.json",
+      "start_time": "2026-10-24T20:12:41Z",
+      "log_file": "c:\\Projects\\SAT-EURS\\experiments\\overnight_20261024\\logs\\EXP-08B-FOLD3-PILOT.log",
+      "runtime_s": 528.9,
+      "exit_code": 0,
+      "metrics": {
+        "baseline_q_seg": 0.23007,
+        "pilot_q_seg": 0.39369,
+        "delta_q_seg": 0.16362,
+        "delta_miou": 0.15436,
+        "delta_f1": 0.13891,
+        "class_ious_baseline": [
+          0.7155,
+          0.4865,
+          0.7962,
+          0.0,
+          0.1651
+        ],
+        "class_ious_pilot": [
+          0.6882,
+          0.4422,
+          0.78,
+          1.0,
+          0.0248
+        ]
+      },
+      "verdict": "PROMOTED"
+    }
+  ]
+}

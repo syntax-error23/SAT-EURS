@@ -1,0 +1,194 @@
+{
+  "benchmark": "V21_RESTORATION_CANDIDATE_AUDIT",
+  "timestamp": "2026-10-18 17:02:22 UTC",
+  "baseline_sha256": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+  "evaluated_folds": [
+    0,
+    2
+  ],
+  "total_images": 1600,
+  "duration_seconds": 1774.72,
+  "pooled_metrics": {
+    "cand1_raw_degraded": {
+      "name": "Raw Degraded Input",
+      "fold_safe": true,
+      "dependencies": "None",
+      "PSNR_dB": 12.72,
+      "PSNR_norm": 0.0,
+      "SSIM": 0.4776,
+      "Sharpness": 0.0693,
+      "Q_FR": 0.2219,
+      "UIQM": 0.6572,
+      "UCIQE": 0.2303,
+      "latency_ms": 0.1,
+      "delta_Q_FR": -0.4271,
+      "delta_composite_30pct": -0.12813
+    },
+    "cand2_r0_table_b_raw": {
+      "name": "Strict Fold-Safe RSUIGM Candidate B (No Unsharp)",
+      "fold_safe": true,
+      "dependencies": "CUDA linalg table",
+      "PSNR_dB": 24.79,
+      "PSNR_norm": 0.4897,
+      "SSIM": 0.8047,
+      "Sharpness": 0.397,
+      "Q_FR": 0.6222,
+      "UIQM": 1.1263,
+      "UCIQE": 0.3347,
+      "latency_ms": 2.5,
+      "delta_Q_FR": -0.0268,
+      "delta_composite_30pct": -0.00804
+    },
+    "cand3_r0_table_b_unsharp": {
+      "name": "Strict Fold-Safe RSUIGM Candidate B + Unsharp 1.34",
+      "fold_safe": true,
+      "dependencies": "CUDA table + Gaussian filter",
+      "PSNR_dB": 24.43,
+      "PSNR_norm": 0.4713,
+      "SSIM": 0.7983,
+      "Sharpness": 0.6442,
+      "Q_FR": 0.6357,
+      "UIQM": 1.2871,
+      "UCIQE": 0.373,
+      "latency_ms": 3.2,
+      "delta_Q_FR": -0.0133,
+      "delta_composite_30pct": -0.00399
+    },
+    "cand4_v18_refiner_fold_safe": {
+      "name": "Strict Fold-Safe V18 Refiner (Fold Table + Fold Refiner)",
+      "fold_safe": true,
+      "dependencies": "CUDA table + V18 NAFNet Refiner (1.2M params)",
+      "PSNR_dB": 25.41,
+      "PSNR_norm": 0.5203,
+      "SSIM": 0.8192,
+      "Sharpness": 0.4621,
+      "Q_FR": 0.649,
+      "UIQM": 1.2921,
+      "UCIQE": 0.3975,
+      "latency_ms": 25.56,
+      "delta_Q_FR": 0.0,
+      "delta_composite_30pct": 0.0
+    },
+    "cand5_v18_dev_ensemble": {
+      "name": "V18 Dev Deployment Configuration (20-Scene Table + 5-Fold Ensemble)",
+      "fold_safe": false,
+      "dependencies": "20-Scene Table + 5-Fold Refiner Ensemble",
+      "PSNR_dB": 26.01,
+      "PSNR_norm": 0.5503,
+      "SSIM": 0.8338,
+      "Sharpness": 0.441,
+      "Q_FR": 0.6669,
+      "UIQM": 1.232,
+      "UCIQE": 0.3385,
+      "latency_ms": 876.02,
+      "delta_Q_FR": 0.0179,
+      "delta_composite_30pct": 0.00537
+    }
+  },
+  "fold_metrics": {
+    "fold_0": {
+      "cand1_raw_degraded": {
+        "name": "Raw Degraded Input",
+        "PSNR_dB": 13.99,
+        "PSNR_norm": 0.0,
+        "SSIM": 0.4979,
+        "Sharpness": 0.0652,
+        "Q_FR": 0.2306,
+        "UIQM": 0.6615,
+        "UCIQE": 0.2303
+      },
+      "cand2_r0_table_b_raw": {
+        "name": "Strict Fold-Safe RSUIGM Candidate B (No Unsharp)",
+        "PSNR_dB": 25.05,
+        "PSNR_norm": 0.5024,
+        "SSIM": 0.8002,
+        "Sharpness": 0.3798,
+        "Q_FR": 0.6242,
+        "UIQM": 1.1204,
+        "UCIQE": 0.3419
+      },
+      "cand3_r0_table_b_unsharp": {
+        "name": "Strict Fold-Safe RSUIGM Candidate B + Unsharp 1.34",
+        "PSNR_dB": 24.7,
+        "PSNR_norm": 0.4851,
+        "SSIM": 0.7943,
+        "Sharpness": 0.6307,
+        "Q_FR": 0.6388,
+        "UIQM": 1.2754,
+        "UCIQE": 0.3909
+      },
+      "cand4_v18_refiner_fold_safe": {
+        "name": "Strict Fold-Safe V18 Refiner (Fold Table + Fold Refiner)",
+        "PSNR_dB": 25.71,
+        "PSNR_norm": 0.5353,
+        "SSIM": 0.8184,
+        "Sharpness": 0.4363,
+        "Q_FR": 0.6528,
+        "UIQM": 1.3094,
+        "UCIQE": 0.4228
+      },
+      "cand5_v18_dev_ensemble": {
+        "name": "V18 Dev Deployment Configuration (20-Scene Table + 5-Fold Ensemble)",
+        "PSNR_dB": 26.24,
+        "PSNR_norm": 0.5622,
+        "SSIM": 0.8362,
+        "Sharpness": 0.4282,
+        "Q_FR": 0.6721,
+        "UIQM": 1.2282,
+        "UCIQE": 0.3467
+      }
+    },
+    "fold_2": {
+      "cand1_raw_degraded": {
+        "name": "Raw Degraded Input",
+        "PSNR_dB": 11.45,
+        "PSNR_norm": 0.0,
+        "SSIM": 0.4574,
+        "Sharpness": 0.0735,
+        "Q_FR": 0.2132,
+        "UIQM": 0.6529,
+        "UCIQE": 0.2304
+      },
+      "cand2_r0_table_b_raw": {
+        "name": "Strict Fold-Safe RSUIGM Candidate B (No Unsharp)",
+        "PSNR_dB": 24.54,
+        "PSNR_norm": 0.477,
+        "SSIM": 0.8092,
+        "Sharpness": 0.4142,
+        "Q_FR": 0.6202,
+        "UIQM": 1.1322,
+        "UCIQE": 0.3274
+      },
+      "cand3_r0_table_b_unsharp": {
+        "name": "Strict Fold-Safe RSUIGM Candidate B + Unsharp 1.34",
+        "PSNR_dB": 24.15,
+        "PSNR_norm": 0.4574,
+        "SSIM": 0.8022,
+        "Sharpness": 0.6578,
+        "Q_FR": 0.6326,
+        "UIQM": 1.2987,
+        "UCIQE": 0.3551
+      },
+      "cand4_v18_refiner_fold_safe": {
+        "name": "Strict Fold-Safe V18 Refiner (Fold Table + Fold Refiner)",
+        "PSNR_dB": 25.11,
+        "PSNR_norm": 0.5053,
+        "SSIM": 0.8201,
+        "Sharpness": 0.4878,
+        "Q_FR": 0.6452,
+        "UIQM": 1.2748,
+        "UCIQE": 0.3721
+      },
+      "cand5_v18_dev_ensemble": {
+        "name": "V18 Dev Deployment Configuration (20-Scene Table + 5-Fold Ensemble)",
+        "PSNR_dB": 25.77,
+        "PSNR_norm": 0.5384,
+        "SSIM": 0.8313,
+        "Sharpness": 0.4537,
+        "Q_FR": 0.6617,
+        "UIQM": 1.2358,
+        "UCIQE": 0.3303
+      }
+    }
+  }
+}

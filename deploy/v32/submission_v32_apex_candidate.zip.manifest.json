@@ -1,0 +1,23 @@
+{
+  "candidate": "V32-Apex",
+  "archive_path": "deploy/v32/submission_v32_apex_candidate.zip",
+  "sha256": "156bcff73f5e32fcbe5ccf333b75523b048ba6465daa782c35190205089be6e4",
+  "size_mb": 497.94,
+  "total_images": 1200,
+  "total_pixels": 869580800,
+  "pixel_counts": {
+    "0": 480141497,
+    "1": 327452400,
+    "2": 18224200,
+    "3": 24390691,
+    "4": 19372012
+  },
+  "scene_uniqueness": {
+    "test04": 200,
+    "test09": 200,
+    "test10": 200,
+    "test11": 200,
+    "test19": 200,
+    "test20": 200
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "1": {
+    "fold": 1,
+    "promoted": false,
+    "delta_q": -0.07246000000000002,
+    "best_checkpoint": "checkpoints/v18/fold_1/segmenter_best.pt"
+  },
+  "2": {
+    "fold": 2,
+    "promoted": false,
+    "delta_q": -0.12082999999999999,
+    "best_checkpoint": "checkpoints/v18/fold_2/segmenter_best.pt"
+  },
+  "4": {
+    "fold": 4,
+    "promoted": false,
+    "delta_q": -0.12329999999999999,
+    "best_checkpoint": "checkpoints/v18/fold_4/segmenter_best.pt"
+  }
+}

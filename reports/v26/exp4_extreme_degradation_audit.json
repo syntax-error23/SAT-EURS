@@ -1,0 +1,577 @@
+{
+  "train_total": 4000,
+  "train_pure_zero_count": 61,
+  "train_pure_zero_pct": 1.525,
+  "train_near_zero_count": 254,
+  "train_near_zero_pct": 6.35,
+  "train_pure_zero_items": [
+    {
+      "scene": "fish1",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish1",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish1",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish11",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish11",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish11",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish12",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish12",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish12",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish13",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish13",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish14",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish14",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish15",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish15",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish15",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish17",
+      "wt": 10,
+      "depth": 85,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish17",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish17",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish17",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish18",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish18",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish18",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish2",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish2",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish2",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish20",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish20",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish20",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish21",
+      "wt": 10,
+      "depth": 85,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish21",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish21",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish21",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish4",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish4",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish4",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish5",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish5",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish5",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish7",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish7",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish7",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish9",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "fish9",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "ray1",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "ray1",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "ray1",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "seahorse1",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "seahorse1",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "seahorse1",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 9,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 10,
+      "depth": 80,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 10,
+      "depth": 85,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "sharkFish",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "starfish2",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "starfish2",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "turtles1",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "turtles1",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "turtles1",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    }
+  ],
+  "test_total": 1200,
+  "test_pure_zero_count": 14,
+  "test_pure_zero_pct": 1.1666666666666667,
+  "test_near_zero_count": 72,
+  "test_near_zero_pct": 6.0,
+  "test_pure_zero_items": [
+    {
+      "scene": "test04",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test04",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test09",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test09",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test10",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test10",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test11",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test19",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test19",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test19",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test20",
+      "wt": 10,
+      "depth": 85,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test20",
+      "wt": 10,
+      "depth": 90,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test20",
+      "wt": 10,
+      "depth": 95,
+      "max": 0,
+      "mean": 0.0
+    },
+    {
+      "scene": "test20",
+      "wt": 10,
+      "depth": 100,
+      "max": 0,
+      "mean": 0.0
+    }
+  ],
+  "train_zero_gt_distribution": {
+    "class_0": {
+      "pixel_count": 31348357,
+      "pct": 49.010037594154234
+    },
+    "class_1": {
+      "pixel_count": 26299022,
+      "pct": 41.115904636070375
+    },
+    "class_2": {
+      "pixel_count": 3871083,
+      "pct": 6.052053170125992
+    },
+    "class_3": {
+      "pixel_count": 629178,
+      "pct": 0.9836572115538551
+    },
+    "class_4": {
+      "pixel_count": 1815496,
+      "pct": 2.838347388095543
+    }
+  },
+  "zero_conditions_train": [
+    "wt10_d100",
+    "wt10_d80",
+    "wt10_d85",
+    "wt10_d90",
+    "wt10_d95",
+    "wt9_d100"
+  ],
+  "zero_conditions_test": [
+    "wt10_d100",
+    "wt10_d85",
+    "wt10_d90",
+    "wt10_d95"
+  ]
+}

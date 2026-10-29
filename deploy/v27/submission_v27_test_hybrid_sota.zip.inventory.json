@@ -1,0 +1,20 @@
+{
+  "candidate_zip": "deploy/v27/submission_v27_test_hybrid_sota.zip",
+  "sha256": "722b106ae817e4efbe911a83497ffabe4aa42387f2aedee7e5ac85deb6668c7c",
+  "size_mb": 498.36,
+  "file_count": 2400,
+  "alpha_restoration": 0.1,
+  "sigma_restoration": 2.0,
+  "offset_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.25
+  ],
+  "full20_weight": 0.5,
+  "use_targeted_fold0": true,
+  "has_full20": true,
+  "timestamp": "2026-10-23T14:08:18Z",
+  "evaluation_census": {}
+}

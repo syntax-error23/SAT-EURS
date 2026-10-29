@@ -1,0 +1,114 @@
+{
+  "global_1.20": {
+    "label": "1. Existing Global Unsharp (gamma=1.20)",
+    "psnr_db": 18.9197,
+    "psnr_norm": 0.196,
+    "ssim": 0.6841,
+    "sharpness": 0.0786,
+    "q_fr": 0.4039,
+    "q_nr": 0.743,
+    "miou": 0.3955,
+    "macro_f1": 0.5196,
+    "p_cov": 1.0,
+    "q_seg": 0.2055,
+    "s_comp": 0.3188,
+    "per_class_iou": [
+      0.6817,
+      0.6176,
+      0.4084,
+      0.2425,
+      0.0275
+    ],
+    "per_class_f1": [
+      0.8108,
+      0.7636,
+      0.5799,
+      0.3903,
+      0.0535
+    ]
+  },
+  "none_1.00": {
+    "label": "2. No Unsharp Filtering (gamma=1.00)",
+    "psnr_db": 18.8599,
+    "psnr_norm": 0.193,
+    "ssim": 0.6779,
+    "sharpness": 0.0611,
+    "q_fr": 0.398,
+    "q_nr": 0.743,
+    "miou": 0.3979,
+    "macro_f1": 0.523,
+    "p_cov": 1.0,
+    "q_seg": 0.2081,
+    "s_comp": 0.3186,
+    "per_class_iou": [
+      0.6852,
+      0.6178,
+      0.4076,
+      0.2458,
+      0.0331
+    ],
+    "per_class_f1": [
+      0.8132,
+      0.7638,
+      0.5791,
+      0.3946,
+      0.0641
+    ]
+  },
+  "reduced_1.10": {
+    "label": "3. Reduced Global Sharpening (gamma=1.10)",
+    "psnr_db": 18.8925,
+    "psnr_norm": 0.1946,
+    "ssim": 0.6813,
+    "sharpness": 0.0695,
+    "q_fr": 0.4011,
+    "q_nr": 0.743,
+    "miou": 0.3968,
+    "macro_f1": 0.5215,
+    "p_cov": 1.0,
+    "q_seg": 0.2069,
+    "s_comp": 0.3188,
+    "per_class_iou": [
+      0.6831,
+      0.6177,
+      0.4077,
+      0.2448,
+      0.0307
+    ],
+    "per_class_f1": [
+      0.8117,
+      0.7637,
+      0.5793,
+      0.3933,
+      0.0595
+    ]
+  },
+  "edge_gated": {
+    "label": "4. Edge-Gated Sharpening (base=0.45, thresh=0.08)",
+    "psnr_db": 18.9533,
+    "psnr_norm": 0.1977,
+    "ssim": 0.6866,
+    "sharpness": 0.0977,
+    "q_fr": 0.4077,
+    "q_nr": 0.743,
+    "miou": 0.4001,
+    "macro_f1": 0.5241,
+    "p_cov": 1.0,
+    "q_seg": 0.2097,
+    "s_comp": 0.3224,
+    "per_class_iou": [
+      0.6859,
+      0.6189,
+      0.4106,
+      0.2629,
+      0.0223
+    ],
+    "per_class_f1": [
+      0.8137,
+      0.7646,
+      0.5822,
+      0.4163,
+      0.0436
+    ]
+  }
+}

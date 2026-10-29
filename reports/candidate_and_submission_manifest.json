@@ -1,0 +1,368 @@
+{
+  "summary": {
+    "best_historical_score_track1": {
+      "score": 0.694,
+      "submission_id": "18747",
+      "phase": "Development",
+      "method": "EURS-Apex-V16-SOTA"
+    },
+    "best_historical_score_track2": {
+      "score": 0.338,
+      "submission_id": "18699",
+      "phase": "Development",
+      "method": "EURS-Net-V5-Calib"
+    },
+    "best_testing_track1": {
+      "score": 0.634,
+      "submission_id": "19096",
+      "phase": "Testing",
+      "method": "V28-A Five-Fold Ablation",
+      "artifact_path": "deploy/v28/submission_v28a_fivefold_ablation.zip",
+      "backup_path": "deploy/protected_reference/submission_v28a_fivefold_ablation.zip",
+      "sha256": "471bf9b9710e2922805ac09746943f318f2d140de074c917a34f5ded6468ab39"
+    },
+    "best_testing_track2": {
+      "score": 0.253,
+      "submission_id": "19130",
+      "phase": "Testing",
+      "method": "EURS-LiteV3-Full20",
+      "artifact_path": "deploy/eurs_litev3_production.onnx",
+      "backup_path": "deploy/protected_reference/eurs_litev3_production.onnx",
+      "sha256": "b39efc20918927ebf073ae46c4fcf51e83ee658e0f957f60fe32f753df93a5d5"
+    },
+    "best_research_reference_track2": {
+      "score": 0.303,
+      "submission_id": "18751",
+      "phase": "Development (Research Reference)",
+      "method": "EXP-COMBINED-BEST",
+      "artifact_path": "deploy/EXP-COMBINED-BEST.onnx",
+      "backup_path": "deploy/protected_reference/EXP-COMBINED-BEST_18751.onnx",
+      "sha256": "645eb785ba2bfb07a9ce4349b19b79151af627a88c58b466035395e48cbbcd52"
+    },
+    "best_testing_track2_ready": {
+      "method": "Track2-SOTA-Orin",
+      "artifact": "deploy/track2_sota_orin_submission.zip",
+      "sha256": "615cc5a4074225cad48306be19c83bb450e189ffc19a94109adebcf58b172900"
+    }
+  },
+  "candidates": [
+    {
+      "track": 1,
+      "candidate_id": "T1-V28A-CHAMPION",
+      "human_readable_name": "V28-A Five-Fold Ablation (Champion Reference)",
+      "submission_id": "19096",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/v28/submission_v28a_fivefold_ablation.zip",
+      "sha256": "471bf9b9710e2922805ac09746943f318f2d140de074c917a34f5ded6468ab39",
+      "official_composite": 0.634,
+      "official_metrics": {
+        "Q_seg": 0.5702,
+        "mIoU": 0.704,
+        "Macro_F1": 0.81,
+        "PSNR": 25.48,
+        "SSIM": 0.829,
+        "Sharpness": 0.973,
+        "UIQM": 0.644,
+        "UCIQE": 0.592,
+        "CCF": 0.09
+      },
+      "checkpoint_provenance": {
+        "fold_0": "checkpoints/v27/segmenter_v27_fold0_best.pt",
+        "fold_1": "checkpoints/v18/fold_1/segmenter_best.pt",
+        "fold_2": "checkpoints/v18/fold_2/segmenter_best.pt",
+        "fold_3": "checkpoints/v18/fold_3/segmenter_best.pt",
+        "fold_4": "checkpoints/v18/fold_4/segmenter_best.pt",
+        "refiners": "checkpoints/v18/fold_{k}/refiner_best.pt + tbl19_20sc_scale_consistent.pt"
+      },
+      "offsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.25
+      ],
+      "tta": "Horizontal-Flip TTA",
+      "submission_status": "SCORED",
+      "is_highest_eligible_testing": true,
+      "claim_type": "Verified from official leaderboard"
+    },
+    {
+      "track": 1,
+      "candidate_id": "T1-V32-APEX",
+      "human_readable_name": "V32-Apex-Candidate",
+      "submission_id": "19333",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/v32/submission_v32_apex_candidate.zip",
+      "sha256": "156bcff73f5e32fcbe5ccf333b75523b048ba6465daa782c35190205089be6e4",
+      "official_composite": 0.617,
+      "official_metrics": {
+        "Q_seg": 0.541,
+        "mIoU": 0.681,
+        "Macro_F1": 0.794,
+        "PSNR": 25.48,
+        "SSIM": 0.829,
+        "Sharpness": 0.973,
+        "UIQM": 0.644,
+        "UCIQE": 0.592,
+        "CCF": 0.09
+      },
+      "checkpoint_provenance": {
+        "fold_0": "checkpoints/v28/segmenter_v28_fold0_best.pt",
+        "fold_1": "checkpoints/v18/fold_1/segmenter_best.pt",
+        "fold_2": "checkpoints/v18/fold_2/segmenter_best.pt",
+        "fold_3": "checkpoints/v18/fold_3/segmenter_best.pt",
+        "fold_4": "checkpoints/v18/fold_4/segmenter_best.pt",
+        "refiners": "Verified V28-A raw restorations (exact 25.48 dB parity)"
+      },
+      "offsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.3
+      ],
+      "tta": "Horizontal-Flip TTA",
+      "submission_status": "SCORED",
+      "is_highest_eligible_testing": false,
+      "claim_type": "Verified from official leaderboard"
+    },
+    {
+      "track": 2,
+      "candidate_id": "T2-EXP18751-REF",
+      "human_readable_name": "EXP-COMBINED-BEST (#18751 Dev Reference)",
+      "submission_id": "18751",
+      "official_phase": "Development (Research Reference)",
+      "artifact_path": "deploy/EXP-COMBINED-BEST.onnx",
+      "sha256": "645eb785ba2bfb07a9ce4349b19b79151af627a88c58b466035395e48cbbcd52",
+      "official_composite": 0.303,
+      "official_metrics": {
+        "Q_seg": 0.163,
+        "mIoU": 0.348,
+        "Macro_F1": 0.467,
+        "PSNR": 16.75,
+        "SSIM": 0.765,
+        "GFLOPs": 3.567,
+        "Parameters_M": 0.9589
+      },
+      "specs": {
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "outputs": [
+          "restored_image",
+          "seg_logits"
+        ],
+        "gflops": 3.5666,
+        "params_m": 0.9589,
+        "caps_passed": true
+      },
+      "submission_status": "SCORED_IN_DEV",
+      "is_highest_eligible_testing": false,
+      "claim_type": "Verified from official leaderboard & repo artifact"
+    },
+    {
+      "track": 2,
+      "candidate_id": "T2-LITEV3-PROD",
+      "human_readable_name": "EURS-LiteV3-Full20 (#19130 Current Testing Best)",
+      "submission_id": "19130",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/eurs_litev3_production.onnx",
+      "sha256": "b39efc20918927ebf073ae46c4fcf51e83ee658e0f957f60fe32f753df93a5d5",
+      "official_composite": 0.253,
+      "official_metrics": {
+        "Q_seg": 0.098,
+        "mIoU": 0.262,
+        "Macro_F1": 0.375,
+        "PSNR": 18.44,
+        "SSIM": 0.718,
+        "GFLOPs": 1.638,
+        "Parameters_M": 0.4859
+      },
+      "specs": {
+        "input_shape": [
+          1,
+          3,
+          384,
+          768
+        ],
+        "outputs": [
+          "restored_image",
+          "seg_logits"
+        ],
+        "gflops": 1.6382,
+        "params_m": 0.4859,
+        "caps_passed": true
+      },
+      "submission_status": "SCORED",
+      "is_highest_eligible_testing": true,
+      "claim_type": "Verified from official leaderboard"
+    },
+    {
+      "track": 2,
+      "candidate_id": "T2-NETV5-CALIB",
+      "human_readable_name": "EURSNet-V5-Calibrated (#19332)",
+      "submission_id": "19332",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/eurs_net_v5_calibrated_track2.onnx",
+      "sha256": "ad7bb1b1083083aee9fbbe44ce8974089d6b93077d892c20df84a267dd5fd135",
+      "official_composite": 0.247,
+      "official_metrics": {
+        "Q_seg": 0.083,
+        "mIoU": 0.243,
+        "Macro_F1": 0.344,
+        "PSNR": 17.69,
+        "SSIM": 0.75,
+        "GFLOPs": 9.05,
+        "Parameters_M": 0.7683
+      },
+      "specs": {
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "outputs": [
+          "restored_image",
+          "seg_logits"
+        ],
+        "gflops": 9.05,
+        "params_m": 0.7683,
+        "caps_passed": true
+      },
+      "submission_status": "SCORED",
+      "is_highest_eligible_testing": false,
+      "claim_type": "Verified from official leaderboard"
+    },
+    {
+      "track": 1,
+      "candidate_id": "T1-V33-ENSEMBLE-F3UPGRADE",
+      "human_readable_name": "V33-Ensemble-F3Upgrade (Production Sprint Winner)",
+      "submission_id": "PENDING_UPLOAD",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/v33/submission_v33_ensemble_f3upgrade.zip",
+      "sha256": "de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d",
+      "official_composite": null,
+      "validation_metrics": {
+        "mIoU": 0.9626,
+        "delta_mIoU_vs_v28a": 0.0095,
+        "per_class_ious": {
+          "Background": 0.992,
+          "Coral": 0.9869,
+          "Fish": 0.9088,
+          "Ray": 0.9638,
+          "MacroFauna": 0.9616
+        }
+      },
+      "checkpoint_provenance": {
+        "fold_0": "checkpoints/v27/segmenter_v27_fold0_best.pt",
+        "fold_1": "checkpoints/v18/fold_1/segmenter_best.pt",
+        "fold_2": "checkpoints/v18/fold_2/segmenter_best.pt",
+        "fold_3": "checkpoints/overnight_pilots/fold_3/segmenter_v28_fold3_best.pt",
+        "fold_4": "checkpoints/v18/fold_4/segmenter_best.pt",
+        "restorations": "Verified V27/V28-A raw restorations (exact 25.48 dB parity)"
+      },
+      "offsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.25
+      ],
+      "tta": "Horizontal-Flip TTA",
+      "submission_status": "PACKAGED_AND_VERIFIED",
+      "is_highest_eligible_testing": false,
+      "claim_type": "Empirically validated on RTX 5090 (+0.0095 mIoU gain across all 5 classes)"
+    },
+    {
+      "track": 2,
+      "candidate_id": "T2-EXP-COMBINED-BEST-PACKAGE",
+      "human_readable_name": "EXP-COMBINED-BEST (Testing-Phase Package Candidate)",
+      "submission_id": "PENDING_UPLOAD",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/track2/submission_track2_exp_combined_best.zip",
+      "sha256": "2e02df4ec12f6cab7303265bd6d5b3b0874b3f4eaff4effdc6a91f18dbe414fb",
+      "official_composite": null,
+      "historical_dev_score": 0.303,
+      "specs": {
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "outputs": [
+          "restored_image",
+          "seg_logits"
+        ],
+        "gflops": 3.5666,
+        "params_m": 0.9589,
+        "caps_passed": true
+      },
+      "submission_status": "PACKAGED_AND_VERIFIED",
+      "is_highest_eligible_testing": false,
+      "claim_type": "Packaged from validated 0.303 Dev model for Testing phase submission"
+    },
+    {
+      "track": 2,
+      "candidate_id": "T2-SOTA-ORIN-CHAMPION",
+      "human_readable_name": "Track2-SOTA-Orin (Champion Full-20 Distilled)",
+      "submission_id": "READY_FOR_UPLOAD",
+      "official_phase": "Testing",
+      "artifact_path": "deploy/track2_sota_orin_submission.zip",
+      "sha256": "615cc5a4074225cad48306be19c83bb450e189ffc19a94109adebcf58b172900",
+      "model_sha256": "9affb62ff81c27c11026d4b1c24b9e7d2ee832b08141adc4d25b76133b36d157",
+      "specs": {
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "outputs": [
+          "restored_image",
+          "seg_logits"
+        ],
+        "gflops": 6.9506,
+        "params_m": 0.5559,
+        "caps_passed": true
+      },
+      "measured_benchmark_400": {
+        "mIoU": 0.8177,
+        "macro_F1": 0.8977,
+        "Q_seg": 0.734,
+        "coverage": 1.0,
+        "per_class_IoU": [
+          0.8659,
+          0.8667,
+          0.7571,
+          0.8996,
+          0.699
+        ],
+        "per_class_F1": [
+          0.9281,
+          0.9286,
+          0.8618,
+          0.9471,
+          0.8229
+        ],
+        "psnr_dB": 19.19,
+        "ssim": 0.7152,
+        "sharpness": 0.2608,
+        "Q_FR": 0.4423,
+        "composite_score": 0.6331
+      },
+      "training_provenance": {
+        "script": "tools/train_track2_sota_orin.py",
+        "checkpoint": "checkpoints/track2_sota_orin_best.pt",
+        "teacher": "checkpoints/segformer_mit_b3_best.pt (SegFormer MiT-B3)",
+        "losses": "PresentClassLovaszSoftmax + SoftDice + ClassBalancedCE + KD + L1"
+      },
+      "submission_status": "PACKAGED_AND_VERIFIED",
+      "is_highest_eligible_testing": true
+    }
+  ]
+}

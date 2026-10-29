@@ -1,0 +1,72 @@
+{
+  "Baseline (Static alpha=0.10, sigma=2.0)": {
+    "PSNR": 25.1785,
+    "PSNR_norm": 0.5109,
+    "SSIM": 0.78971,
+    "Sharpness": 0.41867,
+    "Q_FR": 0.62714,
+    "time_sec": 140.01,
+    "delta_Q_FR": 0.0,
+    "delta_Composite": 0.0
+  },
+  "Static (alpha=0.08, sigma=2.0)": {
+    "PSNR": 25.1969,
+    "PSNR_norm": 0.51174,
+    "SSIM": 0.78977,
+    "Sharpness": 0.40513,
+    "Q_FR": 0.62619,
+    "time_sec": 140.01,
+    "delta_Q_FR": -0.00095,
+    "delta_Composite": -0.00028
+  },
+  "Static (alpha=0.12, sigma=2.0)": {
+    "PSNR": 25.1572,
+    "PSNR_norm": 0.50991,
+    "SSIM": 0.78958,
+    "Sharpness": 0.43237,
+    "Q_FR": 0.62801,
+    "time_sec": 140.31,
+    "delta_Q_FR": 0.00087,
+    "delta_Composite": 0.00026
+  },
+  "Adaptive A (alpha0=0.12, d0=40, sigma=2.0)": {
+    "PSNR": 25.2236,
+    "PSNR_norm": 0.51298,
+    "SSIM": 0.78975,
+    "Sharpness": 0.37091,
+    "Q_FR": 0.62332,
+    "time_sec": 155.79,
+    "delta_Q_FR": -0.00382,
+    "delta_Composite": -0.00115
+  },
+  "Adaptive B (alpha0=0.10, d0=30, sigma=2.0)": {
+    "PSNR": 25.2298,
+    "PSNR_norm": 0.51325,
+    "SSIM": 0.78964,
+    "Sharpness": 0.36484,
+    "Q_FR": 0.62278,
+    "time_sec": 154.04,
+    "delta_Q_FR": -0.00436,
+    "delta_Composite": -0.00131
+  },
+  "Adaptive C (alpha0=0.15, d0=50, sigma=2.0)": {
+    "PSNR": 25.213,
+    "PSNR_norm": 0.51252,
+    "SSIM": 0.78986,
+    "Sharpness": 0.37916,
+    "Q_FR": 0.62399,
+    "time_sec": 155.21,
+    "delta_Q_FR": -0.00315,
+    "delta_Composite": -0.00094
+  },
+  "Adaptive Depth-Only (alpha0=0.12, d0=35, sigma=2.0)": {
+    "PSNR": 25.2184,
+    "PSNR_norm": 0.51273,
+    "SSIM": 0.78986,
+    "Sharpness": 0.38287,
+    "Q_FR": 0.62445,
+    "time_sec": 155.17,
+    "delta_Q_FR": -0.00269,
+    "delta_Composite": -0.00081
+  }
+}

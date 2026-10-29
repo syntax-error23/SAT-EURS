@@ -1,0 +1,34 @@
+{
+  "1_raw_degraded": {
+    "psnr_db": 14.063,
+    "psnr_norm": 0.0776,
+    "ssim": 0.5055,
+    "sharpness": 0.0514,
+    "Q_FR": 0.26752,
+    "composite_pts": 0.08026
+  },
+  "2_physical_prior": {
+    "psnr_db": 25.105,
+    "psnr_norm": 0.5045,
+    "ssim": 0.7786,
+    "sharpness": 0.2885,
+    "Q_FR": 0.60625,
+    "composite_pts": 0.18187
+  },
+  "3_refiner_no_unsharp": {
+    "psnr_db": 25.503,
+    "psnr_norm": 0.5262,
+    "ssim": 0.7935,
+    "sharpness": 0.3441,
+    "Q_FR": 0.62827,
+    "composite_pts": 0.18848
+  },
+  "4_refiner_locked_a10": {
+    "psnr_db": 25.399,
+    "psnr_norm": 0.5215,
+    "ssim": 0.793,
+    "sharpness": 0.4094,
+    "Q_FR": 0.63247,
+    "composite_pts": 0.18974
+  }
+}

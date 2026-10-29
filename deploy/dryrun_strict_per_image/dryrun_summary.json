@@ -1,0 +1,27 @@
+{
+  "archive_path": "deploy/eurs_track1_dryrun_candidate.zip",
+  "archive_size_mb": 1520.74,
+  "archive_sha256": "dc5fea7959a60bb1eba718733ea59a559e8866926c0f9e4898f1d49a67e7ff2f",
+  "num_restored": 1200,
+  "num_masks": 1200,
+  "total_files": 2400,
+  "root_structure": [
+    "restored/",
+    "seg_masks/"
+  ],
+  "resolution_aspect_preserved": true,
+  "classes_present": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "class_pixel_distribution": {
+    "0": 465040575,
+    "1": 675737769,
+    "2": 43194211,
+    "3": 48434790,
+    "4": 25883855
+  }
+}

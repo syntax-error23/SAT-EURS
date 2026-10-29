@@ -1,0 +1,318 @@
+{
+  "overall_clean": {
+    "mean": [
+      0.2278,
+      0.2955,
+      0.3576
+    ],
+    "var": [
+      0.0611,
+      0.0464,
+      0.0519
+    ],
+    "std": [
+      0.2471,
+      0.2155,
+      0.2278
+    ]
+  },
+  "overall_degraded": {
+    "mean": [
+      0.1036,
+      0.2127,
+      0.2293
+    ],
+    "var": [
+      0.0039,
+      0.012,
+      0.0109
+    ],
+    "std": [
+      0.0622,
+      0.1097,
+      0.1042
+    ]
+  },
+  "low_distribution_classes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "per_class": {
+    "0": {
+      "class_id": 0,
+      "class_name": "Background",
+      "pixel_count": 199628984,
+      "pixel_percentage": 55.312,
+      "clean_mean": [
+        0.1699,
+        0.2923,
+        0.3877
+      ],
+      "clean_var": [
+        0.0556,
+        0.0497,
+        0.0587
+      ],
+      "clean_std": [
+        0.2357,
+        0.2228,
+        0.2423
+      ],
+      "degraded_mean": [
+        0.0808,
+        0.2018,
+        0.2334
+      ],
+      "degraded_var": [
+        0.0037,
+        0.0137,
+        0.0133
+      ],
+      "degraded_std": [
+        0.0609,
+        0.1171,
+        0.1153
+      ],
+      "distance_to_overall_degraded": 0.0289,
+      "distance_to_overall_clean": 0.0683,
+      "degraded_variance_ratio_vs_overall": 1.1076,
+      "is_low_distribution": false
+    },
+    "1": {
+      "class_id": 1,
+      "class_name": "Coral",
+      "pixel_count": 121751549,
+      "pixel_percentage": 33.7342,
+      "clean_mean": [
+        0.2822,
+        0.2832,
+        0.3071
+      ],
+      "clean_var": [
+        0.0552,
+        0.0408,
+        0.0362
+      ],
+      "clean_std": [
+        0.2349,
+        0.2019,
+        0.1904
+      ],
+      "degraded_mean": [
+        0.1251,
+        0.2146,
+        0.2141
+      ],
+      "degraded_var": [
+        0.0026,
+        0.0096,
+        0.0072
+      ],
+      "degraded_std": [
+        0.0513,
+        0.0982,
+        0.0847
+      ],
+      "distance_to_overall_degraded": 0.0364,
+      "distance_to_overall_clean": 0.086,
+      "degraded_variance_ratio_vs_overall": 0.7142,
+      "is_low_distribution": true
+    },
+    "2": {
+      "class_id": 2,
+      "class_name": "Fish",
+      "pixel_count": 28166499,
+      "pixel_percentage": 7.8042,
+      "clean_mean": [
+        0.3789,
+        0.3736,
+        0.3812
+      ],
+      "clean_var": [
+        0.0765,
+        0.0474,
+        0.0596
+      ],
+      "clean_std": [
+        0.2766,
+        0.2177,
+        0.2442
+      ],
+      "degraded_mean": [
+        0.1568,
+        0.2718,
+        0.2633
+      ],
+      "degraded_var": [
+        0.0023,
+        0.0087,
+        0.0097
+      ],
+      "degraded_std": [
+        0.0483,
+        0.093,
+        0.0987
+      ],
+      "distance_to_overall_degraded": 0.0893,
+      "distance_to_overall_clean": 0.175,
+      "degraded_variance_ratio_vs_overall": 0.7401,
+      "is_low_distribution": true
+    },
+    "3": {
+      "class_id": 3,
+      "class_name": "Shark_Ray",
+      "pixel_count": 3389841,
+      "pixel_percentage": 0.9392,
+      "clean_mean": [
+        0.27,
+        0.3022,
+        0.3419
+      ],
+      "clean_var": [
+        0.0253,
+        0.0277,
+        0.0336
+      ],
+      "clean_std": [
+        0.1592,
+        0.1663,
+        0.1834
+      ],
+      "degraded_mean": [
+        0.1401,
+        0.2458,
+        0.2508
+      ],
+      "degraded_var": [
+        0.0006,
+        0.0041,
+        0.0041
+      ],
+      "degraded_std": [
+        0.0253,
+        0.0641,
+        0.0639
+      ],
+      "distance_to_overall_degraded": 0.0892,
+      "distance_to_overall_clean": 0.1192,
+      "degraded_variance_ratio_vs_overall": 0.2945,
+      "is_low_distribution": true
+    },
+    "4": {
+      "class_id": 4,
+      "class_name": "Other",
+      "pixel_count": 7977590,
+      "pixel_percentage": 2.2104,
+      "clean_mean": [
+        0.2958,
+        0.2818,
+        0.2976
+      ],
+      "clean_var": [
+        0.0345,
+        0.0323,
+        0.0335
+      ],
+      "clean_std": [
+        0.1858,
+        0.1799,
+        0.1829
+      ],
+      "degraded_mean": [
+        0.1445,
+        0.234,
+        0.2292
+      ],
+      "degraded_var": [
+        0.001,
+        0.0057,
+        0.005
+      ],
+      "degraded_std": [
+        0.0316,
+        0.0755,
+        0.0706
+      ],
+      "distance_to_overall_degraded": 0.0732,
+      "distance_to_overall_clean": 0.1243,
+      "degraded_variance_ratio_vs_overall": 0.3972,
+      "is_low_distribution": true
+    }
+  },
+  "pairwise_distance_degraded": [
+    [
+      0.0,
+      0.0624,
+      0.1122,
+      0.1119,
+      0.0984
+    ],
+    [
+      0.0624,
+      0.0,
+      0.0832,
+      0.0695,
+      0.0454
+    ],
+    [
+      0.1122,
+      0.0832,
+      0.0,
+      0.0609,
+      0.064
+    ],
+    [
+      0.1119,
+      0.0695,
+      0.0609,
+      0.0,
+      0.0292
+    ],
+    [
+      0.0984,
+      0.0454,
+      0.064,
+      0.0292,
+      0.0
+    ]
+  ],
+  "pairwise_distance_clean": [
+    [
+      0.0,
+      0.1495,
+      0.2281,
+      0.1574,
+      0.1788
+    ],
+    [
+      0.1495,
+      0.0,
+      0.167,
+      0.0938,
+      0.057
+    ],
+    [
+      0.2281,
+      0.167,
+      0.0,
+      0.1966,
+      0.1891
+    ],
+    [
+      0.1574,
+      0.0938,
+      0.1966,
+      0.0,
+      0.0627
+    ],
+    [
+      0.1788,
+      0.057,
+      0.1891,
+      0.0627,
+      0.0
+    ]
+  ]
+}

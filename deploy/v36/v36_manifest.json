@@ -1,0 +1,24 @@
+{
+  "archive_path": "deploy/v36/submission_v36_upgraded_folds_anchor.zip",
+  "sha256": "f4e058f733fa804af90769d8a226c2ea4c7eed96bf194ed8dcc0a5410a4abe5e",
+  "size_mb": 553.96,
+  "total_pixels": 869580800,
+  "checkpoints_used": {
+    "0": "checkpoints/v27/segmenter_v27_fold0_best.pt",
+    "1": "checkpoints/v18/fold_1/segmenter_best.pt",
+    "2": "checkpoints/v18/fold_2/segmenter_best.pt",
+    "3": "checkpoints/overnight_pilots/fold_3/segmenter_v28_fold3_best.pt",
+    "4": "checkpoints/v18/fold_4/segmenter_best.pt"
+  },
+  "parameters": {
+    "offset_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.1,
+      0.25
+    ],
+    "alpha_unsharp": 0.1,
+    "sigma_unsharp": 2.0
+  }
+}

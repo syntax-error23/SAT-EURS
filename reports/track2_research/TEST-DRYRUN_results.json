@@ -1,0 +1,33 @@
+{
+  "exp_id": "TEST-DRYRUN",
+  "mode": "combined",
+  "epochs": 1,
+  "composite_score_local": 0.3237,
+  "composite_score_projected": 0.3455,
+  "Q_seg": 0.2355,
+  "mIoU": 0.4554,
+  "macro_F1": 0.5172,
+  "coverage_penalty": 1.0,
+  "boundary_accuracy": 0.4331,
+  "per_class_IoU": [
+    0.595,
+    0.6594,
+    0.0088,
+    1.0,
+    0.0139
+  ],
+  "per_class_F1": [
+    0.7461,
+    0.7947,
+    0.0175,
+    1.0,
+    0.0275
+  ],
+  "PSNR": 18.18,
+  "SSIM": 0.7133,
+  "Sharpness": 0.4866,
+  "Q_FR": 0.4413,
+  "mean_latency_ms": 38.7,
+  "fps_cpu": 25.8,
+  "baked_offset_c3": -2.0
+}

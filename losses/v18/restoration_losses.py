@@ -92,8 +92,9 @@ class LaplacianLoss(nn.Module):
         self.register_buffer("kernel", kernel.repeat(3, 1, 1, 1))
 
     def forward(self, pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
-        lap_p = F.conv2d(pred, self.kernel, padding=1, groups=3)
-        lap_t = F.conv2d(target, self.kernel, padding=1, groups=3)
+        kernel = self.kernel.to(pred.device)
+        lap_p = F.conv2d(pred, kernel, padding=1, groups=3)
+        lap_t = F.conv2d(target, kernel, padding=1, groups=3)
         return F.l1_loss(lap_p, lap_t)
 
 

@@ -1,0 +1,470 @@
+{
+  "alpha_0.00": {
+    "alpha": 0.0,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 25.33,
+      "PSNR_norm_dataset": 0.5165,
+      "PSNR_norm_per_image": 0.52068,
+      "SSIM": 0.78853,
+      "sharpness_ratio": 0.34509,
+      "Q_FR_dataset": 0.62177,
+      "Q_FR_per_image": 0.62365,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.7058,
+        "PSNR_norm_dataset": 0.53529,
+        "PSNR_norm_per_image": 0.53636,
+        "SSIM": 0.81745,
+        "sharpness_ratio": 0.42731,
+        "Q_FR_dataset": 0.65146,
+        "Q_FR_per_image": 0.65195,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.9542,
+        "PSNR_norm_dataset": 0.49771,
+        "PSNR_norm_per_image": 0.505,
+        "SSIM": 0.75961,
+        "sharpness_ratio": 0.26288,
+        "Q_FR_dataset": 0.59208,
+        "Q_FR_per_image": 0.59536,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.964068068760675,
+        "ssim": 0.7819601537287235,
+        "sharp": 0.31758591088655136
+      },
+      "fish11": {
+        "psnr": 23.49645988333351,
+        "ssim": 0.7990978780388832,
+        "sharp": 0.342844822798267
+      },
+      "fish12": {
+        "psnr": 29.153246199679153,
+        "ssim": 0.8806711001694203,
+        "sharp": 0.5200191629621521
+      },
+      "seahorse1": {
+        "psnr": 24.209542127048568,
+        "ssim": 0.808073624074459,
+        "sharp": 0.5287707989187398
+      },
+      "fish13": {
+        "psnr": 27.639591358424312,
+        "ssim": 0.861752842515707,
+        "sharp": 0.3599997832118323
+      },
+      "fish14": {
+        "psnr": 23.50263415797734,
+        "ssim": 0.746853548437357,
+        "sharp": 0.3066478454939798
+      },
+      "fish15": {
+        "psnr": 21.02352996734026,
+        "ssim": 0.6258362160623073,
+        "sharp": 0.1510623042068885
+      },
+      "sharkFish": {
+        "psnr": 27.65087668054202,
+        "ssim": 0.8040049010515213,
+        "sharp": 0.23379211537851005
+      }
+    }
+  },
+  "alpha_0.05": {
+    "alpha": 0.05,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 25.2979,
+      "PSNR_norm_dataset": 0.5149,
+      "PSNR_norm_per_image": 0.51924,
+      "SSIM": 0.7886,
+      "sharpness_ratio": 0.37788,
+      "Q_FR_dataset": 0.62436,
+      "Q_FR_per_image": 0.62632,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.6604,
+        "PSNR_norm_dataset": 0.53302,
+        "PSNR_norm_per_image": 0.53431,
+        "SSIM": 0.81714,
+        "sharpness_ratio": 0.46799,
+        "Q_FR_dataset": 0.65437,
+        "Q_FR_per_image": 0.65495,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.9354,
+        "PSNR_norm_dataset": 0.49677,
+        "PSNR_norm_per_image": 0.50417,
+        "SSIM": 0.76006,
+        "sharpness_ratio": 0.28776,
+        "Q_FR_dataset": 0.59435,
+        "Q_FR_per_image": 0.59768,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.954758860775446,
+        "ssim": 0.7821695867180825,
+        "sharp": 0.34886128042012826
+      },
+      "fish11": {
+        "psnr": 23.45993076068834,
+        "ssim": 0.800281750112772,
+        "sharp": 0.37681134859405196
+      },
+      "fish12": {
+        "psnr": 29.10216588982456,
+        "ssim": 0.8797400778532029,
+        "sharp": 0.5667594226924383
+      },
+      "seahorse1": {
+        "psnr": 24.124741990700457,
+        "ssim": 0.8063749107718468,
+        "sharp": 0.5795442600759868
+      },
+      "fish13": {
+        "psnr": 27.589617925714574,
+        "ssim": 0.8610693724453449,
+        "sharp": 0.3950910233288649
+      },
+      "fish14": {
+        "psnr": 23.514463571055586,
+        "ssim": 0.7473311318457126,
+        "sharp": 0.3368366947898123
+      },
+      "fish15": {
+        "psnr": 21.01177829853781,
+        "ssim": 0.6294373839348555,
+        "sharp": 0.16614500739194094
+      },
+      "sharkFish": {
+        "psnr": 27.62586535013325,
+        "ssim": 0.8024134197831154,
+        "sharp": 0.2529593398648484
+      }
+    }
+  },
+  "alpha_0.10": {
+    "alpha": 0.1,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.5841,
+        "PSNR_norm_dataset": 0.5292,
+        "PSNR_norm_per_image": 0.53091,
+        "SSIM": 0.81636,
+        "sharpness_ratio": 0.50992,
+        "Q_FR_dataset": 0.65649,
+        "Q_FR_per_image": 0.65726,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.8981,
+        "PSNR_norm_dataset": 0.49491,
+        "PSNR_norm_per_image": 0.50244,
+        "SSIM": 0.76015,
+        "sharpness_ratio": 0.31365,
+        "Q_FR_dataset": 0.59614,
+        "Q_FR_per_image": 0.59953,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.92017054086864,
+        "ssim": 0.7818948827683926,
+        "sharp": 0.381501976844524
+      },
+      "fish11": {
+        "psnr": 23.3865078813133,
+        "ssim": 0.8006219678372145,
+        "sharp": 0.41232164709296654
+      },
+      "fish12": {
+        "psnr": 29.013245638125184,
+        "ssim": 0.8785196007788181,
+        "sharp": 0.6132943494292112
+      },
+      "seahorse1": {
+        "psnr": 24.016299978252775,
+        "ssim": 0.8043855692446232,
+        "sharp": 0.6325581006609051
+      },
+      "fish13": {
+        "psnr": 27.509008323532882,
+        "ssim": 0.8601037728786468,
+        "sharp": 0.4317761162664652
+      },
+      "fish14": {
+        "psnr": 23.498473079758252,
+        "ssim": 0.747452976256609,
+        "sharp": 0.36833564880730507
+      },
+      "fish15": {
+        "psnr": 20.987264726715942,
+        "ssim": 0.63234893001616,
+        "sharp": 0.18193987710130805
+      },
+      "sharkFish": {
+        "psnr": 27.597783471637158,
+        "ssim": 0.8006914433836937,
+        "sharp": 0.27256530305846977
+      }
+    }
+  },
+  "alpha_0.15": {
+    "alpha": 0.15,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 25.1618,
+      "PSNR_norm_dataset": 0.50809,
+      "PSNR_norm_per_image": 0.51303,
+      "SSIM": 0.78752,
+      "sharpness_ratio": 0.44675,
+      "Q_FR_dataset": 0.6277,
+      "Q_FR_per_image": 0.62992,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.4799,
+        "PSNR_norm_dataset": 0.524,
+        "PSNR_norm_per_image": 0.5262,
+        "SSIM": 0.81513,
+        "sharpness_ratio": 0.55308,
+        "Q_FR_dataset": 0.65792,
+        "Q_FR_per_image": 0.65891,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.8437,
+        "PSNR_norm_dataset": 0.49219,
+        "PSNR_norm_per_image": 0.49985,
+        "SSIM": 0.7599,
+        "sharpness_ratio": 0.34043,
+        "Q_FR_dataset": 0.59748,
+        "Q_FR_per_image": 0.60093,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.861429364063646,
+        "ssim": 0.7811739090085029,
+        "sharp": 0.41543692013761985
+      },
+      "fish11": {
+        "psnr": 23.279160939855405,
+        "ssim": 0.8001961133629084,
+        "sharp": 0.4493080141496501
+      },
+      "fish12": {
+        "psnr": 28.890212115334418,
+        "ssim": 0.8770334078371524,
+        "sharp": 0.6598816210750951
+      },
+      "seahorse1": {
+        "psnr": 23.888828450691527,
+        "ssim": 0.8021303063631058,
+        "sharp": 0.6876749813727734
+      },
+      "fish13": {
+        "psnr": 27.401217240235887,
+        "ssim": 0.8588831992447377,
+        "sharp": 0.46996792558005124
+      },
+      "fish14": {
+        "psnr": 23.456555480275174,
+        "ssim": 0.7472460570931435,
+        "sharp": 0.4010394325385227
+      },
+      "fish15": {
+        "psnr": 20.95037549601212,
+        "ssim": 0.6346147087216377,
+        "sharp": 0.19844855113050966
+      },
+      "sharkFish": {
+        "psnr": 27.566782421517246,
+        "ssim": 0.7988467025756836,
+        "sharp": 0.2922744147348406
+      }
+    }
+  },
+  "alpha_0.20": {
+    "alpha": 0.2,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 25.0632,
+      "PSNR_norm_dataset": 0.50316,
+      "PSNR_norm_per_image": 0.50838,
+      "SSIM": 0.78642,
+      "sharpness_ratio": 0.48273,
+      "Q_FR_dataset": 0.62859,
+      "Q_FR_per_image": 0.63094,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.352,
+        "PSNR_norm_dataset": 0.5176,
+        "PSNR_norm_per_image": 0.52024,
+        "SSIM": 0.81352,
+        "sharpness_ratio": 0.59739,
+        "Q_FR_dataset": 0.65874,
+        "Q_FR_per_image": 0.65993,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.7744,
+        "PSNR_norm_dataset": 0.48872,
+        "PSNR_norm_per_image": 0.49652,
+        "SSIM": 0.75933,
+        "sharpness_ratio": 0.36807,
+        "Q_FR_dataset": 0.59843,
+        "Q_FR_per_image": 0.60194,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.780375829395492,
+        "ssim": 0.7800440537929535,
+        "sharp": 0.4505792354510123
+      },
+      "fish11": {
+        "psnr": 23.14217371198929,
+        "ssim": 0.799083259999752,
+        "sharp": 0.4876532277906918
+      },
+      "fish12": {
+        "psnr": 28.738004370294075,
+        "ssim": 0.8753045600652695,
+        "sharp": 0.7071846944096688
+      },
+      "seahorse1": {
+        "psnr": 23.74763805281127,
+        "ssim": 0.7996345214545727,
+        "sharp": 0.7441401531810767
+      },
+      "fish13": {
+        "psnr": 27.27043219577084,
+        "ssim": 0.8574297411739826,
+        "sharp": 0.5095975694168942
+      },
+      "fish14": {
+        "psnr": 23.392309081977015,
+        "ssim": 0.7467394703626633,
+        "sharp": 0.4346682246520687
+      },
+      "fish15": {
+        "psnr": 20.90170784705216,
+        "ssim": 0.6362776066362857,
+        "sharp": 0.2156492943399103
+      },
+      "sharkFish": {
+        "psnr": 27.53298442133746,
+        "ssim": 0.7968866261839866,
+        "sharp": 0.31238058294400256
+      }
+    }
+  },
+  "alpha_0.25": {
+    "alpha": 0.25,
+    "sigma": 2.0,
+    "pooled": {
+      "PSNR_dB": 24.9487,
+      "PSNR_norm_dataset": 0.49744,
+      "PSNR_norm_per_image": 0.50276,
+      "SSIM": 0.78501,
+      "sharpness_ratio": 0.51934,
+      "Q_FR_dataset": 0.62904,
+      "Q_FR_per_image": 0.63143,
+      "num_samples": 1600
+    },
+    "per_fold": {
+      "fold_0": {
+        "PSNR_dB": 25.2049,
+        "PSNR_norm_dataset": 0.51025,
+        "PSNR_norm_per_image": 0.51293,
+        "SSIM": 0.81155,
+        "sharpness_ratio": 0.64229,
+        "Q_FR_dataset": 0.65904,
+        "Q_FR_per_image": 0.66024,
+        "num_samples": 800
+      },
+      "fold_1": {
+        "PSNR_dB": 24.6925,
+        "PSNR_norm_dataset": 0.48463,
+        "PSNR_norm_per_image": 0.49258,
+        "SSIM": 0.75848,
+        "sharpness_ratio": 0.39639,
+        "Q_FR_dataset": 0.59904,
+        "Q_FR_per_image": 0.60262,
+        "num_samples": 800
+      }
+    },
+    "per_scene": {
+      "fish1": {
+        "psnr": 25.67945145491478,
+        "ssim": 0.7785420720279217,
+        "sharp": 0.486791134814586
+      },
+      "fish11": {
+        "psnr": 22.980796598747194,
+        "ssim": 0.7973629809170961,
+        "sharp": 0.527198280201254
+      },
+      "fish12": {
+        "psnr": 28.56209201233017,
+        "ssim": 0.8733553317189217,
+        "sharp": 0.7546370130256786
+      },
+      "seahorse1": {
+        "psnr": 23.597386010371554,
+        "ssim": 0.7969230231642723,
+        "sharp": 0.8005170563193669
+      },
+      "fish13": {
+        "psnr": 27.121064753531346,
+        "ssim": 0.8557640609145164,
+        "sharp": 0.550575409258802
+      },
+      "fish14": {
+        "psnr": 23.310506207314294,
+        "ssim": 0.7459634591639042,
+        "sharp": 0.46883189378762224
+      },
+      "fish15": {
+        "psnr": 20.84209193860196,
+        "ssim": 0.6373795886337758,
+        "sharp": 0.23349739595950986
+      },
+      "sharkFish": {
+        "psnr": 27.496514641070846,
+        "ssim": 0.7948184105753898,
+        "sharp": 0.33264696673574895
+      }
+    }
+  }
+}

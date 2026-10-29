@@ -1,0 +1,13 @@
+{
+  "metrics": {
+    "v27_fold0_q_seg": 0.56847,
+    "v28_swa_fold0_q_seg": 0.58646,
+    "delta_q_seg": 0.01799,
+    "delta_miou": 0.01216,
+    "delta_macro_f1": 0.01139,
+    "delta_fish_iou": 0.02587,
+    "delta_macro_iou": 0.03661,
+    "delta_ray_iou": 0.0
+  },
+  "verdict": "PROMOTED"
+}

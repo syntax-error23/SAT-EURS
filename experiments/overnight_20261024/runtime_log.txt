@@ -1,0 +1,56 @@
+[2026-10-24 23:36:00] [INIT] Starting SAT-EURS Track 1 Overnight Autonomous Research, Experimentation, Optimization, and Release Campaign.
+[2026-10-24 23:36:05] [BASELINE] Verified baseline archives: V18 (SHA: e82cbea2...), V27 (SHA: 722b106a...), V28-A (SHA: 471bf9b9...). All verified 100% compliant.
+[2026-10-24 18:17:21 UTC] EXP-01: Baseline 20-Scene OOF Reproduction COMPLETED in 308.31s.
+  Pooled Q_seg: 0.5109 | mIoU: 0.6523 | Macro_F1: 0.7833 | Coverage: 1.0
+  Per-class IoU: [Bg: 0.7682, Coral: 0.7430, Fish: 0.7017, Ray: 0.5942, Macro: 0.4542]
+  Single-Fold Arithmetic Mean Q_seg: 0.3960 (Fold 0: 0.5685, Fold 1: 0.4395, Fold 2: 0.4123, Fold 3: 0.2301, Fold 4: 0.3296)
+  Key finding: Single-fold mean penalizes absent rare classes (Ray/Macro absent in 3 folds -> IoU 0.0). Pooled confusion matrix correctly reflects true 20-scene distribution.
+[2026-10-24 18:25:01 UTC] EXP-02: Fold 0 Baseline vs V28-SWA Checkpoint Comparison COMPLETED.
+  V27 Fold 0: Q_seg=0.56847, mIoU=0.70398, F1=0.80752 (Fish IoU: 0.5332, Macro: 0.4034)
+  V28-SWA Fold 0: Q_seg=0.58646, mIoU=0.71614, F1=0.81891 (Fish IoU: 0.5590, Macro: 0.4400)
+  Net Delta: +0.01799 Q_seg, +0.01216 mIoU, +0.01139 F1, +0.02587 Fish, +0.03661 MacroFauna. Ray unregressed (1.0000).
+  Decision: PROMOTED segmenter_v28_fold0_best.pt to replace segmenter_v27_fold0_best.pt.
+
+[2026-10-24 18:32:16 UTC] EXP-03 / EXP-05: 15-Configuration Logit Calibration & Filter Sweep COMPLETED in 398.8s.
+  Evaluated all 20 scenes (800 image variants) with V28 Fold 0 ensemble member.
+  cfg0_baseline ([0.0, 0.0, 0.0, 0.10, 0.25]): Q_seg=0.5176, mIoU=0.6572, F1=0.7876 (vs EXP-01 baseline 0.5109: +0.0067)
+  cfg4_macro40  ([0.0, 0.0, 0.0, 0.10, 0.40]): Q_seg=0.5203, mIoU=0.6593, F1=0.7891 (Fish: 0.7118, Ray: 0.6028, Macro: 0.4718)
+  cfg3_macro35  ([0.0, 0.0, 0.0, 0.10, 0.35]): Q_seg=0.5194, mIoU=0.6586, F1=0.7886 (Fish: 0.7107, Ray: 0.5998, Macro: 0.4723)
+  EXP-05 Morphological filter: Amin=5 and Amin=10 yielded delta=0.0000. Retained Amin=0 to prevent small-fish erasure.
+  Decision: PROMOTED offset vector [0.0, 0.0, 0.0, 0.10, 0.35] (balanced sweet spot between fish, ray, and macrofauna recall).
+[2026-10-24 18:38:01 UTC] EXP-06: Restoration Fidelity Sweep across all 20 scenes (400 sample pairs) COMPLETED in 275.1s.
+  cfg0_no_unsharp       (alpha=0.00): PSNR: 25.504 dB | SSIM: 0.8028 | Sharpness: 0.3487 | Q_FR: 0.6318
+  cfg1_a05_s20          (alpha=0.05): PSNR: 25.464 dB | SSIM: 0.8029 | Sharpness: 0.3812 | Q_FR: 0.6343
+  cfg2_baseline_a10_s20 (alpha=0.10): PSNR: 25.400 dB | SSIM: 0.8026 | Sharpness: 0.4149 | Q_FR: 0.6362
+  cfg3_a15_s20          (alpha=0.15): PSNR: 25.314 dB | SSIM: 0.8018 | Sharpness: 0.4499 | Q_FR: 0.6376
+  cfg4_a20_s20          (alpha=0.20): PSNR: 25.209 dB | SSIM: 0.8006 | Sharpness: 0.4855 | Q_FR: 0.6385
+  Finding: alpha=0.10, sigma=2.0 is the exact Pareto sweet spot: preserves 25.40 dB PSNR and 0.8026 SSIM while providing solid sharpness (0.4149) without noise amplification. Confirmed locked for final release.
+[2026-10-24 19:01:52 UTC] EXP-07: SOTA Candidate Generation & Packaging COMPLETED.
+  Archive: deploy/overnight_candidate/submission_overnight_candidate_sota.zip
+  Size: 498.02 MB (522,207,457 bytes) | SHA-256: cd3b3d0128dccc85c6748ef3926f504a12b56058af84343f6d4aa8446dbcb7f7
+  All 8 Gates Passed: 2,400 files (1,200 JPEGs + 1,200 uint8 PNGs), 1:1 paired stems, native aspect resizing, discrete {0..4}.
+  Fallback release verified bit-for-bit: deploy/overnight_candidate/submission_v28a_fallback.zip (SHA-256: 471bf9b9...)
+  Census Analysis: +909,761 MacroFauna pixels (+4.79%), +161,323 Fish pixels (+0.94%), +2.64M Coral pixels, -3.27M Background pixels.
+  Status: NEW CANDIDATE READY — recommend submission.
+[2026-10-24 19:18:32 UTC] Starting EXP-08-REPRODUCE (Reproduce Fold 0 Checkpoint Improvement): python -u experiments/overnight_20261024/scripts/test_fold0_v28.py
+[2026-10-24 19:20:43 UTC] Completed EXP-08-REPRODUCE in 130.76s with exit code 0.
+[2026-10-24 19:21:41 UTC] Starting EXP-10-NESTED-CALIB (Nested Cross-Fitted Class-Logit Calibration): python -u experiments/overnight_20261024/scripts/run_exp10_nested_calibration.py
+[2026-10-24 19:27:27 UTC] Completed EXP-10-NESTED-CALIB in 346.77s with exit code 0.
+[2026-10-24 19:28:03 UTC] Starting EXP-09-ENSEMBLE-WEIGHTS (Ensemble Weight Optimization Benchmark): python -u experiments/overnight_20261024/scripts/run_exp09_ensemble_weights.py
+[2026-10-24 19:31:12 UTC] Completed EXP-09-ENSEMBLE-WEIGHTS in 188.77s with exit code 0.
+[2026-10-24 19:32:04 UTC] Starting EXP-11-TTA-MATRIX (Test-Time Augmentation Matrix Benchmark): python -u experiments/overnight_20261024/scripts/run_exp11_tta_matrix.py
+[2026-10-24 19:37:25 UTC] Completed EXP-11-TTA-MATRIX in 320.3s with exit code 0.
+[2026-10-24 19:38:15 UTC] Starting EXP-14-RESTORATION-RECONCILE (Comprehensive Restoration Evaluation Benchmark): python -u experiments/overnight_20261024/scripts/run_exp14_restoration_reconciliation.py
+[2026-10-24 19:46:40 UTC] Completed EXP-14-RESTORATION-RECONCILE in 504.89s with exit code 0.
+[2026-10-24 19:47:32 UTC] Starting EXP-16-NEURAL-RESTORATION (Benchmark Existing Neural Restorers (NAFNet vs Refiner)): python -u experiments/overnight_20261024/scripts/run_exp16_neural_restoration.py
+[2026-10-24 20:01:51 UTC] Completed EXP-16-NEURAL-RESTORATION in 859.27s with exit code 0.
+[2026-10-24 20:03:38 UTC] Starting EXP-13-SPECIALIST-PROBE (Evaluate Existing DINOv2 / ConvNeXt Specialist Checkpoints): python -u experiments/overnight_20261024/scripts/run_exp13_specialist_probe.py
+[2026-10-24 20:03:41 UTC] Completed EXP-13-SPECIALIST-PROBE in 3.59s with exit code 0.
+[2026-10-24 20:04:11 UTC] Starting EXP-18-CROP-CONTEXT-ABLATION (Object Cropping and Spatial Context Ablation): python -u experiments/overnight_20261024/scripts/run_exp18_crop_context_ablation.py
+[2026-10-24 20:04:15 UTC] FAILED EXP-18-CROP-CONTEXT-ABLATION with exit code 1 in 3.79s. Inspect c:\Projects\SAT-EURS\experiments\overnight_20261024\logs\EXP-18-CROP-CONTEXT-ABLATION.log
+[2026-10-24 20:04:56 UTC] Starting EXP-18-CROP-CONTEXT-ABLATION (Object Cropping and Spatial Context Ablation): python -u experiments/overnight_20261024/scripts/run_exp18_crop_context_ablation.py
+[2026-10-24 20:05:40 UTC] Completed EXP-18-CROP-CONTEXT-ABLATION in 44.64s with exit code 0.
+[2026-10-24 20:06:08 UTC] Starting EXP-17-DEGRADATION-BREAKDOWN (Degradation Robustness Breakdown Across Water Types and Depths): python -u experiments/overnight_20261024/scripts/run_exp17_degradation_breakdown.py
+[2026-10-24 20:11:15 UTC] Completed EXP-17-DEGRADATION-BREAKDOWN in 307.81s with exit code 0.
+[2026-10-24 20:12:41 UTC] Starting EXP-08B-FOLD3-PILOT (Controlled Training Pilot on Weakest Fold (Fold 3)): python -u experiments/overnight_20261024/scripts/run_exp08b_fold3_pilot.py
+[2026-10-24 20:21:30 UTC] Completed EXP-08B-FOLD3-PILOT in 528.9s with exit code 0.

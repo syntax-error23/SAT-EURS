@@ -1,0 +1,38 @@
+{
+  "configurations": {
+    "prob_0": {
+      "object_crop_prob": 0.0,
+      "ray_pixels": 722993,
+      "fish_pixels": 12378173,
+      "macro_pixels": 5788306,
+      "samples_with_ray": 24,
+      "ray_exposure_pct": 6.0
+    },
+    "prob_25": {
+      "object_crop_prob": 0.25,
+      "ray_pixels": 841720,
+      "fish_pixels": 12600809,
+      "macro_pixels": 6046534,
+      "samples_with_ray": 24,
+      "ray_exposure_pct": 6.0
+    },
+    "prob_50": {
+      "object_crop_prob": 0.5,
+      "ray_pixels": 838070,
+      "fish_pixels": 12749935,
+      "macro_pixels": 6167608,
+      "samples_with_ray": 24,
+      "ray_exposure_pct": 6.0
+    },
+    "prob_70": {
+      "object_crop_prob": 0.7,
+      "ray_pixels": 858527,
+      "fish_pixels": 13106666,
+      "macro_pixels": 6251557,
+      "samples_with_ray": 24,
+      "ray_exposure_pct": 6.0
+    }
+  },
+  "runtime_s": 41.32,
+  "verdict": "CONFIRMED"
+}

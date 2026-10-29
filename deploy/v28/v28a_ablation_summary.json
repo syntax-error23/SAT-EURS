@@ -1,0 +1,30 @@
+{
+  "candidate": "V28-A Five-Fold Ablation",
+  "archive_path": "deploy/v28/submission_v28a_fivefold_ablation.zip",
+  "archive_size_mb": 497.98,
+  "sha256": "471bf9b9710e2922805ac09746943f318f2d140de074c917a34f5ded6468ab39",
+  "total_pixels": 869580800,
+  "census": {
+    "Background": {
+      "pixels": 483403360,
+      "percentage": 55.59
+    },
+    "Coral": {
+      "pixels": 325020817,
+      "percentage": 37.377
+    },
+    "Fish": {
+      "pixels": 17221423,
+      "percentage": 1.98
+    },
+    "Ray": {
+      "pixels": 24932496,
+      "percentage": 2.867
+    },
+    "MacroFauna": {
+      "pixels": 19002704,
+      "percentage": 2.185
+    }
+  },
+  "runtime_s": 1241.4
+}

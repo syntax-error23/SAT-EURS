@@ -1,0 +1,2569 @@
+{
+  "title": "SAT-EURS Track 1 \u2014 V19 Class-4 Routing Diagnostic Results",
+  "timestamp": "2026-10-18T10:28:13.248236Z",
+  "verdict": "NO-GO",
+  "evaluation_label": "EXPLORATORY_CROSS_FOLD_ROUTING_DIAGNOSTIC",
+  "methodological_disclosure": "The 4 calibration folds {j != k} used models whose base training included fold k. Therefore, this cross-fold selection provides exploratory screening evidence on existing OOF artifacts, not formal independent nested validation. A true nested cross-validation would require retraining base models.",
+  "baseline_archive": {
+    "path": "deploy/v18/submission_v18_dual_encoder_sota.zip",
+    "sha256_before": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "sha256_after": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "intact": true
+  },
+  "runtime_metrics": {
+    "total_images": 4000,
+    "runtime_minutes": 51.49,
+    "peak_vram_gb": 10.16
+  },
+  "gates_evaluation": {
+    "overall_verdict": "NO-GO",
+    "gate_qseg": {
+      "threshold": "+0.00600",
+      "measured": 0.00054,
+      "passed": false
+    },
+    "gate_c4_iou": {
+      "threshold": "+0.01800",
+      "measured": 0.0017,
+      "passed": false
+    },
+    "gate_c3_invariance": {
+      "threshold": "0.00000",
+      "measured": 0.0,
+      "passed": true
+    },
+    "gate_coverage": {
+      "threshold": "1.0",
+      "measured": 1.0,
+      "passed": true
+    },
+    "gate_fold_wins": {
+      "threshold": ">= 4/5",
+      "measured": "3/5",
+      "passed": false
+    }
+  },
+  "metrics_summary": {
+    "C0_cal_control": {
+      "Q_seg": 0.47274,
+      "mIoU": 0.62167,
+      "Macro_F1": 0.76044,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75297,
+        0.72112,
+        0.6172,
+        0.58356,
+        0.43353
+      ],
+      "class_f1s": [
+        0.85908,
+        0.83796,
+        0.76329,
+        0.73702,
+        0.60484
+      ],
+      "class_precisions": [
+        0.84711,
+        0.86498,
+        0.68648,
+        0.67654,
+        0.66661
+      ],
+      "class_recalls": [
+        0.87139,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55355
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2090111672,
+          "tp_pixels": 1770553492,
+          "fp_pixels": 319558180,
+          "fn_pixels": 261325708,
+          "iou": 0.75297,
+          "f1": 0.85908,
+          "precision": 0.84711,
+          "recall": 0.87139
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652738201,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223145125,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311543516,
+          "tp_pixels": 213868490,
+          "fp_pixels": 97675026,
+          "fn_pixels": 34971510,
+          "iou": 0.6172,
+          "f1": 0.76329,
+          "precision": 0.68648,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101282896,
+          "tp_pixels": 67516233,
+          "fp_pixels": 33766663,
+          "fn_pixels": 54453567,
+          "iou": 0.43353,
+          "f1": 0.60484,
+          "precision": 0.66661,
+          "recall": 0.55355
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770553492,
+          209150657,
+          30331432,
+          1817675,
+          20025944
+        ],
+        [
+          283621449,
+          1429593076,
+          38275203,
+          194028,
+          7643644
+        ],
+        [
+          16758040,
+          11046997,
+          213868490,
+          1145502,
+          6020971
+        ],
+        [
+          1462906,
+          326919,
+          4288620,
+          26133051,
+          76104
+        ],
+        [
+          17715785,
+          2620552,
+          24779771,
+          9337459,
+          67516233
+        ]
+      ]
+    },
+    "C4_cal_reference": {
+      "Q_seg": 0.47456,
+      "mIoU": 0.62307,
+      "Macro_F1": 0.76165,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75945,
+        0.72918,
+        0.63004,
+        0.53741,
+        0.45925
+      ],
+      "class_f1s": [
+        0.86328,
+        0.84338,
+        0.77304,
+        0.69911,
+        0.62943
+      ],
+      "class_precisions": [
+        0.85466,
+        0.86382,
+        0.6956,
+        0.64931,
+        0.72227
+      ],
+      "class_recalls": [
+        0.87207,
+        0.82389,
+        0.86988,
+        0.75719,
+        0.55774
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2073284167,
+          "tp_pixels": 1771949337,
+          "fp_pixels": 301334830,
+          "fn_pixels": 259929863,
+          "iou": 0.75945,
+          "f1": 0.86328,
+          "precision": 0.85466,
+          "recall": 0.87207
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1677997908,
+          "tp_pixels": 1449486000,
+          "fp_pixels": 228511908,
+          "fn_pixels": 309841400,
+          "iou": 0.72918,
+          "f1": 0.84338,
+          "precision": 0.86382,
+          "recall": 0.82389
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311183851,
+          "tp_pixels": 216460172,
+          "fp_pixels": 94723679,
+          "fn_pixels": 32379828,
+          "iou": 0.63004,
+          "f1": 0.77304,
+          "precision": 0.6956,
+          "recall": 0.86988
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 37651905,
+          "tp_pixels": 24447802,
+          "fp_pixels": 13204103,
+          "fn_pixels": 7839798,
+          "iou": 0.53741,
+          "f1": 0.69911,
+          "precision": 0.64931,
+          "recall": 0.75719
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 94186169,
+          "tp_pixels": 68027746,
+          "fp_pixels": 26158423,
+          "fn_pixels": 53942054,
+          "iou": 0.45925,
+          "f1": 0.62943,
+          "precision": 0.72227,
+          "recall": 0.55774
+        }
+      },
+      "confusion_matrix": [
+        [
+          1771949337,
+          213466374,
+          29050084,
+          1729047,
+          15684358
+        ],
+        [
+          268973320,
+          1449486000,
+          35040592,
+          155429,
+          5672059
+        ],
+        [
+          15532744,
+          11173758,
+          216460172,
+          1031258,
+          4642068
+        ],
+        [
+          1530608,
+          326287,
+          5822965,
+          24447802,
+          159938
+        ],
+        [
+          15298158,
+          3545489,
+          24810038,
+          10288369,
+          68027746
+        ]
+      ]
+    },
+    "Class4_Gated_LOFO": {
+      "Q_seg": 0.47328,
+      "mIoU": 0.62207,
+      "Macro_F1": 0.76081,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75298,
+        0.72114,
+        0.61746,
+        0.58356,
+        0.43523
+      ],
+      "class_f1s": [
+        0.85909,
+        0.83798,
+        0.76349,
+        0.73702,
+        0.60649
+      ],
+      "class_precisions": [
+        0.8472,
+        0.86502,
+        0.68684,
+        0.67654,
+        0.66614
+      ],
+      "class_recalls": [
+        0.87132,
+        0.81258,
+        0.8594,
+        0.80938,
+        0.55665
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089727758,
+          "tp_pixels": 1770410428,
+          "fp_pixels": 319317330,
+          "fn_pixels": 261468772,
+          "iou": 0.75298,
+          "f1": 0.85909,
+          "precision": 0.8472,
+          "recall": 0.87132
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652669538,
+          "tp_pixels": 1429589003,
+          "fp_pixels": 223080535,
+          "fn_pixels": 329738397,
+          "iou": 0.72114,
+          "f1": 0.83798,
+          "precision": 0.86502,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311357748,
+          "tp_pixels": 213853584,
+          "fp_pixels": 97504164,
+          "fn_pixels": 34986416,
+          "iou": 0.61746,
+          "f1": 0.76349,
+          "precision": 0.68684,
+          "recall": 0.8594
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101921241,
+          "tp_pixels": 67893927,
+          "fp_pixels": 34027314,
+          "fn_pixels": 54075873,
+          "iou": 0.43523,
+          "f1": 0.60649,
+          "precision": 0.66614,
+          "recall": 0.55665
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770410428,
+          209128031,
+          30327351,
+          1817675,
+          20195715
+        ],
+        [
+          283614976,
+          1429589003,
+          38274132,
+          194028,
+          7655261
+        ],
+        [
+          16748001,
+          11005617,
+          213853584,
+          1145502,
+          6087296
+        ],
+        [
+          1462349,
+          326919,
+          4276239,
+          26133051,
+          89042
+        ],
+        [
+          17492004,
+          2619968,
+          24626442,
+          9337459,
+          67893927
+        ]
+      ]
+    }
+  },
+  "pixel_reassignments": {
+    "total_pixels_changed": 638345,
+    "pct_of_total": 0.016,
+    "from_class_0": 383914,
+    "from_class_1": 68663,
+    "from_class_2": 185768,
+    "from_class_3": 0
+  },
+  "lofo_fold_settings": {
+    "fold_0": {
+      "selected_setting": "tau_0.45_area_0",
+      "inner_qseg": 0.48975,
+      "outer_qseg": 0.43165
+    },
+    "fold_1": {
+      "selected_setting": "tau_0.30_area_0",
+      "inner_qseg": 0.44793,
+      "outer_qseg": 0.6605
+    },
+    "fold_2": {
+      "selected_setting": "tau_0.30_area_0",
+      "inner_qseg": 0.42538,
+      "outer_qseg": 0.5765
+    },
+    "fold_3": {
+      "selected_setting": "tau_0.30_area_0",
+      "inner_qseg": 0.48588,
+      "outer_qseg": 0.32406
+    },
+    "fold_4": {
+      "selected_setting": "tau_0.30_area_0",
+      "inner_qseg": 0.50269,
+      "outer_qseg": 0.49264
+    }
+  },
+  "all_grid_metrics": {
+    "tau_0.30_area_0": {
+      "Q_seg": 0.47685,
+      "mIoU": 0.62472,
+      "Macro_F1": 0.7633,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75339,
+        0.72115,
+        0.61833,
+        0.58356,
+        0.44718
+      ],
+      "class_f1s": [
+        0.85935,
+        0.83799,
+        0.76416,
+        0.73702,
+        0.618
+      ],
+      "class_precisions": [
+        0.84778,
+        0.86504,
+        0.68792,
+        0.67654,
+        0.67109
+      ],
+      "class_recalls": [
+        0.87124,
+        0.81258,
+        0.8594,
+        0.80938,
+        0.5727
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088097051,
+          "tp_pixels": 1770255364,
+          "fp_pixels": 317841687,
+          "fn_pixels": 261623836,
+          "iou": 0.75339,
+          "f1": 0.85935,
+          "precision": 0.84778,
+          "recall": 0.87124
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652621886,
+          "tp_pixels": 1429588156,
+          "fp_pixels": 223033730,
+          "fn_pixels": 329739244,
+          "iou": 0.72115,
+          "f1": 0.83799,
+          "precision": 0.86504,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 310870234,
+          "tp_pixels": 213853584,
+          "fp_pixels": 97016650,
+          "fn_pixels": 34986416,
+          "iou": 0.61833,
+          "f1": 0.76416,
+          "precision": 0.68792,
+          "recall": 0.8594
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 104087114,
+          "tp_pixels": 69851633,
+          "fp_pixels": 34235481,
+          "fn_pixels": 52118167,
+          "iou": 0.44718,
+          "f1": 0.618,
+          "precision": 0.67109,
+          "recall": 0.5727
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770255364,
+          209124886,
+          30319627,
+          1817675,
+          20361648
+        ],
+        [
+          283578867,
+          1429588156,
+          38268854,
+          194028,
+          7697495
+        ],
+        [
+          16748001,
+          11005617,
+          213853584,
+          1145502,
+          6087296
+        ],
+        [
+          1462349,
+          326919,
+          4276239,
+          26133051,
+          89042
+        ],
+        [
+          16052470,
+          2576308,
+          24151930,
+          9337459,
+          69851633
+        ]
+      ]
+    },
+    "tau_0.30_area_50": {
+      "Q_seg": 0.47677,
+      "mIoU": 0.62466,
+      "Macro_F1": 0.76325,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75339,
+        0.72115,
+        0.61827,
+        0.58356,
+        0.44693
+      ],
+      "class_f1s": [
+        0.85935,
+        0.83799,
+        0.76412,
+        0.73702,
+        0.61776
+      ],
+      "class_precisions": [
+        0.84775,
+        0.86504,
+        0.68785,
+        0.67654,
+        0.67154
+      ],
+      "class_recalls": [
+        0.87127,
+        0.81258,
+        0.8594,
+        0.80938,
+        0.57196
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088261091,
+          "tp_pixels": 1770319883,
+          "fp_pixels": 317941208,
+          "fn_pixels": 261559317,
+          "iou": 0.75339,
+          "f1": 0.85935,
+          "precision": 0.84775,
+          "recall": 0.87127
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652627277,
+          "tp_pixels": 1429589371,
+          "fp_pixels": 223037906,
+          "fn_pixels": 329738029,
+          "iou": 0.72115,
+          "f1": 0.83799,
+          "precision": 0.86504,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 310903459,
+          "tp_pixels": 213854216,
+          "fp_pixels": 97049243,
+          "fn_pixels": 34985784,
+          "iou": 0.61827,
+          "f1": 0.76412,
+          "precision": 0.68785,
+          "recall": 0.8594
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 103884458,
+          "tp_pixels": 69762089,
+          "fp_pixels": 34122369,
+          "fn_pixels": 52207711,
+          "iou": 0.44693,
+          "f1": 0.61776,
+          "precision": 0.67154,
+          "recall": 0.57196
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770319883,
+          209126680,
+          30322117,
+          1817675,
+          20292845
+        ],
+        [
+          283613904,
+          1429589371,
+          38269774,
+          194028,
+          7660323
+        ],
+        [
+          16753942,
+          11005780,
+          213854216,
+          1145502,
+          6080560
+        ],
+        [
+          1462523,
+          326919,
+          4276466,
+          26133051,
+          88641
+        ],
+        [
+          16110839,
+          2578527,
+          24180886,
+          9337459,
+          69762089
+        ]
+      ]
+    },
+    "tau_0.30_area_150": {
+      "Q_seg": 0.47663,
+      "mIoU": 0.62455,
+      "Macro_F1": 0.76315,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75339,
+        0.72115,
+        0.61818,
+        0.58356,
+        0.44649
+      ],
+      "class_f1s": [
+        0.85935,
+        0.83799,
+        0.76404,
+        0.73702,
+        0.61734
+      ],
+      "class_precisions": [
+        0.84774,
+        0.86504,
+        0.68772,
+        0.67654,
+        0.67152
+      ],
+      "class_recalls": [
+        0.87129,
+        0.81258,
+        0.85941,
+        0.80938,
+        0.57125
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088327008,
+          "tp_pixels": 1770348390,
+          "fp_pixels": 317978618,
+          "fn_pixels": 261530810,
+          "iou": 0.75339,
+          "f1": 0.85935,
+          "precision": 0.84774,
+          "recall": 0.87129
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652631054,
+          "tp_pixels": 1429589631,
+          "fp_pixels": 223041423,
+          "fn_pixels": 329737769,
+          "iou": 0.72115,
+          "f1": 0.83799,
+          "precision": 0.86504,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 310959994,
+          "tp_pixels": 213854852,
+          "fp_pixels": 97105142,
+          "fn_pixels": 34985148,
+          "iou": 0.61818,
+          "f1": 0.76404,
+          "precision": 0.68772,
+          "recall": 0.85941
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 103758229,
+          "tp_pixels": 69675394,
+          "fp_pixels": 34082835,
+          "fn_pixels": 52294406,
+          "iou": 0.44649,
+          "f1": 0.61734,
+          "precision": 0.67152,
+          "recall": 0.57125
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770348390,
+          209128130,
+          30323015,
+          1817675,
+          20261990
+        ],
+        [
+          283619682,
+          1429589631,
+          38270285,
+          194028,
+          7653774
+        ],
+        [
+          16754578,
+          11006096,
+          213854852,
+          1145502,
+          6078972
+        ],
+        [
+          1462524,
+          326919,
+          4277007,
+          26133051,
+          88099
+        ],
+        [
+          16141834,
+          2580278,
+          24234835,
+          9337459,
+          69675394
+        ]
+      ]
+    },
+    "tau_0.35_area_0": {
+      "Q_seg": 0.47588,
+      "mIoU": 0.624,
+      "Macro_F1": 0.76263,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75329,
+        0.72113,
+        0.61812,
+        0.58356,
+        0.44388
+      ],
+      "class_f1s": [
+        0.85929,
+        0.83798,
+        0.764,
+        0.73702,
+        0.61484
+      ],
+      "class_precisions": [
+        0.84758,
+        0.86501,
+        0.68765,
+        0.67654,
+        0.6708
+      ],
+      "class_recalls": [
+        0.87133,
+        0.81258,
+        0.85942,
+        0.80938,
+        0.5675
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088808686,
+          "tp_pixels": 1770430248,
+          "fp_pixels": 318378438,
+          "fn_pixels": 261448952,
+          "iou": 0.75329,
+          "f1": 0.85929,
+          "precision": 0.84758,
+          "recall": 0.87133
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652684155,
+          "tp_pixels": 1429591639,
+          "fp_pixels": 223092516,
+          "fn_pixels": 329735761,
+          "iou": 0.72113,
+          "f1": 0.83798,
+          "precision": 0.86501,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 310997337,
+          "tp_pixels": 213857999,
+          "fp_pixels": 97139338,
+          "fn_pixels": 34982001,
+          "iou": 0.61812,
+          "f1": 0.764,
+          "precision": 0.68765,
+          "recall": 0.85942
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 103186107,
+          "tp_pixels": 69217512,
+          "fp_pixels": 33968595,
+          "fn_pixels": 52752288,
+          "iou": 0.44388,
+          "f1": 0.61484,
+          "precision": 0.6708,
+          "recall": 0.5675
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770430248,
+          209142095,
+          30326652,
+          1817675,
+          20162530
+        ],
+        [
+          283607476,
+          1429591639,
+          38272074,
+          194028,
+          7662183
+        ],
+        [
+          16755340,
+          11020499,
+          213857999,
+          1145502,
+          6060660
+        ],
+        [
+          1462784,
+          326919,
+          4281624,
+          26133051,
+          83222
+        ],
+        [
+          16552838,
+          2603003,
+          24258988,
+          9337459,
+          69217512
+        ]
+      ]
+    },
+    "tau_0.35_area_50": {
+      "Q_seg": 0.47578,
+      "mIoU": 0.62393,
+      "Macro_F1": 0.76256,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75329,
+        0.72113,
+        0.61808,
+        0.58356,
+        0.44358
+      ],
+      "class_f1s": [
+        0.85929,
+        0.83798,
+        0.76397,
+        0.73702,
+        0.61456
+      ],
+      "class_precisions": [
+        0.84756,
+        0.86501,
+        0.6876,
+        0.67654,
+        0.67095
+      ],
+      "class_recalls": [
+        0.87135,
+        0.81258,
+        0.85942,
+        0.80938,
+        0.56691
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088908619,
+          "tp_pixels": 1770470678,
+          "fp_pixels": 318437941,
+          "fn_pixels": 261408522,
+          "iou": 0.75329,
+          "f1": 0.85929,
+          "precision": 0.84756,
+          "recall": 0.87135
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652687855,
+          "tp_pixels": 1429591842,
+          "fp_pixels": 223096013,
+          "fn_pixels": 329735558,
+          "iou": 0.72113,
+          "f1": 0.83798,
+          "precision": 0.86501,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311022039,
+          "tp_pixels": 213858436,
+          "fp_pixels": 97163603,
+          "fn_pixels": 34981564,
+          "iou": 0.61808,
+          "f1": 0.76397,
+          "precision": 0.6876,
+          "recall": 0.85942
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 103057772,
+          "tp_pixels": 69146285,
+          "fp_pixels": 33911487,
+          "fn_pixels": 52823515,
+          "iou": 0.44358,
+          "f1": 0.61456,
+          "precision": 0.67095,
+          "recall": 0.56691
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770470678,
+          209143077,
+          30327087,
+          1817675,
+          20120683
+        ],
+        [
+          283620105,
+          1429591842,
+          38272343,
+          194028,
+          7649082
+        ],
+        [
+          16756725,
+          11020602,
+          213858436,
+          1145502,
+          6058735
+        ],
+        [
+          1462798,
+          326919,
+          4281845,
+          26133051,
+          82987
+        ],
+        [
+          16598313,
+          2605415,
+          24282328,
+          9337459,
+          69146285
+        ]
+      ]
+    },
+    "tau_0.35_area_150": {
+      "Q_seg": 0.47563,
+      "mIoU": 0.62382,
+      "Macro_F1": 0.76246,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75329,
+        0.72113,
+        0.618,
+        0.58356,
+        0.44311
+      ],
+      "class_f1s": [
+        0.85928,
+        0.83797,
+        0.7639,
+        0.73702,
+        0.61411
+      ],
+      "class_precisions": [
+        0.84755,
+        0.86501,
+        0.68749,
+        0.67654,
+        0.67081
+      ],
+      "class_recalls": [
+        0.87135,
+        0.81258,
+        0.85942,
+        0.80938,
+        0.56624
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2088956225,
+          "tp_pixels": 1770485259,
+          "fp_pixels": 318470966,
+          "fn_pixels": 261393941,
+          "iou": 0.75329,
+          "f1": 0.85928,
+          "precision": 0.84755,
+          "recall": 0.87135
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652691317,
+          "tp_pixels": 1429592060,
+          "fp_pixels": 223099257,
+          "fn_pixels": 329735340,
+          "iou": 0.72113,
+          "f1": 0.83797,
+          "precision": 0.86501,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311071151,
+          "tp_pixels": 213858834,
+          "fp_pixels": 97212317,
+          "fn_pixels": 34981166,
+          "iou": 0.618,
+          "f1": 0.7639,
+          "precision": 0.68749,
+          "recall": 0.85942
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 102957592,
+          "tp_pixels": 69064653,
+          "fp_pixels": 33892939,
+          "fn_pixels": 52905147,
+          "iou": 0.44311,
+          "f1": 0.61411,
+          "precision": 0.67081,
+          "recall": 0.56624
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770485259,
+          209143637,
+          30327671,
+          1817675,
+          20104958
+        ],
+        [
+          283621120,
+          1429592060,
+          38272482,
+          194028,
+          7647710
+        ],
+        [
+          16756990,
+          11020901,
+          213858834,
+          1145502,
+          6057773
+        ],
+        [
+          1462835,
+          326919,
+          4282297,
+          26133051,
+          82498
+        ],
+        [
+          16630021,
+          2607800,
+          24329867,
+          9337459,
+          69064653
+        ]
+      ]
+    },
+    "tau_0.40_area_0": {
+      "Q_seg": 0.4748,
+      "mIoU": 0.6232,
+      "Macro_F1": 0.76187,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75316,
+        0.72112,
+        0.61791,
+        0.58356,
+        0.44024
+      ],
+      "class_f1s": [
+        0.8592,
+        0.83797,
+        0.76384,
+        0.73702,
+        0.61134
+      ],
+      "class_precisions": [
+        0.84738,
+        0.86499,
+        0.68738,
+        0.67654,
+        0.66961
+      ],
+      "class_recalls": [
+        0.87136,
+        0.81258,
+        0.85944,
+        0.80938,
+        0.5624
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089384838,
+          "tp_pixels": 1770497479,
+          "fp_pixels": 318887359,
+          "fn_pixels": 261381721,
+          "iou": 0.75316,
+          "f1": 0.8592,
+          "precision": 0.84738,
+          "recall": 0.87136
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652723563,
+          "tp_pixels": 1429593036,
+          "fp_pixels": 223130527,
+          "fn_pixels": 329734364,
+          "iou": 0.72112,
+          "f1": 0.83797,
+          "precision": 0.86499,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311127199,
+          "tp_pixels": 213862131,
+          "fp_pixels": 97265068,
+          "fn_pixels": 34977869,
+          "iou": 0.61791,
+          "f1": 0.76384,
+          "precision": 0.68738,
+          "recall": 0.85944
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 102440685,
+          "tp_pixels": 68595575,
+          "fp_pixels": 33845110,
+          "fn_pixels": 53374225,
+          "iou": 0.44024,
+          "f1": 0.61134,
+          "precision": 0.66961,
+          "recall": 0.5624
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770497479,
+          209147507,
+          30330356,
+          1817675,
+          20086183
+        ],
+        [
+          283620925,
+          1429593036,
+          38274163,
+          194028,
+          7645248
+        ],
+        [
+          16757688,
+          11040442,
+          213862131,
+          1145502,
+          6034237
+        ],
+        [
+          1462906,
+          326919,
+          4285282,
+          26133051,
+          79442
+        ],
+        [
+          17045840,
+          2615659,
+          24375267,
+          9337459,
+          68595575
+        ]
+      ]
+    },
+    "tau_0.40_area_50": {
+      "Q_seg": 0.47472,
+      "mIoU": 0.62314,
+      "Macro_F1": 0.76182,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75316,
+        0.72112,
+        0.61788,
+        0.58356,
+        0.43998
+      ],
+      "class_f1s": [
+        0.8592,
+        0.83797,
+        0.76381,
+        0.73702,
+        0.61109
+      ],
+      "class_precisions": [
+        0.84737,
+        0.86499,
+        0.68733,
+        0.67654,
+        0.6696
+      ],
+      "class_recalls": [
+        0.87137,
+        0.81258,
+        0.85944,
+        0.80938,
+        0.56199
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089435396,
+          "tp_pixels": 1770518443,
+          "fp_pixels": 318916953,
+          "fn_pixels": 261360757,
+          "iou": 0.75316,
+          "f1": 0.8592,
+          "precision": 0.84737,
+          "recall": 0.87137
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652725446,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223132370,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83797,
+          "precision": 0.86499,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311147398,
+          "tp_pixels": 213862367,
+          "fp_pixels": 97285031,
+          "fn_pixels": 34977633,
+          "iou": 0.61788,
+          "f1": 0.76381,
+          "precision": 0.68733,
+          "recall": 0.85944
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 102368045,
+          "tp_pixels": 68545265,
+          "fp_pixels": 33822780,
+          "fn_pixels": 53424535,
+          "iou": 0.43998,
+          "f1": 0.61109,
+          "precision": 0.6696,
+          "recall": 0.56199
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770518443,
+          209147722,
+          30330426,
+          1817675,
+          20064934
+        ],
+        [
+          283621440,
+          1429593076,
+          38274203,
+          194028,
+          7644653
+        ],
+        [
+          16757761,
+          11040514,
+          213862367,
+          1145502,
+          6033856
+        ],
+        [
+          1462906,
+          326919,
+          4285387,
+          26133051,
+          79337
+        ],
+        [
+          17074846,
+          2617215,
+          24395015,
+          9337459,
+          68545265
+        ]
+      ]
+    },
+    "tau_0.40_area_150": {
+      "Q_seg": 0.47463,
+      "mIoU": 0.62307,
+      "Macro_F1": 0.76176,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75315,
+        0.72112,
+        0.61784,
+        0.58356,
+        0.4397
+      ],
+      "class_f1s": [
+        0.8592,
+        0.83797,
+        0.76379,
+        0.73702,
+        0.61082
+      ],
+      "class_precisions": [
+        0.84736,
+        0.86499,
+        0.68729,
+        0.67654,
+        0.66951
+      ],
+      "class_recalls": [
+        0.87137,
+        0.81258,
+        0.85944,
+        0.80938,
+        0.56159
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089473389,
+          "tp_pixels": 1770527924,
+          "fp_pixels": 318945465,
+          "fn_pixels": 261351276,
+          "iou": 0.75315,
+          "f1": 0.8592,
+          "precision": 0.84736,
+          "recall": 0.87137
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652726533,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223133457,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83797,
+          "precision": 0.86499,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311166872,
+          "tp_pixels": 213862537,
+          "fp_pixels": 97304335,
+          "fn_pixels": 34977463,
+          "iou": 0.61784,
+          "f1": 0.76379,
+          "precision": 0.68729,
+          "recall": 0.85944
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 102309491,
+          "tp_pixels": 68497154,
+          "fp_pixels": 33812337,
+          "fn_pixels": 53472646,
+          "iou": 0.4397,
+          "f1": 0.61082,
+          "precision": 0.66951,
+          "recall": 0.56159
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770527924,
+          209147853,
+          30330500,
+          1817675,
+          20055248
+        ],
+        [
+          283621440,
+          1429593076,
+          38274246,
+          194028,
+          7644610
+        ],
+        [
+          16757828,
+          11040870,
+          213862537,
+          1145502,
+          6033263
+        ],
+        [
+          1462906,
+          326919,
+          4285508,
+          26133051,
+          79216
+        ],
+        [
+          17103291,
+          2617815,
+          24414081,
+          9337459,
+          68497154
+        ]
+      ]
+    },
+    "tau_0.45_area_0": {
+      "Q_seg": 0.47347,
+      "mIoU": 0.62221,
+      "Macro_F1": 0.76094,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75303,
+        0.72112,
+        0.61747,
+        0.58356,
+        0.43587
+      ],
+      "class_f1s": [
+        0.85912,
+        0.83796,
+        0.7635,
+        0.73702,
+        0.60711
+      ],
+      "class_precisions": [
+        0.8472,
+        0.86498,
+        0.68682,
+        0.67654,
+        0.66773
+      ],
+      "class_recalls": [
+        0.87138,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55659
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089882514,
+          "tp_pixels": 1770541098,
+          "fp_pixels": 319341416,
+          "fn_pixels": 261338102,
+          "iou": 0.75303,
+          "f1": 0.85912,
+          "precision": 0.8472,
+          "recall": 0.87138
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652737575,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223144499,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311388100,
+          "tp_pixels": 213867959,
+          "fp_pixels": 97520141,
+          "fn_pixels": 34972041,
+          "iou": 0.61747,
+          "f1": 0.7635,
+          "precision": 0.68682,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101668096,
+          "tp_pixels": 67886788,
+          "fp_pixels": 33781308,
+          "fn_pixels": 54083012,
+          "iou": 0.43587,
+          "f1": 0.60711,
+          "precision": 0.66773,
+          "recall": 0.55659
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770541098,
+          209150651,
+          30331372,
+          1817675,
+          20038404
+        ],
+        [
+          283621449,
+          1429593076,
+          38275148,
+          194028,
+          7643699
+        ],
+        [
+          16758040,
+          11046961,
+          213867959,
+          1145502,
+          6021538
+        ],
+        [
+          1462906,
+          326919,
+          4287057,
+          26133051,
+          77667
+        ],
+        [
+          17499021,
+          2619968,
+          24626564,
+          9337459,
+          67886788
+        ]
+      ]
+    },
+    "tau_0.45_area_50": {
+      "Q_seg": 0.47342,
+      "mIoU": 0.62218,
+      "Macro_F1": 0.76091,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75303,
+        0.72112,
+        0.61746,
+        0.58356,
+        0.43571
+      ],
+      "class_f1s": [
+        0.85912,
+        0.83796,
+        0.7635,
+        0.73702,
+        0.60697
+      ],
+      "class_precisions": [
+        0.84719,
+        0.86498,
+        0.68681,
+        0.67654,
+        0.66769
+      ],
+      "class_recalls": [
+        0.87138,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55636
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089910771,
+          "tp_pixels": 1770548426,
+          "fp_pixels": 319362345,
+          "fn_pixels": 261330774,
+          "iou": 0.75303,
+          "f1": 0.85912,
+          "precision": 0.84719,
+          "recall": 0.87138
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652737838,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223144762,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311394398,
+          "tp_pixels": 213868224,
+          "fp_pixels": 97526174,
+          "fn_pixels": 34971776,
+          "iou": 0.61746,
+          "f1": 0.7635,
+          "precision": 0.68681,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101633278,
+          "tp_pixels": 67859702,
+          "fp_pixels": 33773576,
+          "fn_pixels": 54110098,
+          "iou": 0.43571,
+          "f1": 0.60697,
+          "precision": 0.66769,
+          "recall": 0.55636
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770548426,
+          209150657,
+          30331423,
+          1817675,
+          20031019
+        ],
+        [
+          283621449,
+          1429593076,
+          38275149,
+          194028,
+          7643698
+        ],
+        [
+          16758040,
+          11046997,
+          213868224,
+          1145502,
+          6021237
+        ],
+        [
+          1462906,
+          326919,
+          4287102,
+          26133051,
+          77622
+        ],
+        [
+          17519950,
+          2620189,
+          24632500,
+          9337459,
+          67859702
+        ]
+      ]
+    },
+    "tau_0.45_area_150": {
+      "Q_seg": 0.47337,
+      "mIoU": 0.62214,
+      "Macro_F1": 0.76088,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75302,
+        0.72112,
+        0.61745,
+        0.58356,
+        0.43554
+      ],
+      "class_f1s": [
+        0.85911,
+        0.83796,
+        0.76349,
+        0.73702,
+        0.6068
+      ],
+      "class_precisions": [
+        0.84718,
+        0.86498,
+        0.68679,
+        0.67654,
+        0.66762
+      ],
+      "class_recalls": [
+        0.87139,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55613
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2089934157,
+          "tp_pixels": 1770551471,
+          "fp_pixels": 319382686,
+          "fn_pixels": 261327729,
+          "iou": 0.75302,
+          "f1": 0.85911,
+          "precision": 0.84718,
+          "recall": 0.87139
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652737838,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223144762,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311402434,
+          "tp_pixels": 213868490,
+          "fp_pixels": 97533944,
+          "fn_pixels": 34971510,
+          "iou": 0.61745,
+          "f1": 0.76349,
+          "precision": 0.68679,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101601856,
+          "tp_pixels": 67831626,
+          "fp_pixels": 33770230,
+          "fn_pixels": 54138174,
+          "iou": 0.43554,
+          "f1": 0.6068,
+          "precision": 0.66762,
+          "recall": 0.55613
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770551471,
+          209150657,
+          30331432,
+          1817675,
+          20027965
+        ],
+        [
+          283621449,
+          1429593076,
+          38275175,
+          194028,
+          7643672
+        ],
+        [
+          16758040,
+          11046997,
+          213868490,
+          1145502,
+          6020971
+        ],
+        [
+          1462906,
+          326919,
+          4287102,
+          26133051,
+          77622
+        ],
+        [
+          17540291,
+          2620189,
+          24640235,
+          9337459,
+          67831626
+        ]
+      ]
+    },
+    "tau_0.50_area_0": {
+      "Q_seg": 0.47281,
+      "mIoU": 0.62172,
+      "Macro_F1": 0.76049,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75298,
+        0.72112,
+        0.6172,
+        0.58356,
+        0.43376
+      ],
+      "class_f1s": [
+        0.85908,
+        0.83796,
+        0.76329,
+        0.73702,
+        0.60506
+      ],
+      "class_precisions": [
+        0.84712,
+        0.86498,
+        0.68648,
+        0.67654,
+        0.66672
+      ],
+      "class_recalls": [
+        0.87139,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55384
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2090074939,
+          "tp_pixels": 1770552657,
+          "fp_pixels": 319522282,
+          "fn_pixels": 261326543,
+          "iou": 0.75298,
+          "f1": 0.85908,
+          "precision": 0.84712,
+          "recall": 0.87139
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652738201,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223145125,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311542733,
+          "tp_pixels": 213868490,
+          "fp_pixels": 97674243,
+          "fn_pixels": 34971510,
+          "iou": 0.6172,
+          "f1": 0.76329,
+          "precision": 0.68648,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101320412,
+          "tp_pixels": 67552280,
+          "fp_pixels": 33768132,
+          "fn_pixels": 54417520,
+          "iou": 0.43376,
+          "f1": 0.60506,
+          "precision": 0.66672,
+          "recall": 0.55384
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770552657,
+          209150657,
+          30331432,
+          1817675,
+          20026779
+        ],
+        [
+          283621449,
+          1429593076,
+          38275203,
+          194028,
+          7643644
+        ],
+        [
+          16758040,
+          11046997,
+          213868490,
+          1145502,
+          6020971
+        ],
+        [
+          1462906,
+          326919,
+          4287986,
+          26133051,
+          76738
+        ],
+        [
+          17679887,
+          2620552,
+          24779622,
+          9337459,
+          67552280
+        ]
+      ]
+    },
+    "tau_0.50_area_50": {
+      "Q_seg": 0.47281,
+      "mIoU": 0.62172,
+      "Macro_F1": 0.76048,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75298,
+        0.72112,
+        0.6172,
+        0.58356,
+        0.43374
+      ],
+      "class_f1s": [
+        0.85908,
+        0.83796,
+        0.76329,
+        0.73702,
+        0.60505
+      ],
+      "class_precisions": [
+        0.84712,
+        0.86498,
+        0.68648,
+        0.67654,
+        0.66671
+      ],
+      "class_recalls": [
+        0.87139,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.55382
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2090077841,
+          "tp_pixels": 1770553174,
+          "fp_pixels": 319524667,
+          "fn_pixels": 261326026,
+          "iou": 0.75298,
+          "f1": 0.85908,
+          "precision": 0.84712,
+          "recall": 0.87139
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652738201,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223145125,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311542755,
+          "tp_pixels": 213868490,
+          "fp_pixels": 97674265,
+          "fn_pixels": 34971510,
+          "iou": 0.6172,
+          "f1": 0.76329,
+          "precision": 0.68648,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101317488,
+          "tp_pixels": 67549889,
+          "fp_pixels": 33767599,
+          "fn_pixels": 54419911,
+          "iou": 0.43374,
+          "f1": 0.60505,
+          "precision": 0.66671,
+          "recall": 0.55382
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770553174,
+          209150657,
+          30331432,
+          1817675,
+          20026262
+        ],
+        [
+          283621449,
+          1429593076,
+          38275203,
+          194028,
+          7643644
+        ],
+        [
+          16758040,
+          11046997,
+          213868490,
+          1145502,
+          6020971
+        ],
+        [
+          1462906,
+          326919,
+          4288002,
+          26133051,
+          76722
+        ],
+        [
+          17682272,
+          2620552,
+          24779628,
+          9337459,
+          67549889
+        ]
+      ]
+    },
+    "tau_0.50_area_150": {
+      "Q_seg": 0.4728,
+      "mIoU": 0.62172,
+      "Macro_F1": 0.76048,
+      "coverage_penalty": 1.0,
+      "class_ious": [
+        0.75298,
+        0.72112,
+        0.6172,
+        0.58356,
+        0.43373
+      ],
+      "class_f1s": [
+        0.85908,
+        0.83796,
+        0.76329,
+        0.73702,
+        0.60503
+      ],
+      "class_precisions": [
+        0.84712,
+        0.86498,
+        0.68648,
+        0.67654,
+        0.66671
+      ],
+      "class_recalls": [
+        0.87139,
+        0.81258,
+        0.85946,
+        0.80938,
+        0.5538
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 2031879200,
+          "pred_pixels": 2090080458,
+          "tp_pixels": 1770553330,
+          "fp_pixels": 319527128,
+          "fn_pixels": 261325870,
+          "iou": 0.75298,
+          "f1": 0.85908,
+          "precision": 0.84712,
+          "recall": 0.87139
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 1759327400,
+          "pred_pixels": 1652738201,
+          "tp_pixels": 1429593076,
+          "fp_pixels": 223145125,
+          "fn_pixels": 329734324,
+          "iou": 0.72112,
+          "f1": 0.83796,
+          "precision": 0.86498,
+          "recall": 0.81258
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 248840000,
+          "pred_pixels": 311542898,
+          "tp_pixels": 213868490,
+          "fp_pixels": 97674408,
+          "fn_pixels": 34971510,
+          "iou": 0.6172,
+          "f1": 0.76329,
+          "precision": 0.68648,
+          "recall": 0.85946
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 32287600,
+          "pred_pixels": 38627715,
+          "tp_pixels": 26133051,
+          "fp_pixels": 12494664,
+          "fn_pixels": 6154549,
+          "iou": 0.58356,
+          "f1": 0.73702,
+          "precision": 0.67654,
+          "recall": 0.80938
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 121969800,
+          "pred_pixels": 101314728,
+          "tp_pixels": 67547285,
+          "fp_pixels": 33767443,
+          "fn_pixels": 54422515,
+          "iou": 0.43373,
+          "f1": 0.60503,
+          "precision": 0.66671,
+          "recall": 0.5538
+        }
+      },
+      "confusion_matrix": [
+        [
+          1770553330,
+          209150657,
+          30331432,
+          1817675,
+          20026106
+        ],
+        [
+          283621449,
+          1429593076,
+          38275203,
+          194028,
+          7643644
+        ],
+        [
+          16758040,
+          11046997,
+          213868490,
+          1145502,
+          6020971
+        ],
+        [
+          1462906,
+          326919,
+          4288002,
+          26133051,
+          76722
+        ],
+        [
+          17684733,
+          2620552,
+          24779771,
+          9337459,
+          67547285
+        ]
+      ]
+    }
+  }
+}

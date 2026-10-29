@@ -1,0 +1,1112 @@
+{
+  "timestamp": "2026-10-23T20:58:29Z",
+  "description": "Pre-softmax teacher targets for Fold 0 and Fold 1 student distillation",
+  "total_cached_targets": 3200,
+  "target_resolution": [
+    192,
+    384
+  ],
+  "precision": "float16",
+  "records": [
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_10.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_10.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_15.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_15.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_25.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_25.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_35.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_35.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_45.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_45.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_50.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_50.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_60.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_60.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_70.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_70.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_80.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_80.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_10_90.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_10_90.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_10.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_10.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_15.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_15.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_25.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_25.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_35.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_35.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_45.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_45.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_50.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_50.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_60.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_60.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_70.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_70.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_80.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_80.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_1_90.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_1_90.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_10.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_10.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_15.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_15.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_25.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_25.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_35.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_35.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_45.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_45.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_50.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_50.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_60.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_60.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_70.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_70.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_80.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_80.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_2_90.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_2_90.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_10.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_10.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_15.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_15.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_25.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_25.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_35.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_35.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_45.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_45.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_50.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_50.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_60.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_60.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_70.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_70.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_80.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_80.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_3_90.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_3_90.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_10.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_10.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_15.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_15.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_25.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_25.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_35.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_35.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_45.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_45.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_50.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_50.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_60.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_60.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_70.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_70.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_80.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_80.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    },
+    {
+      "fold": 0,
+      "teacher_model": "DINOv2_Large_CP_F0",
+      "source_scene": "fish13",
+      "source_image": "fish13_4_90.png",
+      "target_path": "data/cached_teacher_targets/fold_0\\fish13\\fish13_4_90.pt",
+      "tensor_shape": [
+        5,
+        192,
+        384
+      ],
+      "dtype": "float16",
+      "tta": "horizontal_flip",
+      "input_resolution": [
+        518,
+        518
+      ],
+      "target_resolution": [
+        192,
+        384
+      ]
+    }
+  ]
+}

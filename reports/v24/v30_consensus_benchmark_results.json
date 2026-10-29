@@ -1,0 +1,211 @@
+{
+  "A. Control: Individual-Image Inference (No Consensus)": {
+    "Q_seg": 0.43185,
+    "mIoU": 0.61967,
+    "Macro_F1": 0.6969,
+    "class_ious": [
+      0.8765,
+      0.676,
+      0.7896,
+      0.7562,
+      0.0
+    ],
+    "class_f1s": [
+      0.9342,
+      0.8067,
+      0.8824,
+      0.8612,
+      0.0
+    ]
+  },
+  "B. Unweighted Scene Consensus (All variants)": {
+    "Q_seg": 0.76819,
+    "mIoU": 0.84275,
+    "Macro_F1": 0.91153,
+    "class_ious": [
+      0.8922,
+      0.706,
+      0.832,
+      0.7836,
+      1.0
+    ],
+    "class_f1s": [
+      0.943,
+      0.8276,
+      0.9083,
+      0.8787,
+      1.0
+    ]
+  },
+  "C1. Depth-Exponential Consensus (tau=25m)": {
+    "Q_seg": 0.76004,
+    "mIoU": 0.8371,
+    "Macro_F1": 0.90794,
+    "class_ious": [
+      0.892,
+      0.705,
+      0.829,
+      0.7596,
+      1.0
+    ],
+    "class_f1s": [
+      0.9429,
+      0.827,
+      0.9065,
+      0.8634,
+      1.0
+    ]
+  },
+  "C2. Depth-Exponential Consensus (tau=40m)": {
+    "Q_seg": 0.76222,
+    "mIoU": 0.83861,
+    "Macro_F1": 0.90891,
+    "class_ious": [
+      0.892,
+      0.7051,
+      0.8298,
+      0.7663,
+      1.0
+    ],
+    "class_f1s": [
+      0.9429,
+      0.827,
+      0.907,
+      0.8677,
+      1.0
+    ]
+  },
+  "D. Visibility-Weighted Consensus (WT + Depth)": {
+    "Q_seg": 0.77182,
+    "mIoU": 0.84523,
+    "Macro_F1": 0.91315,
+    "class_ious": [
+      0.8954,
+      0.7157,
+      0.8308,
+      0.7842,
+      1.0
+    ],
+    "class_f1s": [
+      0.9448,
+      0.8343,
+      0.9076,
+      0.8791,
+      1.0
+    ]
+  },
+  "E1. Top-20 Clearest Variants Consensus": {
+    "Q_seg": 0.75523,
+    "mIoU": 0.83377,
+    "Macro_F1": 0.9058,
+    "class_ious": [
+      0.8919,
+      0.7048,
+      0.8268,
+      0.7453,
+      1.0
+    ],
+    "class_f1s": [
+      0.9429,
+      0.8269,
+      0.9052,
+      0.8541,
+      1.0
+    ]
+  },
+  "E2. Top-40 Clearest Variants Consensus": {
+    "Q_seg": 0.75857,
+    "mIoU": 0.83608,
+    "Macro_F1": 0.90729,
+    "class_ious": [
+      0.8919,
+      0.7049,
+      0.8283,
+      0.7554,
+      1.0
+    ],
+    "class_f1s": [
+      0.9428,
+      0.8269,
+      0.9061,
+      0.8606,
+      1.0
+    ]
+  },
+  "E3. Top-60 Clearest Variants Consensus": {
+    "Q_seg": 0.76133,
+    "mIoU": 0.83799,
+    "Macro_F1": 0.90852,
+    "class_ious": [
+      0.8919,
+      0.705,
+      0.8291,
+      0.7639,
+      1.0
+    ],
+    "class_f1s": [
+      0.9429,
+      0.827,
+      0.9066,
+      0.8662,
+      1.0
+    ]
+  },
+  "F. Robust Trimmed Mean Consensus (15% trimmed)": {
+    "Q_seg": 0.76854,
+    "mIoU": 0.84299,
+    "Macro_F1": 0.91168,
+    "class_ious": [
+      0.8922,
+      0.7057,
+      0.8321,
+      0.785,
+      1.0
+    ],
+    "class_f1s": [
+      0.943,
+      0.8275,
+      0.9083,
+      0.8796,
+      1.0
+    ]
+  },
+  "G. Hybrid: 70% Individual + 30% Clearest Consensus": {
+    "Q_seg": 0.44712,
+    "mIoU": 0.6335,
+    "Macro_F1": 0.7058,
+    "class_ious": [
+      0.8885,
+      0.7006,
+      0.8088,
+      0.7695,
+      0.0
+    ],
+    "class_f1s": [
+      0.941,
+      0.8239,
+      0.8943,
+      0.8698,
+      0.0
+    ]
+  },
+  "H. Hybrid: 50% Individual + 50% Clearest Consensus": {
+    "Q_seg": 0.76448,
+    "mIoU": 0.84014,
+    "Macro_F1": 0.90994,
+    "class_ious": [
+      0.8923,
+      0.7078,
+      0.8249,
+      0.7757,
+      1.0
+    ],
+    "class_f1s": [
+      0.9431,
+      0.8289,
+      0.9041,
+      0.8737,
+      1.0
+    ]
+  }
+}

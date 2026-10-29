@@ -1,0 +1,115 @@
+{
+  "campaign": "SAT-EURS V27 Testing-Phase Score Recovery Campaign",
+  "deadline": "October 27, 2026, 23:59 AoE",
+  "historical_reference_scores": {
+    "v18_dev_phase": 0.749,
+    "v25_test_submission_19029": 0.612,
+    "v26_test_submission_19081": 0.622,
+    "leaderboard_leader_reference": 0.753
+  },
+  "protected_baselines_verified": {
+    "v18_archive": "deploy/v18/submission_v18_dual_encoder_sota.zip",
+    "v18_sha256": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "v18_status": "VERIFIED_BIT_FOR_BIT_INTACT",
+    "v26_archive": "deploy/v26/submission_v26_test_apex_sota.zip",
+    "v26_sha256": "f7af242f806dd64c3daca6f6d2119dfa1074c77c89f847068691dfe1f6b5a70f",
+    "v26_status": "VERIFIED_BIT_FOR_BIT_INTACT"
+  },
+  "experiments": {
+    "EXP-V27-01": {
+      "name": "CoralscapesV2 SegFormer-B5 Transfer & Fusion",
+      "status": "REJECTED",
+      "baseline_qseg": 0.1992,
+      "best_fusion_qseg": 0.1960,
+      "delta": -0.0032,
+      "gate_status": "FAILED_GATE",
+      "reason": "Coralscapes lacks elasmobranch awareness (P_cov=0) and dilutes EURS fauna features across depth/Jerlov variations."
+    },
+    "EXP-V27-02": {
+      "name": "Small-Object-Aware Targeted Segmenter Training (Fold 0)",
+      "status": "PASSED",
+      "baseline": {
+        "Q_seg": 0.4278,
+        "mIoU": 0.5898,
+        "Macro_F1": 0.7254,
+        "class_ious": {
+          "0_Background": 0.752,
+          "1_Coral": 0.788,
+          "2_Fish": 0.434,
+          "3_Ray": 0.000,
+          "4_MacroFauna": 0.385
+        },
+        "class_recalls": {
+          "0_Background": 0.850,
+          "1_Coral": 0.883,
+          "2_Fish": 0.922,
+          "3_Ray": 0.000,
+          "4_MacroFauna": 0.419
+        }
+      },
+      "trained_ep04_swa": {
+        "Q_seg": 0.4583,
+        "mIoU": 0.6138,
+        "Macro_F1": 0.7467,
+        "class_ious": {
+          "0_Background": 0.752,
+          "1_Coral": 0.796,
+          "2_Fish": 0.523,
+          "3_Ray": 0.000,
+          "4_MacroFauna": 0.385
+        },
+        "class_recalls": {
+          "0_Background": 0.806,
+          "1_Coral": 0.932,
+          "2_Fish": 0.898,
+          "3_Ray": 0.000,
+          "4_MacroFauna": 0.467
+        }
+      },
+      "delta_qseg": 0.0305,
+      "fish_iou_gain": 0.089,
+      "fish_relative_gain_percent": 20.51,
+      "checkpoint": "checkpoints/v27/segmenter_v27_fold0_best.pt",
+      "gate_status": "PROMOTED"
+    },
+    "EXP-V27-03": {
+      "name": "Full-20-Scene Small-Object-Aware Segmenter Training",
+      "status": "PASSED",
+      "training_scenes_count": 20,
+      "total_training_images": 4000,
+      "epochs": 8,
+      "swa_start_epoch": 5,
+      "loss_progression": [
+        0.1232,
+        0.1072,
+        0.0998,
+        0.0833,
+        0.0800,
+        0.0705,
+        0.0691,
+        0.0670
+      ],
+      "final_loss": 0.0670,
+      "best_checkpoint": "checkpoints/v27/segmenter_full20_best.pt",
+      "swa_checkpoint": "checkpoints/v27/segmenter_full20_swa.pt",
+      "gate_status": "PROMOTED"
+    },
+    "EXP-V27-04": {
+      "name": "Restoration Fidelity Calibration Lock",
+      "status": "PASSED",
+      "restoration_path": "5-Fold Refiners + tbl19_20sc_scale_consistent.pt + alpha=0.10 unsharp",
+      "gate_status": "PROMOTED"
+    },
+    "EXP-V27-05": {
+      "name": "Candidate Packaging and 7-Point Validation",
+      "status": "PASSED",
+      "candidate_zip": "deploy/v27/submission_v27_test_hybrid_sota.zip",
+      "sha256": "722b106ae817e4efbe911a83497ffabe4aa42387f2aedee7e5ac85deb6668c7c",
+      "size_mb": 498.36,
+      "total_files": 2400,
+      "restored_jpegs": 1200,
+      "segmentation_pngs": 1200,
+      "gate_status": "PROMOTED_FOR_OFFICIAL_SUBMISSION"
+    }
+  }
+}

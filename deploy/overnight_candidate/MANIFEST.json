@@ -1,0 +1,48 @@
+{
+  "archive_path": "deploy/overnight_candidate/submission_overnight_candidate_sota.zip",
+  "archive_size_bytes": 522207457,
+  "archive_size_mb": 498.02,
+  "sha256": "cd3b3d0128dccc85c6748ef3926f504a12b56058af84343f6d4aa8446dbcb7f7",
+  "timestamp": "2026-10-24T19:01:51Z",
+  "configuration": {
+    "fold0_checkpoint": "checkpoints/v28/segmenter_v28_fold0_best.pt",
+    "folds1_4_checkpoint_dir": "checkpoints/v18",
+    "calibration_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.1,
+      0.35
+    ],
+    "use_flip_tta": true,
+    "full20_weight": 0.0,
+    "restoration": "v27_ensemble_locked_a10_s20"
+  },
+  "test_census": {
+    "Background": {
+      "count": 480133004,
+      "share_pct": 55.214
+    },
+    "Coral": {
+      "count": 327659085,
+      "share_pct": 37.68
+    },
+    "Fish": {
+      "count": 17382746,
+      "share_pct": 1.999
+    },
+    "Ray": {
+      "count": 24493500,
+      "share_pct": 2.817
+    },
+    "MacroFauna": {
+      "count": 19912465,
+      "share_pct": 2.29
+    }
+  },
+  "fallback_archive": {
+    "path": "deploy/overnight_candidate/submission_v28a_fallback.zip",
+    "sha256": "471bf9b9710e2922805ac09746943f318f2d140de074c917a34f5ded6468ab39",
+    "official_composite": 0.634
+  }
+}

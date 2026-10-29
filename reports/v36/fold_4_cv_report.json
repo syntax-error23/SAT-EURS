@@ -1,0 +1,101 @@
+{
+  "fold": 4,
+  "train_scenes": [
+    "fish1",
+    "fish11",
+    "fish12",
+    "fish13",
+    "fish14",
+    "fish15",
+    "fish17",
+    "fish18",
+    "fish2",
+    "fish20",
+    "fish21",
+    "fish4",
+    "ray1",
+    "seahorse1",
+    "sharkFish",
+    "starfish2"
+  ],
+  "val_scenes": [
+    "fish5",
+    "fish7",
+    "fish9",
+    "turtles1"
+  ],
+  "base_lr": 1.8e-05,
+  "epochs": 3,
+  "baseline_metrics": {
+    "Q_seg": 0.32959,
+    "mIoU": 0.52233,
+    "Macro_F1": 0.63101,
+    "coverage": 1.0,
+    "class_ious": [
+      0.645,
+      0.7017,
+      0.6949,
+      0.0,
+      0.5701
+    ],
+    "class_f1s": [
+      0.7842,
+      0.8247,
+      0.82,
+      0.0,
+      0.7262
+    ],
+    "class_precisions": [
+      0.946,
+      0.7199,
+      0.7469,
+      0.0,
+      0.7592
+    ],
+    "class_recalls": [
+      0.6696,
+      0.9653,
+      0.9089,
+      0.0,
+      0.696
+    ]
+  },
+  "finetuned_metrics": {
+    "Q_seg": 0.20629,
+    "mIoU": 0.41372,
+    "Macro_F1": 0.49863,
+    "coverage": 1.0,
+    "class_ious": [
+      0.7747,
+      0.781,
+      0.4449,
+      0.0,
+      0.0679
+    ],
+    "class_f1s": [
+      0.8731,
+      0.877,
+      0.6159,
+      0.0,
+      0.1272
+    ],
+    "class_precisions": [
+      0.9696,
+      0.7852,
+      0.4638,
+      0.0,
+      0.9809
+    ],
+    "class_recalls": [
+      0.794,
+      0.9933,
+      0.9163,
+      0.0,
+      0.068
+    ]
+  },
+  "delta_q_seg": -0.1233,
+  "delta_miou": -0.10861,
+  "promoted": false,
+  "promoted_checkpoint": "checkpoints/v18/fold_4/segmenter_best.pt"
+}

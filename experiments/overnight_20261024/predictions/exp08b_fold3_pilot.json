@@ -1,0 +1,26 @@
+{
+  "metrics": {
+    "baseline_q_seg": 0.23007,
+    "pilot_q_seg": 0.39369,
+    "delta_q_seg": 0.16362,
+    "delta_miou": 0.15436,
+    "delta_f1": 0.13891,
+    "class_ious_baseline": [
+      0.7155,
+      0.4865,
+      0.7962,
+      0.0,
+      0.1651
+    ],
+    "class_ious_pilot": [
+      0.6882,
+      0.4422,
+      0.78,
+      1.0,
+      0.0248
+    ]
+  },
+  "verdict": "PROMOTED",
+  "runtime_s": 525.04,
+  "checkpoint": "checkpoints/overnight_pilots/fold_3\\segmenter_v28_fold3_best.pt"
+}

@@ -1,0 +1,58 @@
+{
+  "raw_degraded": {
+    "description": "Raw Degraded Input (Baseline Floor)",
+    "psnr_db": 14.83,
+    "psnr_norm": 0.0,
+    "ssim": 0.539,
+    "sharpness": 0.068,
+    "q_fr": 0.2493,
+    "uiqm": 0.6782,
+    "uciqe": 0.2224,
+    "clipping_pct": 13.52,
+    "latency_ms": 0.34,
+    "throughput_fps": 5.5,
+    "peak_vram_mb": 2.0
+  },
+  "rsuigm_20sc_raw": {
+    "description": "Production RSUIGM Table (No Unsharp)",
+    "psnr_db": 25.25,
+    "psnr_norm": 0.5124,
+    "ssim": 0.8152,
+    "sharpness": 0.3855,
+    "q_fr": 0.636,
+    "uiqm": 1.0662,
+    "uciqe": 0.3358,
+    "clipping_pct": 5.54,
+    "latency_ms": 44.42,
+    "throughput_fps": 4.4,
+    "peak_vram_mb": 242.0
+  },
+  "rsuigm_20sc_unsharp134": {
+    "description": "Production RSUIGM + Unsharp 1.34 (Official #18747/#18752 Reference)",
+    "psnr_db": 24.77,
+    "psnr_norm": 0.4883,
+    "ssim": 0.8088,
+    "sharpness": 0.6342,
+    "q_fr": 0.6471,
+    "uiqm": 1.2557,
+    "uciqe": 0.3934,
+    "clipping_pct": 7.1,
+    "latency_ms": 46.37,
+    "throughput_fps": 4.4,
+    "peak_vram_mb": 266.0
+  },
+  "rsuigm_16sc_unsharp134": {
+    "description": "Leak-Free Fold 0 RSUIGM + Unsharp 1.34 (Strict Scientific Baseline)",
+    "psnr_db": 24.54,
+    "psnr_norm": 0.4769,
+    "ssim": 0.8016,
+    "sharpness": 0.6349,
+    "q_fr": 0.6388,
+    "uiqm": 1.2698,
+    "uciqe": 0.3932,
+    "clipping_pct": 6.94,
+    "latency_ms": 40.85,
+    "throughput_fps": 4.5,
+    "peak_vram_mb": 266.0
+  }
+}

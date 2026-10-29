@@ -1,0 +1,212 @@
+{
+  "evaluation_type": "PURE_SCENE_HELD_OUT_OOF",
+  "leakage_status": "ZERO_LEAKAGE_VERIFIED",
+  "total_images_evaluated": 800,
+  "sample_stride": 5,
+  "alpha_restoration": 0.1,
+  "raw_degraded": {
+    "psnr_dB": 14.063,
+    "ssim": 0.5055,
+    "sharpness": 0.0514,
+    "q_fr": 0.2675
+  },
+  "held_out_refiner": {
+    "psnr_dB": 25.179,
+    "ssim": 0.7897,
+    "sharpness": 0.4187,
+    "q_fr": 0.6271,
+    "score_contribution_30pct": 0.18814
+  },
+  "delta": {
+    "psnr_dB": 11.116,
+    "ssim": 0.2842,
+    "sharpness": 0.3673,
+    "q_fr": 0.3596,
+    "score_contribution_30pct": 0.10788
+  },
+  "fold_breakdown": {
+    "fold_0": {
+      "val_scenes": [
+        "fish1",
+        "fish11",
+        "fish12",
+        "seahorse1"
+      ],
+      "psnr_dB": 25.616,
+      "ssim": 0.8282,
+      "sharpness": 0.529,
+      "q_fr": 0.6652
+    },
+    "fold_1": {
+      "val_scenes": [
+        "fish13",
+        "fish14",
+        "fish15",
+        "sharkFish"
+      ],
+      "psnr_dB": 25.148,
+      "ssim": 0.7769,
+      "sharpness": 0.3296,
+      "q_fr": 0.6128
+    },
+    "fold_2": {
+      "val_scenes": [
+        "fish17",
+        "fish18",
+        "fish2",
+        "ray1"
+      ],
+      "psnr_dB": 25.22,
+      "ssim": 0.8294,
+      "sharpness": 0.558,
+      "q_fr": 0.659
+    },
+    "fold_3": {
+      "val_scenes": [
+        "fish20",
+        "fish21",
+        "fish4",
+        "starfish2"
+      ],
+      "psnr_dB": 24.196,
+      "ssim": 0.7171,
+      "sharpness": 0.306,
+      "q_fr": 0.5616
+    },
+    "fold_4": {
+      "val_scenes": [
+        "fish5",
+        "fish7",
+        "fish9",
+        "turtles1"
+      ],
+      "psnr_dB": 25.713,
+      "ssim": 0.7969,
+      "sharpness": 0.3708,
+      "q_fr": 0.6371
+    }
+  },
+  "scene_breakdown": {
+    "fish1": {
+      "psnr_dB": 25.85,
+      "ssim": 0.7941,
+      "sharpness": 0.3934,
+      "q_fr": 0.6408
+    },
+    "fish11": {
+      "psnr_dB": 23.341,
+      "ssim": 0.812,
+      "sharpness": 0.4276,
+      "q_fr": 0.5968
+    },
+    "fish12": {
+      "psnr_dB": 28.901,
+      "ssim": 0.8936,
+      "sharpness": 0.6358,
+      "q_fr": 0.7791
+    },
+    "seahorse1": {
+      "psnr_dB": 24.371,
+      "ssim": 0.813,
+      "sharpness": 0.6592,
+      "q_fr": 0.644
+    },
+    "fish13": {
+      "psnr_dB": 27.863,
+      "ssim": 0.8831,
+      "sharpness": 0.4532,
+      "q_fr": 0.7336
+    },
+    "fish14": {
+      "psnr_dB": 23.848,
+      "ssim": 0.7697,
+      "sharpness": 0.3879,
+      "q_fr": 0.5861
+    },
+    "fish15": {
+      "psnr_dB": 21.339,
+      "ssim": 0.6524,
+      "sharpness": 0.1944,
+      "q_fr": 0.4613
+    },
+    "sharkFish": {
+      "psnr_dB": 27.541,
+      "ssim": 0.8026,
+      "sharpness": 0.2827,
+      "q_fr": 0.6702
+    },
+    "fish17": {
+      "psnr_dB": 24.464,
+      "ssim": 0.8249,
+      "sharpness": 0.3944,
+      "q_fr": 0.6248
+    },
+    "fish18": {
+      "psnr_dB": 24.47,
+      "ssim": 0.842,
+      "sharpness": 0.7669,
+      "q_fr": 0.6699
+    },
+    "fish2": {
+      "psnr_dB": 23.62,
+      "ssim": 0.7684,
+      "sharpness": 0.41,
+      "q_fr": 0.582
+    },
+    "ray1": {
+      "psnr_dB": 28.327,
+      "ssim": 0.8825,
+      "sharpness": 0.6608,
+      "q_fr": 0.7593
+    },
+    "fish20": {
+      "psnr_dB": 24.607,
+      "ssim": 0.748,
+      "sharpness": 0.2668,
+      "q_fr": 0.5825
+    },
+    "fish21": {
+      "psnr_dB": 24.601,
+      "ssim": 0.5582,
+      "sharpness": 0.0769,
+      "q_fr": 0.4755
+    },
+    "fish4": {
+      "psnr_dB": 25.256,
+      "ssim": 0.8146,
+      "sharpness": 0.6025,
+      "q_fr": 0.6589
+    },
+    "starfish2": {
+      "psnr_dB": 22.32,
+      "ssim": 0.7476,
+      "sharpness": 0.2776,
+      "q_fr": 0.5295
+    },
+    "fish5": {
+      "psnr_dB": 22.595,
+      "ssim": 0.7664,
+      "sharpness": 0.3138,
+      "q_fr": 0.5486
+    },
+    "fish7": {
+      "psnr_dB": 26.282,
+      "ssim": 0.717,
+      "sharpness": 0.1857,
+      "q_fr": 0.5958
+    },
+    "fish9": {
+      "psnr_dB": 26.891,
+      "ssim": 0.8675,
+      "sharpness": 0.5293,
+      "q_fr": 0.7114
+    },
+    "turtles1": {
+      "psnr_dB": 27.085,
+      "ssim": 0.8366,
+      "sharpness": 0.4544,
+      "q_fr": 0.6924
+    }
+  },
+  "evaluation_time_s": 416.1
+}

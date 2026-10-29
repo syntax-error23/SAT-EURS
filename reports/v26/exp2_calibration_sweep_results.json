@@ -1,0 +1,4370 @@
+{
+  "zero_pure": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "segmentation": {
+      "Q_seg": 0.49758,
+      "mIoU": 0.646,
+      "Macro_F1": 0.77025,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.646,
+      "Macro_F1_present": 0.77025,
+      "Q_seg_present": 0.49758,
+      "mIoU_5class_zero": 0.646,
+      "Macro_F1_5class_zero": 0.77025,
+      "Q_seg_5class_zero": 0.49758,
+      "min_class_iou": 0.34661,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.82259,
+        0.74409,
+        0.56628,
+        0.75045,
+        0.34661
+      ],
+      "class_f1s": [
+        0.90266,
+        0.85327,
+        0.72309,
+        0.85744,
+        0.51479
+      ],
+      "class_recalls": [
+        0.92154,
+        0.82551,
+        0.88507,
+        0.88595,
+        0.3707
+      ],
+      "class_precisions": [
+        0.88454,
+        0.88297,
+        0.61122,
+        0.8307,
+        0.84213
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 958478263,
+          "tp_pixels": 847812454,
+          "fp_pixels": 110665809,
+          "fn_pixels": 72185346,
+          "iou": 0.82259,
+          "f1": 0.90266,
+          "precision": 0.88454,
+          "recall": 0.92154
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564916496,
+          "tp_pixels": 498802630,
+          "fp_pixels": 66113866,
+          "fn_pixels": 105435970,
+          "iou": 0.74409,
+          "f1": 0.85327,
+          "precision": 0.88297,
+          "recall": 0.82551
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115969099,
+          "tp_pixels": 70882905,
+          "fp_pixels": 45086194,
+          "fn_pixels": 9204495,
+          "iou": 0.56628,
+          "f1": 0.72309,
+          "precision": 0.61122,
+          "recall": 0.88507
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10299864,
+          "tp_pixels": 8556133,
+          "fp_pixels": 1743731,
+          "fn_pixels": 1101467,
+          "iou": 0.75045,
+          "f1": 0.85744,
+          "precision": 0.8307,
+          "recall": 0.88595
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 28057878,
+          "tp_pixels": 23628386,
+          "fp_pixels": 4429492,
+          "fn_pixels": 40111814,
+          "iou": 0.34661,
+          "f1": 0.51479,
+          "precision": 0.84213,
+          "recall": 0.3707
+        }
+      },
+      "confusion_matrix": [
+        [
+          847812454,
+          60817557,
+          7829998,
+          899113,
+          2638678
+        ],
+        [
+          90529599,
+          498802630,
+          13128044,
+          354,
+          1777973
+        ],
+        [
+          5549399,
+          2803168,
+          70882905,
+          844264,
+          7664
+        ],
+        [
+          281137,
+          316337,
+          498816,
+          8556133,
+          5177
+        ],
+        [
+          14305674,
+          2176804,
+          23629336,
+          0,
+          23628386
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.486444,
+    "delta_S_vs_v18": -0.005514000000000019,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.41273,
+          "mIoU": 0.57839,
+          "Macro_F1": 0.71358,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.57839,
+          "Macro_F1_present": 0.71358,
+          "Q_seg_present": 0.41273,
+          "mIoU_5class_zero": 0.46271,
+          "Macro_F1_5class_zero": 0.57086,
+          "Q_seg_5class_zero": 0.26415,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.74854,
+            0.78779,
+            0.43038,
+            0.0,
+            0.34686
+          ],
+          "class_f1s": [
+            0.85619,
+            0.8813,
+            0.60177,
+            0.0,
+            0.51506
+          ],
+          "class_recalls": [
+            0.85139,
+            0.88299,
+            0.92241,
+            0.0,
+            0.3707
+          ],
+          "class_precisions": [
+            0.86104,
+            0.87961,
+            0.44655,
+            0.0,
+            0.84359
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 341205928,
+              "tp_pixels": 293790600,
+              "fp_pixels": 47415328,
+              "fn_pixels": 51281200,
+              "iou": 0.74854,
+              "f1": 0.85619,
+              "precision": 0.86104,
+              "recall": 0.85139
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395825505,
+              "tp_pixels": 348174040,
+              "fp_pixels": 47651465,
+              "fn_pixels": 46138560,
+              "iou": 0.78779,
+              "f1": 0.8813,
+              "precision": 0.87961,
+              "recall": 0.88299
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73817523,
+              "tp_pixels": 32963334,
+              "fp_pixels": 40854189,
+              "fn_pixels": 2772866,
+              "iou": 0.43038,
+              "f1": 0.60177,
+              "precision": 0.44655,
+              "recall": 0.92241
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 2393,
+              "tp_pixels": 0,
+              "fp_pixels": 2393,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 28009451,
+              "tp_pixels": 23628386,
+              "fp_pixels": 4381065,
+              "fn_pixels": 40111814,
+              "iou": 0.34686,
+              "f1": 0.51506,
+              "precision": 0.84359,
+              "recall": 0.3707
+            }
+          },
+          "confusion_matrix": [
+            [
+              293790600,
+              43961512,
+              4695060,
+              94,
+              2624534
+            ],
+            [
+              31856502,
+              348174040,
+              12529793,
+              354,
+              1751911
+            ],
+            [
+              1253152,
+              1513149,
+              32963334,
+              1945,
+              4620
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              14305674,
+              2176804,
+              23629336,
+              0,
+              23628386
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.66118,
+          "mIoU": 0.76469,
+          "Macro_F1": 0.86463,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76469,
+          "Macro_F1_present": 0.86463,
+          "Q_seg_present": 0.66118,
+          "mIoU_5class_zero": 0.61176,
+          "Macro_F1_5class_zero": 0.6917,
+          "Q_seg_5class_zero": 0.42315,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86813,
+            0.65953,
+            0.78051,
+            0.75061,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79484,
+            0.87672,
+            0.85754,
+            0.0
+          ],
+          "class_recalls": [
+            0.96364,
+            0.71753,
+            0.85498,
+            0.88595,
+            0.0
+          ],
+          "class_precisions": [
+            0.89753,
+            0.89081,
+            0.8996,
+            0.8309,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617272335,
+              "tp_pixels": 554021854,
+              "fp_pixels": 63250481,
+              "fn_pixels": 20904146,
+              "iou": 0.86813,
+              "f1": 0.92941,
+              "precision": 0.89753,
+              "recall": 0.96364
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169090991,
+              "tp_pixels": 150628590,
+              "fp_pixels": 18462401,
+              "fn_pixels": 59297410,
+              "iou": 0.65953,
+              "f1": 0.79484,
+              "precision": 0.89081,
+              "recall": 0.71753
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42151576,
+              "tp_pixels": 37919571,
+              "fp_pixels": 4232005,
+              "fn_pixels": 6431629,
+              "iou": 0.78051,
+              "f1": 0.87672,
+              "precision": 0.8996,
+              "recall": 0.85498
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10297471,
+              "tp_pixels": 8556133,
+              "fp_pixels": 1741338,
+              "fn_pixels": 1101467,
+              "iou": 0.75061,
+              "f1": 0.85754,
+              "precision": 0.8309,
+              "recall": 0.88595
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 48427,
+              "tp_pixels": 0,
+              "fp_pixels": 48427,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              554021854,
+              16856045,
+              3134938,
+              899019,
+              14144
+            ],
+            [
+              58673097,
+              150628590,
+              598251,
+              0,
+              26062
+            ],
+            [
+              4296247,
+              1290019,
+              37919571,
+              842319,
+              3044
+            ],
+            [
+              281137,
+              316337,
+              498816,
+              8556133,
+              5177
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "v18_baseline": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.15,
+      0.15
+    ],
+    "segmentation": {
+      "Q_seg": 0.50677,
+      "mIoU": 0.65224,
+      "Macro_F1": 0.77697,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65224,
+      "Macro_F1_present": 0.77697,
+      "Q_seg_present": 0.50677,
+      "mIoU_5class_zero": 0.65224,
+      "Macro_F1_5class_zero": 0.77697,
+      "Q_seg_5class_zero": 0.50677,
+      "min_class_iou": 0.37714,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.8238,
+        0.74408,
+        0.56826,
+        0.74793,
+        0.37714
+      ],
+      "class_f1s": [
+        0.90339,
+        0.85327,
+        0.7247,
+        0.85579,
+        0.54771
+      ],
+      "class_recalls": [
+        0.92096,
+        0.82539,
+        0.88503,
+        0.88989,
+        0.40806
+      ],
+      "class_precisions": [
+        0.88648,
+        0.88309,
+        0.61355,
+        0.82421,
+        0.83266
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 955776043,
+          "tp_pixels": 847277622,
+          "fp_pixels": 108498421,
+          "fn_pixels": 72720178,
+          "iou": 0.8238,
+          "f1": 0.90339,
+          "precision": 0.88648,
+          "recall": 0.92096
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564758046,
+          "tp_pixels": 498733063,
+          "fp_pixels": 66024983,
+          "fn_pixels": 105505537,
+          "iou": 0.74408,
+          "f1": 0.85327,
+          "precision": 0.88309,
+          "recall": 0.82539
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115522920,
+          "tp_pixels": 70879368,
+          "fp_pixels": 44643552,
+          "fn_pixels": 9208032,
+          "iou": 0.56826,
+          "f1": 0.7247,
+          "precision": 0.61355,
+          "recall": 0.88503
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10427151,
+          "tp_pixels": 8594163,
+          "fp_pixels": 1832988,
+          "fn_pixels": 1063437,
+          "iou": 0.74793,
+          "f1": 0.85579,
+          "precision": 0.82421,
+          "recall": 0.88989
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 31237440,
+          "tp_pixels": 26010136,
+          "fp_pixels": 5227304,
+          "fn_pixels": 37730064,
+          "iou": 0.37714,
+          "f1": 0.54771,
+          "precision": 0.83266,
+          "recall": 0.40806
+        }
+      },
+      "confusion_matrix": [
+        [
+          847277622,
+          60762940,
+          7809278,
+          944979,
+          3202981
+        ],
+        [
+          90391958,
+          498733063,
+          13104424,
+          1020,
+          2008135
+        ],
+        [
+          5508627,
+          2801718,
+          70879368,
+          886989,
+          10698
+        ],
+        [
+          270795,
+          316337,
+          470815,
+          8594163,
+          5490
+        ],
+        [
+          12327041,
+          2143988,
+          23259035,
+          0,
+          26010136
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.491958,
+    "delta_S_vs_v18": 0.0,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42456,
+          "mIoU": 0.58733,
+          "Macro_F1": 0.72286,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58733,
+          "Macro_F1_present": 0.72286,
+          "Q_seg_present": 0.42456,
+          "mIoU_5class_zero": 0.46986,
+          "Macro_F1_5class_zero": 0.57829,
+          "Q_seg_5class_zero": 0.27172,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75135,
+            0.78779,
+            0.43271,
+            0.0,
+            0.37748
+          ],
+          "class_f1s": [
+            0.85802,
+            0.8813,
+            0.60404,
+            0.0,
+            0.54808
+          ],
+          "class_recalls": [
+            0.84998,
+            0.88282,
+            0.92238,
+            0.0,
+            0.40806
+          ],
+          "class_precisions": [
+            0.86621,
+            0.87978,
+            0.44906,
+            0.0,
+            0.83435
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 338605152,
+              "tp_pixels": 293304533,
+              "fp_pixels": 45300619,
+              "fn_pixels": 51767267,
+              "iou": 0.75135,
+              "f1": 0.85802,
+              "precision": 0.86621,
+              "recall": 0.84998
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395673549,
+              "tp_pixels": 348107516,
+              "fp_pixels": 47566033,
+              "fn_pixels": 46205084,
+              "iou": 0.78779,
+              "f1": 0.8813,
+              "precision": 0.87978,
+              "recall": 0.88282
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73403625,
+              "tp_pixels": 32962386,
+              "fp_pixels": 40441239,
+              "fn_pixels": 2773814,
+              "iou": 0.43271,
+              "f1": 0.60404,
+              "precision": 0.44906,
+              "recall": 0.92238
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 4263,
+              "tp_pixels": 0,
+              "fp_pixels": 4263,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 31174211,
+              "tp_pixels": 26010136,
+              "fp_pixels": 5164075,
+              "fn_pixels": 37730064,
+              "iou": 0.37748,
+              "f1": 0.54808,
+              "precision": 0.83435,
+              "recall": 0.40806
+            }
+          },
+          "confusion_matrix": [
+            [
+              293304533,
+              43909795,
+              4675834,
+              148,
+              3181490
+            ],
+            [
+              31721454,
+              348107516,
+              12506370,
+              1020,
+              1976240
+            ],
+            [
+              1252124,
+              1512250,
+              32962386,
+              3095,
+              6345
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              12327041,
+              2143988,
+              23259035,
+              0,
+              26010136
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.6605,
+          "mIoU": 0.7642,
+          "Macro_F1": 0.8643,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.7642,
+          "Macro_F1_present": 0.8643,
+          "Q_seg_present": 0.6605,
+          "mIoU_5class_zero": 0.61136,
+          "Macro_F1_5class_zero": 0.69144,
+          "Q_seg_5class_zero": 0.42272,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86813,
+            0.65952,
+            0.78093,
+            0.74821,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79484,
+            0.87699,
+            0.85597,
+            0.0
+          ],
+          "class_recalls": [
+            0.96356,
+            0.71752,
+            0.85493,
+            0.88989,
+            0.0
+          ],
+          "class_precisions": [
+            0.8976,
+            0.89083,
+            0.90023,
+            0.82455,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617170891,
+              "tp_pixels": 553973089,
+              "fp_pixels": 63197802,
+              "fn_pixels": 20952911,
+              "iou": 0.86813,
+              "f1": 0.92941,
+              "precision": 0.8976,
+              "recall": 0.96356
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169084497,
+              "tp_pixels": 150625547,
+              "fp_pixels": 18458950,
+              "fn_pixels": 59300453,
+              "iou": 0.65952,
+              "f1": 0.79484,
+              "precision": 0.89083,
+              "recall": 0.71752
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42119295,
+              "tp_pixels": 37916982,
+              "fp_pixels": 4202313,
+              "fn_pixels": 6434218,
+              "iou": 0.78093,
+              "f1": 0.87699,
+              "precision": 0.90023,
+              "recall": 0.85493
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10422888,
+              "tp_pixels": 8594163,
+              "fp_pixels": 1828725,
+              "fn_pixels": 1063437,
+              "iou": 0.74821,
+              "f1": 0.85597,
+              "precision": 0.82455,
+              "recall": 0.88989
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 63229,
+              "tp_pixels": 0,
+              "fp_pixels": 63229,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553973089,
+              16853145,
+              3133444,
+              944831,
+              21491
+            ],
+            [
+              58670504,
+              150625547,
+              598054,
+              0,
+              31895
+            ],
+            [
+              4256503,
+              1289468,
+              37916982,
+              883894,
+              4353
+            ],
+            [
+              270795,
+              316337,
+              470815,
+              8594163,
+              5490
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "v25_candidate": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.15,
+      0.35
+    ],
+    "segmentation": {
+      "Q_seg": 0.50989,
+      "mIoU": 0.65447,
+      "Macro_F1": 0.77909,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65447,
+      "Macro_F1_present": 0.77909,
+      "Q_seg_present": 0.50989,
+      "mIoU_5class_zero": 0.65447,
+      "Macro_F1_5class_zero": 0.77909,
+      "Q_seg_5class_zero": 0.50989,
+      "min_class_iou": 0.38484,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.8243,
+        0.74495,
+        0.57034,
+        0.7479,
+        0.38484
+      ],
+      "class_f1s": [
+        0.90369,
+        0.85384,
+        0.72639,
+        0.85577,
+        0.55579
+      ],
+      "class_recalls": [
+        0.92065,
+        0.82502,
+        0.88501,
+        0.88984,
+        0.4272
+      ],
+      "class_precisions": [
+        0.88734,
+        0.88474,
+        0.61598,
+        0.82421,
+        0.79512
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 954531063,
+          "tp_pixels": 846995449,
+          "fp_pixels": 107535614,
+          "fn_pixels": 73002351,
+          "iou": 0.8243,
+          "f1": 0.90369,
+          "precision": 0.88734,
+          "recall": 0.92065
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 563452417,
+          "tp_pixels": 498509299,
+          "fp_pixels": 64943118,
+          "fn_pixels": 105729301,
+          "iou": 0.74495,
+          "f1": 0.85384,
+          "precision": 0.88474,
+          "recall": 0.82502
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115065208,
+          "tp_pixels": 70878410,
+          "fp_pixels": 44186798,
+          "fn_pixels": 9208990,
+          "iou": 0.57034,
+          "f1": 0.72639,
+          "precision": 0.61598,
+          "recall": 0.88501
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10426598,
+          "tp_pixels": 8593696,
+          "fp_pixels": 1832902,
+          "fn_pixels": 1063904,
+          "iou": 0.7479,
+          "f1": 0.85577,
+          "precision": 0.82421,
+          "recall": 0.88984
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 34246314,
+          "tp_pixels": 27230042,
+          "fp_pixels": 7016272,
+          "fn_pixels": 36510158,
+          "iou": 0.38484,
+          "f1": 0.55579,
+          "precision": 0.79512,
+          "recall": 0.4272
+        }
+      },
+      "confusion_matrix": [
+        [
+          846995449,
+          60026059,
+          7787072,
+          944974,
+          4244246
+        ],
+        [
+          90207927,
+          498509299,
+          13076161,
+          1015,
+          2444198
+        ],
+        [
+          5505230,
+          2657227,
+          70878410,
+          886913,
+          159620
+        ],
+        [
+          270164,
+          154717,
+          470815,
+          8593696,
+          168208
+        ],
+        [
+          11552293,
+          2105115,
+          22852750,
+          0,
+          27230042
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.49383,
+    "delta_S_vs_v18": 0.0018719999999999848,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.43046,
+          "mIoU": 0.5918,
+          "Macro_F1": 0.72737,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.5918,
+          "Macro_F1_present": 0.72737,
+          "Q_seg_present": 0.43046,
+          "mIoU_5class_zero": 0.47344,
+          "Macro_F1_5class_zero": 0.5819,
+          "Q_seg_5class_zero": 0.27549,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75249,
+            0.78777,
+            0.43531,
+            0.0,
+            0.39165
+          ],
+          "class_f1s": [
+            0.85877,
+            0.88129,
+            0.60657,
+            0.0,
+            0.56286
+          ],
+          "class_recalls": [
+            0.84919,
+            0.88263,
+            0.92236,
+            0.0,
+            0.4272
+          ],
+          "class_precisions": [
+            0.86856,
+            0.87994,
+            0.45186,
+            0.0,
+            0.82474
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 337376533,
+              "tp_pixels": 293031888,
+              "fp_pixels": 44344645,
+              "fn_pixels": 52039912,
+              "iou": 0.75249,
+              "f1": 0.85877,
+              "precision": 0.86856,
+              "recall": 0.84919
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395516976,
+              "tp_pixels": 348033105,
+              "fp_pixels": 47483871,
+              "fn_pixels": 46279495,
+              "iou": 0.78777,
+              "f1": 0.88129,
+              "precision": 0.87994,
+              "recall": 0.88263
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 72946533,
+              "tp_pixels": 32961741,
+              "fp_pixels": 39984792,
+              "fn_pixels": 2774459,
+              "iou": 0.43531,
+              "f1": 0.60657,
+              "precision": 0.45186,
+              "recall": 0.92236
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 4177,
+              "tp_pixels": 0,
+              "fp_pixels": 4177,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 33016581,
+              "tp_pixels": 27230042,
+              "fp_pixels": 5786539,
+              "fn_pixels": 36510158,
+              "iou": 0.39165,
+              "f1": 0.56286,
+              "precision": 0.82474,
+              "recall": 0.4272
+            }
+          },
+          "confusion_matrix": [
+            [
+              293031888,
+              43866696,
+              4653694,
+              143,
+              3519379
+            ],
+            [
+              31541354,
+              348033105,
+              12478348,
+              1015,
+              2258778
+            ],
+            [
+              1250998,
+              1512060,
+              32961741,
+              3019,
+              8382
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              11552293,
+              2105115,
+              22852750,
+              0,
+              27230042
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.66128,
+          "mIoU": 0.76475,
+          "Macro_F1": 0.8647,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76475,
+          "Macro_F1_present": 0.8647,
+          "Q_seg_present": 0.66128,
+          "mIoU_5class_zero": 0.6118,
+          "Macro_F1_5class_zero": 0.69176,
+          "Q_seg_5class_zero": 0.42322,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86812,
+            0.66177,
+            0.78093,
+            0.74817,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79646,
+            0.87699,
+            0.85594,
+            0.0
+          ],
+          "class_recalls": [
+            0.96354,
+            0.71681,
+            0.85492,
+            0.88984,
+            0.0
+          ],
+          "class_precisions": [
+            0.89761,
+            0.89604,
+            0.90023,
+            0.82454,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617154530,
+              "tp_pixels": 553963561,
+              "fp_pixels": 63190969,
+              "fn_pixels": 20962439,
+              "iou": 0.86812,
+              "f1": 0.92941,
+              "precision": 0.89761,
+              "recall": 0.96354
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 167935441,
+              "tp_pixels": 150476194,
+              "fp_pixels": 17459247,
+              "fn_pixels": 59449806,
+              "iou": 0.66177,
+              "f1": 0.79646,
+              "precision": 0.89604,
+              "recall": 0.71681
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42118675,
+              "tp_pixels": 37916669,
+              "fp_pixels": 4202006,
+              "fn_pixels": 6434531,
+              "iou": 0.78093,
+              "f1": 0.87699,
+              "precision": 0.90023,
+              "recall": 0.85492
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10422421,
+              "tp_pixels": 8593696,
+              "fp_pixels": 1828725,
+              "fn_pixels": 1063904,
+              "iou": 0.74817,
+              "f1": 0.85594,
+              "precision": 0.82454,
+              "recall": 0.88984
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 1229733,
+              "tp_pixels": 0,
+              "fp_pixels": 1229733,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553963561,
+              16159363,
+              3133378,
+              944831,
+              724867
+            ],
+            [
+              58666573,
+              150476194,
+              597813,
+              0,
+              185420
+            ],
+            [
+              4254232,
+              1145167,
+              37916669,
+              883894,
+              151238
+            ],
+            [
+              270164,
+              154717,
+              470815,
+              8593696,
+              168208
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "hyp_protect_fish": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.05,
+      0.1,
+      0.15
+    ],
+    "segmentation": {
+      "Q_seg": 0.50574,
+      "mIoU": 0.65149,
+      "Macro_F1": 0.77628,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65149,
+      "Macro_F1_present": 0.77628,
+      "Q_seg_present": 0.50574,
+      "mIoU_5class_zero": 0.65149,
+      "Macro_F1_5class_zero": 0.77628,
+      "Q_seg_5class_zero": 0.50574,
+      "min_class_iou": 0.37553,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.82398,
+        0.74404,
+        0.56595,
+        0.74796,
+        0.37553
+      ],
+      "class_f1s": [
+        0.9035,
+        0.85324,
+        0.72282,
+        0.85581,
+        0.54602
+      ],
+      "class_recalls": [
+        0.92081,
+        0.82522,
+        0.88679,
+        0.88765,
+        0.40625
+      ],
+      "class_precisions": [
+        0.88682,
+        0.88322,
+        0.61002,
+        0.82617,
+        0.8324
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 955255960,
+          "tp_pixels": 847141873,
+          "fp_pixels": 108114087,
+          "fn_pixels": 72855927,
+          "iou": 0.82398,
+          "f1": 0.9035,
+          "precision": 0.88682,
+          "recall": 0.92081
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564557245,
+          "tp_pixels": 498630140,
+          "fp_pixels": 65927105,
+          "fn_pixels": 105608460,
+          "iou": 0.74404,
+          "f1": 0.85324,
+          "precision": 0.88322,
+          "recall": 0.82522
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 116423833,
+          "tp_pixels": 71020866,
+          "fp_pixels": 45402967,
+          "fn_pixels": 9066534,
+          "iou": 0.56595,
+          "f1": 0.72282,
+          "precision": 0.61002,
+          "recall": 0.88679
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10376320,
+          "tp_pixels": 8572600,
+          "fp_pixels": 1803720,
+          "fn_pixels": 1085000,
+          "iou": 0.74796,
+          "f1": 0.85581,
+          "precision": 0.82617,
+          "recall": 0.88765
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 31108242,
+          "tp_pixels": 25894487,
+          "fp_pixels": 5213755,
+          "fn_pixels": 37845713,
+          "iou": 0.37553,
+          "f1": 0.54602,
+          "precision": 0.8324,
+          "recall": 0.40625
+        }
+      },
+      "confusion_matrix": [
+        [
+          847141873,
+          60746395,
+          7982922,
+          929360,
+          3197250
+        ],
+        [
+          90162397,
+          498630140,
+          13445158,
+          465,
+          2000440
+        ],
+        [
+          5429324,
+          2752858,
+          71020866,
+          873895,
+          10457
+        ],
+        [
+          272023,
+          316337,
+          491032,
+          8572600,
+          5608
+        ],
+        [
+          12250343,
+          2111515,
+          23483855,
+          0,
+          25894487
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.49134,
+    "delta_S_vs_v18": -0.0006180000000000074,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42312,
+          "mIoU": 0.58624,
+          "Macro_F1": 0.72174,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58624,
+          "Macro_F1_present": 0.72174,
+          "Q_seg_present": 0.42312,
+          "mIoU_5class_zero": 0.46899,
+          "Macro_F1_5class_zero": 0.57739,
+          "Q_seg_5class_zero": 0.27079,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75169,
+            0.78776,
+            0.42964,
+            0.0,
+            0.37588
+          ],
+          "class_f1s": [
+            0.85825,
+            0.88128,
+            0.60105,
+            0.0,
+            0.54638
+          ],
+          "class_recalls": [
+            0.84969,
+            0.88261,
+            0.92386,
+            0.0,
+            0.40625
+          ],
+          "class_precisions": [
+            0.86698,
+            0.87996,
+            0.44541,
+            0.0,
+            0.83409
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 338192944,
+              "tp_pixels": 293205421,
+              "fp_pixels": 44987523,
+              "fn_pixels": 51866379,
+              "iou": 0.75169,
+              "f1": 0.85825,
+              "precision": 0.86698,
+              "recall": 0.84969
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395497137,
+              "tp_pixels": 348022927,
+              "fp_pixels": 47474210,
+              "fn_pixels": 46289673,
+              "iou": 0.78776,
+              "f1": 0.88128,
+              "precision": 0.87996,
+              "recall": 0.88261
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 74122575,
+              "tp_pixels": 33015100,
+              "fp_pixels": 41107475,
+              "fn_pixels": 2721100,
+              "iou": 0.42964,
+              "f1": 0.60105,
+              "precision": 0.44541,
+              "recall": 0.92386
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 3097,
+              "tp_pixels": 0,
+              "fp_pixels": 3097,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 31045047,
+              "tp_pixels": 25894487,
+              "fp_pixels": 5150560,
+              "fn_pixels": 37845713,
+              "iou": 0.37588,
+              "f1": 0.54638,
+              "precision": 0.83409,
+              "recall": 0.40625
+            }
+          },
+          "confusion_matrix": [
+            [
+              293205421,
+              43894215,
+              4796283,
+              111,
+              3175770
+            ],
+            [
+              31493260,
+              348022927,
+              12827337,
+              465,
+              1968611
+            ],
+            [
+              1243920,
+              1468480,
+              33015100,
+              2521,
+              6179
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              12250343,
+              2111515,
+              23483855,
+              0,
+              25894487
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.66058,
+          "mIoU": 0.76426,
+          "Macro_F1": 0.86434,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76426,
+          "Macro_F1_present": 0.86434,
+          "Q_seg_present": 0.66058,
+          "mIoU_5class_zero": 0.61141,
+          "Macro_F1_5class_zero": 0.69147,
+          "Q_seg_5class_zero": 0.42277,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86817,
+            0.65946,
+            0.78126,
+            0.74816,
+            0.0
+          ],
+          "class_f1s": [
+            0.92943,
+            0.79479,
+            0.8772,
+            0.85594,
+            0.0
+          ],
+          "class_recalls": [
+            0.96349,
+            0.71743,
+            0.85693,
+            0.88765,
+            0.0
+          ],
+          "class_precisions": [
+            0.8977,
+            0.89085,
+            0.89845,
+            0.82642,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617063016,
+              "tp_pixels": 553936452,
+              "fp_pixels": 63126564,
+              "fn_pixels": 20989548,
+              "iou": 0.86817,
+              "f1": 0.92943,
+              "precision": 0.8977,
+              "recall": 0.96349
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169060108,
+              "tp_pixels": 150607213,
+              "fp_pixels": 18452895,
+              "fn_pixels": 59318787,
+              "iou": 0.65946,
+              "f1": 0.79479,
+              "precision": 0.89085,
+              "recall": 0.71743
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42301258,
+              "tp_pixels": 38005766,
+              "fp_pixels": 4295492,
+              "fn_pixels": 6345434,
+              "iou": 0.78126,
+              "f1": 0.8772,
+              "precision": 0.89845,
+              "recall": 0.85693
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10373223,
+              "tp_pixels": 8572600,
+              "fp_pixels": 1800623,
+              "fn_pixels": 1085000,
+              "iou": 0.74816,
+              "f1": 0.85594,
+              "precision": 0.82642,
+              "recall": 0.88765
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 63195,
+              "tp_pixels": 0,
+              "fp_pixels": 63195,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553936452,
+              16852180,
+              3186639,
+              929249,
+              21480
+            ],
+            [
+              58669137,
+              150607213,
+              617821,
+              0,
+              31829
+            ],
+            [
+              4185404,
+              1284378,
+              38005766,
+              871374,
+              4278
+            ],
+            [
+              272023,
+              316337,
+              491032,
+              8572600,
+              5608
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "hyp_mod_balanced": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.12,
+      0.18
+    ],
+    "segmentation": {
+      "Q_seg": 0.50774,
+      "mIoU": 0.65293,
+      "Macro_F1": 0.77764,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65293,
+      "Macro_F1_present": 0.77764,
+      "Q_seg_present": 0.50774,
+      "mIoU_5class_zero": 0.65293,
+      "Macro_F1_5class_zero": 0.77764,
+      "Q_seg_5class_zero": 0.50774,
+      "min_class_iou": 0.37976,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.8239,
+        0.74408,
+        0.56857,
+        0.74835,
+        0.37976
+      ],
+      "class_f1s": [
+        0.90345,
+        0.85326,
+        0.72495,
+        0.85606,
+        0.55047
+      ],
+      "class_recalls": [
+        0.92091,
+        0.82537,
+        0.88503,
+        0.88912,
+        0.41154
+      ],
+      "class_precisions": [
+        0.88663,
+        0.88311,
+        0.61391,
+        0.82538,
+        0.831
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 955565027,
+          "tp_pixels": 847236106,
+          "fp_pixels": 108328921,
+          "fn_pixels": 72761694,
+          "iou": 0.8239,
+          "f1": 0.90345,
+          "precision": 0.88663,
+          "recall": 0.92091
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564731144,
+          "tp_pixels": 498720246,
+          "fp_pixels": 66010898,
+          "fn_pixels": 105518354,
+          "iou": 0.74408,
+          "f1": 0.85326,
+          "precision": 0.88311,
+          "recall": 0.82537
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115456035,
+          "tp_pixels": 70879752,
+          "fp_pixels": 44576283,
+          "fn_pixels": 9207648,
+          "iou": 0.56857,
+          "f1": 0.72495,
+          "precision": 0.61391,
+          "recall": 0.88503
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10403381,
+          "tp_pixels": 8586727,
+          "fp_pixels": 1816654,
+          "fn_pixels": 1070873,
+          "iou": 0.74835,
+          "f1": 0.85606,
+          "precision": 0.82538,
+          "recall": 0.88912
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 31566013,
+          "tp_pixels": 26231482,
+          "fp_pixels": 5334531,
+          "fn_pixels": 37508718,
+          "iou": 0.37976,
+          "f1": 0.55047,
+          "precision": 0.831,
+          "recall": 0.41154
+        }
+      },
+      "confusion_matrix": [
+        [
+          847236106,
+          60754920,
+          7806278,
+          936070,
+          3264426
+        ],
+        [
+          90364503,
+          498720246,
+          13100134,
+          788,
+          2052929
+        ],
+        [
+          5514690,
+          2801673,
+          70879752,
+          879796,
+          11489
+        ],
+        [
+          272678,
+          316337,
+          476171,
+          8586727,
+          5687
+        ],
+        [
+          12177050,
+          2137968,
+          23193700,
+          0,
+          26231482
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.49254,
+    "delta_S_vs_v18": 0.0005819999999999714,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42564,
+          "mIoU": 0.58815,
+          "Macro_F1": 0.72369,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58815,
+          "Macro_F1_present": 0.72369,
+          "Q_seg_present": 0.42564,
+          "mIoU_5class_zero": 0.47052,
+          "Macro_F1_5class_zero": 0.57895,
+          "Q_seg_5class_zero": 0.27241,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75156,
+            0.78779,
+            0.43312,
+            0.0,
+            0.38012
+          ],
+          "class_f1s": [
+            0.85816,
+            0.8813,
+            0.60444,
+            0.0,
+            0.55085
+          ],
+          "class_recalls": [
+            0.84984,
+            0.88279,
+            0.92238,
+            0.0,
+            0.41154
+          ],
+          "class_precisions": [
+            0.86665,
+            0.87981,
+            0.4495,
+            0.0,
+            0.83277
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 338378989,
+              "tp_pixels": 293255457,
+              "fp_pixels": 45123532,
+              "fn_pixels": 51816343,
+              "iou": 0.75156,
+              "f1": 0.85816,
+              "precision": 0.86665,
+              "recall": 0.84984
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395648103,
+              "tp_pixels": 348095419,
+              "fp_pixels": 47552684,
+              "fn_pixels": 46217181,
+              "iou": 0.78779,
+              "f1": 0.8813,
+              "precision": 0.87981,
+              "recall": 0.88279
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73330744,
+              "tp_pixels": 32962369,
+              "fp_pixels": 40368375,
+              "fn_pixels": 2773831,
+              "iou": 0.43312,
+              "f1": 0.60444,
+              "precision": 0.4495,
+              "recall": 0.92238
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 3758,
+              "tp_pixels": 0,
+              "fp_pixels": 3758,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 31499206,
+              "tp_pixels": 26231482,
+              "fp_pixels": 5267724,
+              "fn_pixels": 37508718,
+              "iou": 0.38012,
+              "f1": 0.55085,
+              "precision": 0.83277,
+              "recall": 0.41154
+            }
+          },
+          "confusion_matrix": [
+            [
+              293255457,
+              43902345,
+              4672562,
+              134,
+              3241302
+            ],
+            [
+              31694532,
+              348095419,
+              12502113,
+              788,
+              2019748
+            ],
+            [
+              1251950,
+              1512371,
+              32962369,
+              2836,
+              6674
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              12177050,
+              2137968,
+              23193700,
+              0,
+              26231482
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.6606,
+          "mIoU": 0.76427,
+          "Macro_F1": 0.86435,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76427,
+          "Macro_F1_present": 0.86435,
+          "Q_seg_present": 0.6606,
+          "mIoU_5class_zero": 0.61142,
+          "Macro_F1_5class_zero": 0.69148,
+          "Q_seg_5class_zero": 0.42279,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86813,
+            0.65952,
+            0.78085,
+            0.74859,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79484,
+            0.87694,
+            0.85622,
+            0.0
+          ],
+          "class_recalls": [
+            0.96357,
+            0.71751,
+            0.85493,
+            0.88912,
+            0.0
+          ],
+          "class_precisions": [
+            0.89759,
+            0.89083,
+            0.90011,
+            0.82568,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617186038,
+              "tp_pixels": 553980649,
+              "fp_pixels": 63205389,
+              "fn_pixels": 20945351,
+              "iou": 0.86813,
+              "f1": 0.92941,
+              "precision": 0.89759,
+              "recall": 0.96357
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169083041,
+              "tp_pixels": 150624827,
+              "fp_pixels": 18458214,
+              "fn_pixels": 59301173,
+              "iou": 0.65952,
+              "f1": 0.79484,
+              "precision": 0.89083,
+              "recall": 0.71751
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42125291,
+              "tp_pixels": 37917383,
+              "fp_pixels": 4207908,
+              "fn_pixels": 6433817,
+              "iou": 0.78085,
+              "f1": 0.87694,
+              "precision": 0.90011,
+              "recall": 0.85493
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10399623,
+              "tp_pixels": 8586727,
+              "fp_pixels": 1812896,
+              "fn_pixels": 1070873,
+              "iou": 0.74859,
+              "f1": 0.85622,
+              "precision": 0.82568,
+              "recall": 0.88912
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 66807,
+              "tp_pixels": 0,
+              "fp_pixels": 66807,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553980649,
+              16852575,
+              3133716,
+              935936,
+              23124
+            ],
+            [
+              58669971,
+              150624827,
+              598021,
+              0,
+              33181
+            ],
+            [
+              4262740,
+              1289302,
+              37917383,
+              876960,
+              4815
+            ],
+            [
+              272678,
+              316337,
+              476171,
+              8586727,
+              5687
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "hyp_c2_c3_c4": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.05,
+      0.15,
+      0.2
+    ],
+    "segmentation": {
+      "Q_seg": 0.50703,
+      "mIoU": 0.65237,
+      "Macro_F1": 0.77722,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65237,
+      "Macro_F1_present": 0.77722,
+      "Q_seg_present": 0.50703,
+      "mIoU_5class_zero": 0.65237,
+      "Macro_F1_5class_zero": 0.77722,
+      "Q_seg_5class_zero": 0.50703,
+      "min_class_iou": 0.37988,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.82413,
+        0.74404,
+        0.56657,
+        0.74724,
+        0.37988
+      ],
+      "class_f1s": [
+        0.90359,
+        0.85323,
+        0.72332,
+        0.85534,
+        0.5506
+      ],
+      "class_recalls": [
+        0.9207,
+        0.82519,
+        0.88678,
+        0.88894,
+        0.41201
+      ],
+      "class_precisions": [
+        0.88709,
+        0.88326,
+        0.61075,
+        0.82418,
+        0.82972
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 954858848,
+          "tp_pixels": 847046485,
+          "fp_pixels": 107812363,
+          "fn_pixels": 72951315,
+          "iou": 0.82413,
+          "f1": 0.90359,
+          "precision": 0.88709,
+          "recall": 0.9207
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564512296,
+          "tp_pixels": 498609110,
+          "fp_pixels": 65903186,
+          "fn_pixels": 105629490,
+          "iou": 0.74404,
+          "f1": 0.85323,
+          "precision": 0.88326,
+          "recall": 0.82519
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 116283053,
+          "tp_pixels": 71019717,
+          "fp_pixels": 45263336,
+          "fn_pixels": 9067683,
+          "iou": 0.56657,
+          "f1": 0.72332,
+          "precision": 0.61075,
+          "recall": 0.88678
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10416426,
+          "tp_pixels": 8585024,
+          "fp_pixels": 1831402,
+          "fn_pixels": 1072576,
+          "iou": 0.74724,
+          "f1": 0.85534,
+          "precision": 0.82418,
+          "recall": 0.88894
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 31650977,
+          "tp_pixels": 26261330,
+          "fp_pixels": 5389647,
+          "fn_pixels": 37478870,
+          "iou": 0.37988,
+          "f1": 0.5506,
+          "precision": 0.82972,
+          "recall": 0.41201
+        }
+      },
+      "confusion_matrix": [
+        [
+          847046485,
+          60733051,
+          7976553,
+          944484,
+          3297227
+        ],
+        [
+          90116577,
+          498609110,
+          13437080,
+          860,
+          2074973
+        ],
+        [
+          5417633,
+          2752254,
+          71019717,
+          886058,
+          11738
+        ],
+        [
+          268667,
+          316337,
+          481863,
+          8585024,
+          5709
+        ],
+        [
+          12009486,
+          2101544,
+          23367840,
+          0,
+          26261330
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.49211399999999994,
+    "delta_S_vs_v18": 0.00015599999999993397,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42492,
+          "mIoU": 0.58761,
+          "Macro_F1": 0.72313,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58761,
+          "Macro_F1_present": 0.72313,
+          "Q_seg_present": 0.42492,
+          "mIoU_5class_zero": 0.47009,
+          "Macro_F1_5class_zero": 0.5785,
+          "Q_seg_5class_zero": 0.27195,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75204,
+            0.78776,
+            0.43036,
+            0.0,
+            0.38026
+          ],
+          "class_f1s": [
+            0.85848,
+            0.88128,
+            0.60175,
+            0.0,
+            0.551
+          ],
+          "class_recalls": [
+            0.84947,
+            0.88256,
+            0.92385,
+            0.0,
+            0.41201
+          ],
+          "class_precisions": [
+            0.86768,
+            0.88001,
+            0.44619,
+            0.0,
+            0.83153
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 337827845,
+              "tp_pixels": 293126449,
+              "fp_pixels": 44701396,
+              "fn_pixels": 51945351,
+              "iou": 0.75204,
+              "f1": 0.85848,
+              "precision": 0.86768,
+              "recall": 0.84947
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395454791,
+              "tp_pixels": 348003107,
+              "fp_pixels": 47451684,
+              "fn_pixels": 46309493,
+              "iou": 0.78776,
+              "f1": 0.88128,
+              "precision": 0.88001,
+              "recall": 0.88256
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73992392,
+              "tp_pixels": 33014783,
+              "fp_pixels": 40977609,
+              "fn_pixels": 2721417,
+              "iou": 0.43036,
+              "f1": 0.60175,
+              "precision": 0.44619,
+              "recall": 0.92385
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 3919,
+              "tp_pixels": 0,
+              "fp_pixels": 3919,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 31581853,
+              "tp_pixels": 26261330,
+              "fp_pixels": 5320523,
+              "fn_pixels": 37478870,
+              "iou": 0.38026,
+              "f1": 0.551,
+              "precision": 0.83153,
+              "recall": 0.41201
+            }
+          },
+          "confusion_matrix": [
+            [
+              293126449,
+              43881984,
+              4790443,
+              125,
+              3272799
+            ],
+            [
+              31448283,
+              348003107,
+              12819326,
+              860,
+              2041024
+            ],
+            [
+              1243627,
+              1468156,
+              33014783,
+              2934,
+              6700
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              12009486,
+              2101544,
+              23367840,
+              0,
+              26261330
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.6604,
+          "mIoU": 0.76413,
+          "Macro_F1": 0.86425,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76413,
+          "Macro_F1_present": 0.86425,
+          "Q_seg_present": 0.6604,
+          "mIoU_5class_zero": 0.6113,
+          "Macro_F1_5class_zero": 0.6914,
+          "Q_seg_5class_zero": 0.42266,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86816,
+            0.65946,
+            0.7814,
+            0.74749,
+            0.0
+          ],
+          "class_f1s": [
+            0.92943,
+            0.79479,
+            0.87729,
+            0.8555,
+            0.0
+          ],
+          "class_recalls": [
+            0.96346,
+            0.71742,
+            0.85691,
+            0.88894,
+            0.0
+          ],
+          "class_precisions": [
+            0.89772,
+            0.89086,
+            0.89866,
+            0.82449,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617031003,
+              "tp_pixels": 553920036,
+              "fp_pixels": 63110967,
+              "fn_pixels": 21005964,
+              "iou": 0.86816,
+              "f1": 0.92943,
+              "precision": 0.89772,
+              "recall": 0.96346
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169057505,
+              "tp_pixels": 150606003,
+              "fp_pixels": 18451502,
+              "fn_pixels": 59319997,
+              "iou": 0.65946,
+              "f1": 0.79479,
+              "precision": 0.89086,
+              "recall": 0.71742
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42290661,
+              "tp_pixels": 38004934,
+              "fp_pixels": 4285727,
+              "fn_pixels": 6346266,
+              "iou": 0.7814,
+              "f1": 0.87729,
+              "precision": 0.89866,
+              "recall": 0.85691
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10412507,
+              "tp_pixels": 8585024,
+              "fp_pixels": 1827483,
+              "fn_pixels": 1072576,
+              "iou": 0.74749,
+              "f1": 0.8555,
+              "precision": 0.82449,
+              "recall": 0.88894
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 69124,
+              "tp_pixels": 0,
+              "fp_pixels": 69124,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553920036,
+              16851067,
+              3186110,
+              944359,
+              24428
+            ],
+            [
+              58668294,
+              150606003,
+              617754,
+              0,
+              33949
+            ],
+            [
+              4174006,
+              1284098,
+              38004934,
+              883124,
+              5038
+            ],
+            [
+              268667,
+              316337,
+              481863,
+              8585024,
+              5709
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "hyp_c4_mod25": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.1,
+      0.25
+    ],
+    "segmentation": {
+      "Q_seg": 0.50959,
+      "mIoU": 0.65423,
+      "Macro_F1": 0.77892,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65423,
+      "Macro_F1_present": 0.77892,
+      "Q_seg_present": 0.50959,
+      "mIoU_5class_zero": 0.65423,
+      "Macro_F1_5class_zero": 0.77892,
+      "Q_seg_5class_zero": 0.50959,
+      "min_class_iou": 0.38503,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.82409,
+        0.74408,
+        0.5693,
+        0.74864,
+        0.38503
+      ],
+      "class_f1s": [
+        0.90356,
+        0.85326,
+        0.72555,
+        0.85625,
+        0.55598
+      ],
+      "class_recalls": [
+        0.92081,
+        0.82532,
+        0.88503,
+        0.88858,
+        0.41866
+      ],
+      "class_precisions": [
+        0.88695,
+        0.88316,
+        0.61477,
+        0.8262,
+        0.82736
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 955115914,
+          "tp_pixels": 847139218,
+          "fp_pixels": 107976696,
+          "fn_pixels": 72858582,
+          "iou": 0.82409,
+          "f1": 0.90356,
+          "precision": 0.88695,
+          "recall": 0.92081
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564669651,
+          "tp_pixels": 498691870,
+          "fp_pixels": 65977781,
+          "fn_pixels": 105546730,
+          "iou": 0.74408,
+          "f1": 0.85326,
+          "precision": 0.88316,
+          "recall": 0.82532
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115295156,
+          "tp_pixels": 70879791,
+          "fp_pixels": 44415365,
+          "fn_pixels": 9207609,
+          "iou": 0.5693,
+          "f1": 0.72555,
+          "precision": 0.61477,
+          "recall": 0.88503
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10386805,
+          "tp_pixels": 8581540,
+          "fp_pixels": 1805265,
+          "fn_pixels": 1076060,
+          "iou": 0.74864,
+          "f1": 0.85625,
+          "precision": 0.8262,
+          "recall": 0.88858
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 32254074,
+          "tp_pixels": 26685659,
+          "fp_pixels": 5568415,
+          "fn_pixels": 37054541,
+          "iou": 0.38503,
+          "f1": 0.55598,
+          "precision": 0.82736,
+          "recall": 0.41866
+        }
+      },
+      "confusion_matrix": [
+        [
+          847139218,
+          60736292,
+          7798574,
+          929884,
+          3393832
+        ],
+        [
+          90300752,
+          498691870,
+          13090358,
+          630,
+          2154990
+        ],
+        [
+          5518053,
+          2801271,
+          70879791,
+          874751,
+          13534
+        ],
+        [
+          273833,
+          316337,
+          479831,
+          8581540,
+          6059
+        ],
+        [
+          11884058,
+          2123881,
+          23046602,
+          0,
+          26685659
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.4936499999999999,
+    "delta_S_vs_v18": 0.0016919999999999158,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42784,
+          "mIoU": 0.58982,
+          "Macro_F1": 0.72538,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58982,
+          "Macro_F1_present": 0.72538,
+          "Q_seg_present": 0.42784,
+          "mIoU_5class_zero": 0.47186,
+          "Macro_F1_5class_zero": 0.5803,
+          "Q_seg_5class_zero": 0.27382,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75199,
+            0.78778,
+            0.43406,
+            0.0,
+            0.38546
+          ],
+          "class_f1s": [
+            0.85844,
+            0.88129,
+            0.60535,
+            0.0,
+            0.55643
+          ],
+          "class_recalls": [
+            0.84955,
+            0.88272,
+            0.92238,
+            0.0,
+            0.41866
+          ],
+          "class_precisions": [
+            0.86752,
+            0.87987,
+            0.45051,
+            0.0,
+            0.82935
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 337923257,
+              "tp_pixels": 293155579,
+              "fp_pixels": 44767678,
+              "fn_pixels": 51916221,
+              "iou": 0.75199,
+              "f1": 0.85844,
+              "precision": 0.86752,
+              "recall": 0.84955
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395591516,
+              "tp_pixels": 348068741,
+              "fp_pixels": 47522775,
+              "fn_pixels": 46243859,
+              "iou": 0.78778,
+              "f1": 0.88129,
+              "precision": 0.87987,
+              "recall": 0.88272
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73165909,
+              "tp_pixels": 32962192,
+              "fp_pixels": 40203717,
+              "fn_pixels": 2774008,
+              "iou": 0.43406,
+              "f1": 0.60535,
+              "precision": 0.45051,
+              "recall": 0.92238
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 3377,
+              "tp_pixels": 0,
+              "fp_pixels": 3377,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 32176741,
+              "tp_pixels": 26685659,
+              "fp_pixels": 5491082,
+              "fn_pixels": 37054541,
+              "iou": 0.38546,
+              "f1": 0.55643,
+              "precision": 0.82935,
+              "recall": 0.41866
+            }
+          },
+          "confusion_matrix": [
+            [
+              293155579,
+              43886448,
+              4664694,
+              124,
+              3364955
+            ],
+            [
+              31632071,
+              348068741,
+              12492421,
+              630,
+              2118737
+            ],
+            [
+              1251549,
+              1512446,
+              32962192,
+              2623,
+              7390
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              11884058,
+              2123881,
+              23046602,
+              0,
+              26685659
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.66067,
+          "mIoU": 0.76433,
+          "Macro_F1": 0.86439,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76433,
+          "Macro_F1_present": 0.86439,
+          "Q_seg_present": 0.66067,
+          "mIoU_5class_zero": 0.61146,
+          "Macro_F1_5class_zero": 0.69151,
+          "Q_seg_5class_zero": 0.42283,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86813,
+            0.65953,
+            0.78079,
+            0.74886,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79484,
+            0.87691,
+            0.8564,
+            0.0
+          ],
+          "class_recalls": [
+            0.96357,
+            0.71751,
+            0.85494,
+            0.88858,
+            0.0
+          ],
+          "class_precisions": [
+            0.89759,
+            0.89085,
+            0.90003,
+            0.82647,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617192657,
+              "tp_pixels": 553983639,
+              "fp_pixels": 63209018,
+              "fn_pixels": 20942361,
+              "iou": 0.86813,
+              "f1": 0.92941,
+              "precision": 0.89759,
+              "recall": 0.96357
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169078135,
+              "tp_pixels": 150623129,
+              "fp_pixels": 18455006,
+              "fn_pixels": 59302871,
+              "iou": 0.65953,
+              "f1": 0.79484,
+              "precision": 0.89085,
+              "recall": 0.71751
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42129247,
+              "tp_pixels": 37917599,
+              "fp_pixels": 4211648,
+              "fn_pixels": 6433601,
+              "iou": 0.78079,
+              "f1": 0.87691,
+              "precision": 0.90003,
+              "recall": 0.85494
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10383428,
+              "tp_pixels": 8581540,
+              "fp_pixels": 1801888,
+              "fn_pixels": 1076060,
+              "iou": 0.74886,
+              "f1": 0.8564,
+              "precision": 0.82647,
+              "recall": 0.88858
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 77333,
+              "tp_pixels": 0,
+              "fp_pixels": 77333,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553983639,
+              16849844,
+              3133880,
+              929760,
+              28877
+            ],
+            [
+              58668681,
+              150623129,
+              597937,
+              0,
+              36253
+            ],
+            [
+              4266504,
+              1288825,
+              37917599,
+              872128,
+              6144
+            ],
+            [
+              273833,
+              316337,
+              479831,
+              8581540,
+              6059
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  },
+  "hyp_v18_c4_25": {
+    "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.15,
+      0.25
+    ],
+    "segmentation": {
+      "Q_seg": 0.50942,
+      "mIoU": 0.65409,
+      "Macro_F1": 0.77883,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.65409,
+      "Macro_F1_present": 0.77883,
+      "Q_seg_present": 0.50942,
+      "mIoU_5class_zero": 0.65409,
+      "Macro_F1_5class_zero": 0.77883,
+      "Q_seg_5class_zero": 0.50942,
+      "min_class_iou": 0.38503,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.82408,
+        0.74408,
+        0.56934,
+        0.74791,
+        0.38503
+      ],
+      "class_f1s": [
+        0.90356,
+        0.85326,
+        0.72558,
+        0.85578,
+        0.55599
+      ],
+      "class_recalls": [
+        0.92079,
+        0.82532,
+        0.88502,
+        0.88986,
+        0.41866
+      ],
+      "class_precisions": [
+        0.88696,
+        0.88316,
+        0.61482,
+        0.82421,
+        0.82736
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 919997800,
+          "pred_pixels": 955086811,
+          "tp_pixels": 847124609,
+          "fp_pixels": 107962202,
+          "fn_pixels": 72873191,
+          "iou": 0.82408,
+          "f1": 0.90356,
+          "precision": 0.88696,
+          "recall": 0.92079
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 604238600,
+          "pred_pixels": 564669321,
+          "tp_pixels": 498691824,
+          "fp_pixels": 65977497,
+          "fn_pixels": 105546776,
+          "iou": 0.74408,
+          "f1": 0.85326,
+          "precision": 0.88316,
+          "recall": 0.82532
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 80087400,
+          "pred_pixels": 115284637,
+          "tp_pixels": 70878885,
+          "fp_pixels": 44405752,
+          "fn_pixels": 9208515,
+          "iou": 0.56934,
+          "f1": 0.72558,
+          "precision": 0.61482,
+          "recall": 0.88502
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10426877,
+          "tp_pixels": 8593931,
+          "fp_pixels": 1832946,
+          "fn_pixels": 1063669,
+          "iou": 0.74791,
+          "f1": 0.85578,
+          "precision": 0.82421,
+          "recall": 0.88986
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 32253954,
+          "tp_pixels": 26685659,
+          "fp_pixels": 5568295,
+          "fn_pixels": 37054541,
+          "iou": 0.38503,
+          "f1": 0.55599,
+          "precision": 0.82736,
+          "recall": 0.41866
+        }
+      },
+      "confusion_matrix": [
+        [
+          847124609,
+          60736291,
+          7798093,
+          944975,
+          3393832
+        ],
+        [
+          90300524,
+          498691824,
+          13090242,
+          1020,
+          2154990
+        ],
+        [
+          5507054,
+          2800988,
+          70878885,
+          886951,
+          13522
+        ],
+        [
+          270566,
+          316337,
+          470815,
+          8593931,
+          5951
+        ],
+        [
+          11884058,
+          2123881,
+          23046602,
+          0,
+          26685659
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.2411,
+      "PSNR_norm_dataset": 0.51205,
+      "PSNR_norm_per_image": 0.51667,
+      "SSIM": 0.78825,
+      "sharpness_ratio": 0.41179,
+      "Q_FR_dataset": 0.62632,
+      "Q_FR_per_image": 0.6284,
+      "num_samples": 1600
+    },
+    "S_exact_90pct": 0.493548,
+    "delta_S_vs_v18": 0.0015899999999999803,
+    "per_fold": {
+      "fold_0": {
+        "segmentation": {
+          "Q_seg": 0.42784,
+          "mIoU": 0.58982,
+          "Macro_F1": 0.72538,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            3
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.58982,
+          "Macro_F1_present": 0.72538,
+          "Q_seg_present": 0.42784,
+          "mIoU_5class_zero": 0.47186,
+          "Macro_F1_5class_zero": 0.5803,
+          "Q_seg_5class_zero": 0.27382,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            3
+          ],
+          "classes_below_0_10_iou": [
+            3
+          ],
+          "class_ious": [
+            0.75199,
+            0.78778,
+            0.43406,
+            0.0,
+            0.38546
+          ],
+          "class_f1s": [
+            0.85844,
+            0.88129,
+            0.60535,
+            0.0,
+            0.55643
+          ],
+          "class_recalls": [
+            0.84955,
+            0.88272,
+            0.92237,
+            0.0,
+            0.41866
+          ],
+          "class_precisions": [
+            0.86752,
+            0.87987,
+            0.45051,
+            0.0,
+            0.82935
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 345071800,
+              "pred_pixels": 337923026,
+              "tp_pixels": 293155579,
+              "fp_pixels": 44767447,
+              "fn_pixels": 51916221,
+              "iou": 0.75199,
+              "f1": 0.85844,
+              "precision": 0.86752,
+              "recall": 0.84955
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 394312600,
+              "pred_pixels": 395591186,
+              "tp_pixels": 348068695,
+              "fp_pixels": 47522491,
+              "fn_pixels": 46243905,
+              "iou": 0.78778,
+              "f1": 0.88129,
+              "precision": 0.87987,
+              "recall": 0.88272
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 35736200,
+              "pred_pixels": 73165638,
+              "tp_pixels": 32962056,
+              "fp_pixels": 40203582,
+              "fn_pixels": 2774144,
+              "iou": 0.43406,
+              "f1": 0.60535,
+              "precision": 0.45051,
+              "recall": 0.92237
+            },
+            "3": {
+              "class_id": 3,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 4221,
+              "tp_pixels": 0,
+              "fp_pixels": 4221,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "4": {
+              "class_id": 4,
+              "status": "PRESENT",
+              "gt_pixels": 63740200,
+              "pred_pixels": 32176729,
+              "tp_pixels": 26685659,
+              "fp_pixels": 5491070,
+              "fn_pixels": 37054541,
+              "iou": 0.38546,
+              "f1": 0.55643,
+              "precision": 0.82935,
+              "recall": 0.41866
+            }
+          },
+          "confusion_matrix": [
+            [
+              293155579,
+              43886447,
+              4664675,
+              144,
+              3364955
+            ],
+            [
+              31631843,
+              348068695,
+              12492305,
+              1020,
+              2118737
+            ],
+            [
+              1251546,
+              1512163,
+              32962056,
+              3057,
+              7378
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              11884058,
+              2123881,
+              23046602,
+              0,
+              26685659
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 25.5841,
+          "PSNR_norm_dataset": 0.5292,
+          "PSNR_norm_per_image": 0.53091,
+          "SSIM": 0.81636,
+          "sharpness_ratio": 0.50992,
+          "Q_FR_dataset": 0.65649,
+          "Q_FR_per_image": 0.65726,
+          "num_samples": 800
+        }
+      },
+      "fold_1": {
+        "segmentation": {
+          "Q_seg": 0.66049,
+          "mIoU": 0.76419,
+          "Macro_F1": 0.8643,
+          "coverage_penalty": 1.0,
+          "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+          "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+          "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+          "absent_class_official_parity": "UNVERIFIED",
+          "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+          "present_classes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "absent_classes": [],
+          "hallucinated_classes": [
+            4
+          ],
+          "num_present_classes": 4,
+          "num_total_classes": 5,
+          "mIoU_present": 0.76419,
+          "Macro_F1_present": 0.8643,
+          "Q_seg_present": 0.66049,
+          "mIoU_5class_zero": 0.61135,
+          "Macro_F1_5class_zero": 0.69144,
+          "Q_seg_5class_zero": 0.42271,
+          "min_class_iou": 0.0,
+          "classes_below_0_05_iou": [
+            4
+          ],
+          "classes_below_0_10_iou": [
+            4
+          ],
+          "class_ious": [
+            0.86813,
+            0.65953,
+            0.78093,
+            0.74819,
+            0.0
+          ],
+          "class_f1s": [
+            0.92941,
+            0.79484,
+            0.87699,
+            0.85596,
+            0.0
+          ],
+          "class_recalls": [
+            0.96355,
+            0.71751,
+            0.85492,
+            0.88986,
+            0.0
+          ],
+          "class_precisions": [
+            0.8976,
+            0.89085,
+            0.90023,
+            0.82454,
+            0.0
+          ],
+          "per_class_pixel_stats": {
+            "0": {
+              "class_id": 0,
+              "status": "PRESENT",
+              "gt_pixels": 574926000,
+              "pred_pixels": 617163785,
+              "tp_pixels": 553969030,
+              "fp_pixels": 63194755,
+              "fn_pixels": 20956970,
+              "iou": 0.86813,
+              "f1": 0.92941,
+              "precision": 0.8976,
+              "recall": 0.96355
+            },
+            "1": {
+              "class_id": 1,
+              "status": "PRESENT",
+              "gt_pixels": 209926000,
+              "pred_pixels": 169078135,
+              "tp_pixels": 150623129,
+              "fp_pixels": 18455006,
+              "fn_pixels": 59302871,
+              "iou": 0.65953,
+              "f1": 0.79484,
+              "precision": 0.89085,
+              "recall": 0.71751
+            },
+            "2": {
+              "class_id": 2,
+              "status": "PRESENT",
+              "gt_pixels": 44351200,
+              "pred_pixels": 42118999,
+              "tp_pixels": 37916829,
+              "fp_pixels": 4202170,
+              "fn_pixels": 6434371,
+              "iou": 0.78093,
+              "f1": 0.87699,
+              "precision": 0.90023,
+              "recall": 0.85492
+            },
+            "3": {
+              "class_id": 3,
+              "status": "PRESENT",
+              "gt_pixels": 9657600,
+              "pred_pixels": 10422656,
+              "tp_pixels": 8593931,
+              "fp_pixels": 1828725,
+              "fn_pixels": 1063669,
+              "iou": 0.74819,
+              "f1": 0.85596,
+              "precision": 0.82454,
+              "recall": 0.88986
+            },
+            "4": {
+              "class_id": 4,
+              "status": "ABSENT_GT_BUT_PREDICTED",
+              "gt_pixels": 0,
+              "pred_pixels": 77225,
+              "tp_pixels": 0,
+              "fp_pixels": 77225,
+              "fn_pixels": 0,
+              "iou": 0.0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              553969030,
+              16849844,
+              3133418,
+              944831,
+              28877
+            ],
+            [
+              58668681,
+              150623129,
+              597937,
+              0,
+              36253
+            ],
+            [
+              4255508,
+              1288825,
+              37916829,
+              883894,
+              6144
+            ],
+            [
+              270566,
+              316337,
+              470815,
+              8593931,
+              5951
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "restoration": {
+          "PSNR_dB": 24.8981,
+          "PSNR_norm_dataset": 0.49491,
+          "PSNR_norm_per_image": 0.50244,
+          "SSIM": 0.76015,
+          "sharpness_ratio": 0.31365,
+          "Q_FR_dataset": 0.59614,
+          "Q_FR_per_image": 0.59953,
+          "num_samples": 800
+        }
+      }
+    }
+  }
+}

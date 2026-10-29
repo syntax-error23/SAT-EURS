@@ -1,0 +1,674 @@
+{
+  "single_1024_noflip": {
+    "metrics": {
+      "Q_seg": 0.24296,
+      "mIoU": 0.42989,
+      "Macro_F1": 0.56517,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.42989,
+      "Macro_F1_present": 0.56517,
+      "Q_seg_present": 0.24296,
+      "mIoU_5class_zero": 0.42989,
+      "Macro_F1_5class_zero": 0.56517,
+      "Q_seg_5class_zero": 0.24296,
+      "min_class_iou": 0.17287,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.67097,
+        0.33478,
+        0.17287,
+        0.73901,
+        0.23184
+      ],
+      "class_f1s": [
+        0.80309,
+        0.50162,
+        0.29478,
+        0.84992,
+        0.37642
+      ],
+      "class_recalls": [
+        0.86011,
+        0.43008,
+        0.79136,
+        0.87024,
+        0.24684
+      ],
+      "class_precisions": [
+        0.75316,
+        0.60173,
+        0.18112,
+        0.83053,
+        0.79238
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 374878000,
+          "pred_pixels": 428110835,
+          "tp_pixels": 322436293,
+          "fp_pixels": 105674542,
+          "fn_pixels": 52441707,
+          "iou": 0.67097,
+          "f1": 0.80309,
+          "precision": 0.75316,
+          "recall": 0.86011
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 169435800,
+          "pred_pixels": 121101516,
+          "tp_pixels": 72870355,
+          "fp_pixels": 48231161,
+          "fn_pixels": 96565445,
+          "iou": 0.33478,
+          "f1": 0.50162,
+          "precision": 0.60173,
+          "recall": 0.43008
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 11434000,
+          "pred_pixels": 49957828,
+          "tp_pixels": 9048442,
+          "fp_pixels": 40909386,
+          "fn_pixels": 2385558,
+          "iou": 0.17287,
+          "f1": 0.29478,
+          "precision": 0.18112,
+          "recall": 0.79136
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10119358,
+          "tp_pixels": 8404452,
+          "fp_pixels": 1714906,
+          "fn_pixels": 1253148,
+          "iou": 0.73901,
+          "f1": 0.84992,
+          "precision": 0.83053,
+          "recall": 0.87024
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 19856063,
+          "tp_pixels": 15733454,
+          "fp_pixels": 4122609,
+          "fn_pixels": 48006746,
+          "iou": 0.23184,
+          "f1": 0.37642,
+          "precision": 0.79238,
+          "recall": 0.24684
+        }
+      },
+      "confusion_matrix": [
+        [
+          322436293,
+          44820947,
+          4773359,
+          863415,
+          1983986
+        ],
+        [
+          83481208,
+          72870355,
+          10950324,
+          2027,
+          2131886
+        ],
+        [
+          1031411,
+          504683,
+          9048442,
+          849464,
+          0
+        ],
+        [
+          268746,
+          335514,
+          642151,
+          8404452,
+          6737
+        ],
+        [
+          20893177,
+          2570017,
+          24543552,
+          0,
+          15733454
+        ]
+      ]
+    },
+    "mean_latency_ms": 87.48130083084106,
+    "peak_gpu_mem_mb": 5865.56982421875,
+    "delta_qseg_vs_noflip": 0.0
+  },
+  "single_1024_flip": {
+    "metrics": {
+      "Q_seg": 0.28012,
+      "mIoU": 0.4639,
+      "Macro_F1": 0.60384,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.4639,
+      "Macro_F1_present": 0.60384,
+      "Q_seg_present": 0.28012,
+      "mIoU_5class_zero": 0.4639,
+      "Macro_F1_5class_zero": 0.60384,
+      "Q_seg_5class_zero": 0.28012,
+      "min_class_iou": 0.17827,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.6777,
+        0.33698,
+        0.17827,
+        0.74905,
+        0.37749
+      ],
+      "class_f1s": [
+        0.80789,
+        0.5041,
+        0.30259,
+        0.85652,
+        0.54808
+      ],
+      "class_recalls": [
+        0.85067,
+        0.43717,
+        0.7936,
+        0.88989,
+        0.40806
+      ],
+      "class_precisions": [
+        0.76921,
+        0.59522,
+        0.18693,
+        0.82557,
+        0.83439
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 374878000,
+          "pred_pixels": 414576082,
+          "tp_pixels": 318895826,
+          "fp_pixels": 95680256,
+          "fn_pixels": 55982174,
+          "iou": 0.6777,
+          "f1": 0.80789,
+          "precision": 0.76921,
+          "recall": 0.85067
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 169435800,
+          "pred_pixels": 124445836,
+          "tp_pixels": 74072404,
+          "fp_pixels": 50373432,
+          "fn_pixels": 95363396,
+          "iou": 0.33698,
+          "f1": 0.5041,
+          "precision": 0.59522,
+          "recall": 0.43717
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 11434000,
+          "pred_pixels": 48541024,
+          "tp_pixels": 9073972,
+          "fp_pixels": 39467052,
+          "fn_pixels": 2360028,
+          "iou": 0.17827,
+          "f1": 0.30259,
+          "precision": 0.18693,
+          "recall": 0.7936
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10409922,
+          "tp_pixels": 8594163,
+          "fp_pixels": 1815759,
+          "fn_pixels": 1063437,
+          "iou": 0.74905,
+          "f1": 0.85652,
+          "precision": 0.82557,
+          "recall": 0.88989
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 31172736,
+          "tp_pixels": 26010136,
+          "fp_pixels": 5162600,
+          "fn_pixels": 37730064,
+          "iou": 0.37749,
+          "f1": 0.54808,
+          "precision": 0.83439,
+          "recall": 0.40806
+        }
+      },
+      "confusion_matrix": [
+        [
+          318895826,
+          47441642,
+          4412328,
+          943725,
+          3184479
+        ],
+        [
+          82065888,
+          74072404,
+          11324874,
+          3,
+          1972631
+        ],
+        [
+          1016532,
+          471465,
+          9073972,
+          872031,
+          0
+        ],
+        [
+          270795,
+          316337,
+          470815,
+          8594163,
+          5490
+        ],
+        [
+          12327041,
+          2143988,
+          23259035,
+          0,
+          26010136
+        ]
+      ]
+    },
+    "mean_latency_ms": 166.0896873474121,
+    "peak_gpu_mem_mb": 5948.17724609375,
+    "delta_qseg_vs_noflip": 0.03715999999999997
+  },
+  "two_scale_flip": {
+    "metrics": {
+      "Q_seg": 0.25939,
+      "mIoU": 0.44451,
+      "Macro_F1": 0.58354,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.44451,
+      "Macro_F1_present": 0.58354,
+      "Q_seg_present": 0.25939,
+      "mIoU_5class_zero": 0.44451,
+      "Macro_F1_5class_zero": 0.58354,
+      "Q_seg_5class_zero": 0.25939,
+      "min_class_iou": 0.17876,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.6703,
+        0.32943,
+        0.17876,
+        0.74139,
+        0.30266
+      ],
+      "class_f1s": [
+        0.80261,
+        0.4956,
+        0.30331,
+        0.85149,
+        0.46468
+      ],
+      "class_recalls": [
+        0.85623,
+        0.42396,
+        0.79434,
+        0.89019,
+        0.3225
+      ],
+      "class_precisions": [
+        0.7553,
+        0.59638,
+        0.18744,
+        0.81603,
+        0.83107
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 374878000,
+          "pred_pixels": 424972082,
+          "tp_pixels": 320982837,
+          "fp_pixels": 103989245,
+          "fn_pixels": 53895163,
+          "iou": 0.6703,
+          "f1": 0.80261,
+          "precision": 0.7553,
+          "recall": 0.85623
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 169435800,
+          "pred_pixels": 120448301,
+          "tp_pixels": 71833302,
+          "fp_pixels": 48614999,
+          "fn_pixels": 97602498,
+          "iou": 0.32943,
+          "f1": 0.4956,
+          "precision": 0.59638,
+          "recall": 0.42396
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 11434000,
+          "pred_pixels": 48455234,
+          "tp_pixels": 9082467,
+          "fp_pixels": 39372767,
+          "fn_pixels": 2351533,
+          "iou": 0.17876,
+          "f1": 0.30331,
+          "precision": 0.18744,
+          "recall": 0.79434
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10535310,
+          "tp_pixels": 8597079,
+          "fp_pixels": 1938231,
+          "fn_pixels": 1060521,
+          "iou": 0.74139,
+          "f1": 0.85149,
+          "precision": 0.81603,
+          "recall": 0.89019
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 24734673,
+          "tp_pixels": 20556292,
+          "fp_pixels": 4178381,
+          "fn_pixels": 43183908,
+          "iou": 0.30266,
+          "f1": 0.46468,
+          "precision": 0.83107,
+          "recall": 0.3225
+        }
+      },
+      "confusion_matrix": [
+        [
+          320982837,
+          46102384,
+          4265473,
+          1006568,
+          2520738
+        ],
+        [
+          83832430,
+          71833302,
+          12114473,
+          0,
+          1655595
+        ],
+        [
+          970452,
+          449418,
+          9082467,
+          931663,
+          0
+        ],
+        [
+          267038,
+          317050,
+          474385,
+          8597079,
+          2048
+        ],
+        [
+          18919325,
+          1746147,
+          22518436,
+          0,
+          20556292
+        ]
+      ]
+    },
+    "mean_latency_ms": 366.7122797171275,
+    "peak_gpu_mem_mb": 7092.81787109375,
+    "delta_qseg_vs_noflip": 0.01643
+  },
+  "three_scale_flip": {
+    "metrics": {
+      "Q_seg": 0.28054,
+      "mIoU": 0.46423,
+      "Macro_F1": 0.60431,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [],
+      "num_present_classes": 5,
+      "num_total_classes": 5,
+      "mIoU_present": 0.46423,
+      "Macro_F1_present": 0.60431,
+      "Q_seg_present": 0.28054,
+      "mIoU_5class_zero": 0.46423,
+      "Macro_F1_5class_zero": 0.60431,
+      "Q_seg_5class_zero": 0.28054,
+      "min_class_iou": 0.17519,
+      "classes_below_0_05_iou": [],
+      "classes_below_0_10_iou": [],
+      "class_ious": [
+        0.67888,
+        0.3429,
+        0.17519,
+        0.74432,
+        0.37984
+      ],
+      "class_f1s": [
+        0.80873,
+        0.51069,
+        0.29815,
+        0.85342,
+        0.55056
+      ],
+      "class_recalls": [
+        0.85039,
+        0.4441,
+        0.79331,
+        0.88492,
+        0.40745
+      ],
+      "class_precisions": [
+        0.77095,
+        0.60077,
+        0.18357,
+        0.82408,
+        0.84862
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 374878000,
+          "pred_pixels": 413506747,
+          "tp_pixels": 318793864,
+          "fp_pixels": 94712883,
+          "fn_pixels": 56084136,
+          "iou": 0.67888,
+          "f1": 0.80873,
+          "precision": 0.77095,
+          "recall": 0.85039
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 169435800,
+          "pred_pixels": 125251705,
+          "tp_pixels": 75247133,
+          "fp_pixels": 50004572,
+          "fn_pixels": 94188667,
+          "iou": 0.3429,
+          "f1": 0.51069,
+          "precision": 0.60077,
+          "recall": 0.4441
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 11434000,
+          "pred_pixels": 49413130,
+          "tp_pixels": 9070689,
+          "fp_pixels": 40342441,
+          "fn_pixels": 2363311,
+          "iou": 0.17519,
+          "f1": 0.29815,
+          "precision": 0.18357,
+          "recall": 0.79331
+        },
+        "3": {
+          "class_id": 3,
+          "status": "PRESENT",
+          "gt_pixels": 9657600,
+          "pred_pixels": 10370507,
+          "tp_pixels": 8546179,
+          "fp_pixels": 1824328,
+          "fn_pixels": 1111421,
+          "iou": 0.74432,
+          "f1": 0.85342,
+          "precision": 0.82408,
+          "recall": 0.88492
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 30603511,
+          "tp_pixels": 25970889,
+          "fp_pixels": 4632622,
+          "fn_pixels": 37769311,
+          "iou": 0.37984,
+          "f1": 0.55056,
+          "precision": 0.84862,
+          "recall": 0.40745
+        }
+      },
+      "confusion_matrix": [
+        [
+          318793864,
+          47684915,
+          4269993,
+          951334,
+          3177894
+        ],
+        [
+          81285161,
+          75247133,
+          11449926,
+          0,
+          1453580
+        ],
+        [
+          1035283,
+          455034,
+          9070689,
+          872994,
+          0
+        ],
+        [
+          267832,
+          317439,
+          525002,
+          8546179,
+          1148
+        ],
+        [
+          12124607,
+          1547184,
+          24097520,
+          0,
+          25970889
+        ]
+      ]
+    },
+    "mean_latency_ms": 490.4831560452779,
+    "peak_gpu_mem_mb": 7093.84130859375,
+    "delta_qseg_vs_noflip": 0.03758
+  }
+}

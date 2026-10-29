@@ -1,0 +1,39 @@
+{
+  "metrics": {
+    "segformer_params_m": 401.6,
+    "dinov2_params_m": 308.08,
+    "convnext_params_m": 89.68,
+    "audit_verdict": "REJECTED_FOR_RELEASE"
+  },
+  "findings": {
+    "dinov2_full20": {
+      "status": "EXAMINED",
+      "path": "checkpoints/v17_specialists/dinov2_full20_best.pt",
+      "file_size_mb": 1175.37,
+      "total_params_m": 308.08,
+      "num_tensors": 387,
+      "arch_type": "Transformer Blocks",
+      "provenance": "Trained on all 20 scenes (zero held-out scenes on dev set)"
+    },
+    "convnext_full20": {
+      "status": "EXAMINED",
+      "path": "checkpoints/v17_specialists/convnext_full20_best.pt",
+      "file_size_mb": 342.26,
+      "total_params_m": 89.68,
+      "num_tensors": 371,
+      "arch_type": "Transformer Blocks",
+      "provenance": "Trained on all 20 scenes (zero held-out scenes on dev set)"
+    },
+    "dinov2_fold0": {
+      "status": "EXAMINED",
+      "path": "checkpoints/v16_dinov2/fold_0/best_model.pt",
+      "file_size_mb": 1175.37,
+      "total_params_m": 308.08,
+      "num_tensors": 387,
+      "arch_type": "Transformer Blocks",
+      "provenance": "Fold 0 split"
+    }
+  },
+  "runtime_s": 1.78,
+  "notes": "Full-20 models violate generalization protocol (zero out-of-distribution evaluation on dev) and are 5x larger without improving official test composite."
+}

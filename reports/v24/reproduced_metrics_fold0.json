@@ -1,0 +1,879 @@
+{
+  "fold": 0,
+  "scenes": [
+    "fish1",
+    "fish11",
+    "fish12",
+    "seahorse1"
+  ],
+  "A_V18_Independent": {
+    "segmentation": {
+      "Q_seg": 0.36627,
+      "mIoU": 0.54388,
+      "Macro_F1": 0.67344,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [
+        3
+      ],
+      "num_present_classes": 4,
+      "num_total_classes": 5,
+      "mIoU_present": 0.54388,
+      "Macro_F1_present": 0.67344,
+      "Q_seg_present": 0.36627,
+      "mIoU_5class_zero": 0.43511,
+      "Macro_F1_5class_zero": 0.53875,
+      "Q_seg_5class_zero": 0.23441,
+      "min_class_iou": 0.0,
+      "classes_below_0_05_iou": [
+        3
+      ],
+      "classes_below_0_10_iou": [
+        3
+      ],
+      "class_ious": [
+        0.74058,
+        0.78796,
+        0.42044,
+        0.0,
+        0.22655
+      ],
+      "class_f1s": [
+        0.85095,
+        0.88141,
+        0.59198,
+        0.0,
+        0.3694
+      ],
+      "class_recalls": [
+        0.86027,
+        0.87903,
+        0.91603,
+        0.0,
+        0.24032
+      ],
+      "class_precisions": [
+        0.84184,
+        0.88381,
+        0.43729,
+        0.0,
+        0.79811
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 345071800,
+          "pred_pixels": 352628175,
+          "tp_pixels": 296855603,
+          "fp_pixels": 55772572,
+          "fn_pixels": 48216197,
+          "iou": 0.74058,
+          "f1": 0.85095,
+          "precision": 0.84184,
+          "recall": 0.86027
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 394312600,
+          "pred_pixels": 392180413,
+          "tp_pixels": 346611154,
+          "fp_pixels": 45569259,
+          "fn_pixels": 47701446,
+          "iou": 0.78796,
+          "f1": 0.88141,
+          "precision": 0.88381,
+          "recall": 0.87903
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 35736200,
+          "pred_pixels": 74859192,
+          "tp_pixels": 32735398,
+          "fp_pixels": 42123794,
+          "fn_pixels": 3000802,
+          "iou": 0.42044,
+          "f1": 0.59198,
+          "precision": 0.43729,
+          "recall": 0.91603
+        },
+        "3": {
+          "class_id": 3,
+          "status": "ABSENT_GT_BUT_PREDICTED",
+          "gt_pixels": 0,
+          "pred_pixels": 352,
+          "tp_pixels": 0,
+          "fp_pixels": 352,
+          "fn_pixels": 0,
+          "iou": 0.0,
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 19192668,
+          "tp_pixels": 15317908,
+          "fp_pixels": 3874760,
+          "fn_pixels": 48422292,
+          "iou": 0.22655,
+          "f1": 0.3694,
+          "precision": 0.79811,
+          "recall": 0.24032
+        }
+      },
+      "confusion_matrix": [
+        [
+          296855603,
+          41256553,
+          5093263,
+          0,
+          1866381
+        ],
+        [
+          33498872,
+          346611154,
+          12200216,
+          352,
+          2002006
+        ],
+        [
+          1267870,
+          1726559,
+          32735398,
+          0,
+          6373
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          21005830,
+          2586147,
+          24830315,
+          0,
+          15317908
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.7058,
+      "PSNR_norm_dataset": 0.53529,
+      "PSNR_norm_per_image": 0.53636,
+      "SSIM": 0.81745,
+      "sharpness_ratio": 0.42731,
+      "Q_FR_dataset": 0.65146,
+      "Q_FR_per_image": 0.65195,
+      "num_samples": 800
+    },
+    "composite": {
+      "S_exact_90pct": 0.4152,
+      "S_exact_90pct_note": "0.60 * Q_seg + 0.30 * Q_FR_dataset under local provisional coverage contract (TP_c > 0). Server-side exact parity is provisional.",
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "S_composite_bracket_low_qnr040": 0.4552,
+      "S_composite_bracket_mid_qnr060": 0.4752,
+      "S_composite_bracket_high_qnr080": 0.4952,
+      "Q_NR_status": "UNAVAILABLE_LOCALLY",
+      "Q_NR_official_metrics": "UIQM, UCIQE, and CCF (Underwater metrics evaluated on challenge server)",
+      "note": "S_exact_90pct represents exactly verified local components (60% Q_seg + 30% Q_FR). Q_NR is not hardcoded."
+    }
+  },
+  "B_V24_Rest_Consensus_Only": {
+    "segmentation": {
+      "Q_seg": 0.36627,
+      "mIoU": 0.54388,
+      "Macro_F1": 0.67344,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "absent_classes": [],
+      "hallucinated_classes": [
+        3
+      ],
+      "num_present_classes": 4,
+      "num_total_classes": 5,
+      "mIoU_present": 0.54388,
+      "Macro_F1_present": 0.67344,
+      "Q_seg_present": 0.36627,
+      "mIoU_5class_zero": 0.43511,
+      "Macro_F1_5class_zero": 0.53875,
+      "Q_seg_5class_zero": 0.23441,
+      "min_class_iou": 0.0,
+      "classes_below_0_05_iou": [
+        3
+      ],
+      "classes_below_0_10_iou": [
+        3
+      ],
+      "class_ious": [
+        0.74058,
+        0.78796,
+        0.42044,
+        0.0,
+        0.22655
+      ],
+      "class_f1s": [
+        0.85095,
+        0.88141,
+        0.59198,
+        0.0,
+        0.3694
+      ],
+      "class_recalls": [
+        0.86027,
+        0.87903,
+        0.91603,
+        0.0,
+        0.24032
+      ],
+      "class_precisions": [
+        0.84184,
+        0.88381,
+        0.43729,
+        0.0,
+        0.79811
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 345071800,
+          "pred_pixels": 352628175,
+          "tp_pixels": 296855603,
+          "fp_pixels": 55772572,
+          "fn_pixels": 48216197,
+          "iou": 0.74058,
+          "f1": 0.85095,
+          "precision": 0.84184,
+          "recall": 0.86027
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 394312600,
+          "pred_pixels": 392180413,
+          "tp_pixels": 346611154,
+          "fp_pixels": 45569259,
+          "fn_pixels": 47701446,
+          "iou": 0.78796,
+          "f1": 0.88141,
+          "precision": 0.88381,
+          "recall": 0.87903
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 35736200,
+          "pred_pixels": 74859192,
+          "tp_pixels": 32735398,
+          "fp_pixels": 42123794,
+          "fn_pixels": 3000802,
+          "iou": 0.42044,
+          "f1": 0.59198,
+          "precision": 0.43729,
+          "recall": 0.91603
+        },
+        "3": {
+          "class_id": 3,
+          "status": "ABSENT_GT_BUT_PREDICTED",
+          "gt_pixels": 0,
+          "pred_pixels": 352,
+          "tp_pixels": 0,
+          "fp_pixels": 352,
+          "fn_pixels": 0,
+          "iou": 0.0,
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 19192668,
+          "tp_pixels": 15317908,
+          "fp_pixels": 3874760,
+          "fn_pixels": 48422292,
+          "iou": 0.22655,
+          "f1": 0.3694,
+          "precision": 0.79811,
+          "recall": 0.24032
+        }
+      },
+      "confusion_matrix": [
+        [
+          296855603,
+          41256553,
+          5093263,
+          0,
+          1866381
+        ],
+        [
+          33498872,
+          346611154,
+          12200216,
+          352,
+          2002006
+        ],
+        [
+          1267870,
+          1726559,
+          32735398,
+          0,
+          6373
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          21005830,
+          2586147,
+          24830315,
+          0,
+          15317908
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 29.5267,
+      "PSNR_norm_dataset": 0.72633,
+      "PSNR_norm_per_image": 0.72633,
+      "SSIM": 0.91202,
+      "sharpness_ratio": 0.74977,
+      "Q_FR_dataset": 0.81224,
+      "Q_FR_per_image": 0.81224,
+      "num_samples": 800
+    },
+    "composite": {
+      "S_exact_90pct": 0.46343,
+      "S_exact_90pct_note": "0.60 * Q_seg + 0.30 * Q_FR_dataset under local provisional coverage contract (TP_c > 0). Server-side exact parity is provisional.",
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "S_composite_bracket_low_qnr040": 0.50343,
+      "S_composite_bracket_mid_qnr060": 0.52343,
+      "S_composite_bracket_high_qnr080": 0.54343,
+      "Q_NR_status": "UNAVAILABLE_LOCALLY",
+      "Q_NR_official_metrics": "UIQM, UCIQE, and CCF (Underwater metrics evaluated on challenge server)",
+      "note": "S_exact_90pct represents exactly verified local components (60% Q_seg + 30% Q_FR). Q_NR is not hardcoded."
+    }
+  },
+  "C_V24_Seg_Consensus_Only": {
+    "segmentation": {
+      "Q_seg": 0.44001,
+      "mIoU": 0.60272,
+      "Macro_F1": 0.73003,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "absent_classes": [
+        3
+      ],
+      "hallucinated_classes": [],
+      "num_present_classes": 4,
+      "num_total_classes": 5,
+      "mIoU_present": 0.60272,
+      "Macro_F1_present": 0.73003,
+      "Q_seg_present": 0.44001,
+      "mIoU_5class_zero": 0.48218,
+      "Macro_F1_5class_zero": 0.58402,
+      "Q_seg_5class_zero": 0.2816,
+      "min_class_iou": 0.0,
+      "classes_below_0_05_iou": [
+        3
+      ],
+      "classes_below_0_10_iou": [
+        3
+      ],
+      "class_ious": [
+        0.78316,
+        0.8227,
+        0.48112,
+        0.0,
+        0.32391
+      ],
+      "class_f1s": [
+        0.87839,
+        0.90273,
+        0.64967,
+        0.0,
+        0.48932
+      ],
+      "class_recalls": [
+        0.87361,
+        0.9112,
+        0.96302,
+        0.0,
+        0.34302
+      ],
+      "class_precisions": [
+        0.88323,
+        0.89441,
+        0.49018,
+        0.0,
+        0.85324
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 345071800,
+          "pred_pixels": 341314800,
+          "tp_pixels": 301459000,
+          "fp_pixels": 39855800,
+          "fn_pixels": 43612800,
+          "iou": 0.78316,
+          "f1": 0.87839,
+          "precision": 0.88323,
+          "recall": 0.87361
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 394312600,
+          "pred_pixels": 401713000,
+          "tp_pixels": 359297800,
+          "fp_pixels": 42415200,
+          "fn_pixels": 35014800,
+          "iou": 0.8227,
+          "f1": 0.90273,
+          "precision": 0.89441,
+          "recall": 0.9112
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 35736200,
+          "pred_pixels": 70208200,
+          "tp_pixels": 34414600,
+          "fp_pixels": 35793600,
+          "fn_pixels": 1321600,
+          "iou": 0.48112,
+          "f1": 0.64967,
+          "precision": 0.49018,
+          "recall": 0.96302
+        },
+        "3": {
+          "class_id": 3,
+          "status": "ABSENT_GT_AND_PRED",
+          "gt_pixels": 0,
+          "pred_pixels": 0,
+          "tp_pixels": 0,
+          "fp_pixels": 0,
+          "fn_pixels": 0,
+          "iou": 0.0,
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 25624800,
+          "tp_pixels": 21864200,
+          "fp_pixels": 3760600,
+          "fn_pixels": 41876000,
+          "iou": 0.32391,
+          "f1": 0.48932,
+          "precision": 0.85324,
+          "recall": 0.34302
+        }
+      },
+      "confusion_matrix": [
+        [
+          301459000,
+          39126000,
+          2519800,
+          0,
+          1967000
+        ],
+        [
+          24567600,
+          359297800,
+          8653600,
+          0,
+          1793600
+        ],
+        [
+          227600,
+          1094000,
+          34414600,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          15060600,
+          2195200,
+          24620200,
+          0,
+          21864200
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 25.7058,
+      "PSNR_norm_dataset": 0.53529,
+      "PSNR_norm_per_image": 0.53636,
+      "SSIM": 0.81745,
+      "sharpness_ratio": 0.42731,
+      "Q_FR_dataset": 0.65146,
+      "Q_FR_per_image": 0.65195,
+      "num_samples": 800
+    },
+    "composite": {
+      "S_exact_90pct": 0.45944,
+      "S_exact_90pct_note": "0.60 * Q_seg + 0.30 * Q_FR_dataset under local provisional coverage contract (TP_c > 0). Server-side exact parity is provisional.",
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "S_composite_bracket_low_qnr040": 0.49944,
+      "S_composite_bracket_mid_qnr060": 0.51944,
+      "S_composite_bracket_high_qnr080": 0.53944,
+      "Q_NR_status": "UNAVAILABLE_LOCALLY",
+      "Q_NR_official_metrics": "UIQM, UCIQE, and CCF (Underwater metrics evaluated on challenge server)",
+      "note": "S_exact_90pct represents exactly verified local components (60% Q_seg + 30% Q_FR). Q_NR is not hardcoded."
+    }
+  },
+  "D_V24_Full_Pipeline": {
+    "segmentation": {
+      "Q_seg": 0.44001,
+      "mIoU": 0.60272,
+      "Macro_F1": 0.73003,
+      "coverage_penalty": 1.0,
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "coverage_penalty_contract_note": "Evaluated using local contract: prod_{c in C_present} I(TP_c > 0). Official server evaluator code is proprietary; whether server enforces an IoU-floor (e.g. IoU_c >= tau) is unverified locally.",
+      "absent_class_policy": "REPORT_BOTH_PRESENT_MEAN_AND_5CLASS_ZERO",
+      "absent_class_official_parity": "UNVERIFIED",
+      "absent_class_explanation": "Official challenge server behavior for absent classes on partial evaluation splits is proprietary/unverified. Assigning 1.0 (vacuous truth) artificially inflated Fold 0 pilot mIoU from 0.4731 to 0.5785. Local evaluator now transparently reports both the present-class mean (averaged only over classes with GT > 0) and the conservative 5-class mean (where absent classes receive 0.0). For full 20-scene OOF, all 5 classes are present.",
+      "present_classes": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "absent_classes": [
+        3
+      ],
+      "hallucinated_classes": [],
+      "num_present_classes": 4,
+      "num_total_classes": 5,
+      "mIoU_present": 0.60272,
+      "Macro_F1_present": 0.73003,
+      "Q_seg_present": 0.44001,
+      "mIoU_5class_zero": 0.48218,
+      "Macro_F1_5class_zero": 0.58402,
+      "Q_seg_5class_zero": 0.2816,
+      "min_class_iou": 0.0,
+      "classes_below_0_05_iou": [
+        3
+      ],
+      "classes_below_0_10_iou": [
+        3
+      ],
+      "class_ious": [
+        0.78316,
+        0.8227,
+        0.48112,
+        0.0,
+        0.32391
+      ],
+      "class_f1s": [
+        0.87839,
+        0.90273,
+        0.64967,
+        0.0,
+        0.48932
+      ],
+      "class_recalls": [
+        0.87361,
+        0.9112,
+        0.96302,
+        0.0,
+        0.34302
+      ],
+      "class_precisions": [
+        0.88323,
+        0.89441,
+        0.49018,
+        0.0,
+        0.85324
+      ],
+      "per_class_pixel_stats": {
+        "0": {
+          "class_id": 0,
+          "status": "PRESENT",
+          "gt_pixels": 345071800,
+          "pred_pixels": 341314800,
+          "tp_pixels": 301459000,
+          "fp_pixels": 39855800,
+          "fn_pixels": 43612800,
+          "iou": 0.78316,
+          "f1": 0.87839,
+          "precision": 0.88323,
+          "recall": 0.87361
+        },
+        "1": {
+          "class_id": 1,
+          "status": "PRESENT",
+          "gt_pixels": 394312600,
+          "pred_pixels": 401713000,
+          "tp_pixels": 359297800,
+          "fp_pixels": 42415200,
+          "fn_pixels": 35014800,
+          "iou": 0.8227,
+          "f1": 0.90273,
+          "precision": 0.89441,
+          "recall": 0.9112
+        },
+        "2": {
+          "class_id": 2,
+          "status": "PRESENT",
+          "gt_pixels": 35736200,
+          "pred_pixels": 70208200,
+          "tp_pixels": 34414600,
+          "fp_pixels": 35793600,
+          "fn_pixels": 1321600,
+          "iou": 0.48112,
+          "f1": 0.64967,
+          "precision": 0.49018,
+          "recall": 0.96302
+        },
+        "3": {
+          "class_id": 3,
+          "status": "ABSENT_GT_AND_PRED",
+          "gt_pixels": 0,
+          "pred_pixels": 0,
+          "tp_pixels": 0,
+          "fp_pixels": 0,
+          "fn_pixels": 0,
+          "iou": 0.0,
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "4": {
+          "class_id": 4,
+          "status": "PRESENT",
+          "gt_pixels": 63740200,
+          "pred_pixels": 25624800,
+          "tp_pixels": 21864200,
+          "fp_pixels": 3760600,
+          "fn_pixels": 41876000,
+          "iou": 0.32391,
+          "f1": 0.48932,
+          "precision": 0.85324,
+          "recall": 0.34302
+        }
+      },
+      "confusion_matrix": [
+        [
+          301459000,
+          39126000,
+          2519800,
+          0,
+          1967000
+        ],
+        [
+          24567600,
+          359297800,
+          8653600,
+          0,
+          1793600
+        ],
+        [
+          227600,
+          1094000,
+          34414600,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          15060600,
+          2195200,
+          24620200,
+          0,
+          21864200
+        ]
+      ]
+    },
+    "restoration": {
+      "PSNR_dB": 29.5267,
+      "PSNR_norm_dataset": 0.72633,
+      "PSNR_norm_per_image": 0.72633,
+      "SSIM": 0.91202,
+      "sharpness_ratio": 0.74977,
+      "Q_FR_dataset": 0.81224,
+      "Q_FR_per_image": 0.81224,
+      "num_samples": 800
+    },
+    "composite": {
+      "S_exact_90pct": 0.50767,
+      "S_exact_90pct_note": "0.60 * Q_seg + 0.30 * Q_FR_dataset under local provisional coverage contract (TP_c > 0). Server-side exact parity is provisional.",
+      "coverage_penalty_status": "UNVERIFIED_PROVISIONAL",
+      "S_composite_bracket_low_qnr040": 0.54767,
+      "S_composite_bracket_mid_qnr060": 0.56767,
+      "S_composite_bracket_high_qnr080": 0.58767,
+      "Q_NR_status": "UNAVAILABLE_LOCALLY",
+      "Q_NR_official_metrics": "UIQM, UCIQE, and CCF (Underwater metrics evaluated on challenge server)",
+      "note": "S_exact_90pct represents exactly verified local components (60% Q_seg + 30% Q_FR). Q_NR is not hardcoded."
+    }
+  },
+  "scene_breakdown": {
+    "fish1": {
+      "V18_Independent": {
+        "PSNR_dB": 25.96,
+        "SSIM": 0.782,
+        "Sharpness": 0.3176,
+        "mIoU": 0.6799,
+        "Macro_F1": 0.8067,
+        "Q_seg": 0.5484
+      },
+      "V24_Consensus": {
+        "PSNR_dB": 28.96,
+        "SSIM": 0.8789,
+        "Sharpness": 0.5807,
+        "mIoU": 0.7242,
+        "Macro_F1": 0.8365,
+        "Q_seg": 0.6058
+      },
+      "Delta": {
+        "PSNR_dB": 2.99,
+        "SSIM": 0.097,
+        "Sharpness": 0.2631,
+        "mIoU": 0.0443,
+        "Macro_F1": 0.0298,
+        "Q_seg": 0.0574
+      }
+    },
+    "fish11": {
+      "V18_Independent": {
+        "PSNR_dB": 23.5,
+        "SSIM": 0.7991,
+        "Sharpness": 0.3428,
+        "mIoU": 0.6159,
+        "Macro_F1": 0.6558,
+        "Q_seg": 0.4039
+      },
+      "V24_Consensus": {
+        "PSNR_dB": 24.89,
+        "SSIM": 0.8915,
+        "Sharpness": 0.6862,
+        "mIoU": 0.6592,
+        "Macro_F1": 0.6992,
+        "Q_seg": 0.4609
+      },
+      "Delta": {
+        "PSNR_dB": 1.39,
+        "SSIM": 0.0924,
+        "Sharpness": 0.3434,
+        "mIoU": 0.0434,
+        "Macro_F1": 0.0434,
+        "Q_seg": 0.0571
+      }
+    },
+    "fish12": {
+      "V18_Independent": {
+        "PSNR_dB": 29.15,
+        "SSIM": 0.8807,
+        "Sharpness": 0.52,
+        "mIoU": 0.9387,
+        "Macro_F1": 0.9679,
+        "Q_seg": 0.9086
+      },
+      "V24_Consensus": {
+        "PSNR_dB": 33.51,
+        "SSIM": 0.9437,
+        "Sharpness": 0.8296,
+        "mIoU": 0.9677,
+        "Macro_F1": 0.9833,
+        "Q_seg": 0.9516
+      },
+      "Delta": {
+        "PSNR_dB": 4.35,
+        "SSIM": 0.063,
+        "Sharpness": 0.3096,
+        "mIoU": 0.029,
+        "Macro_F1": 0.0154,
+        "Q_seg": 0.043
+      }
+    },
+    "seahorse1": {
+      "V18_Independent": {
+        "PSNR_dB": 24.21,
+        "SSIM": 0.8081,
+        "Sharpness": 0.5288,
+        "mIoU": 0.3712,
+        "Macro_F1": 0.5219,
+        "Q_seg": 0.1937
+      },
+      "V24_Consensus": {
+        "PSNR_dB": 30.76,
+        "SSIM": 0.934,
+        "Sharpness": 0.9026,
+        "mIoU": 0.4485,
+        "Macro_F1": 0.6058,
+        "Q_seg": 0.2717
+      },
+      "Delta": {
+        "PSNR_dB": 6.55,
+        "SSIM": 0.1259,
+        "Sharpness": 0.3738,
+        "mIoU": 0.0773,
+        "Macro_F1": 0.0839,
+        "Q_seg": 0.0779
+      }
+    }
+  }
+}

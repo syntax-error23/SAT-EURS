@@ -1,0 +1,710 @@
+{
+  "experiment_id": "EXP-V19-P2",
+  "title": "SAT-EURS Track 1 \u2014 V19 P2: Heterogeneous Ensemble Feasibility Audit",
+  "timestamp": "2026-10-18T06:36:50.591604Z",
+  "baseline_verification": {
+    "target_archive": "deploy/v18/submission_v18_dual_encoder_sota.zip",
+    "sha256_expected": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "sha256_verified": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+    "intact": true,
+    "baseline_metrics": {
+      "official_dev_composite": 0.749,
+      "official_dev_qseg": 0.768,
+      "official_dev_miou": 0.842,
+      "official_dev_f1": 0.912,
+      "official_dev_psnr": 25.89,
+      "official_dev_ssim": 0.833,
+      "local_oof_qseg": 0.43645,
+      "local_oof_miou": 0.59441,
+      "local_oof_f1": 0.73425
+    }
+  },
+  "verdict": {
+    "overall_status": "PASS",
+    "condition": "Strictly applies to the verified 5-fold heterogeneous ensemble (V18 Dual-Encoder + V16 DINOv2-Large + V17 ConvNeXt-Base FPN). A nominal ensemble incorporating full-20 specialists or single-checkpoint models is unconditionally BLOCKED.",
+    "sub_verdicts": {
+      "fold_safe_tri_ensemble": {
+        "status": "PASS",
+        "components": [
+          "V18 Dual-Encoder (DINOv3-L + ConvNeXt-B)",
+          "V16 DINOv2-Large (5-Fold)",
+          "V17 ConvNeXt-Base FPN (5-Fold)"
+        ],
+        "justification": "All 15 required model checkpoints (5 folds x 3 models) exist, possess verified SHA256 hashes, share identical 5-fold scene-disjoint splits, and operate on identical 5-class target ontologies."
+      },
+      "v17_full20_specialists": {
+        "status": "BLOCKED",
+        "components": [
+          "checkpoints/v17_specialists/dinov2_full20_best.pt",
+          "checkpoints/v17_specialists/convnext_full20_best.pt"
+        ],
+        "justification": "Trained simultaneously across all 20 clean training scenes. Evaluating on any held-out validation scenes introduces 100% in-sample data leakage. No 5-fold checkpoints exist."
+      },
+      "phase2_segformer_teacher": {
+        "status": "BLOCKED",
+        "components": [
+          "checkpoints/segformer_mit_b3_best.pt"
+        ],
+        "justification": "Single-model checkpoint trained on 16 scenes without 5-fold cross-validation. Evaluating on 20 scenes causes 16-scene training leakage. No 5-fold checkpoints exist."
+      }
+    }
+  },
+  "model_generations_inventory": {
+    "V18_Dual_Encoder": {
+      "name": "EURSAPEXV18Segmenter",
+      "total_parameters_m": 401.8,
+      "backbones": [
+        "Meta DINOv3 ViT-Large/16 (blocks 5, 11, 17, 23)",
+        "DINOv3 ConvNeXt-Base (strides 4, 8, 16, 32)",
+        "V18DetailStem (strides 2, 4)",
+        "ConditionEncoder (FiLM modulation for water type & depth)",
+        "V18UPerNetNeck (neck_dim=256)"
+      ],
+      "expected_input_resolution": [
+        1024,
+        1024
+      ],
+      "expected_inputs": [
+        "restored_rgb (from ConditionedRestorationRefinerV18)",
+        "raw_deg_rgb",
+        "wt (1..10)",
+        "depth (5..100)"
+      ],
+      "normalization": "ImageNet (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])",
+      "class_mapping": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tta": "Horizontal Flip (p_fused = 0.5 * (p_orig + p_flip))",
+      "output_type": "Logits [B, 5, 1024, 1024]",
+      "fold_checkpoints": {
+        "fold_0": {
+          "path": "checkpoints/v18/fold_0/segmenter_best.pt",
+          "size_mb": 1532.33,
+          "sha256": "2c94bc9c295c6a98b9d07ce5a8eecb8b17cb903526606ac9da95f124ad9e850b",
+          "train_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "seahorse1"
+          ]
+        },
+        "fold_1": {
+          "path": "checkpoints/v18/fold_1/segmenter_best.pt",
+          "size_mb": 1532.33,
+          "sha256": "a89ccb69220a4cbec050a11dd70104ea59e658c946546754a0c4a17d9b765c82",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "sharkFish"
+          ]
+        },
+        "fold_2": {
+          "path": "checkpoints/v18/fold_2/segmenter_best.pt",
+          "size_mb": 1532.33,
+          "sha256": "ec1c96e087b5479566cd03ace43e4a59e2b97f17180c96105691f1e700513a18",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "seahorse1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish17",
+            "fish18",
+            "fish2",
+            "ray1"
+          ]
+        },
+        "fold_3": {
+          "path": "checkpoints/v18/fold_3/segmenter_best.pt",
+          "size_mb": 1532.33,
+          "sha256": "e21a26951b084fa1616a5a80678b3c379a86b12d5bce42c0cdcf1e1efc4c5449",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish20",
+            "fish21",
+            "fish4",
+            "starfish2"
+          ]
+        },
+        "fold_4": {
+          "path": "checkpoints/v18/fold_4/segmenter_best.pt",
+          "size_mb": 1532.33,
+          "sha256": "72dd0a5bf56fb2a5a7dc704aac43fb541ca6ebd85c762b3ed20fc1758378f5e7",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "starfish2"
+          ],
+          "val_scenes": [
+            "fish5",
+            "fish7",
+            "fish9",
+            "turtles1"
+          ]
+        }
+      },
+      "restoration_checkpoints": {
+        "fold_0": {
+          "refiner_path": "checkpoints/v18/fold_0/refiner_best.pt",
+          "refiner_sha256": "c728728c8737aca546404dd0343415e3d6f8917a626ded32cd0c6a6703003130",
+          "table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_0.pt",
+          "table_sha256": "bf74a414a5ca5f3ff969e7fd5ac71f0a59d34aa681cb879676832c0ec6f7c269"
+        },
+        "fold_1": {
+          "refiner_path": "checkpoints/v18/fold_1/refiner_best.pt",
+          "refiner_sha256": "ebbab3801f8724b2426f69c0549ecf4c678e67c99b83981247b10ada29938e7c",
+          "table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_1.pt",
+          "table_sha256": "aea0da723d6ee588b78d5333e5be3f29f66eb27fd9f4d4ad742b46a1dc4a8dcb"
+        },
+        "fold_2": {
+          "refiner_path": "checkpoints/v18/fold_2/refiner_best.pt",
+          "refiner_sha256": "bac9a3a38071ed312b592b805864383fd70aee8c60c1dcc060f22ed2e3c58b01",
+          "table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_2.pt",
+          "table_sha256": "5765c89cd1817f9fb4643216a030d003c55a5f184acfc3928544066a103a146e"
+        },
+        "fold_3": {
+          "refiner_path": "checkpoints/v18/fold_3/refiner_best.pt",
+          "refiner_sha256": "6ebfe5f292251edc4ec18e0cf8bef378c7a2ba34de3e0938eddd9d6f8bc55f14",
+          "table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_3.pt",
+          "table_sha256": "fd8a4759cba0acbc2506bf26bd77e4e9e4fd4f63c5d93960f05418718f6f2403"
+        },
+        "fold_4": {
+          "refiner_path": "checkpoints/v18/fold_4/refiner_best.pt",
+          "refiner_sha256": "34efebbe00224e4f7481f9bd41de37260f06d83e7c7b70d13905d93a4edd8d34",
+          "table_path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_4.pt",
+          "table_sha256": "22d2ffd88f6f01dd123ee912bc288cd30bd941148b8537655451c5bc64e06037"
+        }
+      }
+    },
+    "V16_DINOv2_Large": {
+      "name": "DINOv2Segmenter (ViT-L/14 + Linear Projection + 3-Conv Fusion)",
+      "total_parameters_m": 304.3,
+      "backbones": [
+        "facebookresearch/dinov2 ViT-Large/14 (blocks 5, 11, 17, 23)"
+      ],
+      "expected_input_resolution": [
+        518,
+        518
+      ],
+      "expected_inputs": [
+        "restored_rgb"
+      ],
+      "normalization": "ImageNet (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])",
+      "class_mapping": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tta": "Horizontal Flip (p_fused = 0.5 * (p_orig + p_flip))",
+      "output_type": "Logits [B, 5, 518, 518] -> Bilinear to [B, 5, 1024, 1024]",
+      "fold_checkpoints": {
+        "fold_0": {
+          "path": "checkpoints/v16_dinov2/fold_0/best_model.pt",
+          "size_mb": 1175.37,
+          "sha256": "3bbe037c421f14ed8e961d2535b00e404ea45f4f8344484c09767e020196acf8",
+          "train_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "seahorse1"
+          ]
+        },
+        "fold_1": {
+          "path": "checkpoints/v16_dinov2/fold_1/best_model.pt",
+          "size_mb": 1175.37,
+          "sha256": "2cfa306d39e4b55d51900da073fea9bd504ed27469a002c707c71b4d6b7dc59f",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "sharkFish"
+          ]
+        },
+        "fold_2": {
+          "path": "checkpoints/v16_dinov2/fold_2/best_model.pt",
+          "size_mb": 1175.37,
+          "sha256": "e68b1317fdf2a5892e153208d7369fa5b2c8c69669f8a26b0cffe8db8b8514be",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "seahorse1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish17",
+            "fish18",
+            "fish2",
+            "ray1"
+          ]
+        },
+        "fold_3": {
+          "path": "checkpoints/v16_dinov2/fold_3/best_model.pt",
+          "size_mb": 1175.37,
+          "sha256": "1e4bc8053e04bf80ab28fa928174a80470b55886f58c19a67603e7d4b5c98b2b",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish20",
+            "fish21",
+            "fish4",
+            "starfish2"
+          ]
+        },
+        "fold_4": {
+          "path": "checkpoints/v16_dinov2/fold_4/best_model.pt",
+          "size_mb": 1175.37,
+          "sha256": "8398d538d0fe092bc23d852cda4027d2bb784d29ba7d8fd36d365574e53a162f",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "starfish2"
+          ],
+          "val_scenes": [
+            "fish5",
+            "fish7",
+            "fish9",
+            "turtles1"
+          ]
+        }
+      }
+    },
+    "V17_ConvNeXt_Base_FPN": {
+      "name": "ConvNeXt-Base FPN (SMP tu-convnext_base + FPN Decoder)",
+      "total_parameters_m": 88.5,
+      "backbones": [
+        "tu-convnext_base (ImageNet-22k pretrained, stem & stage 0 frozen)"
+      ],
+      "expected_input_resolution": [
+        512,
+        512
+      ],
+      "expected_inputs": [
+        "restored_rgb"
+      ],
+      "normalization": "ImageNet (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])",
+      "class_mapping": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tta": "Horizontal Flip (p_fused = 0.5 * (p_orig + p_flip))",
+      "output_type": "Logits [B, 5, 512, 512] -> Bilinear to [B, 5, 1024, 1024]",
+      "fold_checkpoints": {
+        "fold_0": {
+          "path": "checkpoints/v16_convnext/fold_0/best_model.pt",
+          "size_mb": 342.26,
+          "sha256": "ed36e5d39fcddfbf2d64e0e9aa6b959f4972bcdee9f493dcf90f770a8b8accbd",
+          "train_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "seahorse1"
+          ]
+        },
+        "fold_1": {
+          "path": "checkpoints/v16_convnext/fold_1/best_model.pt",
+          "size_mb": 342.26,
+          "sha256": "4ec49c010213f3a6ffdd03a9a237f1428e7c3bf3fb48173b5a6b2492cbbb7c4e",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish13",
+            "fish14",
+            "fish15",
+            "sharkFish"
+          ]
+        },
+        "fold_2": {
+          "path": "checkpoints/v16_convnext/fold_2/best_model.pt",
+          "size_mb": 342.26,
+          "sha256": "c5b2aabcf614cc42e2aad627f0fb8d01beb711ac6d211cb851f535f3b8a90f97",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish20",
+            "fish21",
+            "fish4",
+            "fish5",
+            "fish7",
+            "fish9",
+            "seahorse1",
+            "sharkFish",
+            "starfish2",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish17",
+            "fish18",
+            "fish2",
+            "ray1"
+          ]
+        },
+        "fold_3": {
+          "path": "checkpoints/v16_convnext/fold_3/best_model.pt",
+          "size_mb": 342.26,
+          "sha256": "bcdf6ddca9599667ebc71f810ff4a3eefa07c1b9772313188ccb0c0528cb05d0",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish5",
+            "fish7",
+            "fish9",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "turtles1"
+          ],
+          "val_scenes": [
+            "fish20",
+            "fish21",
+            "fish4",
+            "starfish2"
+          ]
+        },
+        "fold_4": {
+          "path": "checkpoints/v16_convnext/fold_4/best_model.pt",
+          "size_mb": 342.26,
+          "sha256": "e6bf76698d4857f49c31c44710ce61f8a5aa49849b864f7f85e6c7c289266519",
+          "train_scenes": [
+            "fish1",
+            "fish11",
+            "fish12",
+            "fish13",
+            "fish14",
+            "fish15",
+            "fish17",
+            "fish18",
+            "fish2",
+            "fish20",
+            "fish21",
+            "fish4",
+            "ray1",
+            "seahorse1",
+            "sharkFish",
+            "starfish2"
+          ],
+          "val_scenes": [
+            "fish5",
+            "fish7",
+            "fish9",
+            "turtles1"
+          ]
+        }
+      }
+    }
+  },
+  "target_class_ontology": {
+    "0": "Background (sand, open water, rocks)",
+    "1": "Coral Reef (hard & soft coral substrate)",
+    "2": "Fish (teleost fishes)",
+    "3": "Elasmobranchii (sharks, rays)",
+    "4": "Macro-Fauna (sea turtles, seahorses, starfish)"
+  },
+  "compatibility_adapter": {
+    "spatial_alignment": "All model probability tensors are interpolated to native 1024x1024 geometry using bilinear interpolation with align_corners=False prior to convex fusion.",
+    "probability_level_fusion": "Logits are never directly summed across architectures due to uncalibrated temperature differences. Softmax is evaluated per model: P_m = Softmax(Logits_m, dim=1).",
+    "blending_formula": "P_ensemble = w_18 * P_V18 + w_dino * P_DINOv2 + w_conv * P_ConvNeXt, with w_18 + w_dino + w_conv = 1.0, w_i >= 0.",
+    "restoration_consistency": "All models evaluate on the identical fold-specific restored input generated by V18 ConditionedRestorationRefiner + Scale-Consistent Table B, preserving full optical consistency.",
+    "calibration_placement": "Calibrated logit offsets (b3 = +0.15, b4 = +0.33) are applied strictly post-fusion to the ensemble log-probabilities: Log_P_cal = log(P_ensemble + 1e-10) + b, followed by argmax."
+  },
+  "nested_cross_fitting_protocol": {
+    "folds_count": 5,
+    "images_per_fold": 800,
+    "total_images": 4000,
+    "leakage_guarantee": "For each outer fold k in 0..4, optimal weights w*(k) are determined exclusively on the 4 inner training folds {j != k} (3,200 images). Outer fold k (800 images) is evaluated strictly using w*(k).",
+    "candidate_weight_grid": [
+      {
+        "w_18": 1.0,
+        "w_dino": 0.0,
+        "w_conv": 0.0,
+        "description": "V18 Baseline Control"
+      },
+      {
+        "w_18": 0.8,
+        "w_dino": 0.2,
+        "w_conv": 0.0,
+        "description": "V18 + DINOv2-L"
+      },
+      {
+        "w_18": 0.7,
+        "w_dino": 0.3,
+        "w_conv": 0.0,
+        "description": "V18 + DINOv2-L (Higher Weight)"
+      },
+      {
+        "w_18": 0.85,
+        "w_dino": 0.0,
+        "w_conv": 0.15,
+        "description": "V18 + ConvNeXt-B"
+      },
+      {
+        "w_18": 0.7,
+        "w_dino": 0.2,
+        "w_conv": 0.1,
+        "description": "Tri-Ensemble Balanced"
+      },
+      {
+        "w_18": 0.6,
+        "w_dino": 0.25,
+        "w_conv": 0.15,
+        "description": "Tri-Ensemble High-Diversity"
+      },
+      {
+        "w_18": 0.5,
+        "w_dino": 0.35,
+        "w_conv": 0.15,
+        "description": "Tri-Ensemble Equal-Balance"
+      }
+    ]
+  },
+  "go_no_go_criteria": {
+    "primary_gate": {
+      "metric": "Delta Q_seg (Cross-Fitted 5-Fold OOF)",
+      "threshold": "+0.01000",
+      "baseline": 0.43645,
+      "required_minimum": 0.44645,
+      "rationale": "Must demonstrate meaningful statistical improvement over V18 baseline to justify a 3x increase in inference complexity."
+    },
+    "secondary_gate": {
+      "metric": "Delta mIoU (Cross-Fitted 5-Fold OOF)",
+      "threshold": "+0.00800",
+      "baseline": 0.59441,
+      "required_minimum": 0.60241
+    },
+    "class_safety_floors": {
+      "maximum_allowable_class_drop": "-0.00500 IoU",
+      "class_0_floor": 0.74545,
+      "class_1_floor": 0.71347,
+      "class_2_floor": 0.60331,
+      "class_3_floor": 0.54967,
+      "class_4_floor": 0.34016,
+      "rationale": "No class may degrade significantly. In particular, Class 4 (macro-fauna) must maintain or improve recall."
+    }
+  },
+  "compute_and_resource_estimates": {
+    "gpu_hardware": "NVIDIA GeForce RTX 5090 (31.84 GB VRAM)",
+    "memory_footprint": {
+      "v18_peak_vram_gb": 7.2,
+      "dinov2_peak_vram_gb": 2.5,
+      "convnext_peak_vram_gb": 1.2,
+      "total_concurrent_vram_gb": 10.9,
+      "vram_utilization_pct": 34.2
+    },
+    "runtime_estimate": {
+      "forward_passes_per_image": 6,
+      "ms_per_image": 45,
+      "seconds_per_fold": 260,
+      "total_wall_clock_minutes": 22.0
+    }
+  }
+}

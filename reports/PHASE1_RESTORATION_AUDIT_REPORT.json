@@ -1,0 +1,484 @@
+{
+  "hardware": {
+    "os": "Windows 10 (Build 10.0.26200)",
+    "python": "3.11.9",
+    "torch": "2.11.0+cu128",
+    "cuda_torch": "12.8",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "vram_total_gib": 31.84234619140625,
+    "vram_free_gib": 30.205078125,
+    "system_ram_total_gb": 63.433982849121094,
+    "system_ram_available_gb": 51.03875732421875,
+    "disk_free_gb": 659.5238723754883
+  },
+  "preserved_artifacts": {
+    "v16_submission_zip": {
+      "path": "deploy/submission_v16_apex_sota.zip",
+      "size_mb": 588.6381311416626,
+      "sha256": "943369fcdff398c1c18c9b43d4aa792baa1e343914a3dc6f186ca52bb8ced6df",
+      "exists": true
+    },
+    "v17_submission_zip": {
+      "path": "deploy/submission_v17_dual_backbone_sota.zip",
+      "size_mb": 589.5039691925049,
+      "sha256": "50f85ec2111ad6d62a03d718fb8fe09fe4e75201d7cdf359c9a81baac138cc4e",
+      "exists": true
+    },
+    "v16_fallback_zip": {
+      "path": "deploy/eurs_track1_dryrun_compact_candidate.zip",
+      "size_mb": 564.9055528640747,
+      "sha256": "d6f4b9dfae2a084154d4820722fea48276fe1d5ae8a115557ea36417c3f7d2d6",
+      "exists": true
+    },
+    "v16_generator_script": {
+      "path": "tools/generate_v16_apex_submission.py",
+      "size_mb": 0.008333206176757812,
+      "sha256": "743e1666e4676a49a30655e8493a9b4386340a48f7f0d0c25229a840d31e3bd0",
+      "exists": true
+    },
+    "v17_generator_script": {
+      "path": "tools/generate_v17_dual_backbone_submission.py",
+      "size_mb": 0.010614395141601562,
+      "sha256": "dc45cf415ba6cbeff151a93f59311857b35ba7e7f737bec38ebf0b9517e2938e",
+      "exists": true
+    },
+    "rsuigm_20sc_table": {
+      "path": "checkpoints/track1_screening/tbl19_20sc_clean.pt",
+      "size_mb": 0.09403705596923828,
+      "sha256": "2c35df3b0f5d3317c3672b2867e0059b893acecd8699c5a2271383a1179d9562",
+      "exists": true
+    },
+    "rsuigm_16sc_table": {
+      "path": "checkpoints/track1_screening/tbl19_16sc_fold0.pt",
+      "size_mb": 0.09403705596923828,
+      "sha256": "d609740e3a6e80593ffc2684458bcf747fc7edaa90fe8f87801c6e367356d6a1",
+      "exists": true
+    },
+    "dinov2_fold0": {
+      "path": "checkpoints/v16_dinov2/fold_0/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "3bbe037c421f14ed8e961d2535b00e404ea45f4f8344484c09767e020196acf8",
+      "exists": true
+    },
+    "dinov2_fold1": {
+      "path": "checkpoints/v16_dinov2/fold_1/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "2cfa306d39e4b55d51900da073fea9bd504ed27469a002c707c71b4d6b7dc59f",
+      "exists": true
+    },
+    "dinov2_fold2": {
+      "path": "checkpoints/v16_dinov2/fold_2/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "e68b1317fdf2a5892e153208d7369fa5b2c8c69669f8a26b0cffe8db8b8514be",
+      "exists": true
+    },
+    "dinov2_fold3": {
+      "path": "checkpoints/v16_dinov2/fold_3/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "1e4bc8053e04bf80ab28fa928174a80470b55886f58c19a67603e7d4b5c98b2b",
+      "exists": true
+    },
+    "dinov2_fold4": {
+      "path": "checkpoints/v16_dinov2/fold_4/best_model.pt",
+      "size_mb": 1175.3662910461426,
+      "sha256": "8398d538d0fe092bc23d852cda4027d2bb784d29ba7d8fd36d365574e53a162f",
+      "exists": true
+    },
+    "convnext_fold0": {
+      "path": "checkpoints/v16_convnext/fold_0/best_model.pt",
+      "size_mb": 342.25720596313477,
+      "sha256": "ed36e5d39fcddfbf2d64e0e9aa6b959f4972bcdee9f493dcf90f770a8b8accbd",
+      "exists": true
+    }
+  },
+  "pairing_audit": {
+    "clean_scenes_count": 20,
+    "degraded_scenes_count": 20,
+    "clean_scenes": [
+      "fish1",
+      "fish11",
+      "fish12",
+      "fish13",
+      "fish14",
+      "fish15",
+      "fish17",
+      "fish18",
+      "fish2",
+      "fish20",
+      "fish21",
+      "fish4",
+      "fish5",
+      "fish7",
+      "fish9",
+      "ray1",
+      "seahorse1",
+      "sharkFish",
+      "starfish2",
+      "turtles1"
+    ],
+    "degraded_scenes": [
+      "fish1",
+      "fish11",
+      "fish12",
+      "fish13",
+      "fish14",
+      "fish15",
+      "fish17",
+      "fish18",
+      "fish2",
+      "fish20",
+      "fish21",
+      "fish4",
+      "fish5",
+      "fish7",
+      "fish9",
+      "ray1",
+      "seahorse1",
+      "sharkFish",
+      "starfish2",
+      "turtles1"
+    ],
+    "scenes_match": true,
+    "per_scene_details": {
+      "fish1": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish11": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish12": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish13": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish14": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish15": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish17": {
+        "raw_clean_dims": [
+          3000,
+          4000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish18": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish2": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish20": {
+        "raw_clean_dims": [
+          6870,
+          4567
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish21": {
+        "raw_clean_dims": [
+          6720,
+          4480
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish4": {
+        "raw_clean_dims": [
+          3000,
+          4000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish5": {
+        "raw_clean_dims": [
+          3024,
+          4032
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish7": {
+        "raw_clean_dims": [
+          9710,
+          7283
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "fish9": {
+        "raw_clean_dims": [
+          4000,
+          3000
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "ray1": {
+        "raw_clean_dims": [
+          6204,
+          3136
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "seahorse1": {
+        "raw_clean_dims": [
+          4032,
+          3024
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "sharkFish": {
+        "raw_clean_dims": [
+          4323,
+          6484
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "starfish2": {
+        "raw_clean_dims": [
+          2268,
+          4032
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      },
+      "turtles1": {
+        "raw_clean_dims": [
+          4853,
+          3235
+        ],
+        "raw_degraded_count": 200,
+        "raw_aligned": true,
+        "cached_degraded_count": 200
+      }
+    }
+  },
+  "split_audit": {
+    "folds": {
+      "fold_0": {
+        "train_scenes": [
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish17",
+          "fish18",
+          "fish2",
+          "fish20",
+          "fish21",
+          "fish4",
+          "fish5",
+          "fish7",
+          "fish9",
+          "ray1",
+          "sharkFish",
+          "starfish2",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "seahorse1"
+        ],
+        "overlap_count": 0,
+        "total_scenes": 20,
+        "status": "STRICTLY_DISJOINT"
+      },
+      "fold_1": {
+        "train_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "fish17",
+          "fish18",
+          "fish2",
+          "fish20",
+          "fish21",
+          "fish4",
+          "fish5",
+          "fish7",
+          "fish9",
+          "ray1",
+          "seahorse1",
+          "starfish2",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish13",
+          "fish14",
+          "fish15",
+          "sharkFish"
+        ],
+        "overlap_count": 0,
+        "total_scenes": 20,
+        "status": "STRICTLY_DISJOINT"
+      },
+      "fold_2": {
+        "train_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish20",
+          "fish21",
+          "fish4",
+          "fish5",
+          "fish7",
+          "fish9",
+          "seahorse1",
+          "sharkFish",
+          "starfish2",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish17",
+          "fish18",
+          "fish2",
+          "ray1"
+        ],
+        "overlap_count": 0,
+        "total_scenes": 20,
+        "status": "STRICTLY_DISJOINT"
+      },
+      "fold_3": {
+        "train_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish17",
+          "fish18",
+          "fish2",
+          "fish5",
+          "fish7",
+          "fish9",
+          "ray1",
+          "seahorse1",
+          "sharkFish",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish20",
+          "fish21",
+          "fish4",
+          "starfish2"
+        ],
+        "overlap_count": 0,
+        "total_scenes": 20,
+        "status": "STRICTLY_DISJOINT"
+      },
+      "fold_4": {
+        "train_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish17",
+          "fish18",
+          "fish2",
+          "fish20",
+          "fish21",
+          "fish4",
+          "ray1",
+          "seahorse1",
+          "sharkFish",
+          "starfish2"
+        ],
+        "val_scenes": [
+          "fish5",
+          "fish7",
+          "fish9",
+          "turtles1"
+        ],
+        "overlap_count": 0,
+        "total_scenes": 20,
+        "status": "STRICTLY_DISJOINT"
+      }
+    }
+  },
+  "calibration_leakage_audit": {
+    "tbl19_20sc_uses_all_20_scenes": true,
+    "tbl19_20sc_purpose": "Production server submission fitting (used in #18713, #18747, #18752)",
+    "tbl19_16sc_fold0_uses_only_train_scenes": true,
+    "tbl19_16sc_purpose": "Strict leak-free out-of-fold validation on Fold 0",
+    "mean_frobenius_diff": 12.54964287132956,
+    "max_frobenius_diff": 44.85151290893555,
+    "verdict": "CRITICAL GOVERNANCE RULE: Neural restorer training MUST use only 16 training scenes and must not incorporate tbl19_20sc into training targets."
+  },
+  "phase1_verdict": "PASSED_VERIFIED"
+}

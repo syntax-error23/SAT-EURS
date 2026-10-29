@@ -1,0 +1,26 @@
+{
+  "metrics": {
+    "baseline_q_seg": 0.32959,
+    "pilot_q_seg": 0.17074,
+    "delta_q_seg": -0.15885,
+    "delta_miou": -0.14896,
+    "delta_f1": -0.17371,
+    "class_ious_baseline": [
+      0.645,
+      0.7017,
+      0.6949,
+      0.0,
+      0.5701
+    ],
+    "class_ious_pilot": [
+      0.7067,
+      0.7265,
+      0.4218,
+      0.0,
+      0.0119
+    ]
+  },
+  "verdict": "REJECTED",
+  "runtime_s": 543.94,
+  "checkpoint": "checkpoints/overnight_pilots/fold_4\\segmenter_v28_fold4_best.pt"
+}

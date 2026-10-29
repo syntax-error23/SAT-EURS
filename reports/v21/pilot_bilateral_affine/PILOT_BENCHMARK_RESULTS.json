@@ -1,0 +1,188 @@
+{
+  "timestamp": "2026-10-18 18:02:05 UTC",
+  "baseline_sha256": "e82cbea22ed068a3bfd01d7111ec412391df0fdc66e4ad2d954589d9efc81a52",
+  "evaluated_folds": [
+    0,
+    2
+  ],
+  "parameters": 272132,
+  "mean_latency_ms": 1.01,
+  "peak_vram_mb": 1334.3,
+  "control_metrics": {
+    "fold_0": {
+      "PSNR_dB": 25.71,
+      "PSNR_norm": 0.5364,
+      "SSIM": 0.8184,
+      "Sharpness": 0.4363,
+      "Q_FR": 0.6533,
+      "UIQM": 1.309,
+      "UCIQE": 0.423,
+      "CCF": 0.0122,
+      "Q_NR": 0.832,
+      "restoration_composite_contribution": 0.27918
+    },
+    "fold_2": {
+      "PSNR_dB": 25.11,
+      "PSNR_norm": 0.5109,
+      "SSIM": 0.8201,
+      "Sharpness": 0.4878,
+      "Q_FR": 0.6477,
+      "UIQM": 1.275,
+      "UCIQE": 0.372,
+      "CCF": 0.0093,
+      "Q_NR": 0.7704,
+      "restoration_composite_contribution": 0.27136
+    }
+  },
+  "treatment_metrics": {
+    "fold_0": {
+      "metrics": {
+        "PSNR_dB": 23.06,
+        "PSNR_norm": 0.4068,
+        "SSIM": 0.7847,
+        "Sharpness": 0.3287,
+        "Q_FR": 0.569,
+        "UIQM": 1.138,
+        "UCIQE": 0.379,
+        "CCF": 0.0114,
+        "Q_NR": 0.7346,
+        "restoration_composite_contribution": 0.24417
+      },
+      "provenance": {
+        "version": "v21_pilot",
+        "arch": "ConditionedBilateralAffineNet",
+        "fold": 0,
+        "epoch": 8,
+        "train_scenes": [
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish17",
+          "fish18",
+          "fish2",
+          "fish20",
+          "fish21",
+          "fish4",
+          "fish5",
+          "fish7",
+          "fish9",
+          "ray1",
+          "sharkFish",
+          "starfish2",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "seahorse1"
+        ],
+        "metrics": {
+          "PSNR_dB": 23.06,
+          "PSNR_norm": 0.4068,
+          "SSIM": 0.7847,
+          "Sharpness": 0.3287,
+          "Q_FR": 0.569,
+          "UIQM": 1.138,
+          "UCIQE": 0.379,
+          "CCF": 0.0114,
+          "Q_NR": 0.7346,
+          "restoration_composite_contribution": 0.24417
+        },
+        "timestamp": "2026-10-18 17:50:54 UTC"
+      }
+    },
+    "fold_2": {
+      "metrics": {
+        "PSNR_dB": 22.15,
+        "PSNR_norm": 0.3718,
+        "SSIM": 0.7906,
+        "Sharpness": 0.3366,
+        "Q_FR": 0.5568,
+        "UIQM": 1.115,
+        "UCIQE": 0.307,
+        "CCF": 0.0071,
+        "Q_NR": 0.6551,
+        "restoration_composite_contribution": 0.23254
+      },
+      "provenance": {
+        "version": "v21_pilot",
+        "arch": "ConditionedBilateralAffineNet",
+        "fold": 2,
+        "epoch": 8,
+        "train_scenes": [
+          "fish1",
+          "fish11",
+          "fish12",
+          "fish13",
+          "fish14",
+          "fish15",
+          "fish20",
+          "fish21",
+          "fish4",
+          "fish5",
+          "fish7",
+          "fish9",
+          "seahorse1",
+          "sharkFish",
+          "starfish2",
+          "turtles1"
+        ],
+        "val_scenes": [
+          "fish17",
+          "fish18",
+          "fish2",
+          "ray1"
+        ],
+        "metrics": {
+          "PSNR_dB": 22.15,
+          "PSNR_norm": 0.3718,
+          "SSIM": 0.7906,
+          "Sharpness": 0.3366,
+          "Q_FR": 0.5568,
+          "UIQM": 1.115,
+          "UCIQE": 0.307,
+          "CCF": 0.0071,
+          "Q_NR": 0.6551,
+          "restoration_composite_contribution": 0.23254
+        },
+        "timestamp": "2026-10-18 18:01:41 UTC"
+      }
+    }
+  },
+  "pooled_control": {
+    "PSNR_dB": 25.41,
+    "PSNR_norm": 0.5236,
+    "SSIM": 0.8193,
+    "Sharpness": 0.4621,
+    "Q_FR": 0.6505,
+    "UIQM": 1.292,
+    "UCIQE": 0.397,
+    "CCF": 0.0107,
+    "Q_NR": 0.8012,
+    "restoration_composite_contribution": 0.27527
+  },
+  "pooled_treatment": {
+    "PSNR_dB": 22.6,
+    "PSNR_norm": 0.3893,
+    "SSIM": 0.7876,
+    "Sharpness": 0.3327,
+    "Q_FR": 0.5629,
+    "UIQM": 1.127,
+    "UCIQE": 0.343,
+    "CCF": 0.0093,
+    "Q_NR": 0.6948,
+    "restoration_composite_contribution": 0.23835
+  },
+  "delta_Q_FR": -0.0876,
+  "delta_restoration_composite": -0.03692,
+  "screening_criteria": {
+    "criterion_1_composite_delta_ge_010": false,
+    "criterion_2_positive_both_folds": false,
+    "criterion_3_no_material_regression": false,
+    "criterion_4_strict_scene_isolation": true,
+    "criterion_5_inference_compatibility": true,
+    "all_criteria_met": false,
+    "verdict": "NO-GO (CEILING / DEFICIENCY IDENTIFIED)"
+  }
+}

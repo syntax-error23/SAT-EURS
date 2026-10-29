@@ -1,0 +1,3194 @@
+[
+  {
+    "fold": 0,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.6204261779785156,
+      "miou_present": 0.460811924374035,
+      "macro_f1_present": 0.6171513343912648,
+      "miou_5class": 0.276487154624421,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 137835,
+        "tp": 118820,
+        "fp": 19015,
+        "fn": 199881,
+        "precision": 0.8620451989697201,
+        "recall": 0.3728259403013993,
+        "f1": 0.5205284973705869,
+        "iou": 0.3518340854445643
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.5414009094238281,
+      "miou_present": 0.3671552934840081,
+      "macro_f1_present": 0.5205064936375435,
+      "miou_5class": 0.22029317609040486,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105550,
+        "tp": 88237,
+        "fp": 17313,
+        "fn": 230464,
+        "precision": 0.835973472287936,
+        "recall": 0.2768645219186549,
+        "f1": 0.41596601637754615,
+        "iou": 0.26259917741521893
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.5413827896118164,
+      "miou_present": 0.367142012572574,
+      "macro_f1_present": 0.5204864240102253,
+      "miou_5class": 0.22028520754354441,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105531,
+        "tp": 88217,
+        "fp": 17314,
+        "fn": 230484,
+        "precision": 0.8359344647543532,
+        "recall": 0.2768017671736117,
+        "f1": 0.4158903581398971,
+        "iou": 0.2625388747526074
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.5430669784545898,
+      "miou_present": 0.36992677082907566,
+      "macro_f1_present": 0.5238531631473199,
+      "miou_5class": 0.2219560624974454,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 108700,
+        "tp": 90391,
+        "fp": 18309,
+        "fn": 228310,
+        "precision": 0.8315639374424258,
+        "recall": 0.28362320795980295,
+        "f1": 0.42297982077463653,
+        "iou": 0.26821459303877426
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 129194,
+      "disagree_pct": 12.320899963378906,
+      "mean_kl_divergence": 0.41695499420166016,
+      "feature_cosine_similarity": 0.9365416169166565,
+      "disagreement_set": {
+        "teacher_correct": 14104,
+        "deg_correct": 96968,
+        "neither_correct": 18122,
+        "teacher_accuracy": 0.10916915646237442,
+        "deg_accuracy": 0.7505611715714352,
+        "neither_pct": 0.1402696719661904,
+        "net_correct_delta": -82864,
+        "teacher_advantage": -0.6413920151090607
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 4042,
+        "corrupted_pixels": 34625,
+        "net_rescued": -30583,
+        "hallucinated_pixels": 5586,
+        "clean_fp_total": 17313,
+        "deg_fp_total": 19015
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 48365,
+          "pct_of_disagree": 37.43594903788102,
+          "teacher_acc": 0.1093145869947276,
+          "deg_acc": 0.6717667734932286
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 26392,
+          "pct_of_disagree": 20.428193259748905,
+          "teacher_acc": 0.09677174901485298,
+          "deg_acc": 0.8409745377387087
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 17786,
+          "pct_of_disagree": 13.766893199374582,
+          "teacher_acc": 0.07629596311705836,
+          "deg_acc": 0.9190374451816035
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 11692,
+          "pct_of_disagree": 9.04995588030404,
+          "teacher_acc": 0.09887102292165584,
+          "deg_acc": 0.9011289770783442
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.6202611923217773,
+      "miou_present": 0.44466090602237757,
+      "macro_f1_present": 0.6019397828565394,
+      "miou_5class": 0.26679654361342653,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 175098,
+        "tp": 135551,
+        "fp": 39547,
+        "fn": 183150,
+        "precision": 0.7741436224285386,
+        "recall": 0.42532342226725284,
+        "f1": 0.5490128528810344,
+        "iou": 0.37837196578905175
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.5414009094238281,
+      "miou_present": 0.3671552934840081,
+      "macro_f1_present": 0.5205064936375435,
+      "miou_5class": 0.22029317609040486,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105550,
+        "tp": 88237,
+        "fp": 17313,
+        "fn": 230464,
+        "precision": 0.835973472287936,
+        "recall": 0.2768645219186549,
+        "f1": 0.41596601637754615,
+        "iou": 0.26259917741521893
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.5412073135375977,
+      "miou_present": 0.3668811735725681,
+      "macro_f1_present": 0.5201434936016333,
+      "miou_5class": 0.22012870414354085,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105181,
+        "tp": 87938,
+        "fp": 17243,
+        "fn": 230763,
+        "precision": 0.8360635475988215,
+        "recall": 0.27592633848025966,
+        "f1": 0.41491735534502205,
+        "iou": 0.26176386540613134
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.5392236709594727,
+      "miou_present": 0.3635150358285979,
+      "macro_f1_present": 0.5171232448705462,
+      "miou_5class": 0.21810902149715874,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 104159,
+        "tp": 87537,
+        "fp": 16622,
+        "fn": 231164,
+        "precision": 0.8404170546951449,
+        "recall": 0.27466810584214435,
+        "f1": 0.4140235501819544,
+        "iou": 0.2610527759801665
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 213059,
+      "disagree_pct": 20.318889617919922,
+      "mean_kl_divergence": 0.6616363525390625,
+      "feature_cosine_similarity": 0.8830641508102417,
+      "disagreement_set": {
+        "teacher_correct": 49796,
+        "deg_correct": 132487,
+        "neither_correct": 30776,
+        "teacher_accuracy": 0.23371929841029948,
+        "deg_accuracy": 0.6218324501663859,
+        "neither_pct": 0.14444825142331466,
+        "net_correct_delta": -82691,
+        "teacher_advantage": -0.3881131517560864
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 9480,
+        "corrupted_pixels": 56794,
+        "net_rescued": -47314,
+        "hallucinated_pixels": 6660,
+        "clean_fp_total": 17313,
+        "deg_fp_total": 39547
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 60477,
+          "pct_of_disagree": 28.385095208369513,
+          "teacher_acc": 0.1787787092613721,
+          "deg_acc": 0.5749293119698398
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 51332,
+          "pct_of_disagree": 24.092856908180362,
+          "teacher_acc": 0.20369360243123197,
+          "deg_acc": 0.6533741136133406
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 45614,
+          "pct_of_disagree": 21.409093255858703,
+          "teacher_acc": 0.2592186609374315,
+          "deg_acc": 0.6811943701495154
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 28785,
+          "pct_of_disagree": 13.510342205680118,
+          "teacher_acc": 0.4063574778530485,
+          "deg_acc": 0.5689421573736321
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.34945201873779297,
+      "miou_present": 0.14219613900715747,
+      "macro_f1_present": 0.2006749083364817,
+      "miou_5class": 0.08531768340429448,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 2328,
+        "tp": 1244,
+        "fp": 1084,
+        "fn": 317457,
+        "precision": 0.5343642611660895,
+        "recall": 0.003903345141684403,
+        "f1": 0.007750078509348013,
+        "iou": 0.0038901136701219915
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.5414009094238281,
+      "miou_present": 0.3671552934840081,
+      "macro_f1_present": 0.5205064936375435,
+      "miou_5class": 0.22029317609040486,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105550,
+        "tp": 88237,
+        "fp": 17313,
+        "fn": 230464,
+        "precision": 0.835973472287936,
+        "recall": 0.2768645219186549,
+        "f1": 0.41596601637754615,
+        "iou": 0.26259917741521893
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.5412073135375977,
+      "miou_present": 0.3670175693891222,
+      "macro_f1_present": 0.520292651460435,
+      "miou_5class": 0.22021054163347334,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 105310,
+        "tp": 87999,
+        "fp": 17311,
+        "fn": 230702,
+        "precision": 0.8356186497008038,
+        "recall": 0.2761177404526413,
+        "f1": 0.41507885035270453,
+        "iou": 0.2618924324131203
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.4901447296142578,
+      "miou_present": 0.30119528870143303,
+      "macro_f1_present": 0.4329121778957266,
+      "miou_5class": 0.1807171732208598,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 43973,
+        "tp": 38049,
+        "fp": 5924,
+        "fn": 280652,
+        "precision": 0.8652809678664487,
+        "recall": 0.11938776470735518,
+        "f1": 0.2098247992058084,
+        "iou": 0.11720908740854472
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 455274,
+      "disagree_pct": 43.418312072753906,
+      "mean_kl_divergence": 2.0800297260284424,
+      "feature_cosine_similarity": 0.7030227184295654,
+      "disagreement_set": {
+        "teacher_correct": 236830,
+        "deg_correct": 35557,
+        "neither_correct": 182887,
+        "teacher_accuracy": 0.5201922358843246,
+        "deg_accuracy": 0.07810022096583596,
+        "neither_pct": 0.4017075431498394,
+        "net_correct_delta": 201273,
+        "teacher_advantage": 0.44209201491848865
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 86993,
+        "corrupted_pixels": 0,
+        "net_rescued": 86993,
+        "hallucinated_pixels": 16937,
+        "clean_fp_total": 17313,
+        "deg_fp_total": 1084
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 73440,
+          "pct_of_disagree": 16.130945320839757,
+          "teacher_acc": 0.4311274509803922,
+          "deg_acc": 0.10051742919389978
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 64587,
+          "pct_of_disagree": 14.186402034818594,
+          "teacher_acc": 0.39777354575998264,
+          "deg_acc": 0.08846981590722591
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 84886,
+          "pct_of_disagree": 18.645035736721184,
+          "teacher_acc": 0.42830384280093303,
+          "deg_acc": 0.0858092029309898
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 201399,
+          "pct_of_disagree": 44.2368771333307,
+          "teacher_acc": 0.6308621194742774,
+          "deg_acc": 0.07145020581035656
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.995112419128418,
+      "miou_present": 0.9853755241836794,
+      "macro_f1_present": 0.9926071417244801,
+      "miou_5class": 0.5912253145102075,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 116178,
+        "tp": 112973,
+        "fp": 3205,
+        "fn": 177,
+        "precision": 0.9724130213981156,
+        "recall": 0.9984357048165269,
+        "f1": 0.9852525590139024,
+        "iou": 0.9709337802414189
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9952869415283203,
+      "miou_present": 0.9861509290827626,
+      "macro_f1_present": 0.9930070862664054,
+      "miou_5class": 0.5916905574496576,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115248,
+        "tp": 112674,
+        "fp": 2574,
+        "fn": 476,
+        "precision": 0.9776655560182409,
+        "recall": 0.995793194873973,
+        "f1": 0.9866461127421722,
+        "iou": 0.9736441878952531
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9952869415283203,
+      "miou_present": 0.9861537270492603,
+      "macro_f1_present": 0.9930085497255524,
+      "miou_5class": 0.5916922362295562,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115248,
+        "tp": 112675,
+        "fp": 2573,
+        "fn": 475,
+        "precision": 0.9776742329584047,
+        "recall": 0.9958020326998678,
+        "f1": 0.9866548693862759,
+        "iou": 0.9736612427952116
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9951162338256836,
+      "miou_present": 0.9855674178710986,
+      "macro_f1_present": 0.9927080954489546,
+      "miou_5class": 0.5913404507226592,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115549,
+        "tp": 112734,
+        "fp": 2815,
+        "fn": 416,
+        "precision": 0.9756380410041648,
+        "recall": 0.9963234644276627,
+        "f1": 0.9858722550453265,
+        "iou": 0.9721381451299124
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 2119,
+      "disagree_pct": 0.20208358764648438,
+      "mean_kl_divergence": 0.001890081912279129,
+      "feature_cosine_similarity": 0.9970390796661377,
+      "disagreement_set": {
+        "teacher_correct": 1151,
+        "deg_correct": 968,
+        "neither_correct": 0,
+        "teacher_accuracy": 0.5431807456347334,
+        "deg_accuracy": 0.45681925436526666,
+        "neither_pct": 0.0,
+        "net_correct_delta": 183,
+        "teacher_advantage": 0.08636149126946674
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 23,
+        "corrupted_pixels": 322,
+        "net_rescued": -299,
+        "hallucinated_pixels": 288,
+        "clean_fp_total": 2574,
+        "deg_fp_total": 3205
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 1230,
+          "pct_of_disagree": 58.046248230297316,
+          "teacher_acc": 0.5130081300813009,
+          "deg_acc": 0.4869918699186992
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 495,
+          "pct_of_disagree": 23.36007550731477,
+          "teacher_acc": 0.5676767676767677,
+          "deg_acc": 0.43232323232323233
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 277,
+          "pct_of_disagree": 13.072203869749883,
+          "teacher_acc": 0.5595667870036101,
+          "deg_acc": 0.4404332129963899
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 84,
+          "pct_of_disagree": 3.964134025483719,
+          "teacher_acc": 0.8690476190476191,
+          "deg_acc": 0.13095238095238096
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.9947137832641602,
+      "miou_present": 0.9839714085689,
+      "macro_f1_present": 0.9918844665217491,
+      "miou_5class": 0.59038284514134,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 116839,
+        "tp": 113073,
+        "fp": 3766,
+        "fn": 77,
+        "precision": 0.9677676118418536,
+        "recall": 0.9993194874060098,
+        "f1": 0.9832905001992757,
+        "iou": 0.9671302473569942
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9952869415283203,
+      "miou_present": 0.9861509290827626,
+      "macro_f1_present": 0.9930070862664054,
+      "miou_5class": 0.5916905574496576,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115248,
+        "tp": 112674,
+        "fp": 2574,
+        "fn": 476,
+        "precision": 0.9776655560182409,
+        "recall": 0.995793194873973,
+        "f1": 0.9866461127421722,
+        "iou": 0.9736441878952531
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9952878952026367,
+      "miou_present": 0.9861643882935159,
+      "macro_f1_present": 0.993014086016419,
+      "miou_5class": 0.5916986329761096,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115258,
+        "tp": 112683,
+        "fp": 2575,
+        "fn": 467,
+        "precision": 0.977658817609105,
+        "recall": 0.9958727353070265,
+        "f1": 0.9866817224354557,
+        "iou": 0.9737135450420417
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9943552017211914,
+      "miou_present": 0.983042454966193,
+      "macro_f1_present": 0.9914107019736154,
+      "miou_5class": 0.5898254729797159,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 116618,
+        "tp": 112889,
+        "fp": 3729,
+        "fn": 261,
+        "precision": 0.9680238042153898,
+        "recall": 0.9976933274413613,
+        "f1": 0.9826346525686872,
+        "iou": 0.9658621309216399
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 2981,
+      "disagree_pct": 0.2842903137207031,
+      "mean_kl_divergence": 0.003553807968273759,
+      "feature_cosine_similarity": 0.992581844329834,
+      "disagreement_set": {
+        "teacher_correct": 1791,
+        "deg_correct": 1190,
+        "neither_correct": 0,
+        "teacher_accuracy": 0.6008050989600805,
+        "deg_accuracy": 0.3991949010399195,
+        "neither_pct": 0.0,
+        "net_correct_delta": 601,
+        "teacher_advantage": 0.201610197920161
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 14,
+        "corrupted_pixels": 413,
+        "net_rescued": -399,
+        "hallucinated_pixels": 280,
+        "clean_fp_total": 2574,
+        "deg_fp_total": 3766
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 1437,
+          "pct_of_disagree": 48.205300234820534,
+          "teacher_acc": 0.5441892832289492,
+          "deg_acc": 0.4558107167710508
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 756,
+          "pct_of_disagree": 25.36061724253606,
+          "teacher_acc": 0.6084656084656085,
+          "deg_acc": 0.3915343915343915
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 521,
+          "pct_of_disagree": 17.477356591747736,
+          "teacher_acc": 0.6410748560460653,
+          "deg_acc": 0.35892514395393477
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 234,
+          "pct_of_disagree": 7.849714860784972,
+          "teacher_acc": 0.8675213675213675,
+          "deg_acc": 0.13247863247863248
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.9924993515014648,
+      "miou_present": 0.9777286176487735,
+      "macro_f1_present": 0.9886752297563236,
+      "miou_5class": 0.5866371705892641,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 118031,
+        "tp": 112966,
+        "fp": 5065,
+        "fn": 184,
+        "precision": 0.9570875447974722,
+        "recall": 0.9983738400352631,
+        "f1": 0.9772948418970018,
+        "iou": 0.9555978513724185
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9952869415283203,
+      "miou_present": 0.9861509290827626,
+      "macro_f1_present": 0.9930070862664054,
+      "miou_5class": 0.5916905574496576,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115248,
+        "tp": 112674,
+        "fp": 2574,
+        "fn": 476,
+        "precision": 0.9776655560182409,
+        "recall": 0.995793194873973,
+        "f1": 0.9866461127421722,
+        "iou": 0.9736441878952531
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9952688217163086,
+      "miou_present": 0.986102898356759,
+      "macro_f1_present": 0.9929826480392211,
+      "miou_5class": 0.5916617390140554,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 115273,
+        "tp": 112682,
+        "fp": 2591,
+        "fn": 468,
+        "precision": 0.977522923841578,
+        "recall": 0.9958638974811316,
+        "f1": 0.9866081736863798,
+        "iou": 0.9735702992024456
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9931745529174805,
+      "miou_present": 0.9797229830540083,
+      "macro_f1_present": 0.9897066138782354,
+      "miou_5class": 0.587833789832405,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 117210,
+        "tp": 112822,
+        "fp": 4388,
+        "fn": 328,
+        "precision": 0.9625629212523708,
+        "recall": 0.9971011931064077,
+        "f1": 0.9795276907819855,
+        "iou": 0.959876805798894
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 6381,
+      "disagree_pct": 0.6085395812988281,
+      "mean_kl_divergence": 0.011902261525392532,
+      "feature_cosine_similarity": 0.9827163219451904,
+      "disagreement_set": {
+        "teacher_correct": 4652,
+        "deg_correct": 1729,
+        "neither_correct": 0,
+        "teacher_accuracy": 0.7290393355273468,
+        "deg_accuracy": 0.2709606644726532,
+        "neither_pct": 0.0,
+        "net_correct_delta": 2923,
+        "teacher_advantage": 0.4580786710546936
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 105,
+        "corrupted_pixels": 397,
+        "net_rescued": -292,
+        "hallucinated_pixels": 333,
+        "clean_fp_total": 2574,
+        "deg_fp_total": 5065
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 1550,
+          "pct_of_disagree": 24.29086350101865,
+          "teacher_acc": 0.5587096774193548,
+          "deg_acc": 0.44129032258064516
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 1256,
+          "pct_of_disagree": 19.68343519824479,
+          "teacher_acc": 0.6194267515923567,
+          "deg_acc": 0.38057324840764334
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 1390,
+          "pct_of_disagree": 21.78341952671995,
+          "teacher_acc": 0.7251798561151079,
+          "deg_acc": 0.27482014388489207
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 2146,
+          "pct_of_disagree": 33.6310923052813,
+          "teacher_acc": 0.9249767008387698,
+          "deg_acc": 0.0750232991612302
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.8557586669921875,
+      "miou_present": 0.7582824554950794,
+      "macro_f1_present": 0.8602637804840899,
+      "miou_5class": 0.4549694732970477,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 56979,
+        "tp": 48216,
+        "fp": 8763,
+        "fn": 1238,
+        "precision": 0.8462064971303733,
+        "recall": 0.9749666356612257,
+        "f1": 0.9060347774701177,
+        "iou": 0.8282116907431115
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.8688755035400391,
+      "miou_present": 0.7731134593624498,
+      "macro_f1_present": 0.8701836573091847,
+      "miou_5class": 0.4638680756174699,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57142,
+        "tp": 48396,
+        "fp": 8746,
+        "fn": 1058,
+        "precision": 0.846942704140414,
+        "recall": 0.9786063816878355,
+        "f1": 0.9080265626268739,
+        "iou": 0.8315463917524345
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.8688745498657227,
+      "miou_present": 0.7731048165782552,
+      "macro_f1_present": 0.8701787544810626,
+      "miou_5class": 0.4638628899469531,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57144,
+        "tp": 48396,
+        "fp": 8748,
+        "fn": 1058,
+        "precision": 0.846913061738617,
+        "recall": 0.9786063816878355,
+        "f1": 0.9080095261615193,
+        "iou": 0.8315178172569961
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.8687686920166016,
+      "miou_present": 0.7730506067120193,
+      "macro_f1_present": 0.8701372221100487,
+      "miou_5class": 0.46383036402721156,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57091,
+        "tp": 48378,
+        "fp": 8713,
+        "fn": 1076,
+        "precision": 0.8473840009807417,
+        "recall": 0.9782424070851745,
+        "f1": 0.908123323196714,
+        "iou": 0.8317087008095946
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 17252,
+      "disagree_pct": 1.6452789306640625,
+      "mean_kl_divergence": 0.03326801955699921,
+      "feature_cosine_similarity": 0.9840739369392395,
+      "disagreement_set": {
+        "teacher_correct": 15252,
+        "deg_correct": 1498,
+        "neither_correct": 502,
+        "teacher_accuracy": 0.8840714120102017,
+        "deg_accuracy": 0.08683051240435892,
+        "neither_pct": 0.029098075585439368,
+        "net_correct_delta": 13754,
+        "teacher_advantage": 0.7972408996058428
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 400,
+        "corrupted_pixels": 220,
+        "net_rescued": 180,
+        "hallucinated_pixels": 1037,
+        "clean_fp_total": 8746,
+        "deg_fp_total": 8763
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 4453,
+          "pct_of_disagree": 25.811500115928588,
+          "teacher_acc": 0.7145744441949248,
+          "deg_acc": 0.21693240512014372
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 2730,
+          "pct_of_disagree": 15.824252260607466,
+          "teacher_acc": 0.836996336996337,
+          "deg_acc": 0.1227106227106227
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 2567,
+          "pct_of_disagree": 14.87943426849061,
+          "teacher_acc": 0.9540319439033892,
+          "deg_acc": 0.033112582781456956
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 7207,
+          "pct_of_disagree": 41.774866682123815,
+          "teacher_acc": 0.9994449840432913,
+          "deg_acc": 0.00041626196753156655
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.7959222793579102,
+      "miou_present": 0.6995729608783985,
+      "macro_f1_present": 0.8185743231073346,
+      "miou_5class": 0.4197437765270391,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57725,
+        "tp": 48415,
+        "fp": 9310,
+        "fn": 1039,
+        "precision": 0.8387180597659872,
+        "recall": 0.9789905771017554,
+        "f1": 0.903441900626786,
+        "iou": 0.8238887754406059
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.8688755035400391,
+      "miou_present": 0.7731134593624498,
+      "macro_f1_present": 0.8701836573091847,
+      "miou_5class": 0.4638680756174699,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57142,
+        "tp": 48396,
+        "fp": 8746,
+        "fn": 1058,
+        "precision": 0.846942704140414,
+        "recall": 0.9786063816878355,
+        "f1": 0.9080265626268739,
+        "iou": 0.8315463917524345
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.8688869476318359,
+      "miou_present": 0.772972416139104,
+      "macro_f1_present": 0.8701030351926318,
+      "miou_5class": 0.4637834496834624,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57181,
+        "tp": 48397,
+        "fp": 8784,
+        "fn": 1057,
+        "precision": 0.8463825396546325,
+        "recall": 0.9786266024990944,
+        "f1": 0.9077132223904575,
+        "iou": 0.8310209828632799
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.86920166015625,
+      "miou_present": 0.7734606027056752,
+      "macro_f1_present": 0.8704059463663109,
+      "miou_5class": 0.4640763616234051,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 56549,
+        "tp": 48128,
+        "fp": 8421,
+        "fn": 1326,
+        "precision": 0.8510848998212434,
+        "recall": 0.9731872042704386,
+        "f1": 0.9080497671984873,
+        "iou": 0.8315853131748023
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 81402,
+      "disagree_pct": 7.763099670410156,
+      "mean_kl_divergence": 0.3337889313697815,
+      "feature_cosine_similarity": 0.9186621904373169,
+      "disagreement_set": {
+        "teacher_correct": 78448,
+        "deg_correct": 1951,
+        "neither_correct": 1003,
+        "teacher_accuracy": 0.9637109653325471,
+        "deg_accuracy": 0.023967470086730055,
+        "neither_pct": 0.012321564580722833,
+        "net_correct_delta": 76497,
+        "teacher_advantage": 0.939743495245817
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 375,
+        "corrupted_pixels": 394,
+        "net_rescued": -19,
+        "hallucinated_pixels": 1655,
+        "clean_fp_total": 8746,
+        "deg_fp_total": 9310
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 5195,
+          "pct_of_disagree": 6.381907078450161,
+          "teacher_acc": 0.7106833493743985,
+          "deg_acc": 0.20019249278152068
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 3855,
+          "pct_of_disagree": 4.73575587823395,
+          "teacher_acc": 0.8153047989623865,
+          "deg_acc": 0.12088197146562905
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 3931,
+          "pct_of_disagree": 4.829119677649198,
+          "teacher_acc": 0.8946832866954973,
+          "deg_acc": 0.06079877893665734
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 68105,
+          "pct_of_disagree": 83.66502051546645,
+          "teacher_acc": 0.9979003010057999,
+          "deg_acc": 0.0013068056677189633
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.7514572143554688,
+      "miou_present": 0.6402447730057291,
+      "macro_f1_present": 0.7763431323449549,
+      "miou_5class": 0.38414686380343743,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 61367,
+        "tp": 47681,
+        "fp": 13686,
+        "fn": 1773,
+        "precision": 0.776981113627719,
+        "recall": 0.9641485016376908,
+        "f1": 0.8605047730329171,
+        "iou": 0.7551631295532539
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.8688755035400391,
+      "miou_present": 0.7731134593624498,
+      "macro_f1_present": 0.8701836573091847,
+      "miou_5class": 0.4638680756174699,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57142,
+        "tp": 48396,
+        "fp": 8746,
+        "fn": 1058,
+        "precision": 0.846942704140414,
+        "recall": 0.9786063816878355,
+        "f1": 0.9080265626268739,
+        "iou": 0.8315463917524345
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.8688545227050781,
+      "miou_present": 0.7726921088821924,
+      "macro_f1_present": 0.8699371225570629,
+      "miou_5class": 0.46361526532931546,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 57231,
+        "tp": 48393,
+        "fp": 8838,
+        "fn": 1061,
+        "precision": 0.8455732033337098,
+        "recall": 0.9785457192540586,
+        "f1": 0.9072128178224818,
+        "iou": 0.8301825293349293
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.8710784912109375,
+      "miou_present": 0.7591995020104193,
+      "macro_f1_present": 0.8619426648337133,
+      "miou_5class": 0.4555197012062516,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 59736,
+        "tp": 47702,
+        "fp": 12034,
+        "fn": 1752,
+        "precision": 0.7985469398686222,
+        "recall": 0.9645731386741286,
+        "f1": 0.873743011803953,
+        "iou": 0.7757936507935247
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 128154,
+      "disagree_pct": 12.221717834472656,
+      "mean_kl_divergence": 0.5973272919654846,
+      "feature_cosine_similarity": 0.8618596196174622,
+      "disagreement_set": {
+        "teacher_correct": 124554,
+        "deg_correct": 1432,
+        "neither_correct": 2168,
+        "teacher_accuracy": 0.9719087972283347,
+        "deg_accuracy": 0.011174056213617991,
+        "neither_pct": 0.01691714655804735,
+        "net_correct_delta": 123122,
+        "teacher_advantage": 0.9607347410147167
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 1134,
+        "corrupted_pixels": 419,
+        "net_rescued": 715,
+        "hallucinated_pixels": 1113,
+        "clean_fp_total": 8746,
+        "deg_fp_total": 13686
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 5599,
+          "pct_of_disagree": 4.368962342182062,
+          "teacher_acc": 0.7703161278799786,
+          "deg_acc": 0.11966422575459904
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 4990,
+          "pct_of_disagree": 3.893752828628057,
+          "teacher_acc": 0.8130260521042084,
+          "deg_acc": 0.07555110220440882
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 5556,
+          "pct_of_disagree": 4.335408961093684,
+          "teacher_acc": 0.8732901367890569,
+          "deg_acc": 0.04139668826493881
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 111700,
+          "pct_of_disagree": 87.16075971097274,
+          "teacher_acc": 0.9950940017905103,
+          "deg_acc": 0.0009400179051029543
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.9987411499023438,
+      "miou_present": 0.9356381322749394,
+      "macro_f1_present": 0.9657851315523084,
+      "miou_5class": 0.5613828793649637,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20538,
+        "tp": 19761,
+        "fp": 777,
+        "fn": 243,
+        "precision": 0.9621676891610856,
+        "recall": 0.9878524295136033,
+        "f1": 0.9748409007277803,
+        "iou": 0.9509167027568688
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9984874725341797,
+      "miou_present": 0.9194761740648393,
+      "macro_f1_present": 0.9563680142091792,
+      "miou_5class": 0.5516857044389035,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20707,
+        "tp": 19766,
+        "fp": 941,
+        "fn": 238,
+        "precision": 0.9545564301922275,
+        "recall": 0.9881023795236011,
+        "f1": 0.9710397631226517,
+        "iou": 0.943709715922204
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9984865188598633,
+      "miou_present": 0.9194608313426723,
+      "macro_f1_present": 0.9563599011876645,
+      "miou_5class": 0.5516764988056033,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20708,
+        "tp": 19766,
+        "fp": 942,
+        "fn": 238,
+        "precision": 0.9545103341699079,
+        "recall": 0.9881023795236011,
+        "f1": 0.9710159116840599,
+        "iou": 0.9436646615101004
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9985036849975586,
+      "miou_present": 0.9206863670489528,
+      "macro_f1_present": 0.957098076561619,
+      "miou_5class": 0.5524118202293716,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20650,
+        "tp": 19739,
+        "fp": 911,
+        "fn": 265,
+        "precision": 0.9558837772392466,
+        "recall": 0.9867526494696126,
+        "f1": 0.9710729521513727,
+        "iou": 0.9437724121439427
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 768,
+      "disagree_pct": 0.0732421875,
+      "mean_kl_divergence": 0.0006107148947194219,
+      "feature_cosine_similarity": 0.9945148229598999,
+      "disagreement_set": {
+        "teacher_correct": 249,
+        "deg_correct": 515,
+        "neither_correct": 4,
+        "teacher_accuracy": 0.32421875,
+        "deg_accuracy": 0.6705729166666666,
+        "neither_pct": 0.005208333333333333,
+        "net_correct_delta": -266,
+        "teacher_advantage": -0.34635416666666663
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 92,
+        "corrupted_pixels": 87,
+        "net_rescued": 5,
+        "hallucinated_pixels": 301,
+        "clean_fp_total": 941,
+        "deg_fp_total": 777
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 429,
+          "pct_of_disagree": 55.859375,
+          "teacher_acc": 0.2680652680652681,
+          "deg_acc": 0.7272727272727273
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 198,
+          "pct_of_disagree": 25.78125,
+          "teacher_acc": 0.40404040404040403,
+          "deg_acc": 0.5959595959595959
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 64,
+          "pct_of_disagree": 8.333333333333332,
+          "teacher_acc": 0.640625,
+          "deg_acc": 0.359375
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 9,
+          "pct_of_disagree": 1.171875,
+          "teacher_acc": 0.6666666666666666,
+          "deg_acc": 0.3333333333333333
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.998713493347168,
+      "miou_present": 0.9357804575325962,
+      "macro_f1_present": 0.9658981077044722,
+      "miou_5class": 0.5614682745195577,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20544,
+        "tp": 19746,
+        "fp": 798,
+        "fn": 258,
+        "precision": 0.9611565420556069,
+        "recall": 0.9871025794836097,
+        "f1": 0.9739567869506874,
+        "iou": 0.9492356504177727
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9984874725341797,
+      "miou_present": 0.9194761740648393,
+      "macro_f1_present": 0.9563680142091792,
+      "miou_5class": 0.5516857044389035,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20707,
+        "tp": 19766,
+        "fp": 941,
+        "fn": 238,
+        "precision": 0.9545564301922275,
+        "recall": 0.9881023795236011,
+        "f1": 0.9710397631226517,
+        "iou": 0.943709715922204
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9984874725341797,
+      "miou_present": 0.9194885208086033,
+      "macro_f1_present": 0.9563766197630038,
+      "miou_5class": 0.5516931124851621,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20708,
+        "tp": 19766,
+        "fp": 942,
+        "fn": 238,
+        "precision": 0.9545103341699079,
+        "recall": 0.9881023795236011,
+        "f1": 0.9710159116840599,
+        "iou": 0.9436646615101004
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9984903335571289,
+      "miou_present": 0.9161861757985045,
+      "macro_f1_present": 0.9543367561490687,
+      "miou_5class": 0.5497117054791028,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20557,
+        "tp": 19703,
+        "fp": 854,
+        "fn": 301,
+        "precision": 0.9584569732933023,
+        "recall": 0.984953009397628,
+        "f1": 0.9715243657013699,
+        "iou": 0.9446255633325608
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 881,
+      "disagree_pct": 0.08401870727539062,
+      "mean_kl_divergence": 0.0008949113544076681,
+      "feature_cosine_similarity": 0.988140344619751,
+      "disagreement_set": {
+        "teacher_correct": 319,
+        "deg_correct": 556,
+        "neither_correct": 6,
+        "teacher_accuracy": 0.3620885357548241,
+        "deg_accuracy": 0.6311010215664018,
+        "neither_pct": 0.00681044267877412,
+        "net_correct_delta": -237,
+        "teacher_advantage": -0.2690124858115777
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 123,
+        "corrupted_pixels": 103,
+        "net_rescued": 20,
+        "hallucinated_pixels": 307,
+        "clean_fp_total": 941,
+        "deg_fp_total": 798
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 454,
+          "pct_of_disagree": 51.53234960272418,
+          "teacher_acc": 0.29955947136563876,
+          "deg_acc": 0.6916299559471366
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 228,
+          "pct_of_disagree": 25.879682179341657,
+          "teacher_acc": 0.42105263157894735,
+          "deg_acc": 0.5789473684210527
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 115,
+          "pct_of_disagree": 13.053348467650396,
+          "teacher_acc": 0.5739130434782609,
+          "deg_acc": 0.4260869565217391
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 18,
+          "pct_of_disagree": 2.0431328036322363,
+          "teacher_acc": 0.8888888888888888,
+          "deg_acc": 0.1111111111111111
+        }
+      }
+    }
+  },
+  {
+    "fold": 0,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.9983692169189453,
+      "miou_present": 0.9344373179409233,
+      "macro_f1_present": 0.9653766050382696,
+      "miou_5class": 0.560662390764554,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20608,
+        "tp": 19598,
+        "fp": 1010,
+        "fn": 406,
+        "precision": 0.9509899068318366,
+        "recall": 0.9797040591876726,
+        "f1": 0.9651334530918353,
+        "iou": 0.9326163510036487
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9984874725341797,
+      "miou_present": 0.9194761740648393,
+      "macro_f1_present": 0.9563680142091792,
+      "miou_5class": 0.5516857044389035,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20707,
+        "tp": 19766,
+        "fp": 941,
+        "fn": 238,
+        "precision": 0.9545564301922275,
+        "recall": 0.9881023795236011,
+        "f1": 0.9710397631226517,
+        "iou": 0.943709715922204
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9984979629516602,
+      "miou_present": 0.9195774079380429,
+      "macro_f1_present": 0.9564193807125673,
+      "miou_5class": 0.5517464447628257,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20707,
+        "tp": 19770,
+        "fp": 937,
+        "fn": 234,
+        "precision": 0.9547496015835443,
+        "recall": 0.9883023395315995,
+        "f1": 0.9712362702091886,
+        "iou": 0.9440809894460894
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9981422424316406,
+      "miou_present": 0.9048302200797638,
+      "macro_f1_present": 0.947891070248095,
+      "miou_5class": 0.5428981320478583,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 20862,
+        "tp": 19630,
+        "fp": 1232,
+        "fn": 374,
+        "precision": 0.9409452593227202,
+        "recall": 0.9813037392516589,
+        "f1": 0.9607008220951612,
+        "iou": 0.9243737050287604
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 1533,
+      "disagree_pct": 0.14619827270507812,
+      "mean_kl_divergence": 0.002205345779657364,
+      "feature_cosine_similarity": 0.9832450151443481,
+      "disagreement_set": {
+        "teacher_correct": 816,
+        "deg_correct": 692,
+        "neither_correct": 25,
+        "teacher_accuracy": 0.5322896281800391,
+        "deg_accuracy": 0.45140247879973905,
+        "neither_pct": 0.016307893020221786,
+        "net_correct_delta": 124,
+        "teacher_advantage": 0.08088714938030006
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 284,
+        "corrupted_pixels": 116,
+        "net_rescued": 168,
+        "hallucinated_pixels": 367,
+        "clean_fp_total": 941,
+        "deg_fp_total": 1010
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 506,
+          "pct_of_disagree": 33.00717547292889,
+          "teacher_acc": 0.41304347826086957,
+          "deg_acc": 0.5573122529644269
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 373,
+          "pct_of_disagree": 24.331376386170906,
+          "teacher_acc": 0.517426273458445,
+          "deg_acc": 0.48257372654155495
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 362,
+          "pct_of_disagree": 23.613829093281147,
+          "teacher_acc": 0.6022099447513812,
+          "deg_acc": 0.39779005524861877
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 233,
+          "pct_of_disagree": 15.198956294846704,
+          "teacher_acc": 0.7682403433476395,
+          "deg_acc": 0.2317596566523605
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.976649284362793,
+      "miou_present": 0.9525424160691207,
+      "macro_f1_present": 0.9756262597623354,
+      "miou_5class": 0.5715254496414724,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328582,
+        "tp": 318289,
+        "fp": 10293,
+        "fn": 412,
+        "precision": 0.9686744861251995,
+        "recall": 0.9987072522520796,
+        "f1": 0.9834616338824279,
+        "iou": 0.9674614126701104
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9763431549072266,
+      "miou_present": 0.9519210032562014,
+      "macro_f1_present": 0.9752946680091021,
+      "miou_5class": 0.5711526019537209,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328384,
+        "tp": 318214,
+        "fp": 10170,
+        "fn": 487,
+        "precision": 0.9690301598128724,
+        "recall": 0.9984719219581677,
+        "f1": 0.983530752165913,
+        "iou": 0.967595196900883
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9763460159301758,
+      "miou_present": 0.9519262798341463,
+      "macro_f1_present": 0.9752974280600624,
+      "miou_5class": 0.5711557679004878,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328382,
+        "tp": 318214,
+        "fp": 10168,
+        "fn": 487,
+        "precision": 0.9690360616598666,
+        "recall": 0.9984719219581677,
+        "f1": 0.9835337920564896,
+        "iou": 0.9676010812815751
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9763259887695312,
+      "miou_present": 0.9518860171387492,
+      "macro_f1_present": 0.9752750589128341,
+      "miou_5class": 0.5711316102832495,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328342,
+        "tp": 318225,
+        "fp": 10117,
+        "fn": 476,
+        "precision": 0.9691876153522556,
+        "recall": 0.9985064370679414,
+        "f1": 0.9836285946459257,
+        "iou": 0.9677846103315217
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 4354,
+      "disagree_pct": 0.41522979736328125,
+      "mean_kl_divergence": 0.0027720341458916664,
+      "feature_cosine_similarity": 0.9942794442176819,
+      "disagreement_set": {
+        "teacher_correct": 2009,
+        "deg_correct": 2330,
+        "neither_correct": 15,
+        "teacher_accuracy": 0.46141479099678456,
+        "deg_accuracy": 0.5351401010564998,
+        "neither_pct": 0.003445107946715664,
+        "net_correct_delta": -321,
+        "teacher_advantage": -0.07372531005971522
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 82,
+        "corrupted_pixels": 157,
+        "net_rescued": -75,
+        "hallucinated_pixels": 904,
+        "clean_fp_total": 10170,
+        "deg_fp_total": 10293
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 3201,
+          "pct_of_disagree": 73.51860358291226,
+          "teacher_acc": 0.4548578569197126,
+          "deg_acc": 0.5442049359575133
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 826,
+          "pct_of_disagree": 18.971061093247588,
+          "teacher_acc": 0.47094430992736075,
+          "deg_acc": 0.5290556900726392
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 135,
+          "pct_of_disagree": 3.1005971520440974,
+          "teacher_acc": 0.48148148148148145,
+          "deg_acc": 0.5185185185185185
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 7,
+          "pct_of_disagree": 0.1607717041800643,
+          "teacher_acc": 0.0,
+          "deg_acc": 1.0
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.9760198593139648,
+      "miou_present": 0.951116988346048,
+      "macro_f1_present": 0.974863390485658,
+      "miou_5class": 0.5706701930076288,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328565,
+        "tp": 318267,
+        "fp": 10298,
+        "fn": 434,
+        "precision": 0.9686576476495984,
+        "recall": 0.998638222032532,
+        "f1": 0.9834194855969601,
+        "iou": 0.9673798400602747
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9763431549072266,
+      "miou_present": 0.9519210032562014,
+      "macro_f1_present": 0.9752946680091021,
+      "miou_5class": 0.5711526019537209,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328384,
+        "tp": 318214,
+        "fp": 10170,
+        "fn": 487,
+        "precision": 0.9690301598128724,
+        "recall": 0.9984719219581677,
+        "f1": 0.983530752165913,
+        "iou": 0.967595196900883
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9763517379760742,
+      "miou_present": 0.951935238024657,
+      "macro_f1_present": 0.9753019296305147,
+      "miou_5class": 0.5711611428147941,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328364,
+        "tp": 318211,
+        "fp": 10153,
+        "fn": 490,
+        "precision": 0.9690800453155349,
+        "recall": 0.9984625087464112,
+        "f1": 0.983551879278553,
+        "iou": 0.967636093828843
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9742307662963867,
+      "miou_present": 0.9475990895188309,
+      "macro_f1_present": 0.9730066684337991,
+      "miou_5class": 0.5685594537112986,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 329220,
+        "tp": 318027,
+        "fp": 11193,
+        "fn": 674,
+        "precision": 0.9660014579915872,
+        "recall": 0.9978851650920142,
+        "f1": 0.9816844904876201,
+        "iou": 0.9640278392453041
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 10042,
+      "disagree_pct": 0.9576797485351562,
+      "mean_kl_divergence": 0.010472564958035946,
+      "feature_cosine_similarity": 0.9816495776176453,
+      "disagreement_set": {
+        "teacher_correct": 5173,
+        "deg_correct": 4834,
+        "neither_correct": 35,
+        "teacher_accuracy": 0.5151364270065724,
+        "deg_accuracy": 0.48137821151165106,
+        "neither_pct": 0.0034853614817765386,
+        "net_correct_delta": 339,
+        "teacher_advantage": 0.033758215494921306
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 178,
+        "corrupted_pixels": 231,
+        "net_rescued": -53,
+        "hallucinated_pixels": 1489,
+        "clean_fp_total": 10170,
+        "deg_fp_total": 10298
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 4356,
+          "pct_of_disagree": 43.37781318462458,
+          "teacher_acc": 0.5234159779614325,
+          "deg_acc": 0.4733700642791552
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 2832,
+          "pct_of_disagree": 28.20155347540331,
+          "teacher_acc": 0.5769774011299436,
+          "deg_acc": 0.4201977401129944
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 1866,
+          "pct_of_disagree": 18.58195578570006,
+          "teacher_acc": 0.4769560557341908,
+          "deg_acc": 0.5230439442658092
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 797,
+          "pct_of_disagree": 7.936666002788289,
+          "teacher_acc": 0.32622333751568383,
+          "deg_acc": 0.6737766624843162
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "seahorse1",
+    "target_class": 4,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.9588069915771484,
+      "miou_present": 0.9173469506856685,
+      "macro_f1_present": 0.9566516948504513,
+      "miou_5class": 0.5504081704114011,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 336033,
+        "tp": 318014,
+        "fp": 18019,
+        "fn": 687,
+        "precision": 0.9463772903256243,
+        "recall": 0.9978443745077361,
+        "f1": 0.9714296137494075,
+        "iou": 0.9444464243287911
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9763431549072266,
+      "miou_present": 0.9519210032562014,
+      "macro_f1_present": 0.9752946680091021,
+      "miou_5class": 0.5711526019537209,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328384,
+        "tp": 318214,
+        "fp": 10170,
+        "fn": 487,
+        "precision": 0.9690301598128724,
+        "recall": 0.9984719219581677,
+        "f1": 0.983530752165913,
+        "iou": 0.967595196900883
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9763336181640625,
+      "miou_present": 0.9519016100717123,
+      "macro_f1_present": 0.9752844458404647,
+      "miou_5class": 0.5711409660430273,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 328388,
+        "tp": 318213,
+        "fp": 10175,
+        "fn": 488,
+        "precision": 0.9690153111562856,
+        "recall": 0.9984687842209156,
+        "f1": 0.9835215816761844,
+        "iou": 0.9675774456025685
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9654445648193359,
+      "miou_present": 0.9292429643082724,
+      "macro_f1_present": 0.9631812557491474,
+      "miou_5class": 0.5575457785849635,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 318701,
+        "pred_pixels": 338365,
+        "tp": 318464,
+        "fp": 19901,
+        "fn": 237,
+        "precision": 0.9411848152143117,
+        "recall": 0.9992563562712071,
+        "f1": 0.9693516278693358,
+        "iou": 0.9405260453275249
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 28965,
+      "disagree_pct": 2.762317657470703,
+      "mean_kl_divergence": 0.05529814586043358,
+      "feature_cosine_similarity": 0.9450902938842773,
+      "disagreement_set": {
+        "teacher_correct": 23636,
+        "deg_correct": 5248,
+        "neither_correct": 81,
+        "teacher_accuracy": 0.8160193336785776,
+        "deg_accuracy": 0.18118418781287762,
+        "neither_pct": 0.0027964785085447955,
+        "net_correct_delta": 18388,
+        "teacher_advantage": 0.6348351458657
+      },
+      "rare_class_analysis": {
+        "target_class": 4,
+        "rescued_pixels": 539,
+        "corrupted_pixels": 339,
+        "net_rescued": 200,
+        "hallucinated_pixels": 1200,
+        "clean_fp_total": 10170,
+        "deg_fp_total": 18019
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 5182,
+          "pct_of_disagree": 17.890557569480407,
+          "teacher_acc": 0.6570822076418371,
+          "deg_acc": 0.33790042454650715
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 5156,
+          "pct_of_disagree": 17.800794061798722,
+          "teacher_acc": 0.7544608223429015,
+          "deg_acc": 0.24088440651667958
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 5807,
+          "pct_of_disagree": 20.048334196443985,
+          "teacher_acc": 0.8358877217151713,
+          "deg_acc": 0.1622180127432409
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 12609,
+          "pct_of_disagree": 43.531848783013984,
+          "teacher_acc": 0.9009437703227853,
+          "deg_acc": 0.09905622967721468
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.9284658432006836,
+      "miou_present": 0.8219994190186352,
+      "macro_f1_present": 0.8994767273934164,
+      "miou_5class": 0.49319965141118105,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 83793,
+        "tp": 81645,
+        "fp": 2148,
+        "fn": 31505,
+        "precision": 0.9743654004509954,
+        "recall": 0.7215642951833211,
+        "f1": 0.8291231424175965,
+        "iou": 0.7081215632534209
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9218521118164062,
+      "miou_present": 0.8014178288992001,
+      "macro_f1_present": 0.8845862047745069,
+      "miou_5class": 0.48085069733952,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75941,
+        "tp": 73868,
+        "fp": 2073,
+        "fn": 39282,
+        "precision": 0.9727024927244872,
+        "recall": 0.6528325231992353,
+        "f1": 0.7812957734167094,
+        "iou": 0.641087282920889
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9218530654907227,
+      "miou_present": 0.801419892871738,
+      "macro_f1_present": 0.8845879099825159,
+      "miou_5class": 0.4808519357230428,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75942,
+        "tp": 73869,
+        "fp": 2073,
+        "fn": 39281,
+        "precision": 0.9727028521765331,
+        "recall": 0.6528413610251301,
+        "f1": 0.7813022184499178,
+        "iou": 0.6410959617436934
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9216470718383789,
+      "miou_present": 0.8020356085109194,
+      "macro_f1_present": 0.8855243582110952,
+      "miou_5class": 0.4812213651065516,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 77036,
+        "tp": 75093,
+        "fp": 1943,
+        "fn": 38057,
+        "precision": 0.9747780258579138,
+        "recall": 0.663658859920401,
+        "f1": 0.7896795720155126,
+        "iou": 0.652454971197149
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 33616,
+      "disagree_pct": 3.20587158203125,
+      "mean_kl_divergence": 0.03936148062348366,
+      "feature_cosine_similarity": 0.9889465570449829,
+      "disagreement_set": {
+        "teacher_correct": 12860,
+        "deg_correct": 19795,
+        "neither_correct": 961,
+        "teacher_accuracy": 0.38255592574964303,
+        "deg_accuracy": 0.5888564969062351,
+        "neither_pct": 0.028587577344121845,
+        "net_correct_delta": -6935,
+        "teacher_advantage": -0.20630057115659206
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 1077,
+        "corrupted_pixels": 8854,
+        "net_rescued": -7777,
+        "hallucinated_pixels": 241,
+        "clean_fp_total": 2073,
+        "deg_fp_total": 2148
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 16067,
+          "pct_of_disagree": 47.79569252736792,
+          "teacher_acc": 0.3778552312192693,
+          "deg_acc": 0.5927677849007282
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 9382,
+          "pct_of_disagree": 27.909328891004282,
+          "teacher_acc": 0.45427414197399274,
+          "deg_acc": 0.5366659560861223
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 4556,
+          "pct_of_disagree": 13.553069966682532,
+          "teacher_acc": 0.36347673397717295,
+          "deg_acc": 0.6286215978928885
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 1277,
+          "pct_of_disagree": 3.7987862922417897,
+          "teacher_acc": 0.05559906029757244,
+          "deg_acc": 0.9420516836335161
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.9520225524902344,
+      "miou_present": 0.8796725739657898,
+      "macro_f1_present": 0.9347041454303122,
+      "miou_5class": 0.5278035443794739,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 95014,
+        "tp": 92235,
+        "fp": 2779,
+        "fn": 20915,
+        "precision": 0.9707516786998789,
+        "recall": 0.8151568714095612,
+        "f1": 0.8861762791215708,
+        "iou": 0.7956162823796639
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9218521118164062,
+      "miou_present": 0.8014178288992001,
+      "macro_f1_present": 0.8845862047745069,
+      "miou_5class": 0.48085069733952,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75941,
+        "tp": 73868,
+        "fp": 2073,
+        "fn": 39282,
+        "precision": 0.9727024927244872,
+        "recall": 0.6528325231992353,
+        "f1": 0.7812957734167094,
+        "iou": 0.641087282920889
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9217863082885742,
+      "miou_present": 0.8012459777693683,
+      "macro_f1_present": 0.8844717186755281,
+      "miou_5class": 0.480747586661621,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75900,
+        "tp": 73833,
+        "fp": 2067,
+        "fn": 39317,
+        "precision": 0.9727667984188442,
+        "recall": 0.6525231992929162,
+        "f1": 0.7810949436203792,
+        "iou": 0.6408168933403369
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9114751815795898,
+      "miou_present": 0.7807202424839165,
+      "macro_f1_present": 0.8727789581645666,
+      "miou_5class": 0.46843214549034984,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 76219,
+        "tp": 74839,
+        "fp": 1380,
+        "fn": 38311,
+        "precision": 0.9818942783294216,
+        "recall": 0.6614140521431143,
+        "f1": 0.7904039155783199,
+        "iou": 0.6534445123547845
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 52345,
+      "disagree_pct": 4.992008209228516,
+      "mean_kl_divergence": 0.10213525593280792,
+      "feature_cosine_similarity": 0.9751415252685547,
+      "disagreement_set": {
+        "teacher_correct": 9704,
+        "deg_correct": 41340,
+        "neither_correct": 1301,
+        "teacher_accuracy": 0.18538542363167446,
+        "deg_accuracy": 0.7897602445314739,
+        "neither_pct": 0.024854331836851658,
+        "net_correct_delta": -31636,
+        "teacher_advantage": -0.6043748208997994
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 872,
+        "corrupted_pixels": 19239,
+        "net_rescued": -18367,
+        "hallucinated_pixels": 152,
+        "clean_fp_total": 2073,
+        "deg_fp_total": 2779
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 18411,
+          "pct_of_disagree": 35.172413793103445,
+          "teacher_acc": 0.2852642442018359,
+          "deg_acc": 0.6856770408994622
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 12317,
+          "pct_of_disagree": 23.530423154073933,
+          "teacher_acc": 0.2381261670861411,
+          "deg_acc": 0.7332954453194771
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 7540,
+          "pct_of_disagree": 14.40443213296399,
+          "teacher_acc": 0.09071618037135279,
+          "deg_acc": 0.8919098143236074
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 11388,
+          "pct_of_disagree": 21.755659566338714,
+          "teacher_acc": 0.00684931506849315,
+          "deg_acc": 0.9918335089567967
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "ray1",
+    "target_class": 3,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.9296674728393555,
+      "miou_present": 0.8280830468721548,
+      "macro_f1_present": 0.9043589568359135,
+      "miou_5class": 0.49684982812329287,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 89900,
+        "tp": 87306,
+        "fp": 2594,
+        "fn": 25844,
+        "precision": 0.9711457174637407,
+        "recall": 0.7715952275739486,
+        "f1": 0.8599458212166652,
+        "iou": 0.7543025988387515
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9218521118164062,
+      "miou_present": 0.8014178288992001,
+      "macro_f1_present": 0.8845862047745069,
+      "miou_5class": 0.48085069733952,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75941,
+        "tp": 73868,
+        "fp": 2073,
+        "fn": 39282,
+        "precision": 0.9727024927244872,
+        "recall": 0.6528325231992353,
+        "f1": 0.7812957734167094,
+        "iou": 0.641087282920889
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9218206405639648,
+      "miou_present": 0.8013176561274302,
+      "macro_f1_present": 0.8845082267872032,
+      "miou_5class": 0.48079059367645816,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 75894,
+        "tp": 73824,
+        "fp": 2070,
+        "fn": 39326,
+        "precision": 0.9727251166098806,
+        "recall": 0.6524436588598628,
+        "f1": 0.7810245185854916,
+        "iou": 0.6407220968581288
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.8861970901489258,
+      "miou_present": 0.7210183381478851,
+      "macro_f1_present": 0.8326038969068126,
+      "miou_5class": 0.432611002888731,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 113150,
+        "pred_pixels": 69192,
+        "tp": 68525,
+        "fp": 667,
+        "fn": 44625,
+        "precision": 0.9903601572434689,
+        "recall": 0.6056120194431635,
+        "f1": 0.7516096079962967,
+        "iou": 0.6020629607175904
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 79222,
+      "disagree_pct": 7.555198669433594,
+      "mean_kl_divergence": 0.21664226055145264,
+      "feature_cosine_similarity": 0.9405046701431274,
+      "disagreement_set": {
+        "teacher_correct": 34087,
+        "deg_correct": 42282,
+        "neither_correct": 2853,
+        "teacher_accuracy": 0.43027189417081113,
+        "deg_accuracy": 0.5337153820908334,
+        "neither_pct": 0.036012723738355505,
+        "net_correct_delta": -8195,
+        "teacher_advantage": -0.10344348792002223
+      },
+      "rare_class_analysis": {
+        "target_class": 3,
+        "rescued_pixels": 11302,
+        "corrupted_pixels": 24740,
+        "net_rescued": -13438,
+        "hallucinated_pixels": 405,
+        "clean_fp_total": 2073,
+        "deg_fp_total": 2594
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 21688,
+          "pct_of_disagree": 27.376233874428817,
+          "teacher_acc": 0.4777296200663962,
+          "deg_acc": 0.47026005164146073
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 18608,
+          "pct_of_disagree": 23.488424932468256,
+          "teacher_acc": 0.4521711092003439,
+          "deg_acc": 0.4968830610490112
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 16671,
+          "pct_of_disagree": 21.04339703617682,
+          "teacher_acc": 0.49433147381680764,
+          "deg_acc": 0.48941275268430207
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 19206,
+          "pct_of_disagree": 24.243265759511246,
+          "teacher_acc": 0.3035509736540664,
+          "deg_acc": 0.694678746225138
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.9946784973144531,
+      "miou_present": 0.9745700709103063,
+      "macro_f1_present": 0.9869976200685803,
+      "miou_5class": 0.5847420425461838,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48320,
+        "tp": 47484,
+        "fp": 836,
+        "fn": 1970,
+        "precision": 0.9826986754964854,
+        "recall": 0.9601650018196789,
+        "f1": 0.9713011589090795,
+        "iou": 0.9442036190095557
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9945125579833984,
+      "miou_present": 0.9735402466464068,
+      "macro_f1_present": 0.986455423081985,
+      "miou_5class": 0.5841241479878441,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48242,
+        "tp": 47377,
+        "fp": 865,
+        "fn": 2077,
+        "precision": 0.9820695659381904,
+        "recall": 0.958001375014972,
+        "f1": 0.9698861725308692,
+        "iou": 0.9415330193364452
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.994511604309082,
+      "miou_present": 0.9735327747790133,
+      "macro_f1_present": 0.9864514873419984,
+      "miou_5class": 0.584119664867408,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48243,
+        "tp": 47377,
+        "fp": 866,
+        "fn": 2077,
+        "precision": 0.9820492092114956,
+        "recall": 0.958001375014972,
+        "f1": 0.9698762450389539,
+        "iou": 0.9415143084258861
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9945077896118164,
+      "miou_present": 0.9735640474274233,
+      "macro_f1_present": 0.9864685513309174,
+      "miou_5class": 0.5841384284564539,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48177,
+        "tp": 47349,
+        "fp": 828,
+        "fn": 2105,
+        "precision": 0.9828133756769865,
+        "recall": 0.9574351922997215,
+        "f1": 0.9699583074219165,
+        "iou": 0.9416689869136189
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 2102,
+      "disagree_pct": 0.20046234130859375,
+      "mean_kl_divergence": 0.0015434154774993658,
+      "feature_cosine_similarity": 0.9927195906639099,
+      "disagreement_set": {
+        "teacher_correct": 955,
+        "deg_correct": 1129,
+        "neither_correct": 18,
+        "teacher_accuracy": 0.4543292102759277,
+        "deg_accuracy": 0.5371075166508088,
+        "neither_pct": 0.008563273073263558,
+        "net_correct_delta": -174,
+        "teacher_advantage": -0.0827783063748811
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 348,
+        "corrupted_pixels": 455,
+        "net_rescued": -107,
+        "hallucinated_pixels": 241,
+        "clean_fp_total": 865,
+        "deg_fp_total": 836
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 1433,
+          "pct_of_disagree": 68.17316841103711,
+          "teacher_acc": 0.427076064200977,
+          "deg_acc": 0.5687369155617585
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 464,
+          "pct_of_disagree": 22.074215033301616,
+          "teacher_acc": 0.5172413793103449,
+          "deg_acc": 0.47629310344827586
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 106,
+          "pct_of_disagree": 5.042816365366318,
+          "teacher_acc": 0.660377358490566,
+          "deg_acc": 0.33962264150943394
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 10,
+          "pct_of_disagree": 0.47573739295908657,
+          "teacher_acc": 0.8,
+          "deg_acc": 0.2
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.9947032928466797,
+      "miou_present": 0.9749540839518901,
+      "macro_f1_present": 0.987198702258557,
+      "miou_5class": 0.584972450371134,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48954,
+        "tp": 47814,
+        "fp": 1140,
+        "fn": 1640,
+        "precision": 0.9767128324547583,
+        "recall": 0.9668378695351303,
+        "f1": 0.9717502592060938,
+        "iou": 0.9450527730559068
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9945125579833984,
+      "miou_present": 0.9735402466464068,
+      "macro_f1_present": 0.986455423081985,
+      "miou_5class": 0.5841241479878441,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48242,
+        "tp": 47377,
+        "fp": 865,
+        "fn": 2077,
+        "precision": 0.9820695659381904,
+        "recall": 0.958001375014972,
+        "f1": 0.9698861725308692,
+        "iou": 0.9415330193364452
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.9945087432861328,
+      "miou_present": 0.9735414634829302,
+      "macro_f1_present": 0.9864562001768441,
+      "miou_5class": 0.5841248780897581,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48241,
+        "tp": 47377,
+        "fp": 864,
+        "fn": 2077,
+        "precision": 0.9820899235088448,
+        "recall": 0.958001375014972,
+        "f1": 0.9698961002260189,
+        "iou": 0.9415517309907108
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9941673278808594,
+      "miou_present": 0.9708379434246025,
+      "macro_f1_present": 0.9850250109125452,
+      "miou_5class": 0.5825027660547615,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 47658,
+        "tp": 46910,
+        "fp": 748,
+        "fn": 2544,
+        "precision": 0.9843048386417844,
+        "recall": 0.9485582561570453,
+        "f1": 0.9661009917887261,
+        "iou": 0.9344249233096422
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 3582,
+      "disagree_pct": 0.34160614013671875,
+      "mean_kl_divergence": 0.004010692238807678,
+      "feature_cosine_similarity": 0.986825168132782,
+      "disagreement_set": {
+        "teacher_correct": 1668,
+        "deg_correct": 1868,
+        "neither_correct": 46,
+        "teacher_accuracy": 0.4656616415410385,
+        "deg_accuracy": 0.5214963707426019,
+        "neither_pct": 0.012841987716359575,
+        "net_correct_delta": -200,
+        "teacher_advantage": -0.055834729201563404
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 428,
+        "corrupted_pixels": 865,
+        "net_rescued": -437,
+        "hallucinated_pixels": 280,
+        "clean_fp_total": 865,
+        "deg_fp_total": 1140
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 1791,
+          "pct_of_disagree": 50.0,
+          "teacher_acc": 0.3936348408710218,
+          "deg_acc": 0.5935231714126187
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 997,
+          "pct_of_disagree": 27.833612506979343,
+          "teacher_acc": 0.49849548645937813,
+          "deg_acc": 0.4944834503510532
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 517,
+          "pct_of_disagree": 14.433277498604133,
+          "teacher_acc": 0.5764023210831721,
+          "deg_acc": 0.4158607350096712
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 179,
+          "pct_of_disagree": 4.997208263539922,
+          "teacher_acc": 0.7541899441340782,
+          "deg_acc": 0.24581005586592178
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish1",
+    "target_class": 2,
+    "is_held_out": false,
+    "role": "TRAIN-SEEN",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.9906187057495117,
+      "miou_present": 0.952333585832104,
+      "macro_f1_present": 0.9750690901027784,
+      "miou_5class": 0.5714001514992624,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 46903,
+        "tp": 45411,
+        "fp": 1492,
+        "fn": 4043,
+        "precision": 0.9681896680380855,
+        "recall": 0.9182472600798888,
+        "f1": 0.9425573598029603,
+        "iou": 0.8913555529382304
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.9945125579833984,
+      "miou_present": 0.9735402466464068,
+      "macro_f1_present": 0.986455423081985,
+      "miou_5class": 0.5841241479878441,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48242,
+        "tp": 47377,
+        "fp": 865,
+        "fn": 2077,
+        "precision": 0.9820695659381904,
+        "recall": 0.958001375014972,
+        "f1": 0.9698861725308692,
+        "iou": 0.9415330193364452
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.994511604309082,
+      "miou_present": 0.9735607701039979,
+      "macro_f1_present": 0.9864663619219604,
+      "miou_5class": 0.5841364620623988,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 48257,
+        "tp": 47386,
+        "fp": 871,
+        "fn": 2068,
+        "precision": 0.9819508050643468,
+        "recall": 0.9581833623163024,
+        "f1": 0.9699214982089931,
+        "iou": 0.9415996025830221
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.9884872436523438,
+      "miou_present": 0.9275349110849991,
+      "macro_f1_present": 0.9606796606529979,
+      "miou_5class": 0.5565209466509995,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 49454,
+        "pred_pixels": 41068,
+        "tp": 40737,
+        "fp": 331,
+        "fn": 8717,
+        "precision": 0.9919401967466174,
+        "recall": 0.8237351882555863,
+        "f1": 0.9000463926035266,
+        "iou": 0.8182585115997152
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 8722,
+      "disagree_pct": 0.8317947387695312,
+      "mean_kl_divergence": 0.018344923853874207,
+      "feature_cosine_similarity": 0.969227135181427,
+      "disagreement_set": {
+        "teacher_correct": 6385,
+        "deg_correct": 2302,
+        "neither_correct": 35,
+        "teacher_accuracy": 0.7320568676908966,
+        "deg_accuracy": 0.26393029121761064,
+        "neither_pct": 0.0040128410914927765,
+        "net_correct_delta": 4083,
+        "teacher_advantage": 0.468126576473286
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 2640,
+        "corrupted_pixels": 674,
+        "net_rescued": 1966,
+        "hallucinated_pixels": 405,
+        "clean_fp_total": 865,
+        "deg_fp_total": 1492
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 2089,
+          "pct_of_disagree": 23.950928686081173,
+          "teacher_acc": 0.5093346098611776,
+          "deg_acc": 0.48396361895643847
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 1792,
+          "pct_of_disagree": 20.545746388443018,
+          "teacher_acc": 0.6462053571428571,
+          "deg_acc": 0.34933035714285715
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 1883,
+          "pct_of_disagree": 21.58908507223114,
+          "teacher_acc": 0.7849176845459374,
+          "deg_acc": 0.21242697822623474
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 2863,
+          "pct_of_disagree": 32.82504012841091,
+          "teacher_acc": 0.924554662940971,
+          "deg_acc": 0.07474676912329724
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "mild",
+    "wt": 1,
+    "depth": 10,
+    "degraded_student": {
+      "pixel_accuracy": 0.8084907531738281,
+      "miou_present": 0.5559860644625575,
+      "macro_f1_present": 0.6099121901827119,
+      "miou_5class": 0.3335916386775345,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18892,
+        "tp": 17923,
+        "fp": 969,
+        "fn": 2081,
+        "precision": 0.9487084480198239,
+        "recall": 0.8959708058383843,
+        "f1": 0.9215857621776153,
+        "iou": 0.8545749296710748
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.7866363525390625,
+      "miou_present": 0.5461791925873993,
+      "macro_f1_present": 0.6036703747417307,
+      "miou_5class": 0.3277075155524396,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18828,
+        "tp": 17818,
+        "fp": 1010,
+        "fn": 2186,
+        "precision": 0.9463564903330431,
+        "recall": 0.8907218556284289,
+        "f1": 0.9176967399567295,
+        "iou": 0.8479109165314324
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.7866382598876953,
+      "miou_present": 0.5461798633761135,
+      "macro_f1_present": 0.6036708269428867,
+      "miou_5class": 0.32770791802566807,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18828,
+        "tp": 17818,
+        "fp": 1010,
+        "fn": 2186,
+        "precision": 0.9463564903330431,
+        "recall": 0.8907218556284289,
+        "f1": 0.9176967399567295,
+        "iou": 0.8479109165314324
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.7863883972167969,
+      "miou_present": 0.545984202129795,
+      "macro_f1_present": 0.6035546086190897,
+      "miou_5class": 0.327590521277877,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18789,
+        "tp": 17796,
+        "fp": 993,
+        "fn": 2208,
+        "precision": 0.947149928148945,
+        "recall": 0.8896220755844383,
+        "f1": 0.9174851082980672,
+        "iou": 0.8475496499495891
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 24350,
+      "disagree_pct": 2.3221969604492188,
+      "mean_kl_divergence": 0.04208530858159065,
+      "feature_cosine_similarity": 0.9840652346611023,
+      "disagreement_set": {
+        "teacher_correct": 620,
+        "deg_correct": 23536,
+        "neither_correct": 194,
+        "teacher_accuracy": 0.02546201232032854,
+        "deg_accuracy": 0.966570841889117,
+        "neither_pct": 0.007967145790554415,
+        "net_correct_delta": -22916,
+        "teacher_advantage": -0.9411088295687885
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 186,
+        "corrupted_pixels": 291,
+        "net_rescued": -105,
+        "hallucinated_pixels": 161,
+        "clean_fp_total": 1010,
+        "deg_fp_total": 969
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 5177,
+          "pct_of_disagree": 21.260780287474333,
+          "teacher_acc": 0.08112806644774966,
+          "deg_acc": 0.9051574270813212
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 5039,
+          "pct_of_disagree": 20.694045174537987,
+          "teacher_acc": 0.023417344711252234,
+          "deg_acc": 0.9597142290136932
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 7069,
+          "pct_of_disagree": 29.030800821355236,
+          "teacher_acc": 0.006790210779459613,
+          "deg_acc": 0.9900976092799547
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 6911,
+          "pct_of_disagree": 28.381930184804926,
+          "teacher_acc": 0.0005787874403125452,
+          "deg_acc": 0.9994212125596874
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "medium",
+    "wt": 5,
+    "depth": 40,
+    "degraded_student": {
+      "pixel_accuracy": 0.8048639297485352,
+      "miou_present": 0.5609352301505699,
+      "macro_f1_present": 0.6127556594340503,
+      "miou_5class": 0.33656113809034194,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 19003,
+        "tp": 18183,
+        "fp": 820,
+        "fn": 1821,
+        "precision": 0.9568489185912977,
+        "recall": 0.9089682063582738,
+        "f1": 0.932294198607296,
+        "iou": 0.8731751824813325
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.7866363525390625,
+      "miou_present": 0.5461791925873993,
+      "macro_f1_present": 0.6036703747417307,
+      "miou_5class": 0.3277075155524396,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18828,
+        "tp": 17818,
+        "fp": 1010,
+        "fn": 2186,
+        "precision": 0.9463564903330431,
+        "recall": 0.8907218556284289,
+        "f1": 0.9176967399567295,
+        "iou": 0.8479109165314324
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.7866277694702148,
+      "miou_present": 0.5461603931844162,
+      "macro_f1_present": 0.6036591155600896,
+      "miou_5class": 0.3276962359106498,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18827,
+        "tp": 17817,
+        "fp": 1010,
+        "fn": 2187,
+        "precision": 0.9463536410469292,
+        "recall": 0.8906718656264293,
+        "f1": 0.9176688678119292,
+        "iou": 0.8478633292086952
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.7833690643310547,
+      "miou_present": 0.5439147924516977,
+      "macro_f1_present": 0.6021288142789322,
+      "miou_5class": 0.3263488754710186,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18329,
+        "tp": 17553,
+        "fp": 776,
+        "fn": 2451,
+        "precision": 0.9576627202788163,
+        "recall": 0.8774745050985415,
+        "f1": 0.915816654284367,
+        "iou": 0.8447064485077744
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 22538,
+      "disagree_pct": 2.1493911743164062,
+      "mean_kl_divergence": 0.05868522822856903,
+      "feature_cosine_similarity": 0.9758228063583374,
+      "disagreement_set": {
+        "teacher_correct": 1642,
+        "deg_correct": 20755,
+        "neither_correct": 141,
+        "teacher_accuracy": 0.07285473422663945,
+        "deg_accuracy": 0.9208891649658355,
+        "neither_pct": 0.006256100807525069,
+        "net_correct_delta": -19113,
+        "teacher_advantage": -0.848034430739196
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 167,
+        "corrupted_pixels": 532,
+        "net_rescued": -365,
+        "hallucinated_pixels": 319,
+        "clean_fp_total": 1010,
+        "deg_fp_total": 820
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 4422,
+          "pct_of_disagree": 19.62019700062117,
+          "teacher_acc": 0.2195838986883763,
+          "deg_acc": 0.7661691542288557
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 3683,
+          "pct_of_disagree": 16.34129026532967,
+          "teacher_acc": 0.15992397502036385,
+          "deg_acc": 0.8311159380939451
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 5413,
+          "pct_of_disagree": 24.017215369598013,
+          "teacher_acc": 0.009606502863476815,
+          "deg_acc": 0.986513947903196
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 8876,
+          "pct_of_disagree": 39.38237643091668,
+          "teacher_acc": 0.0007886435331230284,
+          "deg_acc": 0.9986480396575034
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "scene": "fish2",
+    "target_class": 2,
+    "is_held_out": true,
+    "role": "HELD-OUT VAL",
+    "severity": "severe",
+    "wt": 8,
+    "depth": 80,
+    "degraded_student": {
+      "pixel_accuracy": 0.7744264602661133,
+      "miou_present": 0.5458885187581881,
+      "macro_f1_present": 0.6038415253565693,
+      "miou_5class": 0.32753311125491286,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18974,
+        "tp": 18004,
+        "fp": 970,
+        "fn": 2000,
+        "precision": 0.9488774111937657,
+        "recall": 0.9000199960003499,
+        "f1": 0.923803166022567,
+        "iou": 0.8583961094684569
+      }
+    },
+    "teacher_A_nominal": {
+      "pixel_accuracy": 0.7866363525390625,
+      "miou_present": 0.5461791925873993,
+      "macro_f1_present": 0.6036703747417307,
+      "miou_5class": 0.3277075155524396,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18828,
+        "tp": 17818,
+        "fp": 1010,
+        "fn": 2186,
+        "precision": 0.9463564903330431,
+        "recall": 0.8907218556284289,
+        "f1": 0.9176967399567295,
+        "iou": 0.8479109165314324
+      }
+    },
+    "teacher_B_matched": {
+      "pixel_accuracy": 0.7866439819335938,
+      "miou_present": 0.5461839752905598,
+      "macro_f1_present": 0.603673414783268,
+      "miou_5class": 0.32771038517433587,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 18830,
+        "tp": 17819,
+        "fp": 1011,
+        "fn": 2185,
+        "precision": 0.9463090812528165,
+        "recall": 0.8907718456304284,
+        "f1": 0.917700978678197,
+        "iou": 0.8479181536993348
+      }
+    },
+    "teacher_C_refined": {
+      "pixel_accuracy": 0.7717552185058594,
+      "miou_present": 0.5345050580820272,
+      "macro_f1_present": 0.5963950882714834,
+      "miou_5class": 0.3207030348492163,
+      "target_class_stats": {
+        "is_present": true,
+        "gt_pixels": 20004,
+        "pred_pixels": 17936,
+        "tp": 17181,
+        "fp": 755,
+        "fn": 2823,
+        "precision": 0.9579058875998228,
+        "recall": 0.8588782243546996,
+        "f1": 0.9056931948035185,
+        "iou": 0.8276410231702742
+      }
+    },
+    "disagreement_tA_vs_deg": {
+      "num_disagree_pixels": 38310,
+      "disagree_pct": 3.6535263061523438,
+      "mean_kl_divergence": 0.09352816641330719,
+      "feature_cosine_similarity": 0.9596628546714783,
+      "disagreement_set": {
+        "teacher_correct": 25474,
+        "deg_correct": 12671,
+        "neither_correct": 165,
+        "teacher_accuracy": 0.6649438788827983,
+        "deg_accuracy": 0.33074915165753066,
+        "neither_pct": 0.004306969459671104,
+        "net_correct_delta": 12803,
+        "teacher_advantage": 0.3341947272252676
+      },
+      "rare_class_analysis": {
+        "target_class": 2,
+        "rescued_pixels": 499,
+        "corrupted_pixels": 685,
+        "net_rescued": -186,
+        "hallucinated_pixels": 280,
+        "clean_fp_total": 1010,
+        "deg_fp_total": 970
+      },
+      "confidence_calibration": {
+        "0.50_to_0.70": {
+          "num_pixels": 5503,
+          "pct_of_disagree": 14.364395719133386,
+          "teacher_acc": 0.7305106305651463,
+          "deg_acc": 0.25749591132109756
+        },
+        "0.70_to_0.85": {
+          "num_pixels": 5945,
+          "pct_of_disagree": 15.518141477421038,
+          "teacher_acc": 0.7542472666105972,
+          "deg_acc": 0.24053826745164003
+        },
+        "0.85_to_0.95": {
+          "num_pixels": 8989,
+          "pct_of_disagree": 23.463847559383975,
+          "teacher_acc": 0.6298809656246523,
+          "deg_acc": 0.3666703749026588
+        },
+        "0.95_to_1.00": {
+          "num_pixels": 17766,
+          "pct_of_disagree": 46.37431480031323,
+          "teacher_acc": 0.6340200382753575,
+          "deg_acc": 0.3649667904987054
+        }
+      }
+    }
+  }
+]

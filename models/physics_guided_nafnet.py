@@ -110,7 +110,8 @@ class PhysicsGuidedNAFNet(nn.Module):
         i_deg: torch.Tensor,
         j_rsuigm: torch.Tensor,
         wt_norm: torch.Tensor,
-        depth_norm: torch.Tensor
+        depth_norm: torch.Tensor,
+        return_residual: bool = False
     ) -> torch.Tensor:
         """
         i_deg:      [B, 3, H, W] in [0, 1]
@@ -136,6 +137,8 @@ class PhysicsGuidedNAFNet(nn.Module):
 
         residual = torch.tanh(self.ending(feat)) * self.residual_scale
         out = torch.clamp(j_rsuigm + residual, 0.0, 1.0)
+        if return_residual:
+            return out, residual
         return out
 
 if __name__ == "__main__":

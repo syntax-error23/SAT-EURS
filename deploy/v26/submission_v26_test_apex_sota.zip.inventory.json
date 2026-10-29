@@ -1,0 +1,17 @@
+{
+  "candidate_zip": "deploy/v26/submission_v26_test_apex_sota.zip",
+  "sha256": "f7af242f806dd64c3daca6f6d2119dfa1074c77c89f847068691dfe1f6b5a70f",
+  "size_mb": 498.0,
+  "file_count": 2400,
+  "alpha_restoration": 0.1,
+  "sigma_restoration": 2.0,
+  "offset_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.25
+  ],
+  "timestamp": "2026-10-23T08:33:27Z",
+  "evaluation_census": {}
+}

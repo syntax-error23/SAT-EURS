@@ -1,0 +1,57 @@
+{
+  "metrics": {
+    "nested_q_seg": 0.51732,
+    "baseline_q_seg": 0.5176,
+    "delta_q_seg": -0.00028,
+    "delta_miou": -0.00014,
+    "delta_macro_f1": -0.00025,
+    "nested_miou": 0.65706,
+    "nested_f1": 0.78733,
+    "class_ious": [
+      0.76853,
+      0.74166,
+      0.71134,
+      0.59413,
+      0.46965
+    ]
+  },
+  "fold_selections": {
+    "fold_0": {
+      "selected_vector": "macro_40",
+      "inner_q_seg": 0.53063,
+      "outer_q_seg_chosen": 0.58913,
+      "outer_q_seg_baseline": 0.58646,
+      "outer_delta": 0.00267
+    },
+    "fold_1": {
+      "selected_vector": "macro_40",
+      "inner_q_seg": 0.49244,
+      "outer_q_seg_chosen": 0.43952,
+      "outer_q_seg_baseline": 0.43952,
+      "outer_delta": 0.0
+    },
+    "fold_2": {
+      "selected_vector": "macro_40",
+      "inner_q_seg": 0.46715,
+      "outer_q_seg_chosen": 0.41577,
+      "outer_q_seg_baseline": 0.41225,
+      "outer_delta": 0.00352
+    },
+    "fold_3": {
+      "selected_vector": "macro_40",
+      "inner_q_seg": 0.53111,
+      "outer_q_seg_chosen": 0.22873,
+      "outer_q_seg_baseline": 0.23007,
+      "outer_delta": -0.00134
+    },
+    "fold_4": {
+      "selected_vector": "baseline_25",
+      "inner_q_seg": 0.54577,
+      "outer_q_seg_chosen": 0.32959,
+      "outer_q_seg_baseline": 0.32959,
+      "outer_delta": 0.0
+    }
+  },
+  "verdict": "INCONCLUSIVE",
+  "runtime_s": 342.93
+}

@@ -1,0 +1,19 @@
+{
+  "candidate": "V38-Fast-TriArch-Bayes-SOTA",
+  "recipe": "HB2_TriArch_Bayes_InvEntC4 | Off_20_40 (0, 0, 0, 0.20, 0.40)",
+  "oof_q_seg_20scene": 0.59401,
+  "archive_path": "deploy/v38/submission_v38_triarch_sota.zip",
+  "size_mb": 497.71,
+  "sha256": "9437d3fb9212981290d00983e8d55959843cfff36e06cfdbff964058fb10eadb",
+  "restored_count": 1200,
+  "mask_count": 1200,
+  "scene_uniqueness": {
+    "test04": "200/200 unique",
+    "test09": "200/200 unique",
+    "test10": "200/200 unique",
+    "test11": "200/200 unique",
+    "test19": "200/200 unique",
+    "test20": "200/200 unique"
+  },
+  "compliance_audit": "PASSED ALL 7 CHECKS"
+}

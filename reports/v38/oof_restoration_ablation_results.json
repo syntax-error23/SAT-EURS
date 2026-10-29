@@ -1,0 +1,65 @@
+{
+  "R0_Base_NoUnsharp": {
+    "PSNR": 25.2635,
+    "PSNR_norm": 0.51234,
+    "SSIM": 0.79864,
+    "Sharpness": 0.34935,
+    "Q_FR": 0.62487
+  },
+  "R0_Base_Unsharp_010_s20 (V33)": {
+    "PSNR": 25.1608,
+    "PSNR_norm": 0.50766,
+    "SSIM": 0.79837,
+    "Sharpness": 0.41569,
+    "Q_FR": 0.62928
+  },
+  "R1_FlipTTA_NoUnsharp": {
+    "PSNR": 25.2828,
+    "PSNR_norm": 0.5132,
+    "SSIM": 0.7991,
+    "Sharpness": 0.3482,
+    "Q_FR": 0.62535
+  },
+  "R1_FlipTTA_Unsharp_010_s20": {
+    "PSNR": 25.1815,
+    "PSNR_norm": 0.5086,
+    "SSIM": 0.79886,
+    "Sharpness": 0.41441,
+    "Q_FR": 0.6298
+  },
+  "R1_FlipTTA_Unsharp_012_s20": {
+    "PSNR": 25.1502,
+    "PSNR_norm": 0.50717,
+    "SSIM": 0.7986,
+    "Sharpness": 0.42826,
+    "Q_FR": 0.63042
+  },
+  "R1_FlipTTA_Unsharp_008_s15": {
+    "PSNR": 25.2317,
+    "PSNR_norm": 0.5109,
+    "SSIM": 0.79907,
+    "Sharpness": 0.39784,
+    "Q_FR": 0.62927
+  },
+  "R2_Tbl35_Alone": {
+    "PSNR": 21.427,
+    "PSNR_norm": 0.36572,
+    "SSIM": 0.7118,
+    "Sharpness": 0.27812,
+    "Q_FR": 0.5127
+  },
+  "R2_Blend15_Tbl35_FlipTTA_U010": {
+    "PSNR": 25.0069,
+    "PSNR_norm": 0.50005,
+    "SSIM": 0.79493,
+    "Sharpness": 0.39571,
+    "Q_FR": 0.62231
+  },
+  "R2_Blend25_Tbl35_FlipTTA_U010": {
+    "PSNR": 24.6593,
+    "PSNR_norm": 0.48333,
+    "SSIM": 0.79064,
+    "Sharpness": 0.38438,
+    "Q_FR": 0.61173
+  }
+}

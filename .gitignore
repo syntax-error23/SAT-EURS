@@ -27,9 +27,18 @@ data/nvme/
 
 # Visual artifacts, documentation generation & PDFs
 *.pdf
+!SAT_EURS_Best_Architecture_Both_Tracks.pdf
+!docs/*.pdf
+!reports/*.pdf
 generate_tanmay_pdf.py
 *.html
 audits/overfit_preds/
+
+# Temporary run outputs, scratch, and logs
+tmp/
+runs/
+logs/
+scratch/
 
 # Logs and environment
 *.log

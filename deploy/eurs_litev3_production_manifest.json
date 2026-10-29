@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-24T10:09:20Z",
+  "model_architecture": "SAT-EURS-LiteV3 (Production Full-20)",
+  "source_checkpoint": "checkpoints/production/litev3_production_full20_best.pt",
+  "parameters": 479461,
+  "parameters_m": 0.4795,
+  "input_resolution": [
+    1,
+    3,
+    384,
+    768
+  ],
+  "output_tensors": {
+    "restored_image": [
+      1,
+      3,
+      384,
+      768
+    ],
+    "seg_logits": [
+      1,
+      5,
+      384,
+      768
+    ]
+  },
+  "enhancements": [
+    "Trained on ALL 20 scenes (4,000 degraded images)",
+    "Native Edge-Gated Sharpening (base=0.45, thresh=0.08)",
+    "Champion Phase 3 Class Weighting [0.70, 0.90, 1.20, 3.00, 3.50]",
+    "RSUIGM-200 Optical Polynomial Color Matrix Router"
+  ],
+  "opset_version": 17,
+  "onnx_file": "deploy/eurs_litev3_production.onnx",
+  "onnx_sha256": "b39efc20918927ebf073ae46c4fcf51e83ee658e0f957f60fe32f753df93a5d5",
+  "onnx_bytes": 3191216,
+  "submission_zip": "deploy/eurs_litev3_production_submission.zip",
+  "zip_sha256": "55bc796831a359c70bb5f1427a0f6fc5677348d0ef8e05a01be846542a01c6b9",
+  "zip_bytes": 1830511,
+  "max_err_rest": 9.5367431640625e-07,
+  "max_err_logits": 0.00011873245239257812,
+  "validation_passed": true
+}

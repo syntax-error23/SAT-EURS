@@ -1,0 +1,66 @@
+[
+  {
+    "id": "EXP-01-REST-AUDIT",
+    "name": "Audit and benchmark existing restoration checkpoints",
+    "track": "RESTORATION",
+    "status": "PENDING",
+    "hypothesis": "Existing NAFNet or Full20 restorer checkpoints may provide higher PSNR/SSIM than V18 refiner baseline.",
+    "priority": 1
+  },
+  {
+    "id": "EXP-02-NAFNET-EVAL",
+    "name": "Proper paired evaluation of NAFNet F0 checkpoint",
+    "track": "RESTORATION",
+    "status": "PENDING",
+    "hypothesis": "NAFNet trained on underwater degradation can surpass 25.48 dB PSNR on held-out scenes.",
+    "priority": 2
+  },
+  {
+    "id": "EXP-03-REST-BLENDING",
+    "name": "Restoration stage blending and sharpening grid",
+    "track": "RESTORATION",
+    "status": "PENDING",
+    "hypothesis": "Optimal linear blending between physical model and neural refiner improves SSIM without sacrificing sharpness.",
+    "priority": 3
+  },
+  {
+    "id": "EXP-04-REST-TRAIN-PILOT",
+    "name": "Train/finetune dedicated restorer on EURS 200-variant data",
+    "track": "RESTORATION",
+    "status": "PENDING",
+    "hypothesis": "Supervised training on all 200 degradation variants per scene directly boosts PSNR towards 28+ dB.",
+    "priority": 4
+  },
+  {
+    "id": "EXP-05-SEG-INPUT-DOMAIN",
+    "name": "Segmenter performance across restoration input variants",
+    "track": "SEGMENTATION",
+    "status": "PENDING",
+    "hypothesis": "Evaluating segmenter on different restoration inputs (raw, physical, neural) reveals optimal coupling.",
+    "priority": 5
+  },
+  {
+    "id": "EXP-06-SEG-DINOV2-EVAL",
+    "name": "Evaluate existing DINOv2 Large checkpoints out-of-fold",
+    "track": "SEGMENTATION",
+    "status": "PENDING",
+    "hypothesis": "DINOv2 Large feature backbone captures rare classes with higher boundary fidelity than SegFormer.",
+    "priority": 6
+  },
+  {
+    "id": "EXP-07-SEG-LOSS-AUG",
+    "name": "Fold-aware segmenter finetuning with rare-class protection",
+    "track": "SEGMENTATION",
+    "status": "PENDING",
+    "hypothesis": "Balanced loss targeting Ray and MacroFauna scenes prevents absent-class collapse and boundary erosion.",
+    "priority": 7
+  },
+  {
+    "id": "EXP-08-JOINT-CANDIDATE",
+    "name": "End-to-end joint candidate validation and packaging",
+    "track": "JOINT",
+    "status": "PENDING",
+    "hypothesis": "Best validated restorer + best validated segmenter achieves higher composite under official scorer.",
+    "priority": 8
+  }
+]

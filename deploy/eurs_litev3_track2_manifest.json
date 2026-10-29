@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-23T22:39:59Z",
+  "model_architecture": "SAT-EURS-LiteV3",
+  "source_checkpoint": "checkpoints/litev3/E1_supervised_f1/best_model.pt",
+  "parameters": 479461,
+  "input_resolution": [
+    1,
+    3,
+    384,
+    768
+  ],
+  "output_tensors": {
+    "restored_image": [
+      1,
+      3,
+      384,
+      768
+    ],
+    "seg_logits": [
+      1,
+      5,
+      384,
+      768
+    ]
+  },
+  "opset_version": 17,
+  "onnx_file": "deploy/eurs_litev3_track2.onnx",
+  "onnx_sha256": "ed939fc16c15c4d93e2fc9bd6c53164592b2a66d2fd5d3256ac1f642fbfcf03f",
+  "onnx_bytes": 3187927,
+  "submission_zip": "deploy/eurs_litev3_track2_submission.zip",
+  "zip_sha256": "712e4f777985d6d1fe46b08d76143fda14ff4e958eecbc744b72b0519f6a332b",
+  "zip_bytes": 1829775,
+  "max_err_rest": 2.346932888031006e-06,
+  "max_err_logits": 4.2438507080078125e-05
+}

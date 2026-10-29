@@ -1,0 +1,182 @@
+{
+  "V18_fold0_seg": {
+    "path": "checkpoints/v18/fold_0/segmenter_best.pt",
+    "exists": true,
+    "sha256": "2c94bc9c295c6a98b9d07ce5a8eecb8b17cb903526606ac9da95f124ad9e850b",
+    "size_mb": 1532.33
+  },
+  "V18_fold1_seg": {
+    "path": "checkpoints/v18/fold_1/segmenter_best.pt",
+    "exists": true,
+    "sha256": "a89ccb69220a4cbec050a11dd70104ea59e658c946546754a0c4a17d9b765c82",
+    "size_mb": 1532.33
+  },
+  "V18_fold2_seg": {
+    "path": "checkpoints/v18/fold_2/segmenter_best.pt",
+    "exists": true,
+    "sha256": "ec1c96e087b5479566cd03ace43e4a59e2b97f17180c96105691f1e700513a18",
+    "size_mb": 1532.33
+  },
+  "V18_fold3_seg": {
+    "path": "checkpoints/v18/fold_3/segmenter_best.pt",
+    "exists": true,
+    "sha256": "e21a26951b084fa1616a5a80678b3c379a86b12d5bce42c0cdcf1e1efc4c5449",
+    "size_mb": 1532.33
+  },
+  "V18_fold4_seg": {
+    "path": "checkpoints/v18/fold_4/segmenter_best.pt",
+    "exists": true,
+    "sha256": "72dd0a5bf56fb2a5a7dc704aac43fb541ca6ebd85c762b3ed20fc1758378f5e7",
+    "size_mb": 1532.33
+  },
+  "V18_fold0_ref": {
+    "path": "checkpoints/v18/fold_0/refiner_best.pt",
+    "exists": true,
+    "sha256": "c728728c8737aca546404dd0343415e3d6f8917a626ded32cd0c6a6703003130",
+    "size_mb": 4.7
+  },
+  "V18_fold1_ref": {
+    "path": "checkpoints/v18/fold_1/refiner_best.pt",
+    "exists": true,
+    "sha256": "ebbab3801f8724b2426f69c0549ecf4c678e67c99b83981247b10ada29938e7c",
+    "size_mb": 4.7
+  },
+  "V18_fold2_ref": {
+    "path": "checkpoints/v18/fold_2/refiner_best.pt",
+    "exists": true,
+    "sha256": "bac9a3a38071ed312b592b805864383fd70aee8c60c1dcc060f22ed2e3c58b01",
+    "size_mb": 4.7
+  },
+  "V18_fold3_ref": {
+    "path": "checkpoints/v18/fold_3/refiner_best.pt",
+    "exists": true,
+    "sha256": "6ebfe5f292251edc4ec18e0cf8bef378c7a2ba34de3e0938eddd9d6f8bc55f14",
+    "size_mb": 4.7
+  },
+  "V18_fold4_ref": {
+    "path": "checkpoints/v18/fold_4/refiner_best.pt",
+    "exists": true,
+    "sha256": "34efebbe00224e4f7481f9bd41de37260f06d83e7c7b70d13905d93a4edd8d34",
+    "size_mb": 4.7
+  },
+  "V16_dinov2_f0": {
+    "path": "checkpoints/v16_dinov2/fold_0/best_model.pt",
+    "exists": true,
+    "sha256": "3bbe037c421f14ed8e961d2535b00e404ea45f4f8344484c09767e020196acf8",
+    "size_mb": 1175.37
+  },
+  "V16_dinov2_f1": {
+    "path": "checkpoints/v16_dinov2/fold_1/best_model.pt",
+    "exists": true,
+    "sha256": "2cfa306d39e4b55d51900da073fea9bd504ed27469a002c707c71b4d6b7dc59f",
+    "size_mb": 1175.37
+  },
+  "V16_dinov2_f2": {
+    "path": "checkpoints/v16_dinov2/fold_2/best_model.pt",
+    "exists": true,
+    "sha256": "e68b1317fdf2a5892e153208d7369fa5b2c8c69669f8a26b0cffe8db8b8514be",
+    "size_mb": 1175.37
+  },
+  "V16_dinov2_f3": {
+    "path": "checkpoints/v16_dinov2/fold_3/best_model.pt",
+    "exists": true,
+    "sha256": "1e4bc8053e04bf80ab28fa928174a80470b55886f58c19a67603e7d4b5c98b2b",
+    "size_mb": 1175.37
+  },
+  "V16_dinov2_f4": {
+    "path": "checkpoints/v16_dinov2/fold_4/best_model.pt",
+    "exists": true,
+    "sha256": "8398d538d0fe092bc23d852cda4027d2bb784d29ba7d8fd36d365574e53a162f",
+    "size_mb": 1175.37
+  },
+  "V16_dinov2_f4_cp": {
+    "path": "checkpoints/track1_screening/DINOV2_CP_F4/best_model.pt",
+    "exists": true,
+    "sha256": "bc9e4bab7ce94c28e6de61646827df3dbb182183723dcf5f01440cd8a27c2530",
+    "size_mb": 1175.37
+  },
+  "V16_convnext_f0": {
+    "path": "checkpoints/v16_convnext/fold_0/best_model.pt",
+    "exists": true,
+    "sha256": "ed36e5d39fcddfbf2d64e0e9aa6b959f4972bcdee9f493dcf90f770a8b8accbd",
+    "size_mb": 342.26
+  },
+  "V16_convnext_f1": {
+    "path": "checkpoints/v16_convnext/fold_1/best_model.pt",
+    "exists": true,
+    "sha256": "4ec49c010213f3a6ffdd03a9a237f1428e7c3bf3fb48173b5a6b2492cbbb7c4e",
+    "size_mb": 342.26
+  },
+  "V16_convnext_f2": {
+    "path": "checkpoints/v16_convnext/fold_2/best_model.pt",
+    "exists": true,
+    "sha256": "c5b2aabcf614cc42e2aad627f0fb8d01beb711ac6d211cb851f535f3b8a90f97",
+    "size_mb": 342.26
+  },
+  "V16_convnext_f3": {
+    "path": "checkpoints/v16_convnext/fold_3/best_model.pt",
+    "exists": true,
+    "sha256": "bcdf6ddca9599667ebc71f810ff4a3eefa07c1b9772313188ccb0c0528cb05d0",
+    "size_mb": 342.26
+  },
+  "V16_convnext_f4": {
+    "path": "checkpoints/v16_convnext/fold_4/best_model.pt",
+    "exists": true,
+    "sha256": "e6bf76698d4857f49c31c44710ce61f8a5aa49849b864f7f85e6c7c289266519",
+    "size_mb": 342.26
+  },
+  "V17_spec_convnext": {
+    "path": "checkpoints/v17_specialists/convnext_full20_best.pt",
+    "exists": true,
+    "sha256": "066a5dc723b8595693226eff14263da8bacd5a4a13276d9c7cc2bfda13bc4461",
+    "size_mb": 342.26
+  },
+  "V17_spec_dinov2": {
+    "path": "checkpoints/v17_specialists/dinov2_full20_best.pt",
+    "exists": true,
+    "sha256": "db767eab069ca900ba9cc5c9a34388716072e910663f710b757cd9cc8705cc71",
+    "size_mb": 1175.37
+  },
+  "V16_segformer": {
+    "path": "checkpoints/segformer_mit_b3_best.pt",
+    "exists": true,
+    "sha256": "03df63f3b3f1694c19cc92068a3283fe1e330eeb5301f951516390a570ff4bcc",
+    "size_mb": 172.77
+  },
+  "tbl19_20sc_clean": {
+    "path": "checkpoints/track1_screening/tbl19_20sc_clean.pt",
+    "exists": true,
+    "sha256": "2c35df3b0f5d3317c3672b2867e0059b893acecd8699c5a2271383a1179d9562",
+    "size_mb": 0.09
+  },
+  "table_cand_B_f0": {
+    "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_0.pt",
+    "exists": true,
+    "sha256": "bf74a414a5ca5f3ff969e7fd5ac71f0a59d34aa681cb879676832c0ec6f7c269",
+    "size_mb": 0.1
+  },
+  "table_cand_B_f1": {
+    "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_1.pt",
+    "exists": true,
+    "sha256": "aea0da723d6ee588b78d5333e5be3f29f66eb27fd9f4d4ad742b46a1dc4a8dcb",
+    "size_mb": 0.1
+  },
+  "table_cand_B_f2": {
+    "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_2.pt",
+    "exists": true,
+    "sha256": "5765c89cd1817f9fb4643216a030d003c55a5f184acfc3928544066a103a146e",
+    "size_mb": 0.1
+  },
+  "table_cand_B_f3": {
+    "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_3.pt",
+    "exists": true,
+    "sha256": "fd8a4759cba0acbc2506bf26bd77e4e9e4fd4f63c5d93960f05418718f6f2403",
+    "size_mb": 0.1
+  },
+  "table_cand_B_f4": {
+    "path": "checkpoints/exp4_1_scale_consistent/table_candidate_B_fold_4.pt",
+    "exists": true,
+    "sha256": "22d2ffd88f6f01dd123ee912bc288cd30bd941148b8537655451c5bc64e06037",
+    "size_mb": 0.1
+  }
+}

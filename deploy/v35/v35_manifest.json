@@ -1,0 +1,24 @@
+{
+  "archive_path": "deploy/v35/submission_v35_scene_anchor_sota.zip",
+  "sha256": "dab801a16558dc152c61b6b7d557e53a9653bad2e2b4f896a536b91d0e04488f",
+  "size_mb": 553.96,
+  "total_pixels": 869580800,
+  "class_distribution": {
+    "Background": 479503200,
+    "Coral": 330431200,
+    "Fish": 14097000,
+    "Shark/Ray": 26556200,
+    "Macro-fauna": 18993200
+  },
+  "parameters": {
+    "offset_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.1,
+      0.25
+    ],
+    "alpha_unsharp": 0.1,
+    "sigma_unsharp": 2.0
+  }
+}
