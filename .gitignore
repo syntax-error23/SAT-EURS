@@ -80,6 +80,7 @@ weights/
 !SAT_EURS_Track2_Best_Architecture_ApexOrinV3.pdf
 !docs/*.pdf
 !reports/*.pdf
+!docs/*.png
 generate_tanmay_pdf.py
 *.html
 
