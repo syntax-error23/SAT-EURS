@@ -55,14 +55,14 @@ Email: \texttt{arinp2018@gmail.com} (Faculty Email: \texttt{chaitra.desai@manipa
 \item \textbf{Rest of the team members (name, macvi.org user ID):}
   \begin{itemize}
     \item Arin Pattnaik (Team Owner on macvi.org), user ID \texttt{2044}
+    \item Tanmay Das, user ID \texttt{2043}
     \item Shubham Kulkarni, user ID \texttt{2035}
-    \item Tanmay Das, user ID \texttt{tanmay\_das}
-    \item Dr. Chaitra Desai (Faculty Advisor \& Mentor), user ID \texttt{chaitradesai}
+    \item Dr. Chaitra Desai (Faculty Advisor \& Mentor)
   \end{itemize}
 \item \textbf{Team website URL (if any):} \url{https://github.com/syntax-error23/SAT-EURS}
 \item \textbf{Affiliations:} Department of Computer Science \& Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India
 \item \textbf{Team leader's user ID on the submission server (macvi.org):} \texttt{2044}
-\item \textbf{User IDs on the submission server of \emph{all} team members:} \texttt{2044}, \texttt{2035}, \texttt{tanmay\_das}, \texttt{chaitradesai}
+\item \textbf{User IDs on the submission server of all team members (leader included; the IDs of every account that submitted for the team):} \texttt{2044}, \texttt{2035}, \texttt{2043}
 \item \textbf{Track(s) entered:} both (Track 1 and Track 2)
 \item \textbf{Best-scoring testing-phase submission per track (the one reported for reproduction):}
   \begin{itemize}
@@ -88,42 +88,12 @@ Email: \texttt{arinp2018@gmail.com} (Faculty Email: \texttt{chaitra.desai@manipa
 % =============================================================================
 \section{Global method description}\label{sec:global}
 
-\begin{figure}[!htp]
-    \centering
-    \includegraphics[width=0.98\linewidth]{images/method_overview.png}
-    \caption{Overview of Team SAT's Track 1 champion perception architecture (\texttt{V33-Ensemble-F3Upgrade}, Submission \#19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\times512$) and DetailStem. Features are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.}
-    \label{fig:method_t1}
-\end{figure}
+Optical degradation in underwater imaging is governed by wavelength-dependent absorption and severe forward/backward scattering. Coupling physical radiative transfer inversion directly with deep categorical segmentation often causes severe gradient competition: restoration rewards pixel-level high-frequency reconstruction, whereas dense segmentation requires semantic spatial invariance. To resolve this, our methodologies differ strategically across the two tracks:
 
-\begin{figure}[!htp]
-    \centering
-    \includegraphics[width=0.98\linewidth]{images/track2_pipeline.png}
-    \caption{Overview of Team SAT's Track 2 embedded edge architecture (\texttt{track2-apex-orin-v3}, Submission \#19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0\,M parameter and 12.0\,GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in $<0.30$\,GFLOPs, paired with a $256\times256$ FiLM spatial refiner ($+6.15$\,dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.}
-    \label{fig:method_t2}
-\end{figure}
+\paragraph{Track 1 (Unconstrained Quality):} We deploy a sequential decouple-and-fuse architecture. Restoration is anchored physically via an analytical 19-term polynomial basis ($\phi(r,g,b) \in \mathbb{R}^{19}$) regressed via closed-form Tikhonov regularisation ($\lambda = 10^{-4}$), ensuring baseline color recovery without high-frequency amplification. A neural refiner consisting of 16 Non-Linear Activation Free (NAF) blocks~\cite{chen2022nafnet} with depthwise gated convolutions operates on the concatenated 8-channel tensor [Raw RGB, RSUIGM RGB, Water Type, Depth]. To prevent distribution shift, the refiner output is strictly bounded: $I_{\text{rest}} = \text{clip}(I_{\text{RSUIGM}} + 0.10 \times \tanh(\text{NAFNet}), 0, 1)$, followed by Laplacian unsharp edge filtering ($\alpha=1.34, \sigma=1.5$), reaching 25.48\,dB PSNR and 0.829 SSIM. For segmentation, our \texttt{EURSAPEXV18Segmenter} deploys an asymmetric dual-stream encoder: (1) DINOv3 ViT-Large/16 (304\,M params)~\cite{oquab2023dinov2} ingests restored images at $518\times518$ for global semantics, (2) ConvNeXt-Base (88.5\,M params)~\cite{liu2022convnet} ingests raw degraded images at $512\times512$ with a 2-stage DetailStem to eliminate the typical 10--15 pixel ViT boundary dilation on thin fauna, and (3) learned spatial gating $f_{\text{fused}} = \sigma(G) \odot f_{\text{sem}} + (1 - \sigma(G)) \odot f_{\text{conv}}$ with condition FiLM modulation across a 4-level UPerNet feature pyramid.
 
-\subsection*{Architecture Philosophy and Feature Sharing}
-Optical degradation in underwater environments is governed by wavelength-dependent absorption and severe forward/backward scattering. Coupling physical radiative transfer inversion directly with deep categorical segmentation often leads to gradient competition: restoration rewards pixel-level high-frequency fidelity, whereas dense segmentation requires semantic spatial invariance. To resolve this, our methodologies differ strategically across the two tracks:
+\paragraph{Track 2 (Jetson AGX Orin Edge SOTA):} Under the strict $\le 1.0$\,M parameter and $\le 12.0$\,GFLOP limits, separate heavy models are impossible. Track 2 adopts a unified multi-task architecture: (1) an 18-D radiometric summary router computes translation-invariant global statistics from a downsampled $256\times256$ representation and contracts against a scale-consistent 20-scene calibration bank in $<0.30$\,GFLOPs (a 95\% compute saving over 2D convs), (2) a 3-block depthwise-separable inverted bottleneck refiner operating at $256\times256$ with condition FiLM modulation lifts PSNR from 17.1\,dB to 23.25\,dB ($+6.15$\,dB), (3) a shared dual stem feeds a MobileNetV3-Large trunk~\cite{howard2019mobilenetv3} \textbf{truncated strictly after Block 11} (\texttt{features[:12]}), eliminating Block 12's heavy 386\,k parameter expansion and keeping total parameters at 884.1\,k (passing the 1.0\,M ceiling with 11.6\% headroom), (4) a dilated ASPP context module and 4-scale progressive FPN, and (5) an in-graph average pooling speckle suppressor ($\text{AvgPool2d}(11, 1, 5)$) that penalizes rare-class logits where regional support is below $\tau=0.04$, executing natively on TensorRT with 0 extra parameters.
 
-\paragraph{Track 1 (Unconstrained Quality):} We deploy a sequential decouple-and-fuse pipeline. Restoration is anchored physically via an analytical 19-term polynomial basis ($\phi(r,g,b) \in \mathbb{R}^{19}$) regressed via Tikhonov regularisation ($\lambda = 10^{-4}$), ensuring baseline color recovery without high-frequency amplification. A neural refiner consisting of 16 Non-Linear Activation Free (NAF) blocks~\cite{chen2022nafnet} with depthwise gated convolutions operates on the concatenated 8-channel tensor [Raw RGB, RSUIGM RGB, Water Type, Depth]. To prevent distribution shift, the refiner's output is bounded strictly: $I_{\text{rest}} = \text{clip}(I_{\text{RSUIGM}} + 0.10 \times \tanh(\text{NAFNet}), 0, 1)$, followed by Laplacian unsharp edge filtering ($\alpha=1.34, \sigma=1.5$), reaching 25.48\,dB PSNR and 0.829 SSIM. 
-
-For segmentation, a single encoder forces a compromise between ViT global context and convolutional boundary sharpness. Our \texttt{EURSAPEXV18Segmenter} deploys an asymmetric dual-stream encoder:
-\begin{enumerate}[leftmargin=*]
-    \item \textbf{Semantic Stream:} DINOv3 ViT-Large/16 (304\,M params, patch 14)~\cite{oquab2023dinov2} ingests the restored image at $518\times518$, extracting rich invariant semantics from intermediate blocks (5, 11, 17, 23).
-    \item \textbf{Inductive Stream:} ConvNeXt-Base (88.5\,M params)~\cite{liu2022convnet} ingests the raw degraded image at $512\times512$, providing continuous inductive bias and resolving the typical 10--15 pixel boundary dilation of ViTs on rare fauna. A two-stage DetailStem preserves thin appendages (seahorse snouts, starfish spines).
-    \item \textbf{Learned Spatial Gating \& Condition FiLM:} Feature maps at strides 4, 8, 16, 32 are fused dynamically via learned spatial gating: $f_{\text{fused}} = \sigma(G) \odot f_{\text{sem}} + (1 - \sigma(G)) \odot f_{\text{conv}}$, where $G$ is a $3\times3$ convolution over concatenated features. Bounded Feature-wise Linear Modulation (FiLM)~\cite{perez2018film} modulates decoder channels with water type and depth embeddings.
-\end{enumerate}
-
-\paragraph{Track 2 (Jetson AGX Orin Edge SOTA):} Under the strict $\le 1.0$\,M parameter and $\le 12.0$\,GFLOP limits, separate heavy models are impossible. Track 2 adopts a unified multi-task architecture:
-\begin{enumerate}[leftmargin=*]
-    \item \textbf{18-D Radiometric Router ($<0.30$\,GFLOPs):} From a downsampled $256\times256$ representation, the network computes an 18-dimensional summary vector invariant to spatial translation (channel means, standard deviations, min/max quantiles, cross-channel attenuation deltas, Sobel gradients). A 2-layer LayerNorm MLP routes over a precomputed scale-consistent 20-scene calibration bank ($200 \times 57$), evaluating the 19-term polynomial basis at full $1024\times1024$ in under 0.30\,GFLOPs (a 95\% compute saving over 2D convs).
-    \item \textbf{FiLM Spatial Residual Refiner @ 256px:} A 3-block depthwise-separable inverted bottleneck network operates exclusively at $256\times256$ with condition FiLM modulation, injecting a bounded offset ($\pm 0.25 \times \tanh$) before bilinear upsampling and in-graph $3\times3$ Gaussian unsharp masking. This lifted edge PSNR from 17.1\,dB to 23.25\,dB ($+6.15$\,dB).
-    \item \textbf{Truncated MobileNetV3 Backbone:} A shared dual stem feeds a MobileNetV3-Large trunk~\cite{howard2019mobilenetv3}. Crucially, the backbone is \textbf{truncated strictly after Block 11} (\texttt{features[:12]}), eliminating Block 12's heavy 386\,k parameter expansion. This retains high-resolution multi-scale features while keeping total parameter count at 884.1\,k (passing the 1.0\,M ceiling with 11.6\% headroom).
-    \item \textbf{Context \& Progressive FPN:} Stride-32 depthwise-separable downsampler feeding a dilated ASPP module ($d \in \{1, 2, 4\}$) and a 4-scale progressive FPN with 72-channel lateral skip projections.
-    \item \textbf{In-Graph Spatial Speckle Suppressor:} To defeat isolated elasmobranch false alarms triggered by dark reef crevices without host CPU latency, an in-graph average pooling density filter ($\text{AvgPool2d}(11, 1, 5)$) subtracts a linear penalty from rare-class logits where regional support is below $\tau=0.04$, executing natively on TensorRT with 0 extra parameters and 0.05\,GFLOPs.
-\end{enumerate}
-
-\subsection*{Detailed Methodology Disclosures}
 \begin{itemize}[leftmargin=*]
 \item \textbf{Which pre-trained or external methods / models have been used:}
   \begin{itemize}
@@ -156,9 +126,30 @@ For segmentation, a single encoder forces a compromise between ViT global contex
     \item \emph{TTA / Ensembling:} Track 1 uses a 5-fold cross-validation ensemble (Folds 0, 1, 2, 3-Upgrade, 4) with horizontal-flip test-time augmentation (10 forward passes total), followed by logit averaging. Track 2 runs single-pass deterministic inference with zero TTA or ensemble, executing directly in TensorRT / ONNX Runtime.
     \item \emph{Hardware:} Track 1 evaluated on NVIDIA RTX 5090; Track 2 benchmarked on NVIDIA Jetson AGX Orin (64GB Industrial, JetPack 6.0, TensorRT 8.6) and local RTX 5090.
   \end{itemize}
+\end{itemize}
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=0.98\linewidth]{images/method_overview.png}
+    \caption{Overview of Team SAT's Track 1 champion perception architecture (\texttt{V33-Ensemble-F3Upgrade}, Submission \#19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\times512$) and DetailStem. Features are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.}
+    \label{fig:method_t1}
+\end{figure}
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=0.98\linewidth]{images/track2_pipeline.png}
+    \caption{Overview of Team SAT's Track 2 embedded edge architecture (\texttt{track2-apex-orin-v3}, Submission \#19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0\,M parameter and 12.0\,GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in $<0.30$\,GFLOPs, paired with a $256\times256$ FiLM spatial refiner ($+6.15$\,dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.}
+    \label{fig:method_t2}
+\end{figure}
+
+\begin{itemize}[leftmargin=*]
 \item \textbf{How the training and development scenes were used:}
-  The 20 EURS training scenes were partitioned into 5 cross-validation folds stratified by optical water type (Types 1--10), depth level (1--20), and rare species presence. The 6 development scenes were held out strictly for out-of-domain validation, hyperparameter tuning, and post-submission discrepancy audits. Neither the 6 development scenes nor the held-out testing scenes were ever used in gradient backpropagation or training batches. \\
-  \textbf{Compliance with EURS rules:} \textbf{Yes}. Full compliance with all official competition rules.
+  \begin{itemize}
+    \item \emph{Exact scene IDs used for training:} \texttt{fish1}, \texttt{fish2}, \texttt{fish4}, \texttt{fish5}, \texttt{fish7}, \texttt{fish9}, \texttt{fish11}, \texttt{fish12}, \texttt{fish13}, \texttt{fish14}, \texttt{fish15}, \texttt{fish17}, \texttt{fish18}, \texttt{fish20}, \texttt{fish21}, \texttt{ray1}, \texttt{seahorse1}, \texttt{sharkFish}, \texttt{starfish2}, \texttt{turtles1} (20 scenes total).
+    \item \emph{Validation and model selection:} 5-fold cross-validation on the 20 training scenes, stratified by optical water type (Types 1--10) and depth level.
+    \item \emph{Development scenes:} The 6 development scenes (\texttt{fish3}, \texttt{fish6}, \texttt{fish10}, \texttt{fish19}, \texttt{sharRayFish}, \texttt{starfish1}) were held out strictly for out-of-domain validation, hyperparameter tuning, and discrepancy audits. Neither development nor testing scenes were ever used in gradient backpropagation.
+  \end{itemize}
+  \textbf{Compliance with the EURS rules (challenge page and hand-in announcement), including disclosure of all additional training data:} \textbf{Yes}. Full compliance; strictly zero external training data used.
 \item \textbf{Were the released testing-phase images (their pixels) used in any way for training, fine-tuning, pseudo-labelling or adaptation?} \textbf{No}. Zero test image pixels were used for training, fine-tuning, domain adaptation, self-supervision, or pseudo-labelling. All test predictions were generated strictly blind via feed-forward inference.
 \item \textbf{Which submissions or global settings were chosen using leaderboard scores of testing-phase submissions?}
   The rare-class logit calibration offsets ($\Delta Z_3 = +0.10$ for elasmobranchs, $\Delta Z_4 = +0.25$ for macro-fauna) and the Laplacian unsharp boost factor ($\alpha=1.34, \sigma=1.5$) were set as fixed constant scalars applied uniformly to every testing image. Selection of the Fold 3 retrained elasmobranch pilot checkpoint over baseline fold 3 was validated on the leaderboard test response (moving composite from 0.634 to 0.641).
