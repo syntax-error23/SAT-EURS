@@ -43,8 +43,11 @@ Thumbs.db
 
 # Datasets, Archives & Raw Imagery
 *.zip
+!factsheet_SAT.zip
 !factsheet_SAT-EURS.zip
+!docs/factsheet_SAT.zip
 !docs/factsheet_SAT-EURS.zip
+!reports/factsheet_SAT.zip
 !reports/factsheet_SAT-EURS.zip
 *.tar
 *.tar.gz
@@ -81,6 +84,7 @@ weights/
 !SAT_EURS_Best_Architecture_Both_Tracks.pdf
 !SAT_EURS_Track1_Best_Architecture_V33.pdf
 !SAT_EURS_Track2_Best_Architecture_ApexOrinV3.pdf
+!EURS_factsheet_SAT.pdf
 !EURS_factsheet_SAT-EURS.pdf
 !docs/*.pdf
 !reports/*.pdf

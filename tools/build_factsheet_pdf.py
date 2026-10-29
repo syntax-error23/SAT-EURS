@@ -42,7 +42,7 @@ class FactsheetNumberedCanvas(canvas.Canvas):
             self.setFont("Times-Italic", 8.5)
             self.setFillColor(colors.HexColor("#334155"))
             self.drawString(54, 745, "MaCVi@WACV 2027 EURS Challenge — Factsheet")
-            self.drawRightString(558, 745, "Team SAT-EURS")
+            self.drawRightString(558, 745, "Team SAT (MIT-BLR)")
             self.setStrokeColor(colors.HexColor("#CBD5E1"))
             self.setLineWidth(0.5)
             self.line(54, 739, 558, 739)
@@ -111,12 +111,12 @@ def build_factsheet_pdf(output_path: str):
     story.append(Paragraph("1. Team Details", p_h1))
     
     t1_details = [
-        "<b>Team name (as on macvi.org):</b> SAT-EURS",
+        "<b>Team name (as on macvi.org):</b> SAT",
         "<b>Team leader name:</b> Tanmay Das (Faculty Advisor & Mentor: Dr. Chaitra Desai)",
         "<b>Team leader institution and email:</b> Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India. Email: <code>tanmay.das@learner.manipal.edu</code> (Faculty: <code>chaitra.desai@manipal.edu</code>)",
         "<b>Rest of the team members (name, macvi.org user ID):</b> Dr. Chaitra Desai (<code>chaitradesai</code>), Shubham Kulkarni (<code>shubham_kulkarni</code>), Arin Pattnaik (<code>arinpattnaik</code>), Tanmay Das (<code>tanmay_das</code>)",
         "<b>Team website URL:</b> <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS</u></font>",
-        "<b>Affiliations:</b> Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India",
+        "<b>Affiliations:</b> Department of Computer Science & Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India",
         "<b>Team leader's user ID on the submission server (macvi.org):</b> <code>tanmay_das</code>",
         "<b>User IDs on the submission server of all team members:</b> <code>tanmay_das</code>, <code>shubham_kulkarni</code>, <code>arinpattnaik</code>, <code>chaitradesai</code>",
         "<b>Track(s) entered:</b> Both (Track 1 and Track 2)",
@@ -139,14 +139,14 @@ def build_factsheet_pdf(output_path: str):
     diag1 = "factsheet-template/images/method_overview.png"
     if os.path.exists(diag1):
         story.append(RLImage(diag1, width=504, height=224))
-        story.append(Paragraph("<b>Figure 1:</b> Overview of the SAT-EURS Track 1 champion perception architecture (<code>V33-Ensemble-F3Upgrade</code>, Submission #19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\\times512$) and DetailStem. Streams are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.", p_caption))
+        story.append(Paragraph("<b>Figure 1:</b> Overview of Team SAT's Track 1 champion perception architecture (<code>V33-Ensemble-F3Upgrade</code>, Submission #19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\\times512$) and DetailStem. Streams are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.", p_caption))
     story.append(Spacer(1, 4))
 
     # Figure 2: Track 2 Overview
     diag2 = "factsheet-template/images/track2_pipeline.png"
     if os.path.exists(diag2):
         story.append(RLImage(diag2, width=504, height=224))
-        story.append(Paragraph("<b>Figure 2:</b> Overview of the SAT-EURS Track 2 embedded edge architecture (<code>track2-apex-orin-v3</code>, Submission #19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0M parameter and 12.0 GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in &lt;0.30 GFLOPs, paired with a $256\\times256$ FiLM spatial refiner (+6.15 dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.", p_caption))
+        story.append(Paragraph("<b>Figure 2:</b> Overview of Team SAT's Track 2 embedded edge architecture (<code>track2-apex-orin-v3</code>, Submission #19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0M parameter and 12.0 GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in &lt;0.30 GFLOPs, paired with a $256\\times256$ FiLM spatial refiner (+6.15 dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.", p_caption))
     story.append(Spacer(1, 4))
 
     story.append(Paragraph("<b>Architectural Philosophy & Feature Sharing:</b>", p_h2))
@@ -349,6 +349,8 @@ def build_factsheet_pdf(output_path: str):
 
 
 if __name__ == "__main__":
-    out_pdf = "EURS_factsheet_SAT-EURS.pdf"
-    build_factsheet_pdf(out_pdf)
-    build_factsheet_pdf(os.path.join("factsheet-template", out_pdf))
+    for name in ["EURS_factsheet_SAT.pdf", "EURS_factsheet_SAT-EURS.pdf"]:
+        build_factsheet_pdf(name)
+        build_factsheet_pdf(os.path.join("factsheet-template", name))
+        build_factsheet_pdf(os.path.join("reports", name))
+        build_factsheet_pdf(os.path.join("docs", name))

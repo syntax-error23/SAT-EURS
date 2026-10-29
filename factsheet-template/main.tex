@@ -1,7 +1,7 @@
 %% Factsheet for the MaCVi@WACV 2027 EURS Challenge
 %% (Embedded Underwater Restoration and Segmentation)
 %%
-%% Team: SAT-EURS (Manipal Institute of Technology Bengaluru)
+%% Team: SAT (Institution: MIT-BLR / Manipal Institute of Technology Bengaluru)
 %% Best Models: Track 1 (V33-Ensemble-F3Upgrade, Sub #19359 | 0.641)
 %%              Track 2 (track2-apex-orin-v3, Sub #19447 | 0.407)
 
@@ -47,7 +47,7 @@
 % =============================================================================
 \section{Team details}\label{sec:team}
 \begin{itemize}[leftmargin=*]
-\item \textbf{Team name (as on macvi.org):} SAT-EURS
+\item \textbf{Team name (as on macvi.org):} SAT
 \item \textbf{Team leader name:} Tanmay Das (Faculty Advisor / Mentor: Dr. Chaitra Desai)
 \item \textbf{Team leader institution and email:} \\
 Department of Computer Science \& Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India \\
@@ -60,7 +60,7 @@ Email: \texttt{tanmay.das@learner.manipal.edu} (Faculty Email: \texttt{chaitra.d
     \item Tanmay Das, user ID \texttt{tanmay\_das}
   \end{itemize}
 \item \textbf{Team website URL (if any):} \url{https://github.com/syntax-error23/SAT-EURS}
-\item \textbf{Affiliations:} Department of Computer Science \& Engineering, Manipal Institute of Technology (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India
+\item \textbf{Affiliations:} Department of Computer Science \& Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India
 \item \textbf{Team leader's user ID on the submission server (macvi.org):} \texttt{tanmay\_das}
 \item \textbf{User IDs on the submission server of \emph{all} team members:} \texttt{tanmay\_das}, \texttt{shubham\_kulkarni}, \texttt{arinpattnaik}, \texttt{chaitradesai}
 \item \textbf{Track(s) entered:} both (Track 1 and Track 2)
@@ -88,14 +88,14 @@ Email: \texttt{tanmay.das@learner.manipal.edu} (Faculty Email: \texttt{chaitra.d
 \begin{figure}[!htp]
     \centering
     \includegraphics[width=0.98\linewidth]{images/method_overview.png}
-    \caption{Overview of the SAT-EURS Track 1 champion perception architecture (\texttt{V33-Ensemble-F3Upgrade}, Submission \#19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\times512$) and DetailStem. Features are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.}
+    \caption{Overview of Team SAT's Track 1 champion perception architecture (\texttt{V33-Ensemble-F3Upgrade}, Submission \#19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\times512$) and DetailStem. Features are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.}
     \label{fig:method_t1}
 \end{figure}
 
 \begin{figure}[!htp]
     \centering
     \includegraphics[width=0.98\linewidth]{images/track2_pipeline.png}
-    \caption{Overview of the SAT-EURS Track 2 embedded edge architecture (\texttt{track2-apex-orin-v3}, Submission \#19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0\,M parameter and 12.0\,GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in $<0.30$\,GFLOPs, paired with a $256\times256$ FiLM spatial refiner ($+6.15$\,dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.}
+    \caption{Overview of Team SAT's Track 2 embedded edge architecture (\texttt{track2-apex-orin-v3}, Submission \#19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0\,M parameter and 12.0\,GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in $<0.30$\,GFLOPs, paired with a $256\times256$ FiLM spatial refiner ($+6.15$\,dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.}
     \label{fig:method_t2}
 \end{figure}
 
