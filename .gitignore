@@ -76,6 +76,8 @@ weights/
 # Visual artifacts, documentation generation & PDFs
 *.pdf
 !SAT_EURS_Best_Architecture_Both_Tracks.pdf
+!SAT_EURS_Track1_Best_Architecture_V33.pdf
+!SAT_EURS_Track2_Best_Architecture_ApexOrinV3.pdf
 !docs/*.pdf
 !reports/*.pdf
 generate_tanmay_pdf.py
