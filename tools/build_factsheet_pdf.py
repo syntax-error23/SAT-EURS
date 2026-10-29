@@ -1,6 +1,7 @@
 """
 Publication-Grade Factsheet PDF Generator for EURS @ MaCVi WACV 2027
-Compiles EURS_factsheet_SAT-EURS.pdf matching the official factsheet layout.
+Humanized, mathematically precise, publication-quality layout.
+Matches the official EURS factsheet template specifications.
 """
 
 import os
@@ -15,9 +16,6 @@ from reportlab.pdfgen import canvas
 
 
 class FactsheetNumberedCanvas(canvas.Canvas):
-    """
-    Two-pass canvas for academic article factsheet.
-    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._saved_page_states = []
@@ -36,8 +34,7 @@ class FactsheetNumberedCanvas(canvas.Canvas):
 
     def draw_page_decorations(self, page_count):
         self.saveState()
-        
-        # Header (Pages > 1)
+        # Running Header (Pages > 1)
         if self._pageNumber > 1:
             self.setFont("Times-Italic", 8.5)
             self.setFillColor(colors.HexColor("#334155"))
@@ -47,7 +44,7 @@ class FactsheetNumberedCanvas(canvas.Canvas):
             self.setLineWidth(0.5)
             self.line(54, 739, 558, 739)
 
-        # Footer (All Pages)
+        # Running Footer (All Pages)
         self.setFont("Times-Roman", 9)
         self.setFillColor(colors.HexColor("#475569"))
         self.drawRightString(306, 32, f"— {self._pageNumber} —")
@@ -55,7 +52,6 @@ class FactsheetNumberedCanvas(canvas.Canvas):
 
 
 def build_factsheet_pdf(output_path: str):
-    # Standard letter with 54pt (0.75 in) margins -> printable width = 612 - 108 = 504 pt
     doc = SimpleDocTemplate(
         output_path,
         pagesize=letter,
@@ -65,27 +61,25 @@ def build_factsheet_pdf(output_path: str):
         bottomMargin=54
     )
     
-    styles = getSampleStyleSheet()
-    
     PRIMARY = colors.HexColor("#0F172A")
     ACCENT = colors.HexColor("#1E3A8A")
     TEXT = colors.HexColor("#1E293B")
     TEXT_MUTED = colors.HexColor("#475569")
     BORDER = colors.HexColor("#94A3B8")
     
-    p_title = ParagraphStyle('FTitle', fontName='Times-Bold', fontSize=15, leading=19, textColor=PRIMARY, alignment=1, spaceAfter=4)
-    p_sub = ParagraphStyle('FSub', fontName='Times-Bold', fontSize=12, leading=15, textColor=ACCENT, alignment=1, spaceAfter=6)
-    p_author = ParagraphStyle('FAuthor', fontName='Times-Roman', fontSize=9.5, leading=13, textColor=TEXT, alignment=1, spaceAfter=3)
-    p_affil = ParagraphStyle('FAffil', fontName='Times-Italic', fontSize=8.2, leading=11, textColor=TEXT_MUTED, alignment=1, spaceAfter=5)
-    p_date = ParagraphStyle('FDate', fontName='Times-Roman', fontSize=8.5, leading=11, textColor=TEXT_MUTED, alignment=1, spaceAfter=10)
+    p_title = ParagraphStyle('FTitle', fontName='Times-Bold', fontSize=14.5, leading=18, textColor=PRIMARY, alignment=1, spaceAfter=3)
+    p_sub = ParagraphStyle('FSub', fontName='Times-Bold', fontSize=11.5, leading=15, textColor=ACCENT, alignment=1, spaceAfter=5)
+    p_author = ParagraphStyle('FAuthor', fontName='Times-Roman', fontSize=9.5, leading=13, textColor=TEXT, alignment=1, spaceAfter=2)
+    p_affil = ParagraphStyle('FAffil', fontName='Times-Italic', fontSize=8.0, leading=10.8, textColor=TEXT_MUTED, alignment=1, spaceAfter=4)
+    p_date = ParagraphStyle('FDate', fontName='Times-Roman', fontSize=8.2, leading=10.5, textColor=TEXT_MUTED, alignment=1, spaceAfter=8)
     
-    p_h1 = ParagraphStyle('FH1', fontName='Times-Bold', fontSize=11, leading=14, textColor=PRIMARY, spaceBefore=8, spaceAfter=4, keepWithNext=True)
-    p_h2 = ParagraphStyle('FH2', fontName='Times-Bold', fontSize=9.5, leading=12.5, textColor=ACCENT, spaceBefore=6, spaceAfter=3, keepWithNext=True)
+    p_h1 = ParagraphStyle('FH1', fontName='Times-Bold', fontSize=10.8, leading=14, textColor=PRIMARY, spaceBefore=7, spaceAfter=3, keepWithNext=True)
+    p_h2 = ParagraphStyle('FH2', fontName='Times-Bold', fontSize=9.2, leading=12, textColor=ACCENT, spaceBefore=5, spaceAfter=2.5, keepWithNext=True)
     
-    p_body = ParagraphStyle('FBody', fontName='Times-Roman', fontSize=8.0, leading=10.6, textColor=TEXT, spaceAfter=2.5)
-    p_bullet = ParagraphStyle('FBullet', fontName='Times-Roman', fontSize=8.0, leading=10.6, textColor=TEXT, leftIndent=12, firstLineIndent=-8, spaceAfter=2.0)
-    p_caption = ParagraphStyle('FCap', fontName='Times-Italic', fontSize=7.4, leading=10, textColor=TEXT_MUTED, alignment=1, spaceBefore=3, spaceAfter=5)
-    p_code = ParagraphStyle('FCode', fontName='Courier', fontSize=7.2, leading=9.5, textColor=colors.HexColor("#0F172A"), leftIndent=10, spaceAfter=3)
+    p_body = ParagraphStyle('FBody', fontName='Times-Roman', fontSize=7.9, leading=10.8, textColor=TEXT, spaceAfter=3.0)
+    p_bullet = ParagraphStyle('FBullet', fontName='Times-Roman', fontSize=7.9, leading=10.8, textColor=TEXT, leftIndent=12, firstLineIndent=-8, spaceAfter=2.2)
+    p_caption = ParagraphStyle('FCap', fontName='Times-Italic', fontSize=7.3, leading=9.8, textColor=TEXT_MUTED, alignment=1, spaceBefore=3, spaceAfter=4)
+    p_code = ParagraphStyle('FCode', fontName='Courier', fontSize=7.0, leading=9.0, textColor=colors.HexColor("#0F172A"), leftIndent=10, spaceAfter=2.5)
     
     th_style = ParagraphStyle('FTH', fontName='Times-Bold', fontSize=7.2, leading=9.2, textColor=PRIMARY, alignment=1)
     td_style = ParagraphStyle('FTD', fontName='Times-Roman', fontSize=7.2, leading=9.2, textColor=TEXT)
@@ -103,7 +97,7 @@ def build_factsheet_pdf(output_path: str):
     story.append(Paragraph("<b>Arin Pattnaik, Tanmay Das, Shubham Kulkarni, Dr. Chaitra Desai</b>", p_author))
     story.append(Paragraph("Department of Computer Science & Engineering, Manipal Institute of Technology (MIT-BLR),<br/>Manipal Academy of Higher Education, Bengaluru, Karnataka, India", p_affil))
     story.append(Paragraph("Challenge Submission Date: October 28, 2026", p_date))
-    story.append(HRFlowable(width="100%", thickness=1.0, color=BORDER, spaceBefore=0, spaceAfter=8))
+    story.append(HRFlowable(width="100%", thickness=1.0, color=BORDER, spaceBefore=0, spaceAfter=6))
 
     # =========================================================================
     # SECTION 1: TEAM DETAILS
@@ -118,13 +112,15 @@ def build_factsheet_pdf(output_path: str):
         "<b>Team website URL:</b> <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS</u></font>",
         "<b>Affiliations:</b> Department of Computer Science & Engineering, Manipal Institute of Technology Bengaluru (MIT-BLR), Manipal Academy of Higher Education, Bengaluru, Karnataka, India",
         "<b>Team leader's user ID on the submission server (macvi.org):</b> <code>2044</code>",
-        "<b>User IDs on the submission server of all team members (leader included; the IDs of every account that submitted for the team):</b> <code>2044</code>, <code>2035</code>, <code>2043</code>",
+        "<b>User IDs on the submission server of all team members (leader included; accounts that submitted):</b> <code>2044</code>, <code>2035</code>, <code>2043</code>",
         "<b>Track(s) entered:</b> Both (Track 1 and Track 2)",
         "<b>Best-scoring testing-phase submission per track (reported for reproduction):</b><br/>"
         "&bull; <b>Track 1 (Quality / Unconstrained):</b> Submission ID <b>#19359</b>, submitted by user ID <code>2035</code> (<code>shubham.kulkarni232007@gmail.com</code>), <b>Composite Score: 0.6410</b> (<i>Q</i><sub>seg</sub>: 0.5820, mIoU: 0.7110, Macro <i>F</i><sub>1</sub>: 0.8180, PSNR: 25.48 dB, SSIM: 0.8290)<br/>"
         "&bull; <b>Track 2 (Jetson AGX Orin Edge):</b> Submission ID <b>#19447</b>, submitted by user ID <code>2044</code> (<code>arinp2018@gmail.com</code>), <b>Composite Score: 0.4070</b> (<i>Q</i><sub>seg</sub>: 0.2270, mIoU: 0.4060, Macro <i>F</i><sub>1</sub>: 0.5600, PSNR: 23.25 dB, SSIM: 0.8470, Complexity: 9.82 GFLOPs, 0.884 M params)",
-        "<b>Link to reproduction repository (one per track entered, official EURS template):</b><br/>&bull; Track 1 (Quality): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track1-Repro</u></font><br/>&bull; Track 2 (Jetson AGX Orin): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track2-Repro</u></font>",
-        "<b>Artifact traceability:</b> Code revision / commit: <code>9633b4d</code>. Track 1 final archive: <code>deploy/v33/submission_v33_ensemble_f3upgrade.zip</code> (SHA-256: <code>de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d</code>). Track 2 ONNX binary: <code>deploy/track2_apex_orin_v3.onnx</code> (SHA-256: <code>addf76f170a0c09e0a3af50ebabb530b3f542080d2f3921c171ea3ae3cd80247</code>). Link access: Public GitHub repository, permanent access."
+        "<b>Link to reproduction repository (one per track entered, official EURS template):</b><br/>"
+        "&bull; Track 1 (Quality): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track1-Repro</u></font><br/>"
+        "&bull; Track 2 (Jetson AGX Orin): <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS-Track2-Repro</u></font>",
+        "<b>Artifact traceability:</b> Primary repository: <code>https://github.com/syntax-error23/SAT-EURS</code>. Track 1 final archive: <code>deploy/v33/submission_v33_ensemble_f3upgrade.zip</code> (SHA-256: <code>de741a84ce4601f82286ef156458b07e9fe2d4c4f75559a4589010f90ae6510d</code>). Track 2 ONNX binary: <code>onnx/submitted_model.onnx</code> (SHA-256: <code>addf76f170a0c09e0a3af50ebabb530b3f542080d2f3921c171ea3ae3cd80247</code>). Link access: Public GitHub repositories, permanent access."
     ]
     for d in t1_details:
         story.append(Paragraph(f"&bull; {d}", p_bullet))
@@ -135,46 +131,54 @@ def build_factsheet_pdf(output_path: str):
     # =========================================================================
     story.append(Paragraph("2. Global Method Description", p_h1))
     
-    # Figure 1: Track 1 Overview
+    story.append(Paragraph(
+        "When we first experimented with joint end-to-end multi-task training on EURS, we ran directly into gradient competition: optimizing pixel-level restoration losses (such as L1 and Laplacian edge penalties) repeatedly degraded the downstream semantic segmentation mIoU, particularly around delicate margins like seahorse snouts and starfish arms. In contrast, training the segmenter on unrestored imagery forced the feature backbones to expend capacity compensating for severe wavelength attenuation. Because the operating budgets of the two competition tracks are fundamentally different, we developed two distinct architectural pipelines rather than attempting to compress one unified model across both settings:",
+        p_body
+    ))
+    story.append(Paragraph(
+        "<b>Track 1 (Unconstrained Quality):</b> We separated color restoration and dense segmentation into a clean two-stage cascade. For restoration, we first regress an analytical 19-term polynomial basis (&phi;(<i>r,g,b</i>) &isin; &real;<sup>19</sup>) via closed-form Tikhonov regularisation (&lambda; = 10<sup>&minus;4</sup>), providing a physically grounded baseline that avoids high-frequency noise amplification. A neural refiner composed of 16 Non-Linear Activation Free (NAF) blocks with depthwise gated convolutions processes the concatenated 8-channel tensor [Raw RGB, RSUIGM RGB, Water Type, Depth]. To prevent the neural network from drifting away from physical optical priors or hallucinating artifacts on coral substrate, we clamped the refiner residual strictly to &plusmn;0.10 &times; tanh and sharpened high-frequency transitions using a Laplacian edge filter (&alpha;=1.34, &sigma;=1.5), reaching 25.48 dB PSNR and 0.829 SSIM on the test benchmark. For segmentation, vision transformers provide extensive receptive fields but consistently smear object boundaries by 10 to 15 pixels, whereas standard convolutional networks preserve sharp edges but miss global context in turbid waters. We resolved this trade-off using our asymmetric dual-stream <code>EURSAPEXV18Segmenter</code>: (1) DINOv3 ViT-Large/16 (304M params, patch 14) ingests restored RGB at 518&times;518 for global semantics, (2) ConvNeXt-Base (88.5M params) ingests raw degraded RGB at 512&times;512 through a 2-stage DetailStem to preserve fine anatomical boundaries, and (3) learned spatial gating (<i>f</i><sub>fused</sub> = &sigma;(<i>G</i>)&middot;<i>f</i><sub>sem</sub> + (1&minus;&sigma;(<i>G</i>))&middot;<i>f</i><sub>conv</sub>) dynamically blends features across a 4-level UPerNet neck paired with condition FiLM modulation.",
+        p_body
+    ))
+    story.append(Paragraph(
+        "<b>Track 2 (Jetson AGX Orin Edge SOTA):</b> Generating both restored imagery and 5-class segmentations from a single ONNX graph under 1.0M parameters and 12.0 GFLOPs ruled out running an independent restoration CNN. We engineered a tightly unified multi-task architecture: (1) an 18-D radiometric router computes translation-invariant global statistics from a downsampled 256&times;256 representation and contracts against a scale-consistent 20-scene calibration bank in &lt;0.30 GFLOPs (a 95% compute saving over 2D convs), (2) a 3-block depthwise-separable inverted bottleneck refiner operating at 256&times;256 with condition FiLM modulation lifts PSNR from 17.1 dB to 23.25 dB (+6.15 dB boost), (3) a shared dual stem feeds a MobileNetV3-Large trunk <b>truncated strictly after Block 11</b> (<code>features[:12]</code>), eliminating Block 12's heavy 386k parameter expansion and keeping total model parameters at 884.1k (passing the 1.0M ceiling with 11.6% headroom), (4) a dilated ASPP context module and 4-scale progressive FPN, and (5) an in-graph average pooling speckle suppressor (<code>AvgPool2d(11, 1, 5)</code>) that penalizes rare-class logits where regional support is below &tau;=0.04, executing natively on TensorRT with 0 extra parameters and 0.05 GFLOPs.",
+        p_body
+    ))
+
+    method_disclosures_1 = [
+        "<b>Which pre-trained or external methods / models have been used:</b> DINOv3 ViT-Large/16 pre-trained on LVD-142M via self-supervised learning; ConvNeXt-Base pre-trained on ImageNet-1k; MobileNetV3-Large pre-trained on ImageNet-1k (stages up to Block 11); NAFNet restoration blocks.",
+        "<b>Which additional data has been used in addition to provided EURS training data:</b> <b>None</b>. Strictly trained exclusively on the provided EURS benchmark scenes (20 training scenes, 6 dev scenes). No external imagery, synthetic generators, or unannounced data were used.",
+        "<b>Training description:</b> PyTorch 2.11 / 2.6 with CUDA 12.8, torchvision 0.26.0, timm 1.0.30. Optimizer: AdamW (&beta;<sub>1</sub>=0.9, &beta;<sub>2</sub>=0.999, weight decay 10<sup>&minus;4</sup>). LR schedule: Cosine annealing with 3 warmup epochs; peak lr 3&times;10<sup>&minus;5</sup> for Track 1, 2&times;10<sup>&minus;4</sup> for Track 2; min lr 10<sup>&minus;6</sup>. Batch size: Effective batch size 16 for Track 1 (batch size 4 with 4 gradient accumulation steps); batch size 8 for Track 2. Epochs: 25 per fold for Track 1; 30 for Track 2. Input size: 518&times;518 (ViT), 512&times;512 (ConvNeXt), 1024&times;1024 (Restoration and Track 2). Augmentations: Random flips, scale jitter [0.8, 1.25], random crop, color jitter (&plusmn;0.1), and copy-paste rare organism oversampling on elasmobranchs. Loss functions: Present-Class Lov&aacute;sz-Softmax (w=1.0), Class-Weighted Focal Cross-Entropy (&gamma;=2.0, &alpha;=[0.70, 0.90, 1.20, 3.00, 3.50], w=1.0), Soft Dice Loss (w=0.5), Auxiliary Boundary BCE (w=0.2), Restoration L1 + Laplacian Loss (w=0.1). Track 2 incorporates Multi-Teacher Ensemble Distillation (temperature &tau;=3.0, w=1.0). Hardware: Single NVIDIA GeForce RTX 5090 (32GB VRAM, Blackwell architecture). Training time: Track 1 &approx; 18h across all 5 folds; Track 2 &approx; 3.5h for 30 epochs.",
+        "<b>Testing description:</b> Inputs evaluated at native resolution, resized such that longest side is exactly 1024 px with preserved aspect ratio matching official scoring. Track 1 uses 5-fold ensemble (Folds 0, 1, 2, 3-Upgrade, 4) with horizontal-flip TTA (10 forward passes total). Track 2 runs single-pass deterministic inference with zero TTA or ensemble directly in TensorRT / ONNX Runtime."
+    ]
+    for m in method_disclosures_1:
+        story.append(Paragraph(f"&bull; {m}", p_bullet))
+    story.append(Spacer(1, 4))
+
+    # Figure 1: Track 1 Overview (Aspect ratio exactly 1200x525 -> 2.285: 504 / 2.285 = 220.5 pt)
     diag1 = "factsheet-template/images/method_overview.png"
     if os.path.exists(diag1):
-        story.append(RLImage(diag1, width=504, height=210))
-        story.append(Paragraph("<b>Figure 1:</b> Overview of Team SAT's Track 1 champion perception architecture (<code>V33-Ensemble-F3Upgrade</code>, Submission #19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\\times512$) and DetailStem. Streams are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.", p_caption))
+        story.append(RLImage(diag1, width=504, height=220))
+        story.append(Paragraph("<b>Figure 1:</b> Overview of Team SAT's Track 1 champion perception architecture (<code>V33-Ensemble-F3Upgrade</code>, Submission #19359, 0.641 Composite). Degraded underwater imagery is first restored via a two-stage physical formulation combining an analytical 19-term RSUIGM radiative basis expansion and a bounded 16-block NAFNet residual refiner. The restored RGB feeds a DINOv3 ViT-Large dense transformer stream ($518\\times518$), while the raw degraded RGB concurrently feeds a ConvNeXt-Base convolutional hierarchy ($512\\times512$) and DetailStem. Features are fused via learned spatial gating and condition FiLM modulation in a UPerNet neck, averaged across a 5-fold ensemble with calibrated logit offsets.", p_caption))
     story.append(Spacer(1, 4))
 
     # Figure 2: Track 2 Overview
     diag2 = "factsheet-template/images/track2_pipeline.png"
     if os.path.exists(diag2):
-        story.append(RLImage(diag2, width=504, height=210))
+        story.append(RLImage(diag2, width=504, height=220))
         story.append(Paragraph("<b>Figure 2:</b> Overview of Team SAT's Track 2 embedded edge architecture (<code>track2-apex-orin-v3</code>, Submission #19447, 0.407 Composite). Designed for the NVIDIA Jetson AGX Orin under strict 1.0M parameter and 12.0 GFLOP limits: an 18-D radiometric summary router dynamically contracts a precomputed scale-consistent 20-scene polynomial buffer in &lt;0.30 GFLOPs, paired with a $256\\times256$ FiLM spatial refiner (+6.15 dB PSNR boost). Multi-task segmentation uses a truncated MobileNetV3 trunk (cut strictly after Block 11), dilated ASPP context module, 4-scale progressive FPN, ScenePriorGate, and an in-graph convolutional spatial speckle suppressor.", p_caption))
     story.append(Spacer(1, 4))
 
-    story.append(Paragraph("<b>Architectural Philosophy & Feature Sharing:</b>", p_h2))
-    story.append(Paragraph(
-        "Underwater optical imaging is governed by severe wavelength-dependent attenuation and backscatter. Coupling physical radiative transfer inversion directly with deep categorical segmentation often causes gradient competition: restoration prioritizes pixel-level high-frequency fidelity, whereas dense segmentation requires semantic spatial invariance. To resolve this, our methodologies differ strategically across the two tracks:",
-        p_body
-    ))
-    story.append(Paragraph(
-        "<b>Track 1 (Unconstrained Quality):</b> We deploy a sequential decouple-and-fuse pipeline. Restoration is anchored physically via an analytical 19-term polynomial basis (&phi;(<i>r,g,b</i>) &isin; &real;<sup>19</sup>) regressed via Tikhonov regularisation (&lambda; = 10<sup>&minus;4</sup>), ensuring baseline color recovery without high-frequency amplification. A neural refiner consisting of 16 Non-Linear Activation Free (NAF) blocks with depthwise gated convolutions operates on the concatenated 8-channel tensor [Raw RGB, RSUIGM RGB, Water Type, Depth]. To prevent distribution shift, the refiner's output is bounded strictly: <i>I</i><sub>rest</sub> = clip(<i>I</i><sub>RSUIGM</sub> + 0.10 &times; tanh(NAFNet), 0, 1), followed by Laplacian unsharp edge filtering (&alpha;=1.34, &sigma;=1.5), reaching 25.48 dB PSNR and 0.829 SSIM. For segmentation, <code>EURSAPEXV18Segmenter</code> deploys an asymmetric dual-stream encoder: (1) DINOv3 ViT-Large/16 (304M params, patch 14) ingests restored images at 518&times;518 for invariant global semantics, (2) ConvNeXt-Base (88.5M params) ingests raw degraded images at 512&times;512 with a 2-stage DetailStem to maintain sharp boundary localization and eliminate the typical 10–15 pixel ViT boundary smearing on rare fauna, and (3) learned spatial gating <i>f</i><sub>fused</sub> = &sigma;(<i>G</i>)&middot;<i>f</i><sub>sem</sub> + (1&minus;&sigma;(<i>G</i>))&middot;<i>f</i><sub>conv</sub> with condition FiLM modulation across a 4-level UPerNet feature pyramid.",
-        p_body
-    ))
-    story.append(Paragraph(
-        "<b>Track 2 (Jetson AGX Orin Edge SOTA):</b> Under the strict &le;1.0M parameter and &le;12.0 GFLOP limits, separate heavy models are impossible. Track 2 adopts a unified multi-task architecture: (1) an 18-D radiometric summary router computes translation-invariant global statistics from a 256&times;256 downsampled representation and contracts against a scale-consistent 20-scene polynomial buffer in &lt;0.30 GFLOPs (a 95% compute saving over 2D convs), (2) a 3-block depthwise-separable inverted bottleneck refiner operating at 256&times;256 with condition FiLM modulation lifts PSNR from 17.1 dB to 23.25 dB (+6.15 dB), (3) a shared dual stem feeds a MobileNetV3-Large trunk <b>cut strictly after Block 11</b> (<code>features[:12]</code>), eliminating Block 12's heavy 386k parameter expansion and keeping total parameter count at 884.1k (passing the 1.0M ceiling with 11.6% headroom), (4) a dilated ASPP context module and 4-scale progressive FPN, and (5) an in-graph average pooling speckle suppressor (<code>AvgPool2d(11, 1, 5)</code>) that penalizes rare-class logits where regional support is below &tau;=0.04, eliminating false alarms on reef crevices with zero CPU post-processing overhead.",
-        p_body
-    ))
-
-    method_disclosures = [
-        "<b>Pre-trained or external models used:</b> DINOv3 ViT-Large/16 pre-trained on LVD-142M via self-supervised learning; ConvNeXt-Base pre-trained on ImageNet-1k; MobileNetV3-Large pre-trained on ImageNet-1k (stages up to Block 11); NAFNet restoration blocks.",
-        "<b>Additional data used in addition to provided EURS training data:</b> <b>None</b>. Strictly trained exclusively on the provided EURS benchmark scenes (20 training scenes, 6 dev scenes). No external imagery, synthetic generators, or private datasets were used.",
-        "<b>Training description:</b> PyTorch 2.11 / 2.6 with CUDA 12.8, torchvision 0.26.0, timm 1.0.30. Optimizer: AdamW (&beta;<sub>1</sub>=0.9, &beta;<sub>2</sub>=0.999, weight decay 10<sup>&minus;4</sup>). LR schedule: Cosine annealing with 3 warmup epochs; peak lr 3&times;10<sup>&minus;5</sup> for Track 1, 2&times;10<sup>&minus;4</sup> for Track 2; min lr 10<sup>&minus;6</sup>. Batch size: Effective batch size 16 for Track 1 (batch size 4 with 4 gradient accumulation steps); batch size 8 for Track 2. Epochs: 25 per fold for Track 1; 30 for Track 2. Input size: 518&times;518 (ViT), 512&times;512 (ConvNeXt), 1024&times;1024 (Restoration and Track 2). Augmentations: Random flips, scale jitter [0.8, 1.25], random crop, color jitter (&plusmn;0.1), and copy-paste rare organism oversampling on elasmobranchs. Loss functions: Present-Class Lov&aacute;sz-Softmax (w=1.0), Class-Weighted Focal Cross-Entropy (&gamma;=2.0, &alpha;=[0.70, 0.90, 1.20, 3.00, 3.50], w=1.0), Soft Dice Loss (w=0.5), Auxiliary Boundary BCE (w=0.2), Restoration L1 + Laplacian Loss (w=0.1). Track 2 incorporates Multi-Teacher Ensemble Distillation (temperature &tau;=3.0, w=1.0). Hardware: Single NVIDIA GeForce RTX 5090 (32GB VRAM, Blackwell architecture). Training time: Track 1 &approx; 18h across all 5 folds; Track 2 &approx; 3.5h for 30 epochs.",
-        "<b>Testing description:</b> Inputs evaluated at native resolution, resized such that longest side is exactly 1024 px with preserved aspect ratio matching official scoring. Track 1 uses 5-fold ensemble (Folds 0, 1, 2, 3-Upgrade, 4) with horizontal-flip TTA (10 forward passes total). Track 2 runs single-pass deterministic inference with zero TTA or ensemble directly in TensorRT / ONNX Runtime.",
-        "<b>How training and development scenes were used:</b><br/>&bull; <i>Exact scene IDs used for training (20 scenes):</i> <code>fish1, fish2, fish4, fish5, fish7, fish9, fish11, fish12, fish13, fish14, fish15, fish17, fish18, fish20, fish21, ray1, seahorse1, sharkFish, starfish2, turtles1</code>.<br/>&bull; <i>Validation & model selection:</i> 5-fold cross-validation on the 20 training scenes, stratified by optical water type (Types 1–10) and depth.<br/>&bull; <i>Development scenes:</i> The 6 development scenes (<code>fish3, fish6, fish10, fish19, sharRayFish, starfish1</code>) were held out strictly for out-of-domain validation and discrepancy audits, never used in gradient backpropagation. <b>Compliance with EURS rules: Yes.</b>",
+    method_disclosures_2 = [
+        "<b>How training and development scenes were used:</b><br/>"
+        "&bull; <i>Exact scene IDs used for training (20 scenes):</i> <code>fish1, fish2, fish4, fish5, fish7, fish9, fish11, fish12, fish13, fish14, fish15, fish17, fish18, fish20, fish21, ray1, seahorse1, sharkFish, starfish2, turtles1</code>.<br/>"
+        "&bull; <i>Validation & model selection:</i> 5-fold cross-validation across these 20 training scenes, stratified by optical water type (Types 1–10) and depth level.<br/>"
+        "&bull; <i>Development scenes:</i> The 6 development scenes (<code>fish3, fish6, fish10, fish19, sharRayFish, starfish1</code>) were held out strictly for out-of-domain validation, hyperparameter tuning, and post-submission discrepancy audits. Neither development nor testing scenes were ever used in gradient backpropagation. <b>Compliance with EURS rules: Yes.</b>",
         "<b>Were released testing-phase images used for training/adaptation?</b> <b>No.</b> Zero test pixels were used for training, fine-tuning, domain adaptation, self-supervision, or pseudo-labelling. All test predictions were generated strictly blind via feed-forward inference.",
         "<b>Leaderboard score guided choices:</b> Rare-class logit calibration offsets (&Delta;Z<sub>3</sub> = +0.10 for elasmobranchs, &Delta;Z<sub>4</sub> = +0.25 for macro-fauna) and Laplacian unsharp boost (&alpha;=1.34, &sigma;=1.5) were set as fixed constant scalars applied uniformly to every testing image. Selection of the Fold 3 retrained elasmobranch pilot checkpoint over baseline fold 3 was validated on the leaderboard test response (moving composite from 0.634 to 0.641).",
-        "<b>Novelty degree:</b> (1) 19-term RSUIGM analytical basis router contracting over optical water type and depth in &lt;0.30 GFLOPs, (2) asymmetric dual-stream encoder coupling DINOv3 ViT-Large dense semantics with ConvNeXt-Base convolutional boundary sharpness via learned spatial gating, (3) in-graph ONNX spatial speckle suppressor evaluating local softmax cluster density via average pooling to eliminate false elasmobranch detections without post-processing latency, and (4) coverage penalty failure gate mitigation via calibrated logit threshold shifting. Not previously published; developed exclusively for MaCVi@WACV 2027.",
+        "<b>Novelty degree of the solution:</b> Our method introduces four practical engineering contributions: (1) an 18-D radiometric summary router that contracts over precomputed optical basis tables in &lt;0.30 GFLOPs, avoiding heavy 2D convolution for color restoration on edge hardware, (2) an asymmetric dual-stream design combining dense self-supervised representations from DINOv3 with boundary-preserving convolutional features from ConvNeXt via learned spatial gating, (3) an in-graph spatial speckle suppressor that runs entirely inside TensorRT FP16 via average pooling to eliminate false elasmobranch detections without host CPU intervention, and (4) a threshold calibration strategy that safeguards the evaluation pipeline against the severe Zero-True-Positive penalty cliff on rare marine classes. Developed exclusively for MaCVi@WACV 2027.",
         "<b>Other methods and baselines tested:</b> CycleGAN / pix2pixHD produced severe hallucinated textures on coral reef substrate, dropping SSIM below 0.65; Pure ViT-Large segmenters suffered from 10–15 pixel boundary dilation around thin fauna appendages; Full MobileNetV3-Large for Track 2 exceeded parameter budget (1.27M params vs 1.0M cap) due to Block 12, resolved by truncating after Block 11."
     ]
-    for m in method_disclosures:
+    for m in method_disclosures_2:
         story.append(Paragraph(f"&bull; {m}", p_bullet))
     story.append(Spacer(1, 4))
 
@@ -301,13 +305,13 @@ def build_factsheet_pdf(output_path: str):
     
     t7_points = [
         "<b>Planned submission of solution description paper to MaCVi@WACV 2027:</b> <b>Yes.</b> The team plans to submit a full technical paper detailing our findings to the workshop proceedings.",
-        "<b>General comments and impressions of the EURS challenge:</b> The joint evaluation of optical color restoration alongside dense semantic segmentation provides a highly realistic benchmark for autonomous underwater navigation and survey robotics. The Coverage Penalty formulation (<i>Q</i><sub>seg</sub> &times; &prod;<sub>c</sub> <b>1</b>(TP<sub>c</sub> &gt; 0)) was an effective mechanism to deter models from ignoring ecologically critical rare organisms, though it created a severe sensitivity cliff that heavily penalized standard argmax decision thresholds on rare classes (&lt;1.5% frequency). The Track 2 Jetson Orin operator whitelist and FLOP/parameter constraints provided a realistic embedded edge benchmark.",
+        "<b>General comments and impressions of the EURS challenge:</b> Evaluating joint color restoration and categorical segmentation under real embedded compute constraints provides a rigorous benchmark for underwater robotics. The Coverage Penalty formulation (<i>Q</i><sub>seg</sub> &times; &prod;<sub>c</sub> <b>1</b>(TP<sub>c</sub> &gt; 0)) was an effective mechanism to deter models from ignoring ecologically critical rare organisms, though it created a steep sensitivity cliff where missing just one pixel of an elasmobranch across a test split causes a catastrophic score collapse. This necessitated threshold calibration rather than relying purely on maximum-likelihood posteriors. Track 2's operator whitelist and FLOP ceilings effectively mirrored real-world deployability constraints on the Jetson AGX Orin platform.",
         "<b>What do you expect from a new challenge in underwater image restoration and segmentation?</b> Future editions would benefit from: (1) multi-frame temporal video evaluation (incorporating AUV optical flow and temporal mask consistency), (2) active turbidity and backscatter sensor fusion (e.g., matching acoustic/sonar feeds or polarized lighting), and (3) physical energy metering during edge benchmarking (measuring peak milliwatts and thermal throttling during sustained dive profiles).",
         "<b>Known limitations and failure cases:</b> In extreme water types (Types 9 and 10) at maximum attenuation depths (&gt;25 m), optical light extinction in the red spectrum is near-total, leading occasionally to subtle contrast suppression in deep blue sea floor regions. Additionally, sub-5-pixel micro-appendages (such as seahorse tails) can occasionally experience boundary dilation under heavy backscatter haze."
     ]
     for p in t7_points:
         story.append(Paragraph(f"&bull; {p}", p_bullet))
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 5))
 
     # Declaration Box
     story.append(Paragraph("<b>Declaration:</b>", p_h2))
@@ -315,7 +319,7 @@ def build_factsheet_pdf(output_path: str):
         "I confirm that all external datasets, pretrained models, ensembles and post-processing used for the reported submission(s) are disclosed in this factsheet; that the submitted code and weights correspond to the named testing-phase submission(s); and that the method complies with the official EURS rules.",
         p_body
     ))
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
     
     decl_data = [
         [Paragraph("<b>Team Leader:</b> Arin Pattnaik (Faculty Advisor: Dr. Chaitra Desai)", p_body), Paragraph("<b>Date:</b> October 28, 2026", td_bold_center)]
@@ -323,11 +327,11 @@ def build_factsheet_pdf(output_path: str):
     t_decl = Table(decl_data, colWidths=[350, 154])
     t_decl.setStyle(TableStyle([
         ('LINEABOVE', (0, 0), (-1, 0), 0.5, BORDER),
-        ('TOPPADDING', (0, 0), (-1, -1), 4),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+        ('TOPPADDING', (0, 0), (-1, -1), 3),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
     ]))
     story.append(t_decl)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     # References
     story.append(Paragraph("<b>References:</b>", p_h2))
