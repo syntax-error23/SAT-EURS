@@ -89,7 +89,7 @@ def build_factsheet_pdf(output_path: str):
     # Title & Header
     story.append(Paragraph("MaCVi@WACV 2027 EURS Challenge", p_title))
     story.append(Paragraph("Embedded Underwater Restoration and Segmentation \u2014 Official Factsheet", p_sub))
-    story.append(Paragraph("<b>Arin Pattnaik, Tanmay Das, Shubham Kulkarni, Dr. Chaitra Desai</b>", p_author))
+    story.append(Paragraph("<b>Arin Pattnaik, Tanmay Das, Shubham Kulkarni</b>", p_author))
     story.append(Paragraph("School of Computer Engineering, Manipal Institute of Technology Bengaluru,<br/>Manipal Academy of Higher Education, Manipal, India", p_affil))
     story.append(Paragraph("Challenge Submission Date: October 28, 2026", p_date))
     story.append(HRFlowable(width="100%", thickness=1.0, color=BORDER, spaceBefore=0, spaceAfter=4))
@@ -97,9 +97,9 @@ def build_factsheet_pdf(output_path: str):
     # Section 1: Team Details
     story.append(Paragraph("1. Team Details", p_h1))
     story.append(Paragraph("&bull; <b>Team name (as on macvi.org):</b> SAT (MIT-BLR)", p_bullet))
-    story.append(Paragraph("&bull; <b>Team leader name:</b> Arin Pattnaik (Faculty Advisor & Mentor: Dr. Chaitra Desai)", p_bullet))
-    story.append(Paragraph("&bull; <b>Team leader institution and email:</b> School of Computer Engineering, Manipal Institute of Technology Bengaluru, Manipal Academy of Higher Education, Manipal, India. Email: <code>arinp2018@gmail.com</code> (Faculty: <code>chaitra.desai@manipal.edu</code>)", p_bullet))
-    story.append(Paragraph("&bull; <b>Rest of the team members (name, macvi.org user ID):</b> Arin Pattnaik (Team Owner, User ID <code>2044</code>), Tanmay Das (User ID <code>2043</code>), Shubham Kulkarni (User ID <code>2035</code>), Dr. Chaitra Desai (Faculty Advisor & Mentor)", p_bullet))
+    story.append(Paragraph("&bull; <b>Team leader name:</b> Arin Pattnaik", p_bullet))
+    story.append(Paragraph("&bull; <b>Team leader institution and email:</b> School of Computer Engineering, Manipal Institute of Technology Bengaluru, Manipal Academy of Higher Education, Manipal, India. Email: <code>arinp2018@gmail.com</code>", p_bullet))
+    story.append(Paragraph("&bull; <b>Rest of the team members (name, macvi.org user ID):</b> Arin Pattnaik (Team Owner, User ID <code>2044</code>), Tanmay Das (User ID <code>2043</code>), Shubham Kulkarni (User ID <code>2035</code>)", p_bullet))
     story.append(Paragraph("&bull; <b>Team website URL:</b> <font color='#1E3A8A'><u>https://github.com/syntax-error23/SAT-EURS</u></font>", p_bullet_ragged))
     story.append(Paragraph("&bull; <b>Affiliations:</b> School of Computer Engineering, Manipal Institute of Technology Bengaluru, Manipal Academy of Higher Education, Manipal, India", p_bullet))
     story.append(Paragraph("&bull; <b>Team leader's user ID on the submission server (macvi.org):</b> <code>2044</code>", p_bullet))
@@ -306,7 +306,7 @@ def build_factsheet_pdf(output_path: str):
     story.append(Spacer(1, 2))
 
     dec_data = [
-        [Paragraph("<b>Team Leader:</b> Arin Pattnaik (Faculty Advisor: Dr. Chaitra Desai)", td_bold),
+        [Paragraph("<b>Team Leader:</b> Arin Pattnaik", td_bold),
          Paragraph("<b>Date:</b> October 28, 2026", td_bold_center)]
     ]
     dec_table = Table(dec_data, colWidths=[338, 170])
